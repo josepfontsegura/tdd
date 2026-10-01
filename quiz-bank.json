@@ -1,0 +1,98 @@
+[
+  {
+    "concept": "Channel laws",
+    "statement": "For a discrete channel, $W(y|x)$ is the probability of receiving $y$ when $x$ was sent.",
+    "answer": true,
+    "explanation": "This is the conditional probability $\\Pr(Y=y\\mid X=x)$. For a continuous output, the channel law is a density instead."
+  },
+  {
+    "concept": "MAP and ML",
+    "statement": "MAP and ML necessarily make the same decision even when input symbols have unequal probabilities.",
+    "answer": false,
+    "explanation": "MAP maximizes $\\Pr(x)W(y|x)$, while ML maximizes $W(y|x)$. Unequal priors can change the maximizing symbol."
+  },
+  {
+    "concept": "Equal priors",
+    "statement": "With equal nonzero priors, MAP and ML have the same set of maximizing symbols.",
+    "answer": true,
+    "explanation": "The prior is a common positive factor and does not change the maximizers. A tie still needs a decision rule."
+  },
+  {
+    "concept": "Binary channels",
+    "statement": "On a bit-flipping channel with flip probability $p=0.8$, the ML decision is $\\hat x=y$.",
+    "answer": false,
+    "explanation": "The received bit is more likely to have been flipped. ML decides $\\hat x=1-y$, giving conditional error probability $0.2$ for either input."
+  },
+  {
+    "concept": "Conditional error",
+    "statement": "For a fixed channel and a fixed detector, changing the input priors changes the conditional error probability $P_{\\rm e}(x)$.",
+    "answer": false,
+    "explanation": "Conditioning on the transmitted symbol leaves only the channel and the fixed decision rule. The average error can change. If the detector itself is redesigned using the priors, its conditional errors can change too."
+  },
+  {
+    "concept": "Average error",
+    "statement": "If $\\Pr(X=0)=1/4$, $P_{\\rm e}(0)=1/5$ and $P_{\\rm e}(1)=1/3$, then $P_{\\rm e}=3/10$.",
+    "answer": true,
+    "explanation": "Average over the transmitted symbol: $(1/4)(1/5)+(3/4)(1/3)=1/20+1/4=3/10$."
+  },
+  {
+    "concept": "Gaussian detection",
+    "statement": "For a real additive zero-mean Gaussian channel with the same positive noise variance for every input, ML chooses a nearest constellation point.",
+    "answer": true,
+    "explanation": "The common normalization can be removed. Maximizing $\\exp(-(y-x)^2/(2\\sigma^2))$ is equivalent to minimizing $(y-x)^2$."
+  },
+  {
+    "concept": "Decision boundaries",
+    "statement": "Changing the tie-breaking rule only on the decision boundaries of a finite constellation in nondegenerate Gaussian noise changes its error probability.",
+    "answer": false,
+    "explanation": "These boundaries have probability zero under the continuous Gaussian density. Assigning them to different tied symbols leaves the error probability unchanged."
+  },
+  {
+    "concept": "Gaussian tails",
+    "statement": "For $Z\\sim\\mathcal N(0,\\sigma^2)$ and $b>0$, $\\Pr(Z>b)=\\operatorname{erfc}(b/\\sigma)/2$.",
+    "answer": false,
+    "explanation": "The correct expression is $\\Pr(Z>b)=\\operatorname{erfc}(b/(\\sqrt2\\sigma))/2$. The factor $\\sqrt2$ follows from the real Gaussian density."
+  },
+  {
+    "concept": "Interior symbols",
+    "statement": "For the nearest-point detector on $\\{-2,0,2\\}$ with real Gaussian noise variance $2$, $P_{\\rm e}(0)=\\operatorname{erfc}(1/2)$.",
+    "answer": true,
+    "explanation": "The thresholds are $-1$ and $1$. The two tails add: $2\\times\\tfrac12\\operatorname{erfc}(1/(\\sqrt2\\sqrt2))=\\operatorname{erfc}(1/2)$."
+  },
+  {
+    "concept": "Complex noise",
+    "statement": "A circularly symmetric complex Gaussian noise sample with total variance $\\sigma^2$ has independent real and imaginary parts, each with variance $\\sigma^2$.",
+    "answer": false,
+    "explanation": "Each component has variance $\\sigma^2/2$, so the total mean squared magnitude is $\\sigma^2$."
+  },
+  {
+    "concept": "QPSK energy",
+    "statement": "For the QPSK constellation $\\{\\pm a\\pm ja\\}$, the symbol energy is $2a^2$.",
+    "answer": true,
+    "explanation": "Every symbol has squared magnitude $a^2+a^2=2a^2$. With total noise variance $\\sigma^2$, the SNR is $2a^2/\\sigma^2$."
+  },
+  {
+    "concept": "QPSK errors",
+    "statement": "If each component decision in QPSK has error probability $p$, then the symbol error probability is exactly $2p$.",
+    "answer": false,
+    "explanation": "The two component errors can occur together. Independence gives $P_{\\rm e}=1-(1-p)^2=2p-p^2$. The value $2p$ is an approximation when $p$ is small."
+  },
+  {
+    "concept": "Translated regions",
+    "statement": "If $x=a+ja$ is transmitted and $z=y-x$, a correct nearest-point QPSK decision requires ${\\rm Re}(z)>-a$ and ${\\rm Im}(z)>-a$, apart from boundaries.",
+    "answer": true,
+    "explanation": "The received point must lie in the first quadrant: ${\\rm Re}(y)>0$ and ${\\rm Im}(y)>0$. Subtracting the transmitted point shifts both thresholds to $-a$."
+  },
+  {
+    "concept": "Symbol and bit errors",
+    "statement": "For Gray-labelled QPSK, the bit error probability equals the symbol error probability.",
+    "answer": false,
+    "explanation": "The bit error probability is $p$, the error of one component decision. The symbol error probability is $2p-p^2$ because either component may be wrong."
+  },
+  {
+    "concept": "Error minimization",
+    "statement": "MAP minimizes the average symbol error probability for the specified channel and input distribution.",
+    "answer": true,
+    "explanation": "For each observation, selecting a symbol with the largest posterior probability maximizes the conditional probability of a correct decision. Averaging preserves this optimality."
+  }
+]

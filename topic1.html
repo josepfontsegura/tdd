@@ -1,0 +1,397 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Topic 1. Detection - Digital data transmission 2026</title><script>document.documentElement.dataset.theme=localStorage.getItem('tdd-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')</script><link rel="stylesheet" href="itc.css"><link rel="stylesheet" href="vendor/katex.min.css"><link rel="stylesheet" href="site.css"><script defer src="analytics.js"></script></head><body><a class="skip" href="#main">Skip to content</a><nav class="navbar">
+  <button class="menu-toggle" aria-label="Menu">&#9776;</button>
+  <a class="navbar-brand" href="index.html">
+    <img src="img/upf-logo.svg" alt="UPF" style="height:42px;margin-right:0.75rem"> <span class="navbar-brand-text">Digital data transmission 2026</span>
+  </a>
+  <div class="navbar-actions">
+    <button class="search-toggle" aria-label="Search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><span class="search-hint">⌘K</span></button>
+    <button class="theme-toggle" aria-label="Toggle dark mode"><svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button>
+  </div>
+  <div class="lang-switcher"><a href="topic1.html" class="active" aria-current="page">EN</a></div>
+</nav><div class="page"><aside class="sidebar"><details class="sidebar-section"><summary><h4>General</h4></summary><a href="index.html">Home</a><a href="modalities.html">Assessment & modalities</a><a href="calendar.html">Calendar</a><a href="https://aulaglobal.upf.edu/course/view.php?id=92919">Aula Global ↗</a></details><details class="sidebar-section"><summary><h4>Modality A</h4></summary><a href="modality-a.html">Study materials</a><a href="collection-midterm.html">Midterm collection</a><a href="collection-final.html">Final collection</a></details><details class="sidebar-section" open><summary><h4>Lecture notes</h4></summary><a href="topic1.html" class="active" aria-current="page">1. Detection</a><span class="sidebar-disabled">2. Decoding</span><span class="sidebar-disabled">3. Mutual information and capacity</span><span class="sidebar-disabled">4. Continuous time</span><span class="sidebar-disabled">5. Modulation and demodulation</span><span class="sidebar-disabled">6. Continuous-channel capacity</span></details><details class="sidebar-section"><summary><h4>Exercises</h4></summary><a href="exercises1.html">1. Detection</a></details><details class="sidebar-section"><summary><h4>Quiz</h4></summary><a href="quiz1.html">Topic 1: Detection</a></details><details class="sidebar-section"><summary><h4>Seminars</h4></summary><a href="seminars.html">Seminar materials</a></details></aside><main class="content" id="main"><div class="lecture-header"><h1>Topic 1. Detection</h1></div><div class="resource-row"><a class="resource-link" href="pdf/TDD-2026-Topic1.pdf">Download PDF</a><a class="resource-link" href="exercises1.html">Exercises</a><a class="resource-link" href="quiz1.html">Practice quiz</a></div><nav class="topic-toc" aria-label="In this topic"><strong>Contents</strong><ul><li><a href="#probability-review">1.1 Probability review</a></li><li><a href="#channel-models">1.2 Channel models</a></li><li><a href="#detectors-and-error-probability">1.3 Detectors and error probability</a></li><li><a href="#optimal-detection">1.4 Optimal detection</a></li><li><a href="#decision-regions">1.5 Decision regions</a></li><li><a href="#bit-errors-and-sequences">1.6 Bit errors and sequences</a></li></ul></nav><section class="callout"><h2>In this topic</h2>
+<p>A receiver observes a noisy version <span class="math inline">Y</span> of a transmitted symbol <span class="math inline">X</span> and has to guess which symbol was sent. This first topic is about making that guess as well as possible, and about knowing how often it fails. Along the way we introduce the probabilistic language used in the rest of the course. Sections 1.1 to 1.4 correspond to the first lecture and Sections 1.5 and 1.6 to the second.</p>
+<ul>
+<li><p>We review the probability we need, which reduces to three rules for combining distributions by sums and products, and we place the channel models of the course in that framework.</p></li>
+<li><p>We define the optimal detector, in its MAP and ML forms, prove that no other detector does better, and see that in Gaussian noise it reduces to choosing the nearest constellation point.</p></li>
+<li><p>We describe a detector by its decision regions and use them to compute the error probability, first for each transmitted symbol and then on average.</p></li>
+<li><p>We carry one example, binary transmission, through the three noise models of the course: real Gaussian, complex Gaussian and exponential.</p></li>
+<li><p>We distinguish symbol errors from bit errors, and see how the errors of independent decisions accumulate along a message.</p></li>
+</ul>
+</section>
+<h2 id="probability-review">1.1 Probability review</h2>
+<p>Randomness is everywhere in digital communication. The transmitted symbol <span class="math inline">X</span> is random because the data are, and the received symbol <span class="math inline">Y</span> is random because of the noise. Everything we will say about a receiver, from what it should do to how often it errs, is a statement about the joint behavior of <span class="math inline">X</span> and <span class="math inline">Y</span>. It is therefore worth reviewing the few rules of probability that we will use again and again. There are only three of them, and they all appear in Table 1.1.</p>
+<p>We describe the transmitter by the <strong>input distribution</strong> <span class="math inline">\Pr(x)</span>, the probability that the symbol <span class="math inline">x</span> of the constellation <span class="math inline">\mathcal X</span> is sent, and the channel by its <strong>channel law</strong> <span class="math inline">W(y|x)</span>, the probability that <span class="math inline">y</span> is received when <span class="math inline">x</span> was sent. When the output alphabet is continuous, as it will be for most of the course, <span class="math inline">W(y|x)</span> is a probability density in <span class="math inline">y</span>. Neither <span class="math inline">\Pr(x)</span> nor <span class="math inline">W(y|x)</span> alone says anything about the pair <span class="math inline">(X,Y)</span>. The object that does is the joint distribution, and this is where the rules come in.</p>
+<div class="source-table">
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th style="text-align: left;">Rule</th>
+<th style="text-align: left;">Formula</th>
+<th style="text-align: left;">In words</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Product rule</td>
+<td style="text-align: left;"><span class="math inline">\Pr(x,y)=\Pr(x)\,W(y|x)</span></td>
+<td style="text-align: left;">a joint is a marginal times a conditional</td>
+</tr>
+<tr>
+<td style="text-align: left;">Sum rule</td>
+<td style="text-align: left;"><span class="math inline">\Pr(y)=\sum_{x\in\mathcal X} \Pr(x)\,W(y|x)</span></td>
+<td style="text-align: left;">a marginal is the joint summed over the other variable</td>
+</tr>
+<tr>
+<td style="text-align: left;">Bayes’ rule</td>
+<td style="text-align: left;"><span class="math inline">\Pr(x|y)=\dfrac{\Pr(x)\,W(y|x)}{\Pr(y)}</span></td>
+<td style="text-align: left;">the same joint, conditioned the other way</td>
+</tr>
+<tr>
+<td style="text-align: left;">Probability of an event</td>
+<td style="text-align: left;"><span class="math inline">\Pr(A)=\sum_{(x,y)\in A} \Pr(x)\,W(y|x)</span></td>
+<td style="text-align: left;">the joint summed over the outcomes in <span class="math inline">A</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Expectation</td>
+<td style="text-align: left;"><span class="math inline">\EE(f(X,Y))=\sum_{x\in\mathcal X}\sum_{y\in\mathcal Y} \Pr(x)W(y|x)f(x,y)</span></td>
+<td style="text-align: left;">the joint summed with <span class="math inline">f</span> inside</td>
+</tr>
+<tr>
+<td style="text-align: left;">Memoryless channel</td>
+<td style="text-align: left;"><span class="math inline">W(y_1,\ldots,y_n|x_1,\ldots,x_n)=\prod_{i=1}^{n} W(y_i|x_i)</span></td>
+<td style="text-align: left;">the product rule <span class="math inline">n</span> times</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Table 1.1.</strong> The rules of probability used in the course. For continuous alphabets, sums become integrals.</p>
+</div>
+<p>The <strong>product rule</strong> is the most important of the three. It says that the joint distribution of two random variables is always a product of two factors, the marginal of one and the conditional of the other. If <span class="math inline">X</span> and <span class="math inline">Y</span> were independent, the second factor would be just the marginal of <span class="math inline">Y</span>. In general, it is the marginal of <span class="math inline">Y</span> corrected for the dependence on <span class="math inline">X</span>. For the pair <span class="math inline">(X,Y)</span>, this dependence is precisely the channel. Applied <span class="math inline">n</span> times to a sequence of channel uses, the product rule gives the last line of the table whenever the noise in one use is independent of the noise in the others. We call such a channel <strong>memoryless</strong>, and all the channels in this course are memoryless.</p>
+<p>The <strong>sum rule</strong> does the opposite. To eliminate a variable we are not interested in, we sum the joint over all its values. We will use it constantly, because the probability of an event is simply the joint summed over the outcomes that form the event, and the expectation of a function is the same sum with the function inside. For continuous alphabets both become integrals, and the manipulations are otherwise identical. Note that a probability is itself an expectation, that of the indicator function of the event, so the fourth and fifth lines of the table are really one line. We keep both because we will compute both.</p>
+<p><strong>Bayes’ rule</strong>, finally, is the product rule read twice: <span class="math inline">\Pr(x)W(y|x)</span> and <span class="math inline">\Pr(y)\Pr(x|y)</span> are the same joint, so dividing by <span class="math inline">\Pr(y)</span> turns the channel law, which conditions on the input, into the distribution of the input given the output. That last distribution is what a receiver would like to know, and in Section 1.4 we will see that the optimal detector is built on it.</p>
+<section class="env-block env-example"><p class="env-label">Example 1.1.</p>
+<p>Let us apply the rules to the simplest channel, the bit-flipping channel with flip probability <span class="math inline">p</span>, when the input bit is <span class="math inline">0</span> with probability <span class="math inline">q</span> and <span class="math inline">1</span> with probability <span class="math inline">1-q</span>. The product rule gives the four values of the joint distribution, <span class="math display">\begin{align*}
+\Pr(0,0)&amp;=q(1-p),\tag{1.1}\\
+\Pr(0,1)&amp;=qp,\tag{1.2}\\
+\Pr(1,0)&amp;=(1-q)p,\tag{1.3}\\
+\Pr(1,1)&amp;=(1-q)(1-p),\tag{1.4}
+\end{align*}</span> and the sum rule gives the distribution of the output, <span class="math inline">\Pr(Y=0)=q(1-p)+(1-q)p</span>. Bayes’ rule then tells us how much a received <span class="math inline">0</span> says about the transmitted bit, <span class="math display">\begin{equation*}
+\Pr(X=0\,|\,Y=0)=\frac{q(1-p)}{q(1-p)+(1-q)p}.\tag{1.5}
+\end{equation*}</span> For <span class="math inline">q=\tfrac12</span> this is <span class="math inline">1-p</span>: a received <span class="math inline">0</span> was a transmitted <span class="math inline">0</span> with probability <span class="math inline">1-p</span>, as expected. For <span class="math inline">q\neq\tfrac12</span> it is not. For <span class="math inline">p=\tfrac12</span> the answer is <span class="math inline">q</span> whatever was received. In other words, the output then says nothing about the input. Finally, the probability of the event <span class="math inline">\{Y\neq X\}</span> is the joint summed over the two outcomes in it, <span class="math inline">\Pr(0,1)+\Pr(1,0)=qp+(1-q)p=p</span>, whatever the value of <span class="math inline">q</span>. The bit is flipped with probability <span class="math inline">p</span> regardless of what we send, which is what the channel says. The point is not the result itself, but that the same three steps apply to every channel and every event.</p>
+</section>
+<h2 id="channel-models">1.2 Channel models</h2>
+<p>Table 1.2 collects the channel laws that we will meet. The first two were introduced in the information theory course. Recall that everything about them can be computed with sums over two or three values, which makes them very convenient. The two Gaussian channels are the ones most often used in digital communications: the real one describes baseband transmission and the complex one passband transmission, as we will see in Topic 5. For now they are just two channel laws, and <span class="math inline">\sigma^2</span> is in both cases the total variance of the noise. In the complex case, the real and imaginary parts of the noise are independent Gaussians with variance <span class="math inline">\sigma^2/2</span> each.</p>
+<p>The last channel, the <strong>additive exponential noise</strong> channel, models transmission by energy: the input is a nonnegative quantity, and the channel adds to it a random energy with exponential distribution of mean <span class="math inline">\mu</span>. It is less common than the Gaussian ones, but it will be useful in this course, namely to remind us that what is true for Gaussian noise need not be true in general.</p>
+<div class="source-table">
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th style="text-align: left;">Channel</th>
+<th style="text-align: left;">Alphabets</th>
+<th style="text-align: left;">Law <span class="math inline">W(y|x)</span></th>
+<th style="text-align: left;">Parameter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Bit-flipping (BSC)</td>
+<td style="text-align: left;"><span class="math inline">\{0,1\}\to\{0,1\}</span></td>
+<td style="text-align: left;"><span class="math inline">1-p</span> if <span class="math inline">y=x</span>, <span class="math inline">p</span> otherwise</td>
+<td style="text-align: left;">flip probability <span class="math inline">p</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Bit-erasing (BEC)</td>
+<td style="text-align: left;"><span class="math inline">\{0,1\}\to\{0,1,?\}</span></td>
+<td style="text-align: left;"><span class="math inline">1-p</span> if <span class="math inline">y=x</span>, <span class="math inline">p</span> if <span class="math inline">y=\,?</span></td>
+<td style="text-align: left;">erasure probability <span class="math inline">p</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Real Gaussian</td>
+<td style="text-align: left;"><span class="math inline">\RR\to\RR</span></td>
+<td style="text-align: left;"><span class="math inline">\frac{1}{\sqrt{2\pi\sigma^2}}\,e^{-(y-x)^2/(2\sigma^2)}</span></td>
+<td style="text-align: left;">noise variance <span class="math inline">\sigma^2</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Complex Gaussian</td>
+<td style="text-align: left;"><span class="math inline">\CC\to\CC</span></td>
+<td style="text-align: left;"><span class="math inline">\frac{1}{\pi\sigma^2}\,e^{-|y-x|^2/\sigma^2}</span></td>
+<td style="text-align: left;">noise variance <span class="math inline">\sigma^2</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Exponential (AEN)</td>
+<td style="text-align: left;"><span class="math inline">\RR_+\to\RR_+</span></td>
+<td style="text-align: left;"><span class="math inline">\frac{1}{\mu}\,e^{-(y-x)/\mu}</span> if <span class="math inline">y\geq x</span>, <span class="math inline">0</span> otherwise</td>
+<td style="text-align: left;">mean noise <span class="math inline">\mu</span></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Table 1.2.</strong> Channel models used in the course.</p>
+</div>
+<p>The three continuous channels share a common structure. In all of them the output is the input plus a noise term that does not depend on the input, <span class="math inline">Y=X+Z</span>, so the channel law is the density of the noise evaluated at the difference, <span class="math inline">W(y|x)=f_Z(y-x)</span>. This is why the three densities in the table depend on <span class="math inline">x</span> and <span class="math inline">y</span> only through <span class="math inline">y-x</span>. It also suggests the right measure of the quality of the channel, namely how large the symbols are compared with the noise. With <span class="math inline">\Es=\EE(|X|^2)=\sum_{x\in\mathcal X} \Pr(x)|x|^2</span> the average symbol energy, we define the <strong>signal-to-noise ratio</strong> of the Gaussian channels as <span class="math inline">\snr=\Es/\sigma^2</span>. On the exponential channel the inputs are themselves energies, so the natural quantities are their mean <span class="math inline">\Es=\EE(X)</span> and the ratio <span class="math inline">\Es/\mu</span>, and we will use that ratio as its SNR.</p>
+<h2 id="detectors-and-error-probability">1.3 Detectors and error probability</h2>
+<p>A <strong>detector</strong> is any function <span class="math inline">g</span> from the output alphabet to the constellation: it looks at <span class="math inline">y</span> and returns a guess <span class="math inline">\hat x=g(y)</span>. The natural measure of how well it does is the probability that the guess is wrong, and there are two such probabilities, depending on whether we condition on what was sent or not.</p>
+<section class="env-block env-definition"><p class="env-label">Definition 1.2.</p>
+<p>The <strong>conditional error probability</strong> of a detector <span class="math inline">g</span> when <span class="math inline">x</span> was sent is <span class="math display">\begin{equation*}
+P_{\rm e}(x)=\Pr(g(Y)\neq x\,|\,X=x)=\sum_{y:\,g(y)\neq x} W(y|x),\tag{1.6}
+\end{equation*}</span> and its <strong>average error probability</strong> is <span class="math display">\begin{equation*}
+P_{\rm e}=\Pr(g(Y)\neq X)=\sum_{x\in\mathcal X} \Pr(x)\,P_{\rm e}(x).\tag{1.7}
+\end{equation*}</span></p>
+</section>
+<p>Both formulas are applications of the rules of Table 1.1. The event <span class="math inline">\{g(Y)\neq X\}</span> is a set of pairs <span class="math inline">(x,y)</span>, so its probability is the joint summed over it, <span class="math inline">\sum_{(x,y):\,g(y)\neq x}\Pr(x)W(y|x)</span>. Grouping the terms by the value of <span class="math inline">x</span> gives the second formula, and the inner sum is the first. This is the fourth line of the table. For a continuous channel, the sum over <span class="math inline">y</span> is an integral of <span class="math inline">W(y|x)</span> over the set of outputs that lead to a wrong decision. This is all the computation in this topic: identify that set, then sum or integrate. On the bit-flipping channel with the obvious detector <span class="math inline">g(y)=y</span>, the set of wrong outputs for <span class="math inline">x=0</span> is <span class="math inline">\{1\}</span>, so <span class="math inline">P_{\rm e}(0)=W(1|0)=p</span>, and likewise <span class="math inline">P_{\rm e}(1)=p</span> and <span class="math inline">P_{\rm e}=p</span>: the computation of Example 1.1 again, now in the vocabulary of detectors.</p>
+<aside class="callout">
+<p>We will compute <span class="math inline">P_{\rm e}(x)</span> many times, and the average only at the end. The two are different quantities. For a fixed detector, <span class="math inline">P_{\rm e}(x)</span> depends on the channel and on the detector but not on the input distribution, whereas <span class="math inline">P_{\rm e}</span> depends on all three (the optimal detector itself, as we will see next, is chosen using the input distribution).</p>
+</aside>
+<h2 id="optimal-detection">1.4 Optimal detection</h2>
+<p>Which detector should we use? The question has a simple answer, and we state it before looking at any particular channel, because the answer does not depend on the channel. Among all functions <span class="math inline">g</span>, two deserve a name of their own.</p>
+<section class="env-block env-definition"><p class="env-label">Definition 1.3.</p>
+<p>The <strong>maximum a posteriori</strong> (MAP) detector chooses the symbol that maximizes the joint distribution for the observed <span class="math inline">y</span>, <span class="math display">\begin{equation*}
+g_{\rm MAP}(y) = \argmax_{x\in\mathcal X} \Pr(x)\,W(y|x).\tag{1.8}
+\end{equation*}</span> The <strong>maximum likelihood</strong> (ML) detector ignores the prior and chooses the symbol under which the observation is most likely, <span class="math display">\begin{equation*}
+g_{\rm ML}(y) = \argmax_{x\in\mathcal X} W(y|x).\tag{1.9}
+\end{equation*}</span></p>
+</section>
+<p>The name of the first detector comes from Bayes’ rule: <span class="math inline">\Pr(x)W(y|x)=\Pr(y)\Pr(x|y)</span>, and <span class="math inline">\Pr(y)</span> does not depend on <span class="math inline">x</span>, so maximizing the joint over <span class="math inline">x</span> is the same as maximizing the a posteriori probability <span class="math inline">\Pr(x|y)</span>. In other words, the MAP detector picks the symbol that is most probable given what was received. This seems a sensible choice, and the following result shows that it is indeed the best one.</p>
+<section class="env-block env-theorem"><p class="env-label">Theorem 1.4.</p>
+<p>No detector has a smaller average error probability than the MAP detector.</p>
+</section>
+<div class="proof"><strong>Proof.</strong>
+<p>The proof is short and instructive, so we include it. Take a discrete channel (for a continuous one, simply replace the sums by integrals). For any detector <span class="math inline">g</span>, the probability of a correct decision is the probability of the event <span class="math inline">\{g(Y)=X\}</span>. By the fourth line of Table 1.1, this is the joint distribution summed over the pairs <span class="math inline">(x,y)</span> with <span class="math inline">x=g(y)</span>. For each <span class="math inline">y</span> there is exactly one such pair, so the sum over pairs becomes a sum over <span class="math inline">y</span> alone: <span class="math display">\begin{equation*}
+\Pr(g(Y)=X) = \sum_{(x,y):\,x=g(y)} \Pr(x)\,W(y|x) = \sum_{y\in\mathcal Y} \Pr\bigl(g(y)\bigr)\,W\bigl(y|g(y)\bigr).\tag{1.10}
+\end{equation*}</span> Each term of the last sum is the value at <span class="math inline">x=g(y)</span> of the function <span class="math inline">\Pr(x)W(y|x)</span>, and is therefore at most the maximum of that function over <span class="math inline">x</span>. Hence, <span class="math display">\begin{equation*}
+\Pr(g(Y)=X) \leq \sum_{y\in\mathcal Y} \max_{x\in\mathcal X} \Pr(x)\,W(y|x).\tag{1.11}
+\end{equation*}</span> The MAP detector attains that maximum in every term. Hence, its probability of a correct decision is the largest possible, and its error probability the smallest.</p>
+</div>
+<p>On the bit-flipping channel with <span class="math inline">g(y)=y</span>, for instance, the four pairs of Example 1.1 reduce to the two with <span class="math inline">x=y</span>, and the sum in (1.10) is <span class="math inline">\Pr(0,0)+\Pr(1,1)=1-p</span>, in agreement with <span class="math inline">P_{\rm e}=p</span>.</p>
+<aside class="callout">
+<p>The main message is that the optimal receiver needs nothing beyond <span class="math inline">\Pr(x)</span> and <span class="math inline">W(y|x)</span>. Every receiver in this course, from the nearest-point rule below to the decoders of Topic 2, is an application of this theorem to a particular channel.</p>
+</aside>
+<p>When the symbols are equiprobable, <span class="math inline">\Pr(x)</span> is the same constant for every <span class="math inline">x</span> and cancels in the maximization, so the MAP and ML detectors coincide. This is the usual situation, since data bits are well modeled as independent and equiprobable, and it is the reason why the ML detector has its own name. On the bit-flipping channel with <span class="math inline">p&lt;\tfrac12</span>, for instance, <span class="math inline">W(y|x)</span> equals <span class="math inline">1-p</span> for <span class="math inline">x=y</span> and <span class="math inline">p</span> otherwise, so the ML detector is <span class="math inline">g_{\rm ML}(y)=y</span>, the obvious detector of Section 1.3. For <span class="math inline">p&gt;\tfrac12</span> the two likelihoods exchange their roles, and the ML detector flips every received bit. On the Gaussian channels, the ML rule takes a form with a simple geometric interpretation.</p>
+<section class="env-block env-theorem"><p class="env-label">Proposition 1.5.</p>
+<p>On the real and complex Gaussian channels, the ML detector chooses the constellation point nearest to the observation, <span class="math display">\begin{equation*}
+g_{\rm ML}(y)=\argmin_{x\in\mathcal X}|y-x|^2.\tag{1.12}
+\end{equation*}</span></p>
+</section>
+<div class="proof"><strong>Proof.</strong>
+<p>On the complex channel, <span class="math inline">W(y|x)=\frac{1}{\pi\sigma^2}e^{-|y-x|^2/\sigma^2}</span>. The factor in front does not depend on <span class="math inline">x</span>, and the exponential is a decreasing function of <span class="math inline">|y-x|^2</span>. Hence, the <span class="math inline">x</span> that maximizes <span class="math inline">W(y|x)</span> is the one that minimizes <span class="math inline">|y-x|^2</span>. The real channel is the same with <span class="math inline">2\sigma^2</span> in the exponent.</p>
+</div>
+<p>Note what the proof used: the noise density is a function of the difference <span class="math inline">y-x</span>, and it decreases symmetrically with the distance <span class="math inline">|y-x|</span>. The first property is shared by every additive channel. The second is not, as we will see shortly with the exponential channel, whose density is not symmetric around the transmitted symbol.</p>
+<section class="env-block env-example"><p class="env-label">Example 1.6.</p>
+<p>Consider binary transmission, 2-PAM, over the real Gaussian channel: <span class="math inline">\mathcal X=\{-A,+A\}</span> with <span class="math inline">A&gt;0</span>, both symbols equiprobable. By Proposition 1.5 the detector compares <span class="math inline">(y-A)^2</span> with <span class="math inline">(y+A)^2</span>, and since <span class="math inline">(y-A)^2&lt;(y+A)^2</span> is the same as <span class="math inline">y&gt;0</span>, the detector is a sign: <span class="math inline">\hat x=+A</span> if <span class="math inline">y&gt;0</span> and <span class="math inline">\hat x=-A</span> if <span class="math inline">y&lt;0</span>, as in Figure 1.1. Note that nothing depends on <span class="math inline">\sigma^2</span>: the threshold is at zero regardless of the noise level. The value <span class="math inline">y=0</span> itself has probability zero, so it does not matter what we decide there.</p>
+</section>
+<div class="source-figure">
+<img class="tex-figure" src="img/topic1-38a6f125b37f034f.svg" alt="Diagram reproduced from the course PDF; description follows in the text.">
+<p><strong>Figure 1.1.</strong> Decision regions of the ML detector for 2-PAM in Gaussian noise.</p>
+</div>
+<section class="env-block env-problem"><p class="env-label">Problem 1.7.</p>
+<p>Repeat Example 1.6 with unequal priors, <span class="math inline">\Pr(+A)=q</span> and <span class="math inline">\Pr(-A)=1-q</span>. Where is the MAP threshold, and in which direction does it move as <span class="math inline">q</span> grows?</p>
+<details class="solution"><summary>Show solution</summary>
+<p>The MAP rule decides <span class="math inline">+A</span> when <span class="math inline">q\,W(y|{+A}) &gt; (1-q)\,W(y|{-A})</span>. The two densities share the factor <span class="math inline">1/\sqrt{2\pi\sigma^2}</span>, which we cancel, and the inequality between exponentials becomes one between exponents when we take logarithms, <span class="math display">\begin{equation*}
+-\frac{(y-A)^2}{2\sigma^2} + \ln q &gt; -\frac{(y+A)^2}{2\sigma^2} + \ln(1-q).\tag{1.13}
+\end{equation*}</span> Expanding the squares, the terms in <span class="math inline">y^2</span> and <span class="math inline">A^2</span> cancel and the remaining terms are linear in <span class="math inline">y</span>, <span class="math display">\begin{equation*}
+\frac{2Ay}{\sigma^2} &gt; \ln\frac{1-q}{q}
+\quad\Longleftrightarrow\quad
+y &gt; \frac{\sigma^2}{2A}\,\ln\frac{1-q}{q}.\tag{1.14}
+\end{equation*}</span> For <span class="math inline">q=\tfrac12</span> the logarithm vanishes and we recover the threshold at zero. For <span class="math inline">q&gt;\tfrac12</span> the logarithm is negative and the threshold moves to the left: the more likely <span class="math inline">+A</span> is a priori, the larger the part of the real line we assign to it. Note also that the shift grows with <span class="math inline">\sigma^2</span>. When the channel is noisy the observation is less informative and the prior weighs more, which is what a good receiver should do.</p>
+</details>
+</section>
+<section class="env-block env-example"><p class="env-label">Example 1.8.</p>
+<p>Now the same binary transmission over the exponential channel. The inputs are energies, so we take <span class="math inline">\mathcal X=\{0,2A\}</span> with <span class="math inline">A&gt;0</span>, equiprobable. For <span class="math inline">y&lt;2A</span> we have <span class="math inline">W(y|2A)=0</span>, since the noise can only add energy: the symbol <span class="math inline">2A</span> cannot have been sent, and the ML detector decides <span class="math inline">0</span>. For <span class="math inline">y\geq 2A</span> both symbols are possible, and <span class="math display">\begin{equation*}
+W(y|2A)=\tfrac1\mu e^{-(y-2A)/\mu}=e^{2A/\mu}\,W(y|0)&gt;W(y|0),\tag{1.15}
+\end{equation*}</span> so the ML detector decides <span class="math inline">2A</span>. In words: decide <span class="math inline">2A</span> whenever the observation is at least <span class="math inline">2A</span>, and <span class="math inline">0</span> otherwise. The threshold is located at <span class="math inline">2A</span>, exactly at the second symbol, and not halfway between the two. The nearest-point rule is a property of Gaussian noise, not a general one, and the remark after Proposition 1.5 explains why: the exponential density is not symmetric around the transmitted symbol.</p>
+</section>
+<section class="env-block env-problem"><p class="env-label">Problem 1.9.</p>
+<p>A QPSK constellation <span class="math inline">\mathcal X=\{+1+j,\,-1+j,\,-1-j,\,+1-j\}</span> is used over the complex Gaussian channel with <span class="math inline">\sigma^2=1</span>. The four symbols are not equiprobable: <span class="math inline">\Pr(-1-j)=0.7</span> and the other three have probability <span class="math inline">0.1</span> each. We receive <span class="math inline">y=0.1+0.1j</span>. What do the ML and the MAP detectors decide?</p>
+<details class="solution"><summary>Show solution</summary>
+<p>The ML detector is the nearest-point rule of Proposition 1.5, and the nearest point to <span class="math inline">0.1+0.1j</span> is <span class="math inline">+1+j</span>, at squared distance <span class="math inline">0.9^2+0.9^2=1.62</span>. The farthest is <span class="math inline">-1-j</span>, at squared distance <span class="math inline">1.1^2+1.1^2=2.42</span>. For the MAP detector we compare <span class="math inline">\Pr(x)\,e^{-|y-x|^2}</span>, dropping the common factor <span class="math inline">1/\pi</span>. For <span class="math inline">x=+1+j</span> the score is <span class="math display">\begin{equation*}
+0.1\cdot e^{-1.62}\approx 0.0198,\tag{1.16}
+\end{equation*}</span> and for <span class="math inline">x=-1-j</span> it is <span class="math display">\begin{equation*}
+0.7\cdot e^{-2.42}\approx 0.0622,\tag{1.17}
+\end{equation*}</span> while the two remaining symbols, at squared distance <span class="math inline">2.02</span>, give <span class="math inline">0.1\cdot e^{-2.02}\approx 0.0133</span>. The MAP detector decides <span class="math inline">-1-j</span>, the farthest point. The observation is so close to the origin that it barely favors any symbol, and the prior decides. If <span class="math inline">\sigma^2</span> had been <span class="math inline">0.1</span> instead, the exponentials would have been <span class="math inline">e^{-16.2}</span> and <span class="math inline">e^{-24.2}</span>, and a prior of this size could not have changed the decision.</p>
+</details>
+</section>
+<h2 id="decision-regions">1.5 Decision regions</h2>
+<p>A detector assigns every possible output to a symbol. Conversely, every symbol <span class="math inline">x</span> is assigned the set of outputs that lead to it, <span class="math display">\begin{equation*}
+\mathcal D_x=\{y:\ g(y)=x\},\tag{1.18}
+\end{equation*}</span> its <strong>decision region</strong>. The regions of different symbols do not overlap, and together they cover the whole output alphabet: they form a partition of it. Describing a detector by its regions is often clearer than describing it by a formula. Figure 1.2 shows the regions of three detectors: the ML detectors of 4-PAM and of QPSK in Gaussian noise, which we analyze below, and the detector of Example 1.8.</p>
+<p>For the nearest-point detector, the region of <span class="math inline">x</span> is the set of points closer to <span class="math inline">x</span> than to any other constellation point. Such regions have a name, <strong>Voronoi regions</strong>, and a simple geometry: the boundary between the regions of two neighboring points is the perpendicular bisector of the segment that joins them, as Figure 1.3 shows for a constellation of three points. The same construction applies to the constellations of Topic 5.</p>
+<div class="source-figure">
+<img class="tex-figure" src="img/topic1-bd34c151e055f807.svg" alt="Diagram reproduced from the course PDF; description follows in the text.">
+<img class="tex-figure" src="img/topic1-12ed89809229fc21.svg" alt="Diagram reproduced from the course PDF; description follows in the text.">
+<img class="tex-figure" src="img/topic1-6e0268794ec23979.svg" alt="Diagram reproduced from the course PDF; description follows in the text.">
+<p><strong>Figure 1.2.</strong> Decision regions of the ML detector: (a) 4-PAM in real Gaussian noise, with thresholds halfway between neighbors, (b) QPSK in complex Gaussian noise, with the four quadrants, and (c) binary transmission in exponential noise, where the threshold is at the larger symbol.</p>
+</div>
+<div class="source-figure">
+<img class="tex-figure" src="img/topic1-91c36e030c645639.svg" alt="Diagram reproduced from the course PDF; description follows in the text.">
+<p><strong>Figure 1.3.</strong> Voronoi regions of a three-point constellation in the plane. Each boundary is the perpendicular bisector of the dotted segment between two points, and the three bisectors meet at the point equidistant from all three.</p>
+</div>
+<p>With the decision regions, the computation of the error probability becomes a geometric problem. The conditional error probability of Definition 1.2 is the probability that the output falls outside the region of the symbol that was sent, <span class="math display">\begin{equation*}
+P_{\rm e}(x)=\Pr(Y\notin\mathcal D_x\,|\,X=x)=\int_{y\notin\mathcal D_x} W(y|x)\drm y = 1-\int_{y\in\mathcal D_x} W(y|x)\drm y,\tag{1.19}
+\end{equation*}</span> where the second form, one minus the probability of a correct decision, is sometimes the easier one to compute. Let us do it for our running example.</p>
+<section class="env-block env-example"><p class="env-label">Example 1.10.</p>
+<p>For 2-PAM on the real Gaussian channel, the region of <span class="math inline">+A</span> is the positive half-line. When <span class="math inline">+A</span> is sent, <span class="math inline">Y=A+Z</span> falls outside it when <span class="math inline">Z&lt;-A</span>, so <span class="math display">\begin{equation*}
+P_{\rm e}(+A)=\Pr(Z&lt;-A)=\int_{-\infty}^{-A}\frac{1}{\sqrt{2\pi\sigma^2}}\,e^{-z^2/(2\sigma^2)}\drm z.\tag{1.20}
+\end{equation*}</span> To evaluate the integral, we change variables to <span class="math inline">t=-z/(\sqrt2\sigma)</span>, so that <span class="math inline">z=-\sqrt2\sigma t</span> and <span class="math inline">\drm z=-\sqrt2\sigma\drm t</span>. The limit <span class="math inline">z=-\infty</span> becomes <span class="math inline">t=\infty</span>, and the limit <span class="math inline">z=-A</span> becomes <span class="math inline">t=A/(\sqrt2\sigma)</span>. Exchanging the two limits absorbs the minus sign, and the constants combine into <span class="math inline">\sqrt2\sigma/\sqrt{2\pi\sigma^2}=1/\sqrt\pi</span>. Hence, <span class="math display">\begin{equation*}
+P_{\rm e}(+A)=\frac{1}{\sqrt\pi}\int_{A/(\sqrt2\sigma)}^{\infty} e^{-t^2}\drm t
+=\frac12\erfc\biggl(\frac{A}{\sqrt2\,\sigma}\biggr),\tag{1.21}
+\end{equation*}</span> where we recognized the complementary error function, <span class="math inline">\erfc(u)=\frac{2}{\sqrt\pi}\int_u^\infty e^{-t^2}\drm t</span>. By symmetry, <span class="math inline">P_{\rm e}(-A)</span> is the same, so the average is <span class="math inline">P_{\rm e}=\frac12\erfc\bigl(A/(\sqrt2\sigma)\bigr)</span> whatever the prior. Since <span class="math inline">\Es=A^2</span>, in terms of the signal-to-noise ratio this reads <span class="math display">\begin{equation*}
+P_{\rm e}=\tfrac12\erfc\Bigl(\sqrt{\snr/2}\Bigr).\tag{1.22}
+\end{equation*}</span></p>
+</section>
+<p>The same computation, with <span class="math inline">A</span> replaced by any threshold <span class="math inline">a&gt;0</span>, gives a result that we will use repeatedly: for a real Gaussian <span class="math inline">Z</span> of variance <span class="math inline">\sigma^2</span>, <span class="math display">\begin{equation*}
+\Pr(Z&lt;-a)=\Pr(Z&gt;a)=\tfrac12\erfc\Bigl(\frac{a}{\sqrt2\,\sigma}\Bigr).\tag{1.23}
+\end{equation*}</span> The function <span class="math inline">\erfc</span> will appear repeatedly in the rest of the course, and it is worth having an idea of its size, see Table 1.3: <span class="math inline">\erfc(1)\approx 0.16</span>, <span class="math inline">\erfc(2)\approx 4.7\cdot10^{-3}</span>, <span class="math inline">\erfc(3)\approx 2.2\cdot10^{-5}</span>, and for large <span class="math inline">u</span> it behaves as <span class="math inline">e^{-u^2}/(u\sqrt\pi)</span>. In other words, the error probability falls very fast with the SNR, roughly like <span class="math inline">e^{-\snr/2}</span>, as Figure 1.4 and Table 1.4 show.</p>
+<div class="source-table">
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th style="text-align: left;"><span class="math inline">u</span></th>
+<th style="text-align: center;"><span class="math inline">0</span></th>
+<th style="text-align: center;"><span class="math inline">0.25</span></th>
+<th style="text-align: center;"><span class="math inline">0.5</span></th>
+<th style="text-align: center;"><span class="math inline">0.75</span></th>
+<th style="text-align: center;"><span class="math inline">1</span></th>
+<th style="text-align: center;"><span class="math inline">1.5</span></th>
+<th style="text-align: center;"><span class="math inline">2</span></th>
+<th style="text-align: center;"><span class="math inline">2.5</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><span class="math inline">\erfc(u)</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">0.724</span></td>
+<td style="text-align: center;"><span class="math inline">0.480</span></td>
+<td style="text-align: center;"><span class="math inline">0.289</span></td>
+<td style="text-align: center;"><span class="math inline">0.157</span></td>
+<td style="text-align: center;"><span class="math inline">3.39\cdot10^{-2}</span></td>
+<td style="text-align: center;"><span class="math inline">4.68\cdot10^{-3}</span></td>
+<td style="text-align: center;"><span class="math inline">4.07\cdot10^{-4}</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><span class="math inline">u</span></td>
+<td style="text-align: center;"><span class="math inline">3</span></td>
+<td style="text-align: center;"><span class="math inline">3.5</span></td>
+<td style="text-align: center;"><span class="math inline">4</span></td>
+<td style="text-align: center;"><span class="math inline">4.5</span></td>
+<td style="text-align: center;"><span class="math inline">5</span></td>
+<td style="text-align: center;"><span class="math inline">\sqrt{1/2}</span></td>
+<td style="text-align: center;"><span class="math inline">\sqrt{2}</span></td>
+<td style="text-align: center;"><span class="math inline">\sqrt{5}</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><span class="math inline">\erfc(u)</span></td>
+<td style="text-align: center;"><span class="math inline">2.21\cdot10^{-5}</span></td>
+<td style="text-align: center;"><span class="math inline">7.43\cdot10^{-7}</span></td>
+<td style="text-align: center;"><span class="math inline">1.54\cdot10^{-8}</span></td>
+<td style="text-align: center;"><span class="math inline">1.97\cdot10^{-10}</span></td>
+<td style="text-align: center;"><span class="math inline">1.54\cdot10^{-12}</span></td>
+<td style="text-align: center;"><span class="math inline">0.317</span></td>
+<td style="text-align: center;"><span class="math inline">4.55\cdot10^{-2}</span></td>
+<td style="text-align: center;"><span class="math inline">1.57\cdot10^{-3}</span></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Table 1.3.</strong> Values of the complementary error function for hand calculations.</p>
+</div>
+<p>The SNR is usually quoted in decibels, <span class="math inline">\snr_{\rm dB}=10\log_{10}\snr</span>, so that <span class="math inline">10</span> dB is a ratio of <span class="math inline">10</span> and <span class="math inline">3</span> dB a ratio of about <span class="math inline">2</span>. The vertical axis of the figure is logarithmic too. Going from <span class="math inline">10</span> to <span class="math inline">15</span> dB, a factor of about three in SNR, takes the error probability of 2-PAM from about one error in a thousand symbols to one in a hundred million.</p>
+<section class="env-block env-example"><p class="env-label">Example 1.11.</p>
+<p>The same constellation <span class="math inline">\{-A,+A\}</span>, now seen as two points of the complex plane and sent over the complex Gaussian channel. The perpendicular bisector of the segment is the imaginary axis, so the region of <span class="math inline">+A</span> is the right half-plane, and an error occurs when the real part of the noise is below <span class="math inline">-A</span>. That real part is a real Gaussian of variance <span class="math inline">\sigma^2/2</span>, so (1.23) applies with <span class="math inline">\sigma^2/2</span> in place of <span class="math inline">\sigma^2</span>: <span class="math display">\begin{equation*}
+P_{\rm e}=\tfrac12\erfc\Bigl(\frac{A}{\sigma}\Bigr)=\tfrac12\erfc\Bigl(\sqrt{\snr}\Bigr).\tag{1.24}
+\end{equation*}</span> The formula differs from (1.22) because <span class="math inline">\sigma^2</span> counts the total noise variance in both cases, and on the complex channel half of it corresponds to the imaginary part, which the detector ignores. This is a matter of convention, but one we will need to handle carefully in Topic 5.</p>
+</section>
+<section class="env-block env-problem"><p class="env-label">Problem 1.12.</p>
+<p>A 4-PAM constellation <span class="math inline">\mathcal X=\{-3a,-a,+a,+3a\}</span>, equiprobable, is used over the real Gaussian channel. Find the decision regions of the ML detector, the conditional error probability of an outer and of an inner point, and the average error probability as a function of the SNR.</p>
+<details class="solution"><summary>Show solution</summary>
+<p>The nearest-point regions are delimited by the midpoints between neighbors, at <span class="math inline">-2a</span>, <span class="math inline">0</span> and <span class="math inline">+2a</span>, as in Figure 1.2(a). The decision region of the outer point <span class="math inline">+3a</span> is the half-line <span class="math inline">y&gt;2a</span>, so an error occurs when the noise takes the observation below <span class="math inline">2a</span>, that is, when <span class="math inline">Z&lt;-a</span>. By (1.23), <span class="math display">\begin{equation*}
+P_{\rm e}(+3a)=\Pr(Z&lt;-a)=\tfrac12\erfc\Bigl(\frac{a}{\sqrt2\sigma}\Bigr).\tag{1.25}
+\end{equation*}</span> The decision region of the inner point <span class="math inline">+a</span> is the interval <span class="math inline">0&lt;y&lt;2a</span>, and an error can occur on either side: when <span class="math inline">Z&lt;-a</span> or when <span class="math inline">Z&gt;a</span>. The two events are disjoint and, by the symmetry of the Gaussian density, equally likely, so <span class="math display">\begin{equation*}
+P_{\rm e}(+a)=\Pr(Z&lt;-a)+\Pr(Z&gt;a)=\erfc\Bigl(\frac{a}{\sqrt2\sigma}\Bigr),\tag{1.26}
+\end{equation*}</span> twice the value for the outer point. By symmetry, the points <span class="math inline">-a</span> and <span class="math inline">-3a</span> behave like <span class="math inline">+a</span> and <span class="math inline">+3a</span>, and the average over the four equiprobable symbols is <span class="math display">\begin{equation*}
+P_{\rm e}=\frac14\Bigl(\tfrac12+1+1+\tfrac12\Bigr)\erfc\Bigl(\frac{a}{\sqrt2\sigma}\Bigr)=\frac34\erfc\Bigl(\frac{a}{\sqrt2\sigma}\Bigr).\tag{1.27}
+\end{equation*}</span> The average symbol energy is <span class="math inline">\Es=\frac14(9a^2+a^2+a^2+9a^2)=5a^2</span>, so <span class="math inline">a=\sqrt{\Es/5}</span> and <span class="math display">\begin{equation*}
+P_{\rm e}=\tfrac34\erfc\Bigl(\sqrt{\snr/10}\Bigr).\tag{1.28}
+\end{equation*}</span> Compared with (1.22), the argument of <span class="math inline">\erfc</span> is <span class="math inline">\sqrt5</span> times smaller. Hence, to reach the same value of the argument, and roughly the same error probability, 4-PAM needs five times the SNR of 2-PAM, that is, about <span class="math inline">7</span> dB more. This is the cost of sending two bits per symbol instead of one, as Figure 1.4 shows.</p>
+</details>
+</section>
+<section class="env-block env-problem"><p class="env-label">Problem 1.13.</p>
+<p>A QPSK constellation <span class="math inline">\mathcal X=\{\pm a\pm ja\}</span>, equiprobable, is used over the complex Gaussian channel. Find the decision regions and the error probability.</p>
+<details class="solution"><summary>Show solution</summary>
+<p>The four points are the corners of a square centered at the origin, so the perpendicular bisectors are the two axes and the regions are the four quadrants, as in Figure 1.2(b). Take <span class="math inline">x=a+ja</span>, whose region is the first quadrant. The observation <span class="math inline">Y=x+Z</span> stays in it when both <span class="math inline">\re Z&gt;-a</span> and <span class="math inline">\im Z&gt;-a</span>. The two error events, <span class="math inline">\re Z&lt;-a</span> and <span class="math inline">\im Z&lt;-a</span>, are not disjoint, since the noise can cross both boundaries at once, so we cannot simply add their probabilities as we did for the inner points of 4-PAM. Instead, we count the correct decisions, and here we use the product rule: the real and imaginary parts of the noise are independent Gaussians of variance <span class="math inline">\sigma^2/2</span>, so the probability that both conditions hold is the product of the two probabilities, and each of them is one minus the binary error probability <span class="math inline">p=\tfrac12\erfc(a/\sigma)</span> of Example 1.11, <span class="math display">\begin{equation*}
+\Pr(Y\in\mathcal D_x\,|\,X=x)=(1-p)^2.\tag{1.29}
+\end{equation*}</span> Therefore <span class="math inline">P_{\rm e}(x)=1-(1-p)^2=2p-p^2</span>, the same for the four symbols by symmetry, and this is also the average. With <span class="math inline">\Es=2a^2</span> we get <span class="math inline">p=\frac12\erfc\bigl(\sqrt{\snr/2}\bigr)</span>, the same <span class="math inline">p</span> as in (1.22). For small <span class="math inline">p</span> the term <span class="math inline">p^2</span> is negligible and <span class="math inline">P_{\rm e}\approx 2p</span>: QPSK makes about twice as many symbol errors as 2-PAM on the real channel at the same SNR, but it carries two bits per symbol instead of one. Per bit, QPSK is equivalent to binary transmission on the complex channel, as Exercise 1.5 will show.</p>
+</details>
+</section>
+<section class="env-block env-example"><p class="env-label">Example 1.14.</p>
+<p>Finally, the exponential channel with <span class="math inline">\mathcal X=\{0,2A\}</span> and the ML detector of Example 1.8, whose regions are shown in Figure 1.2(c). When <span class="math inline">2A</span> is sent, the observation is at least <span class="math inline">2A</span> with certainty and the decision is always right: <span class="math inline">P_{\rm e}(2A)=0</span>. When <span class="math inline">0</span> is sent, an error occurs when the noise alone reaches <span class="math inline">2A</span>, <span class="math display">\begin{equation*}
+P_{\rm e}(0)=\Pr(Z\geq 2A)=\int_{2A}^\infty \tfrac1\mu e^{-z/\mu}\drm z=e^{-2A/\mu}.\tag{1.30}
+\end{equation*}</span> Hence, the average for equiprobable symbols is <span class="math inline">P_{\rm e}=\frac12 e^{-2A/\mu}</span>. The mean input energy is <span class="math inline">\Es=\frac12(0+2A)=A</span>, so in terms of the ratio <span class="math inline">\Es/\mu</span> that plays the role of the SNR, <span class="math inline">P_{\rm e}=\frac12 e^{-2\Es/\mu}</span>. This closed-form expression decays with the SNR even faster than the Gaussian formulas, as Figure 1.4 shows. However, the comparison should not be taken too far, since energy and amplitude are different physical quantities.</p>
+</section>
+<div class="source-figure">
+<img class="tex-figure" src="img/topic1-a0dfa5b9050920e5.svg" alt="Diagram reproduced from the course PDF; description follows in the text.">
+<p><strong>Figure 1.4.</strong> Error probability of the ML detector as a function of the SNR for four of the cases of this section (for the exponential channel the SNR is <span class="math inline">\Es/\mu</span>).</p>
+</div>
+<div class="source-table">
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th style="text-align: left;"></th>
+<th colspan="4" style="text-align: center;">SNR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><span>2-5</span> Modulation and channel</td>
+<td style="text-align: center;"><span class="math inline">0</span> dB</td>
+<td style="text-align: center;"><span class="math inline">5</span> dB</td>
+<td style="text-align: center;"><span class="math inline">10</span> dB</td>
+<td style="text-align: center;"><span class="math inline">15</span> dB</td>
+</tr>
+<tr>
+<td style="text-align: left;">2-PAM, real Gaussian</td>
+<td style="text-align: center;"><span class="math inline">1.6\cdot10^{-1}</span></td>
+<td style="text-align: center;"><span class="math inline">3.8\cdot10^{-2}</span></td>
+<td style="text-align: center;"><span class="math inline">7.8\cdot10^{-4}</span></td>
+<td style="text-align: center;"><span class="math inline">9.4\cdot10^{-9}</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">QPSK, complex Gaussian</td>
+<td style="text-align: center;"><span class="math inline">2.9\cdot10^{-1}</span></td>
+<td style="text-align: center;"><span class="math inline">7.4\cdot10^{-2}</span></td>
+<td style="text-align: center;"><span class="math inline">1.6\cdot10^{-3}</span></td>
+<td style="text-align: center;"><span class="math inline">1.9\cdot10^{-8}</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">4-PAM, real Gaussian</td>
+<td style="text-align: center;"><span class="math inline">4.9\cdot10^{-1}</span></td>
+<td style="text-align: center;"><span class="math inline">3.2\cdot10^{-1}</span></td>
+<td style="text-align: center;"><span class="math inline">1.2\cdot10^{-1}</span></td>
+<td style="text-align: center;"><span class="math inline">8.9\cdot10^{-3}</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Binary, exponential noise</td>
+<td style="text-align: center;"><span class="math inline">6.8\cdot10^{-2}</span></td>
+<td style="text-align: center;"><span class="math inline">9.0\cdot10^{-4}</span></td>
+<td style="text-align: center;"><span class="math inline">1.0\cdot10^{-9}</span></td>
+<td style="text-align: center;"><span class="math inline">1.7\cdot10^{-28}</span></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Table 1.4.</strong> Error probabilities of Figure 1.4 at a few values of the SNR.</p>
+</div>
+<h2 id="bit-errors-and-sequences">1.6 Bit errors and sequences</h2>
+<p>Two remarks close the topic. The first is that symbol errors and bit errors are different things. When a symbol carries several bits, a symbol error need not flip all of them: if the detector confuses <span class="math inline">x</span> with a neighbor, only the bits in which the labels of <span class="math inline">x</span> and of its neighbor differ are wrong. The <strong>bit error probability</strong> <span class="math inline">P_{\rm b}</span> is the average fraction of wrong bits, and it is always between <span class="math inline">P_{\rm e}/\log_2 M</span> and <span class="math inline">P_{\rm e}</span>. If neighboring points differ in one bit only, a labeling called <strong>Gray</strong>, and almost all errors go to a neighbor, as they do at high SNR, then the bit error probability is close to the lower end, <span class="math inline">P_{\rm e}/\log_2 M</span>. For QPSK the Gray labeling makes the two bits independent decisions on the real and imaginary parts, and <span class="math inline">P_{\rm b}=p</span> exactly, as Exercise 1.5 shows. We will return to labelings in Topic 5.</p>
+<p>The second remark is that a message is a sequence of symbols, and that even small error probabilities accumulate along it. If each of <span class="math inline">n</span> independent symbols sent over a memoryless channel is detected on its own with error probability <span class="math inline">P_{\rm e}</span>, the product rule of Table 1.1 gives the probability that the whole message is detected correctly, <span class="math display">\begin{equation*}
+\Pr(\text{no error in } n \text{ symbols})=(1-P_{\rm e})^n\approx e^{-nP_{\rm e}},\tag{1.31}
+\end{equation*}</span> because the <span class="math inline">n</span> decisions are independent. A symbol error probability of one in a thousand, which looks small, leaves only a probability <span class="math inline">e^{-1}\approx 0.37</span> of receiving a message of a thousand symbols without any error. Detecting each symbol on its own is therefore not enough for reliable communication. The remedy, adding redundancy to the sequence and deciding on the whole message at once, is the subject of Topic 2. Exercise 1.6 works out the numbers.</p>
+<aside class="callout">
+<p>The three quantities are different. The conditional error probability <span class="math inline">P_{\rm e}(x)</span> is a property of the detector and the channel, <span class="math inline">P_{\rm e}</span> also depends on the input distribution, and <span class="math inline">P_{\rm b}</span> also depends on the labeling of the constellation. All three are computed with the rules of Table 1.1.</p>
+</aside>
+<section class="callout"><h2>What to remember</h2>
+<ul>
+<li><p>The input distribution <span class="math inline">\Pr(x)</span> and the channel law <span class="math inline">W(y|x)</span> fix every probability through three rules: the product rule builds the joint, the sum rule removes a variable, and Bayes’ rule conditions the other way.</p></li>
+<li><p>A detector is a function <span class="math inline">g</span>, or equivalently a partition of the output alphabet into decision regions <span class="math inline">\mathcal D_x</span>. The conditional error probability <span class="math inline">P_{\rm e}(x)</span> is the probability of leaving <span class="math inline">\mathcal D_x</span> when <span class="math inline">x</span> is sent, and <span class="math inline">P_{\rm e}=\sum_{x\in\mathcal X} \Pr(x)P_{\rm e}(x)</span>.</p></li>
+<li><p>The MAP detector <span class="math inline">\argmax_x \Pr(x)W(y|x)</span> is optimal. With equiprobable symbols it is the ML detector <span class="math inline">\argmax_x W(y|x)</span>, and on the Gaussian channels ML means nearest constellation point.</p></li>
+<li><p>On the Gaussian channels, unequal priors move the boundaries toward the less likely symbol, and more so the noisier the channel. On the exponential channel the threshold is at the larger symbol.</p></li>
+<li><p>For 2-PAM in real Gaussian noise <span class="math inline">P_{\rm e}=\frac12\erfc(\sqrt{\snr/2})</span>, for QPSK it is <span class="math inline">2p-p^2</span> with the same <span class="math inline">p</span>, and for 4-PAM it is <span class="math inline">\frac34\erfc(\sqrt{\snr/10})</span>. Error probabilities fall exponentially with the SNR, and larger constellations need a higher SNR.</p></li>
+<li><p>With a Gray labeling the bit error probability is about <span class="math inline">P_{\rm e}/\log_2M</span>, and <span class="math inline">n</span> independent symbol decisions are all correct with probability <span class="math inline">(1-P_{\rm e})^n</span>.</p></li>
+</ul>
+</section></main></div><footer class="footer">Universitat Pompeu Fabra · 23972 · Digital data transmission 2026</footer><script src="vendor/katex.min.js"></script><script src="vendor/auto-render.min.js"></script><script src="site.js"></script><script src="ui.js"></script></body></html>

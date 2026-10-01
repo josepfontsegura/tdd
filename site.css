@@ -1,0 +1,14 @@
+/* Content-only adapters. All shared layout and typography come unchanged from ITC. */
+.resource-row{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;margin:1rem 0}
+.resource-link{display:inline-flex;align-items:center;gap:.5rem;padding:.6rem 1.2rem;border:2px solid var(--upf-red);color:var(--upf-red);border-radius:6px;font-weight:500;text-decoration:none}
+.callout,.topic-toc{border-left:4px solid var(--upf-red);background:var(--upf-red-light);padding:.75em 1em;margin:1.25em 0;border-radius:4px}
+.proof{padding-left:1em;border-left:3px solid #bbb}
+.tex-figure{max-width:100%;height:auto;background:white}
+.source-figure{text-align:center;margin:1.5em 0}.source-figure>img{display:inline-block;vertical-align:middle}.source-figure p{font-size:.85rem;color:var(--text-secondary);margin-top:.5rem}
+.table-scroll{overflow-x:auto}.math.display{display:block}main>ol>li{margin:1.25em 0}ol ol{list-style-type:lower-alpha}
+#expand-solutions{display:block;margin:0 auto 1.5rem;font-size:.85rem;padding:.5rem 1.2rem;border:2px solid var(--upf-red);color:var(--upf-red);border-radius:6px;font-weight:500;background:var(--bg);cursor:pointer}
+[hidden]{display:none!important}.skip{position:fixed;top:-100px;z-index:1000;background:var(--bg);padding:1rem}.skip:focus{top:0}
+/* Centre standalone content actions; grouped actions already use resource-row. */
+.content > .resource-link{display:table;margin:1rem auto}
+.content button:not(.quiz-option){display:table;margin-left:auto;margin-right:auto}
+.collection-exercises > li::marker{font-weight:700}

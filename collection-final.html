@@ -1,0 +1,652 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Final collection - Digital data transmission 2026</title><script>document.documentElement.dataset.theme=localStorage.getItem('tdd-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')</script><link rel="stylesheet" href="itc.css"><link rel="stylesheet" href="vendor/katex.min.css"><link rel="stylesheet" href="site.css"><script defer src="analytics.js"></script></head><body><a class="skip" href="#main">Skip to content</a><nav class="navbar">
+  <button class="menu-toggle" aria-label="Menu">&#9776;</button>
+  <a class="navbar-brand" href="index.html">
+    <img src="img/upf-logo.svg" alt="UPF" style="height:42px;margin-right:0.75rem"> <span class="navbar-brand-text">Digital data transmission 2026</span>
+  </a>
+  <div class="navbar-actions">
+    <button class="search-toggle" aria-label="Search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><span class="search-hint">⌘K</span></button>
+    <button class="theme-toggle" aria-label="Toggle dark mode"><svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button>
+  </div>
+  <div class="lang-switcher"><a href="collection-final.html" class="active" aria-current="page">EN</a></div>
+</nav><div class="page"><aside class="sidebar"><details class="sidebar-section"><summary><h4>General</h4></summary><a href="index.html">Home</a><a href="modalities.html">Assessment & modalities</a><a href="calendar.html">Calendar</a><a href="https://aulaglobal.upf.edu/course/view.php?id=92919">Aula Global ↗</a></details><details class="sidebar-section" open><summary><h4>Modality A</h4></summary><a href="modality-a.html">Study materials</a><a href="collection-midterm.html">Midterm collection</a><a href="collection-final.html" class="active" aria-current="page">Final collection</a></details><details class="sidebar-section"><summary><h4>Lecture notes</h4></summary><a href="topic1.html">1. Detection</a><span class="sidebar-disabled">2. Decoding</span><span class="sidebar-disabled">3. Mutual information and capacity</span><span class="sidebar-disabled">4. Continuous time</span><span class="sidebar-disabled">5. Modulation and demodulation</span><span class="sidebar-disabled">6. Continuous-channel capacity</span></details><details class="sidebar-section"><summary><h4>Exercises</h4></summary><a href="exercises1.html">1. Detection</a></details><details class="sidebar-section"><summary><h4>Quiz</h4></summary><a href="quiz1.html">Topic 1: Detection</a></details><details class="sidebar-section"><summary><h4>Seminars</h4></summary><a href="seminars.html">Seminar materials</a></details></aside><main class="content" id="main"><div class="lecture-header"><h1>Final collection</h1></div><a class="resource-link" href="pdf/TDD-2026-Collection-Final.pdf">Download the published PDF</a><p>This collection contains the questions from which the Modality A final exam is drawn. Each question has exactly one correct answer among the four options (a)–(d), and requires a short mathematical derivation.</p>
+<p>We use the following conventions. The function <span class="math inline">\sinc(x)</span> is <span class="math inline">\tfrac{\sin(\pi x)}{\pi x}</span>. A probability is denoted by <span class="math inline">\Pr(\cdot)</span> and an expectation by <span class="math inline">\EE(\cdot)</span>. A channel with input <span class="math inline">x</span> and output <span class="math inline">y</span> has law <span class="math inline">W(y|x)</span>. In the discrete-time model of a complex AWGN channel of noise spectral density <span class="math inline">\No</span>, each channel use adds a circularly symmetric complex Gaussian noise sample of variance <span class="math inline">\sigma^2=\No</span>, that is, <span class="math inline">\No/2</span> per real component, and a passband transmission of bandwidth <span class="math inline">W</span> and duration <span class="math inline">T</span> has <span class="math inline">WT</span> channel uses. The bandwidth of a baseband waveform is the extent of the positive frequencies where its Fourier transform is nonzero, and a baseband waveform of bandwidth <span class="math inline">W</span> carries at most <span class="math inline">2W</span> symbols per second without inter-symbol interference. The function <span class="math inline">\mathrm{rect}(f)</span> equals <span class="math inline">1</span> for <span class="math inline">|f|\leq\frac12</span> and <span class="math inline">0</span> otherwise.</p>
+<ol class="collection-exercises">
+<li><p>Consider the waveforms <span class="math display">\begin{gather*}
+\phi_1(t)=\begin{cases}1 &amp; 0\leq t\leq 1\\ 0 &amp; \text{otherwise}\end{cases}\\
+\phi_2(t)=\begin{cases}\alpha+\beta t &amp; 0\leq t\leq 1\\ 0 &amp; \text{otherwise},\end{cases}
+\end{gather*}</span> with <span class="math inline">\alpha,\beta\in\RR</span>. What is the value of <span class="math inline">|\alpha|</span> for which the set <span class="math inline">\{\phi_1,\phi_2\}</span> is orthonormal?</p>
+<ol>
+<li><p><span class="math inline">1</span></p></li>
+<li><p><span class="math inline">0</span></p></li>
+<li><p><span class="math inline">2\sqrt3</span></p></li>
+<li><p><span class="math inline">\sqrt3</span></p></li>
+</ol>
+<details class="solution"><summary>Show solution</summary><p><strong>Correct answer: (d).</strong></p>
+<p>A set of waveforms is orthonormal when every pair satisfies <span class="math inline">\langle\phi_i,\phi_k\rangle=\int_{-\infty}^{\infty}\phi_i(t)\phi_k^*(t)\drm t=\delta_{ik}</span>, so we need <span class="math inline">\phi_1</span> and <span class="math inline">\phi_2</span> to have unit energy and to be orthogonal. The first waveform has unit energy, since <span class="math inline">\int_0^1\drm t=1</span>, whatever the values of <span class="math inline">\alpha</span> and <span class="math inline">\beta</span>. Orthogonality requires that <span class="math display">\langle\phi_1,\phi_2\rangle=\int_0^1(\alpha+\beta t)\drm t=\alpha+\frac{\beta}{2}</span> vanishes, which fixes <span class="math inline">\beta=-2\alpha</span>. Unit energy of the second waveform requires that <span class="math display">\int_0^1(\alpha+\beta t)^2\drm t=\alpha^2+\alpha\beta+\frac{\beta^2}{3}</span> equals <span class="math inline">1</span>. Substituting <span class="math inline">\beta=-2\alpha</span> in this expression, the energy becomes <span class="math inline">\alpha^2-2\alpha^2+\frac{4}{3}\alpha^2=\frac{\alpha^2}{3}</span>, and setting it to <span class="math inline">1</span> gives <span class="math inline">\alpha=\pm\sqrt3</span>, with <span class="math inline">\beta=\mp2\sqrt3</span>. Both signs give a valid orthonormal set, and in both cases <span class="math inline">|\alpha|=\sqrt3</span>.</p>
+</details></li>
+<li><p>Let <span class="math inline">\phi(t)=1</span> for <span class="math inline">0\leq t\leq 2</span> and <span class="math inline">\phi(t)=0</span> otherwise. Which of the following sets of waveforms is orthonormal?</p>
+<ol>
+<li><p><span class="math inline">\bigl\{\phi(-2t),\,\phi(2t),\,\phi(2(t-1))\bigr\}</span></p></li>
+<li><p><span class="math inline">\bigl\{\phi(-t),\,\phi(t),\,\phi(t-1)\bigr\}</span></p></li>
+<li><p><span class="math inline">\bigl\{\phi(t),\,\phi(2t),\,\phi(3t)\bigr\}</span></p></li>
+<li><p><span class="math inline">\bigl\{\phi(-2t),\,\phi(2t),\,\phi(2t-1)\bigr\}</span></p></li>
+</ol>
+<details class="solution"><summary>Show solution</summary><p><strong>Correct answer: (a).</strong></p>
+<p>Both conditions, unit energy and orthogonality, can be checked directly on the supports of the waveforms. The waveform <span class="math inline">\phi(t)</span> has energy <span class="math inline">\int_0^2\drm t=2</span>, and the change of variable <span class="math inline">u=at</span> shows that its scaled version <span class="math inline">\phi(at)</span> has energy <span class="math display">\int_{-\infty}^{\infty}|\phi(at)|^2\drm t=\frac{1}{|a|}\int_{-\infty}^{\infty}|\phi(u)|^2\drm u=\frac{2}{|a|},</span> which equals <span class="math inline">1</span> only when <span class="math inline">|a|=2</span>. This already discards options (b) and (c), which contain waveforms with another scaling. Since all the waveforms are rectangular, two of them are orthogonal if and only if their supports overlap at most at one point. The supports are <span class="math inline">[-1,0]</span> for <span class="math inline">\phi(-2t)</span>, <span class="math inline">[0,1]</span> for <span class="math inline">\phi(2t)</span> and <span class="math inline">[1,2]</span> for <span class="math inline">\phi(2(t-1))</span>, which share only their endpoints, so the set in option (a) is orthonormal. In option (d), the last waveform is <span class="math inline">\phi(2t-1)=\phi(2(t-\frac12))</span>, with support <span class="math inline">[\frac12,\frac32]</span>, which overlaps with the support of <span class="math inline">\phi(2t)</span>. The two waveforms are therefore not orthogonal and the set is not orthonormal.</p>
+</details></li>
+<li><p>Consider two waveforms <span class="math inline">\phi_1(t)</span> and <span class="math inline">\phi_2(t)</span> and a complex number <span class="math inline">\alpha</span>. Which of the following statements is <strong>true</strong>?</p>
+<ol>
+<li><p>If <span class="math inline">\{\phi_1,\phi_2\}</span> is orthonormal, then <span class="math inline">\langle\phi_1,\phi_1\rangle=\alpha</span> for every <span class="math inline">\alpha</span> with <span class="math inline">|\alpha|=1</span>.</p></li>
+<li><p>If <span class="math inline">\phi_1</span> and <span class="math inline">\phi_2</span> are linearly independent, then <span class="math inline">\langle\phi_1,\phi_2\rangle=0</span>.</p></li>
+<li><p>If <span class="math inline">\phi_1</span> has unit energy and <span class="math inline">\phi_2(t)=\alpha\phi_1(t)</span>, then <span class="math inline">\langle\phi_1,\phi_2\rangle=\alpha^*</span>.</p></li>
+<li><p>If <span class="math inline">\phi_1</span> and <span class="math inline">\phi_2</span> are orthogonal, then <span class="math inline">\phi_1(t)\phi_2(t)=0</span> for all <span class="math inline">t</span>.</p></li>
+</ol>
+<details class="solution"><summary>Show solution</summary><p><strong>Correct answer: (c).</strong></p>
+<p>Option (c) is true. If <span class="math inline">\phi_2(t)=\alpha\phi_1(t)</span>, then the inner product is <span class="math display">\begin{align*}
+\langle\phi_1,\phi_2\rangle&amp;=\int_{-\infty}^{\infty}\phi_1(t)\bigl(\alpha\phi_1(t)\bigr)^*\drm t\\
+&amp;=\alpha^*\int_{-\infty}^{\infty}|\phi_1(t)|^2\drm t=\alpha^*,
+\end{align*}</span> where the last equality uses that <span class="math inline">\phi_1</span> has unit energy. Note that the conjugate falls on the second waveform, and hence on <span class="math inline">\alpha</span>.</p>
+<p>Option (a) is false because <span class="math inline">\langle\phi_1,\phi_1\rangle</span> is the energy of <span class="math inline">\phi_1</span>, a nonnegative real number, and for an orthonormal set this energy is exactly <span class="math inline">1</span>. The equality fails for any other number of unit modulus, for instance <span class="math inline">\alpha=j</span>. Option (b) is false because linear independence does not imply orthogonality: two rectangular waveforms with supports <span class="math inline">(0,1)</span> and <span class="math inline">(0,2)</span> are linearly independent, yet their inner product equals <span class="math inline">1</span>. Option (d) is false because orthogonality does not require disjoint supports: the rectangular waveform on <span class="math inline">[0,1]</span> and the waveform that equals <span class="math inline">1</span> on <span class="math inline">[0,\frac12)</span> and <span class="math inline">-1</span> on <span class="math inline">[\frac12,1]</span> have zero inner product, although their product is nonzero at every point of <span class="math inline">[0,1]</span>.</p>
+</details></li>
+<li><p>Consider the waveforms <span class="math inline">\phi_1(t)=\sinc(t)</span> and <span class="math inline">\phi_2(t)=\sqrt2\,\sinc(2t)</span>. Then,</p>
+<ol>
+<li><p><span class="math inline">\{\phi_1,\phi_2\}</span> is orthonormal.</p></li>
+<li><p><span class="math inline">\phi_1</span> and <span class="math inline">\phi_2</span> are orthogonal.</p></li>
+<li><p><span class="math inline">\phi_1</span> and <span class="math inline">\phi_2</span> are linearly dependent.</p></li>
+<li><p>None of the above.</p></li>
+</ol>
+<details class="solution"><summary>Show solution</summary><p><strong>Correct answer: (d).</strong></p>
+<p>The inner product is easier to compute in the frequency domain, since by Parseval’s identity <span class="math inline">\langle\phi_1,\phi_2\rangle=\langle\hat\phi_1,\hat\phi_2\rangle</span>. The waveform <span class="math inline">B\sinc(Bt)</span> has a rectangular Fourier transform, equal to <span class="math inline">1</span> on <span class="math inline">[-\frac B2,\frac B2]</span> and zero elsewhere, so <span class="math inline">\hat\phi_1(f)</span> equals <span class="math inline">1</span> on <span class="math inline">[-\frac12,\frac12]</span> and <span class="math inline">\hat\phi_2(f)</span> equals <span class="math inline">\frac{1}{\sqrt2}</span> on <span class="math inline">[-1,1]</span>. The two transforms overlap on the support of <span class="math inline">\hat\phi_1</span>, and <span class="math display">\langle\hat\phi_1,\hat\phi_2\rangle=\int_{-1/2}^{1/2}\frac{1}{\sqrt2}\drm f=\frac{1}{\sqrt2},</span> which is not zero: the waveforms are not orthogonal, and hence not orthonormal either, even though both have unit energy, <span class="math inline">1</span> and <span class="math inline">2\cdot\frac12</span> respectively. They are not linearly dependent either. If <span class="math inline">a_1\phi_1(t)+a_2\phi_2(t)=0</span> for all <span class="math inline">t</span>, the same relation holds between the transforms, <span class="math inline">a_1\hat\phi_1(f)+a_2\hat\phi_2(f)=0</span> for all <span class="math inline">f</span>. On the band <span class="math inline">\frac12&lt;|f|\leq1</span> only <span class="math inline">\hat\phi_2</span> is nonzero, which forces <span class="math inline">a_2=0</span>, and then <span class="math inline">a_1=0</span> as well. Hence none of the three statements holds.</p>
+</details></li>
+<li><p>Consider the orthonormal basis <span class="math inline">\{\phi_i(t)\}_{i\in\mathbb Z}</span> with <span class="math display">\phi_i(t)=\begin{cases}e^{j2\pi it} &amp; 0\leq t\leq1\\ 0 &amp; \text{otherwise},\end{cases}</span> and the signal <span class="math inline">x(t)=1</span> for <span class="math inline">0\leq t\leq\frac12</span> and <span class="math inline">x(t)=0</span> otherwise. What is the value of the coefficient <span class="math inline">x_{-1}=\langle x,\phi_{-1}\rangle</span> in the projection of <span class="math inline">x(t)</span> onto this basis?</p>
+<ol>
+<li><p><span class="math inline">\frac{1}{j2\pi}</span></p></li>
+<li><p><span class="math inline">0</span></p></li>
+<li><p><span class="math inline">\frac{1}{j\pi}</span></p></li>
+<li><p><span class="math inline">\frac{j}{\pi}</span></p></li>
+</ol>
+<details class="solution"><summary>Show solution</summary><p><strong>Correct answer: (d).</strong></p>
+<p>The coefficient is the inner product of the signal with the basis waveform <span class="math inline">\phi_{-1}(t)=e^{-j2\pi t}</span> on <span class="math inline">[0,1]</span>, whose conjugate is <span class="math inline">e^{j2\pi t}</span>. Since <span class="math inline">x(t)</span> vanishes outside <span class="math inline">[0,\frac12]</span>, the integral reduces to that interval, and <span class="math display">\begin{align*}
+x_{-1}&amp;=\int_{-\infty}^{\infty}x(t)\phi_{-1}^*(t)\drm t
+=\int_0^{1/2}e^{j2\pi t}\drm t\\
+&amp;=\left[\frac{e^{j2\pi t}}{j2\pi}\right]_0^{1/2}
+=\frac{e^{j\pi}-1}{j2\pi}.
+\end{align*}</span> Using <span class="math inline">e^{j\pi}=-1</span>, the numerator equals <span class="math inline">-2</span> and the coefficient becomes <span class="math inline">x_{-1}=-\frac{1}{j\pi}</span>. Multiplying numerator and denominator by <span class="math inline">j</span>, and since <span class="math inline">j^2=-1</span>, we obtain <span class="math inline">x_{-1}=\frac{j}{\pi}</span>.</p>
+</details></li>
+<li><p>Consider the waveforms <span class="math display">\begin{gather*}
+\phi_1(t)=\begin{cases}1 &amp; -1\leq t&lt;1\\ 0 &amp; \text{otherwise}\end{cases}\\
+\phi_2(t)=\begin{cases}-1 &amp; 0\leq t&lt;1\\ 0 &amp; \text{otherwise},\end{cases}
+\end{gather*}</span> and the triangular signal <span class="math inline">x(t)=1-|t|</span> for <span class="math inline">|t|\leq1</span> and <span class="math inline">x(t)=0</span> otherwise, shown in black in the plots below. Which plot shows, in gray, the signal <span class="math inline">\bar x(t)=x_1\phi_1(t)+x_2\phi_2(t)</span> built with the coefficients <span class="math inline">x_i=\langle x,\phi_i\rangle</span>?</p>
+<div class="figure-grid"><img class="tex-figure" src="img/collection-final-d2ffa50192122b2f.svg" alt="Diagram reproduced from the course PDF; description follows in the text."></div>
+<details class="solution"><summary>Show solution</summary><p><strong>Correct answer: (a).</strong></p>
+<p>The coefficients are the inner products of the real signal with each waveform. The first one is the area under the triangle, <span class="math display">x_1=\int_{-\infty}^{\infty}x(t)\phi_1(t)\drm t=\int_{-1}^{1}(1-|t|)\drm t=1,</span> and the second one only sees the right half of the triangle, with a change of sign, <span class="math display">x_2=\int_{-\infty}^{\infty}x(t)\phi_2(t)\drm t=-\int_{0}^{1}(1-t)\drm t=-\frac12.</span> The represented signal is therefore <span class="math inline">\bar x(t)=\phi_1(t)-\frac12\phi_2(t)</span>, which equals <span class="math inline">1</span> on <span class="math inline">[-1,0)</span>, where only <span class="math inline">\phi_1</span> is nonzero, and <span class="math inline">1-\frac12\cdot(-1)=\frac32</span> on <span class="math inline">[0,1)</span>, where both waveforms contribute. This is plot (a). Observe that <span class="math inline">\{\phi_1,\phi_2\}</span> is not an orthonormal set, since <span class="math inline">\phi_1</span> has energy <span class="math inline">2</span> and <span class="math inline">\langle\phi_1,\phi_2\rangle=-1</span>, so <span class="math inline">\bar x(t)</span> is not the orthogonal projection of <span class="math inline">x(t)</span> onto the space they span. This is why <span class="math inline">\bar x(t)</span> can exceed the signal on <span class="math inline">[0,1)</span>.</p>
+</details></li>
+<li><p>The signal <span class="math inline">x(t)=\sinc(t)</span> is represented using the sampling waveforms <span class="math inline">\phi_i(t)</span>, <span class="math inline">i\in\mathbb Z</span>, with Fourier transforms <span class="math display">\hat\phi_i(f)=\begin{cases}\frac{1}{\sqrt2}\,e^{-j\pi if} &amp; -1\leq f\leq1\\ 0 &amp; \text{otherwise},\end{cases}</span> as <span class="math inline">\bar x(t)=\sum_{i=-m}^{m}x_i\phi_i(t)</span>, where <span class="math inline">x_i=\langle x,\phi_i\rangle</span>. For <span class="math inline">m=1</span>, the Fourier transform of <span class="math inline">\bar x(t)</span> is, for <span class="math inline">-1\leq f\leq1</span>,</p>
+<ol>
+<li><p><span class="math inline">\frac12+\frac{1}{\pi}\cos(\pi f)</span></p></li>
+<li><p><span class="math inline">\frac12+\frac{2}{\pi}\cos(2\pi f)</span></p></li>
+<li><p><span class="math inline">\frac12+\frac{2}{\pi}\cos(\pi f)</span></p></li>
+<li><p><span class="math inline">\frac{1}{\sqrt2}+\frac{\sqrt2}{\pi}\cos(\pi f)</span></p></li>
+</ol>
+<details class="solution"><summary>Show solution</summary><p><strong>Correct answer: (c).</strong></p>
+<p>The waveforms <span class="math inline">\phi_i(t)</span> are the sampling waveforms for signals band-limited to <span class="math inline">W=1</span>: in the time domain, <span class="math inline">\phi_i(t)=\sqrt2\,\sinc\bigl(2(t-\frac i2)\bigr)</span>, shifted copies of one unit-energy sinc at the sampling instants <span class="math inline">\frac i2</span>. The coefficients can be computed as inner products in the frequency domain, <span class="math display">\begin{align*}
+x_i&amp;=\int_{-\infty}^{\infty}\hat x(f)\hat\phi_i^*(f)\drm f\\
+&amp;=\frac{1}{\sqrt2}\int_{-1}^{1}\hat x(f)e^{j2\pi f\frac i2}\drm f
+=\frac{1}{\sqrt2}\,x\Bigl(\frac i2\Bigr),
+\end{align*}</span> where the last equality is the inverse Fourier transform evaluated at <span class="math inline">t=\frac i2</span>, valid because <span class="math inline">\hat x(f)=\mathrm{rect}(f)</span> vanishes outside <span class="math inline">[-1,1]</span>. Hence the coefficients are samples of <span class="math inline">x(t)</span> at the instants <span class="math inline">\frac i2</span>, scaled by <span class="math inline">\frac{1}{\sqrt2}</span>. For <span class="math inline">m=1</span> we need three of them: <span class="math inline">x_0=\frac{1}{\sqrt2}\sinc(0)=\frac{1}{\sqrt2}</span> and, since <span class="math inline">\sinc(\pm\frac12)=\frac{\sin(\pi/2)}{\pi/2}=\frac2\pi</span>, <span class="math inline">x_{-1}=x_1=\frac{1}{\sqrt2}\cdot\frac2\pi=\frac{\sqrt2}{\pi}</span>. By linearity, the Fourier transform of <span class="math inline">\bar x(t)</span> is <span class="math inline">x_{-1}\hat\phi_{-1}(f)+x_0\hat\phi_0(f)+x_1\hat\phi_1(f)</span>, which for <span class="math inline">-1\leq f\leq1</span> equals <span class="math display">\frac{1}{\pi}e^{j\pi f}+\frac12+\frac{1}{\pi}e^{-j\pi f}
+=\frac12+\frac{2}{\pi}\cos(\pi f),</span> and is zero outside that interval. Observe that the three-term approximation already resembles <span class="math inline">\hat x(f)=\mathrm{rect}(f)</span>: it is close to <span class="math inline">1</span> around <span class="math inline">f=0</span> and small near <span class="math inline">|f|=1</span>.</p>
+</details></li>
+<li><p>What is the output of the following MATLAB code?<br />
+<code>a = 1 + (rand &lt; 0.5);</code><br />
+<code>phi1 = @(t) sinc(t);</code><br />
+<code>phi2 = @(t) sinc(a*t);</code><br />
+<code>f = @(t) phi1(t).*conj(phi2(t));</code><br />
+<code>integral(f, -inf, inf)</code></p>
+<ol>
+<li><p>A zero-mean Gaussian random variable with variance <span class="math inline">\frac12</span>.</p></li>
+<li><p>A discrete random variable taking the values <span class="math inline">\frac12</span> and <span class="math inline">1</span> with equal probability.</p></li>
+<li><p>A uniform random variable in the interval <span class="math inline">(1,2)</span>.</p></li>
+<li><p>A discrete random variable taking the values <span class="math inline">0</span> and <span class="math inline">1</span> with equal probability.</p></li>
+</ol>
+<details class="solution"><summary>Show solution</summary><p><strong>Correct answer: (b).</strong></p>
+<p>The first line draws a uniform number in <span class="math inline">(0,1)</span> and compares it with <span class="math inline">\frac12</span>, so <code>a</code> equals <span class="math inline">2</span> with probability <span class="math inline">\frac12</span> and <span class="math inline">1</span> otherwise. The last line computes the inner product <span class="math display">\begin{align*}
+\langle\phi_1,\phi_2\rangle&amp;=\int_{-\infty}^{\infty}\sinc(t)\sinc(at)\drm t\\
+&amp;=\int_{-\infty}^{\infty}\hat\phi_1(f)\hat\phi_2^*(f)\drm f,
+\end{align*}</span> where Parseval’s identity moves the calculation to the frequency domain. There, <span class="math inline">\hat\phi_1(f)=\mathrm{rect}(f)</span> is a rectangle of height <span class="math inline">1</span> on <span class="math inline">[-\frac12,\frac12]</span>, and <span class="math inline">\hat\phi_2(f)=\frac1a\mathrm{rect}(f/a)</span> is a rectangle of height <span class="math inline">\frac1a</span> on <span class="math inline">[-\frac a2,\frac a2]</span>. When <code>a</code> is <span class="math inline">1</span> the two rectangles coincide and the integral is the energy of <span class="math inline">\sinc(t)</span>, equal to <span class="math inline">1</span>. When <code>a</code> is <span class="math inline">2</span> the narrower rectangle selects <span class="math inline">[-\frac12,\frac12]</span>, where the product equals <span class="math inline">\frac12</span>, and the integral is <span class="math inline">\frac12</span>. The output is therefore a discrete random variable taking the values <span class="math inline">1</span> and <span class="math inline">\frac12</span> with equal probability.</p>
+</details></li>
+<li><p>A waveform <span class="math inline">\phi(t)</span> with Fourier transform <span class="math display">\hat\phi(f)=\begin{cases}\sqrt3 &amp; -\frac16\leq f&lt;\frac16\\ 0 &amp; \text{otherwise}\end{cases}</span> is used to transmit information as <span class="math inline">\sum_{i=-\infty}^{\infty}X_i\phi(t-iT)</span>, where the <span class="math inline">X_i</span> are symbols from an 8-PSK constellation and <span class="math inline">T</span> is the symbol period. What is the maximum rate that avoids inter-symbol interference?</p>
+<ol>
+<li><p><span class="math inline">\frac13</span> bit per second.</p></li>
+<li><p><span class="math inline">1</span> bit per second.</p></li>
+<li><p><span class="math inline">3</span> bits per second.</p></li>
+<li><p><span class="math inline">6</span> bits per second.</p></li>
+</ol>
+<details class="solution"><summary>Show solution</summary><p><strong>Correct answer: (b).</strong></p>
+<p>The transform is nonzero only for <span class="math inline">|f|&lt;\frac16</span>, so the bandwidth of <span class="math inline">\phi(t)</span>, defined as the extent of its positive frequencies, is <span class="math inline">W=\frac16</span> Hz. The amplitude <span class="math inline">\sqrt3</span> fixes the energy of the waveform, <span class="math inline">\int_{-1/6}^{1/6}3\drm f=1</span>, but plays no role in the rate. By the Nyquist criterion, shifted copies of a waveform of bandwidth <span class="math inline">W</span> can be orthogonal at a symbol rate of at most <span class="math inline">2W</span>, so the maximum symbol rate without inter-symbol interference is <span class="math display">R_{\mathrm s}=2W=\frac13\ \text{symbols per second}.</span> Each 8-PSK symbol carries <span class="math inline">\log_28=3</span> bits, since three bits are mapped one-to-one onto the eight symbols, and the maximum bit rate is <span class="math inline">R_{\mathrm b}=3R_{\mathrm s}=1</span> bit per second.</p>
+</details></li>
+<li><p>A waveform <span class="math inline">\phi(t)</span> with similarity function <span class="math inline">R_{\phi\phi}(\tau)=\sinc(2\tau)</span> is used to transmit information as <span class="math inline">\sum_{i=-\infty}^{\infty}X_i\phi(t-iT)</span>, where the <span class="math inline">X_i</span> are symbols from an <span class="math inline">M</span>-QAM constellation and <span class="math inline">T</span> is the symbol period. The maximum rate without inter-symbol interference is</p>
+<ol>
+<li><p><span class="math inline">2\log_2M</span> bits per second.</p></li>
+<li><p><span class="math inline">\frac{\log_2M}{4}</span> bits per second.</p></li>
+<li><p><span class="math inline">\frac{\log_2M}{2}</span> bits per second.</p></li>
+<li><p><span class="math inline">\log_2M</span> bits per second.</p></li>
+</ol>
+<details class="solution"><summary>Show solution</summary><p><strong>Correct answer: (a).</strong></p>
+<p>The shifted waveforms <span class="math inline">\phi(t-iT)</span> are free of inter-symbol interference when they are orthogonal, that is, when the similarity function <span class="math inline">R_{\phi\phi}(\tau)=\int_{-\infty}^{\infty}\phi(t)\phi^*(t-\tau)\drm t</span> vanishes at every nonzero multiple of the symbol period, <span class="math inline">R_{\phi\phi}(kT)=0</span> for <span class="math inline">k=\pm1,\pm2,\dots</span> Since <span class="math inline">\sinc(x)=\frac{\sin(\pi x)}{\pi x}</span> vanishes at every nonzero integer <span class="math inline">x</span>, the function <span class="math inline">\sinc(2\tau)</span> vanishes at <span class="math inline">\tau=\pm\frac12,\pm1,\pm\frac32,\dots</span> The smallest admissible symbol period is the first zero, <span class="math inline">T=\frac12</span>, and every multiple of it is then a zero as well. The symbol rate is <span class="math inline">R_{\mathrm s}=\frac1T=2</span> symbols per second, and since an <span class="math inline">M</span>-QAM symbol carries <span class="math inline">\log_2M</span> bits, the maximum bit rate is <span class="math inline">R_{\mathrm b}=2\log_2M</span> bits per second. The same value follows from the frequency domain: <span class="math inline">\sinc(2\tau)</span> is the inverse transform of a rectangle on <span class="math inline">[-1,1]</span>, so <span class="math inline">\phi(t)</span> has bandwidth <span class="math inline">W=1</span> and <span class="math inline">R_{\mathrm s}=2W=2</span>.</p>
+</details></li>
+<li><p>A communications system uses the frequencies in the interval <span class="math inline">(-50,50)</span> MHz. Using a 256-QAM constellation, what is the maximum transmission rate, in Mbit/s, without inter-symbol interference?</p>
+<ol>
+<li><p><span class="math inline">12800</span></p></li>
+<li><p><span class="math inline">400</span></p></li>
+<li><p><span class="math inline">\frac{50}{256}</span></p></li>
+<li><p><span class="math inline">800</span></p></li>
+</ol>
+<details class="solution"><summary>Show solution</summary><p><strong>Correct answer: (d).</strong></p>
+<p>The baseband waveform occupies <span class="math inline">|f|&lt;50</span> MHz, so its bandwidth, the extent of the positive frequencies, is <span class="math inline">W=50</span> MHz. By the Nyquist criterion, the maximum symbol rate without inter-symbol interference is <span class="math inline">R_{\mathrm s}=2W=100</span> Msymbol/s. A constellation of <span class="math inline">256=2^8</span> points carries <span class="math inline">\log_2256=8</span> bits per symbol, so the maximum bit rate is <span class="math inline">R_{\mathrm b}=8\cdot100=800</span> Mbit/s. The value <span class="math inline">400</span> would result from forgetting the factor <span class="math inline">2</span> of the Nyquist rate, and the value <span class="math inline">12800</span> from that same mistake together with multiplying by <span class="math inline">256</span> instead of by <span class="math inline">\log_2256</span>.</p>
+</details></li>
+<li><p>Let <span class="math inline">\phi(t)=1</span> for <span class="math inline">0\leq t&lt;T</span> and <span class="math inline">\phi(t)=0</span> otherwise. A digital data transmission system sends two independent bits <span class="math inline">D_1</span> and <span class="math inline">D_2</span>, each with <span class="math inline">\Pr(D_i=0)=q</span>, by constructing the waveform <span class="math display">X(t)=e^{jD_1\frac\pi2}\,\phi(t)+e^{-jD_2\frac\pi2}\,\phi\Bigl(t-\frac T2\Bigr).</span> Successive pairs of bits are sent with time-shifted copies of <span class="math inline">X(t)</span>. What is the maximum transmission rate, in bits per second, if the waveforms of different pairs must not overlap in time?</p>
+<ol>
+<li><p><span class="math inline">\frac1T</span></p></li>
+<li><p><span class="math inline">\frac{4}{3T}</span></p></li>
+<li><p><span class="math inline">\frac2T</span></p></li>
+<li><p><span class="math inline">\frac{3}{4T}</span></p></li>
+</ol>
+<details class="solution"><summary>Show solution</summary><p><strong>Correct answer: (b).</strong></p>
+<p>The waveform is the sum of two rectangular pulses of duration <span class="math inline">T</span>, the first one occupying <span class="math inline">[0,T)</span> and the second one, delayed by <span class="math inline">\frac T2</span>, occupying <span class="math inline">[\frac T2,\frac{3T}2)</span>. The complex exponentials only set the phase of each pulse, <span class="math inline">1</span> or <span class="math inline">\pm j</span> according to the bit, and do not change their supports, so the prior <span class="math inline">q</span> plays no role either. The waveform therefore lasts <span class="math inline">\frac{3T}{2}</span> seconds, and the next pair of bits can only be sent after that time if the waveforms must not overlap. Two bits every <span class="math inline">\frac{3T}{2}</span> seconds give a maximum rate of <span class="math display">R_{\mathrm b}=\frac{2}{3T/2}=\frac{4}{3T}\ \text{bits per second}.</span></p>
+</details></li>
+<li><p>What is the minimum value of <code>T</code> in the following transmission system to avoid inter-symbol interference? The number of symbols <code>n</code> and the positive constants <code>b</code> and <code>c</code> are given.<br />
+<code>phi = @(t) sinc(b*t);</code><br />
+<code>x = @(t) 0*t;</code><br />
+<code>for i = 1:n</code><br />
+<code>a = sign(randn);</code><br />
+<code>x = @(t) x(t) + a*phi(t - i*c*T);</code><br />
+<code>end</code></p>
+<ol>
+<li><p><span class="math inline">\frac{1}{bc}</span></p></li>
+<li><p><span class="math inline">\frac{2}{b}</span></p></li>
+<li><p><span class="math inline">\frac{c}{b}</span></p></li>
+<li><p><span class="math inline">\frac{4}{b}</span></p></li>
+</ol>
+<details class="solution"><summary>Show solution</summary><p><strong>Correct answer: (a).</strong></p>
+<p>The loop builds the transmitted signal <span class="math inline">x(t)=\sum_{i=1}^{n}a_i\,\phi(t-i\,cT)</span>, where each <span class="math inline">a_i=\pm1</span> is a binary symbol drawn with <code>sign(randn)</code> and the pulses are spaced <span class="math inline">cT</span> seconds apart, so the effective symbol period is <span class="math inline">cT</span>. There is no inter-symbol interference when each pulse vanishes at the centers of all the other pulses, that is, when <span class="math inline">\phi(k\,cT)=0</span> for every integer <span class="math inline">k\neq0</span>. Since <span class="math inline">\sinc(x)</span> vanishes at every nonzero integer, <span class="math inline">\phi(t)=\sinc(bt)</span> vanishes at <span class="math inline">t=\pm\frac1b,\pm\frac2b,\dots</span>, and the condition holds whenever <span class="math inline">cT</span> is a multiple of <span class="math inline">\frac1b</span>. The minimum value is obtained for <span class="math inline">cT=\frac1b</span>, that is, <span class="math inline">T=\frac{1}{bc}</span>.</p>
+</details></li>
+<li><p>What is the energy of the waveform <span class="math display">x(t)=\begin{cases}e^{-t} &amp; 0\leq t\leq1\\ 0 &amp; \text{otherwise?}\end{cases}</span></p>
+<ol>
+<li><p><span class="math inline">1</span></p></li>
+<li><p><span class="math inline">\frac12</span></p></li>
+<li><p><span class="math inline">\frac{1-e^{-2}}{2}</span></p></li>
+<li><p><span class="math inline">1-\frac{1}{e^2}</span></p></li>
+</ol>
+<details class="solution"><summary>Show solution</summary><p><strong>Correct answer: (c).</strong></p>
+<p>The energy of a waveform is the integral of its squared modulus, <span class="math inline">E=\int_{-\infty}^{\infty}|x(t)|^2\drm t</span>. Since <span class="math inline">x(t)</span> vanishes outside <span class="math inline">[0,1]</span> and <span class="math inline">|e^{-t}|^2=e^{-2t}</span>, the integral reduces to <span class="math display">E=\int_0^1e^{-2t}\drm t=\left[-\frac{e^{-2t}}{2}\right]_0^1
+=\frac12-\frac{e^{-2}}{2}=\frac{1-e^{-2}}{2}.</span> The option <span class="math inline">1-e^{-2}</span> is the result of forgetting the factor <span class="math inline">\frac12</span> produced by the derivative of <span class="math inline">e^{-2t}</span>.</p>
+</details></li>
+<li><p>What is the energy of the complex-valued signal <span class="math inline">x(t)=1+e^{jt}</span> with support <span class="math inline">(0,\frac\pi2)</span>, that is, <span class="math inline">x(t)=0</span> outside that interval?</p>
+<ol>
+<li><p><span class="math inline">2</span></p></li>
+<li><p><span class="math inline">2+\pi</span></p></li>
+<li><p><span class="math inline">\pi</span></p></li>
+<li><p><span class="math inline">\frac{3\pi}{2}</span></p></li>
+</ol>
+<details class="solution"><summary>Show solution</summary><p><strong>Correct answer: (b).</strong></p>
+<p>For a complex-valued signal the energy is <span class="math inline">E=\int_{-\infty}^{\infty}|x(t)|^2\drm t</span>, with the squared modulus <span class="math inline">|x(t)|^2=x(t)x^*(t)</span> and not the square of the signal. On the support, <span class="math display">\begin{align*}
+|1+e^{jt}|^2&amp;=(1+e^{jt})(1+e^{-jt})\\
+&amp;=2+e^{jt}+e^{-jt}=2+2\cos t,
+\end{align*}</span> where the last step uses Euler’s formula <span class="math inline">e^{jt}+e^{-jt}=2\cos t</span>. Integrating over <span class="math inline">(0,\frac\pi2)</span>, <span class="math display">E=\int_0^{\pi/2}(2+2\cos t)\drm t=2\cdot\frac\pi2+2\bigl[\sin t\bigr]_0^{\pi/2}=\pi+2.</span> Note that the two terms of <span class="math inline">x(t)</span> have energies <span class="math inline">\frac\pi2</span> each, and their sum <span class="math inline">\pi</span> is not the energy of the sum: the cross term <span class="math inline">2\cos t</span> contributes the extra <span class="math inline">2</span>, because the two terms are not orthogonal on <span class="math inline">(0,\frac\pi2)</span>.</p>
+</details></li>
+<li><p>For some <span class="math inline">a,b&gt;0</span> with <span class="math inline">a\neq b</span>, a modulation system maps two equiprobable independent bits <span class="math inline">(D_1,D_2)</span> to the symbol <span class="math display">X=\begin{cases}
+a+jb &amp; (D_1,D_2)=(0,0)\\
+a-jb &amp; (D_1,D_2)=(0,1)\\
+jb &amp; (D_1,D_2)=(1,0)\\
+a &amp; (D_1,D_2)=(1,1).
+\end{cases}</span> What is the average energy of the symbol <span class="math inline">X</span>?</p>
+<ol>
+<li><p><span class="math inline">\frac{3a^2+3b^2}{4}</span></p></li>
+<li><p><span class="math inline">a^2+b^2</span></p></li>
+<li><p><span class="math inline">2(a^2+b^2)</span></p></li>
+<li><p><span class="math inline">ab</span></p></li>
+</ol>
+<details class="solution"><summary>Show solution</summary><p><strong>Correct answer: (a).</strong></p>
+<p>The energy of a symbol is its squared modulus <span class="math inline">|X|^2</span>, and the average energy is its expectation over the bits, <span class="math inline">\Es=\EE(|X|^2)</span>. The four symbols have energies <span class="math inline">|a+jb|^2=a^2+b^2</span>, <span class="math inline">|a-jb|^2=a^2+b^2</span>, <span class="math inline">|jb|^2=b^2</span> and <span class="math inline">|a|^2=a^2</span>. Since the two bits are independent and equiprobable, each pair <span class="math inline">(D_1,D_2)</span>, and hence each symbol, has probability <span class="math inline">\frac14</span>, so that <span class="math display">\Es=\frac14\bigl(2(a^2+b^2)+b^2+a^2\bigr)=\frac{3a^2+3b^2}{4}.</span> The value <span class="math inline">a^2+b^2</span> would be the energy if all four symbols were placed at the same distance from the origin, which is not the case here.</p>
+</details></li>
+<li><p>A data transmission system maps two equiprobable independent bits <span class="math inline">(D_1,D_2)</span> to the signal <span class="math inline">X(t)=D_1\phi(t)+D_2\phi(t-1)</span>, where <span class="math inline">\phi(t)=1</span> for <span class="math inline">0\leq t\leq2</span> and <span class="math inline">\phi(t)=0</span> otherwise. What is the average energy <em>per bit</em> of <span class="math inline">X(t)</span>?</p>
+<ol>
+<li><p><span class="math inline">1</span></p></li>
+<li><p><span class="math inline">2</span></p></li>
+<li><p><span class="math inline">\frac52</span></p></li>
+<li><p><span class="math inline">\frac54</span></p></li>
+</ol>
+<details class="solution"><summary>Show solution</summary><p><strong>Correct answer: (d).</strong></p>
+<p>The two pulses <span class="math inline">\phi(t)</span> and <span class="math inline">\phi(t-1)</span> occupy <span class="math inline">[0,2]</span> and <span class="math inline">[1,3]</span>, so they overlap on <span class="math inline">[1,2]</span> and are not orthogonal: the energy of the signal has to be computed for each of the four bit pairs. For <span class="math inline">(0,0)</span> the signal is zero and its energy is <span class="math inline">0</span>. For <span class="math inline">(1,0)</span> and <span class="math inline">(0,1)</span> the signal is a single pulse of amplitude <span class="math inline">1</span> and duration <span class="math inline">2</span>, with energy <span class="math inline">\int_0^2\drm t=2</span> and <span class="math inline">\int_1^3\drm t=2</span> respectively. For <span class="math inline">(1,1)</span> the signal is <span class="math inline">1</span> on <span class="math inline">[0,1)</span> and on <span class="math inline">(2,3]</span>, and <span class="math inline">2</span> on <span class="math inline">[1,2]</span>, with energy <span class="math display">\int_0^1\drm t+\int_1^2 2^2\drm t+\int_2^3\drm t=1+4+1=6.</span> Each pair has probability <span class="math inline">\frac14</span>, so the average energy of the signal is <span class="math inline">\frac14(0+2+2+6)=\frac52</span>, and since the signal carries two bits the average energy per bit is <span class="math inline">\Eb=\frac{5/2}{2}=\frac54</span>.</p>
+</details></li>
+<li><p>What is the value of <span class="math inline">\Delta</span> for which the average energy of the constellation with symbols <span class="math inline">s</span> shown in the figure equals <span class="math inline">1</span>? The symbols are used equiprobably.</p>
+<div class="figure-grid"><img class="tex-figure" src="img/collection-final-a6606cefaad58395.svg" alt="Diagram reproduced from the course PDF; description follows in the text."></div>
+<ol>
+<li><p><span class="math inline">\frac{\sqrt3}{2}</span></p></li>
+<li><p><span class="math inline">\frac{1}{\sqrt2}</span></p></li>
+<li><p><span class="math inline">\frac{\sqrt3}{7}</span></p></li>
+<li><p><span class="math inline">1</span></p></li>
+</ol>
+<details class="solution"><summary>Show solution</summary><p><strong>Correct answer: (b).</strong></p>
+<p>The average energy of an equiprobable constellation is the arithmetic mean of the squared moduli of its points, <span class="math inline">\Es=\EE(|s|^2)</span>. The six points are <span class="math inline">0</span>, <span class="math inline">\Delta</span>, <span class="math inline">2\Delta</span>, <span class="math inline">j\Delta</span>, <span class="math inline">2j\Delta</span> and <span class="math inline">\Delta+j\Delta</span>, with squared moduli <span class="math inline">0</span>, <span class="math inline">\Delta^2</span>, <span class="math inline">4\Delta^2</span>, <span class="math inline">\Delta^2</span>, <span class="math inline">4\Delta^2</span> and <span class="math inline">2\Delta^2</span>, whose sum is <span class="math inline">12\Delta^2</span>. Hence <span class="math inline">\Es=\frac{12\Delta^2}{6}=2\Delta^2</span>, and setting <span class="math inline">2\Delta^2=1</span> gives <span class="math inline">\Delta=\frac{1}{\sqrt2}</span>. Note that the symbol at the origin costs no energy but still counts in the average.</p>
+</details></li>
+<li><p>Consider the signal <span class="math inline">x(t)=a_1\phi_1(t)+a_2\phi_2(t)</span>, where <span class="math inline">a_1</span> and <span class="math inline">a_2</span> are independent zero-mean unit-variance Gaussian random variables, and <span class="math inline">\phi_1(t)</span> and <span class="math inline">\phi_2(t)</span> are unit-energy waveforms. What is the average energy of <span class="math inline">x(t)</span>?</p>
+<ol>
+<li><p>It cannot be determined without knowing <span class="math inline">\langle\phi_1,\phi_2\rangle</span>.</p></li>
+<li><p><span class="math inline">2</span></p></li>
+<li><p><span class="math inline">3</span></p></li>
+<li><p><span class="math inline">\sqrt2</span></p></li>
+</ol>
+<details class="solution"><summary>Show solution</summary><p><strong>Correct answer: (b).</strong></p>
+<p>The average energy is the expectation of the energy over the random coefficients, <span class="math inline">E=\EE\bigl(\int_{-\infty}^{\infty}|x(t)|^2\drm t\bigr)</span>. Expanding the squared modulus of the sum, <span class="math display">\begin{align*}
+|x(t)|^2&amp;=|a_1|^2|\phi_1(t)|^2+|a_2|^2|\phi_2(t)|^2\\
+&amp;\quad+2\,\mathrm{Re}\bigl(a_1a_2^*\phi_1(t)\phi_2^*(t)\bigr),
+\end{align*}</span> and integrating, the first two terms give <span class="math inline">|a_1|^2</span> and <span class="math inline">|a_2|^2</span>, since both waveforms have unit energy, while the cross term gives <span class="math inline">2\,\mathrm{Re}(a_1a_2^*\langle\phi_1,\phi_2\rangle)</span>. Taking expectations, <span class="math inline">\EE(|a_1|^2)=\EE(|a_2|^2)=1</span> by the unit variance, and <span class="math inline">\EE(a_1a_2^*)=\EE(a_1)\EE(a_2)^*=0</span> by independence and zero mean, so the cross term vanishes whatever the value of <span class="math inline">\langle\phi_1,\phi_2\rangle</span>. The average energy is therefore <span class="math inline">E=1+1=2</span>. The inner product of the waveforms would matter for the energy of each realization, but not for its average.</p>
+</details></li>
+<li><p>What is the most likely output of the following MATLAB code?<br />
+<code>n = 100000;</code><br />
+<code>aux = rand(1,n);</code><br />
+<code>xx(aux &gt; 0.25) = 1j;</code><br />
+<code>xx(aux &lt; 0.25) = 3;</code><br />
+<code>1/n*sum(xx.*conj(xx))</code></p>
+<ol>
+<li><p><span class="math inline">3</span></p></li>
+<li><p><span class="math inline">5</span></p></li>
+<li><p><span class="math inline">2</span></p></li>
+<li><p><span class="math inline">7</span></p></li>
+</ol>
+<details class="solution"><summary>Show solution</summary><p><strong>Correct answer: (a).</strong></p>
+<p>The vector <code>aux</code> contains <span class="math inline">n</span> independent uniform numbers in <span class="math inline">(0,1)</span>, and the two assignments build a vector <code>xx</code> whose entries are <span class="math inline">j</span> when the uniform number exceeds <span class="math inline">\frac14</span> and <span class="math inline">3</span> otherwise. Hence <code>xx</code> is a sequence of <span class="math inline">n</span> independent symbols <span class="math inline">X_i</span> from the constellation <span class="math inline">\{j,3\}</span>, with <span class="math inline">\Pr(X=j)=\frac34</span> and <span class="math inline">\Pr(X=3)=\frac14</span>. The product <code>xx.*conj(xx)</code> is the squared modulus of each entry, that is, the energy of each symbol, and the last line averages these energies. By the law of large numbers, for large <span class="math inline">n</span> the average of independent realizations approaches the expectation, so <span class="math display">\frac1n\sum_{i=1}^{n}|X_i|^2\approx\EE(|X|^2)=\frac34|j|^2+\frac14|3|^2=\frac34+\frac94=3.</span> The output is the average symbol energy of the constellation, close to <span class="math inline">3</span>.</p>
+</details></li>
+<li><p>What is the most likely output of the following MATLAB code?<br />
+<code>p = 0.25;</code><br />
+<code>n = 100000;</code><br />
+<code>out = 0;</code><br />
+<code>for i = 1:n</code><br />
+<code>s = rand;</code><br />
+<code>out = out + log2(p)*(s&lt;p) ...</code><br />
+<code>+ log2(1-p)*(s&gt;p);</code><br />
+<code>end</code><br />
+<code>out/n</code></p>
+<ol>
+<li><p><span class="math inline">2-\frac34\log_23</span></p></li>
+<li><p><span class="math inline">1+\frac34\log_23</span></p></li>
+<li><p><span class="math inline">-2+\frac34\log_23</span></p></li>
+<li><p><span class="math inline">-1-\frac34\log_23</span></p></li>
+</ol>
+<details class="solution"><summary>Show solution</summary><p><strong>Correct answer: (c).</strong></p>
+<p>In each iteration the uniform number <code>s</code> is below <span class="math inline">p</span> with probability <span class="math inline">p=\frac14</span>, in which case the code adds <span class="math inline">\log_2p</span>, and above <span class="math inline">p</span> with probability <span class="math inline">1-p=\frac34</span>, in which case it adds <span class="math inline">\log_2(1-p)</span>. The event <span class="math inline">\texttt{s}=p</span> has probability zero. The last line divides the sum by <span class="math inline">n</span>, so the output is the average of <span class="math inline">n</span> independent realizations of a random variable <span class="math inline">Y</span> that takes the values <span class="math inline">\log_2p</span> and <span class="math inline">\log_2(1-p)</span> with probabilities <span class="math inline">p</span> and <span class="math inline">1-p</span>. By the law of large numbers the average approaches <span class="math display">\begin{align*}
+\EE(Y)&amp;=p\log_2p+(1-p)\log_2(1-p)\\
+&amp;=\frac14\log_2\frac14+\frac34\log_2\frac34.
+\end{align*}</span> Since <span class="math inline">\log_2\frac14=-2</span> and <span class="math inline">\log_2\frac34=\log_23-2</span>, this equals <span class="math inline">-\frac12+\frac34\log_23-\frac32=-2+\frac34\log_23\approx-0.81</span>. The output is the negative of the binary entropy <span class="math inline">h_2(p)</span> at <span class="math inline">p=\frac14</span>: the code estimates <span class="math inline">-h_2(p)</span> by Monte Carlo.</p>
+</details></li>
+<li><p>What is the most likely output of the following MATLAB code?<br />
+<code>n = 100000;</code><br />
+<code>out = 0;</code><br />
+<code>for i = 1:n</code><br />
+<code>s = 3*rand - 1;</code><br />
+<code>out = out + (s &gt; 1)/n;</code><br />
+<code>end</code><br />
+<code>out</code></p>
+<ol>
+<li><p><span class="math inline">\frac12</span></p></li>
+<li><p><span class="math inline">\frac16</span></p></li>
+<li><p><span class="math inline">\frac23</span></p></li>
+<li><p><span class="math inline">\frac13</span></p></li>
+</ol>
+<details class="solution"><summary>Show solution</summary><p><strong>Correct answer: (d).</strong></p>
+<p>Since <code>rand</code> is uniform in <span class="math inline">(0,1)</span>, the variable <span class="math inline">S=3\,\texttt{rand}-1</span> is uniform in <span class="math inline">(-1,2)</span>, an interval of length <span class="math inline">3</span>, with density <span class="math inline">\frac13</span> on it. The comparison <code>(s &gt; 1)</code> is <span class="math inline">1</span> when the event <span class="math inline">\{S&gt;1\}</span> occurs and <span class="math inline">0</span> otherwise, so <code>out</code> accumulates the fraction of iterations in which the event occurs. By the law of large numbers, the relative frequency of an event approaches its probability, <span class="math display">\Pr(S&gt;1)=\int_1^2\frac13\drm s=\frac13,</span> the fraction of the interval <span class="math inline">(-1,2)</span> that lies above <span class="math inline">1</span>. The output is therefore close to <span class="math inline">\frac13</span>.</p>
+</details></li>
+<li><p>What is the most likely output of the following MATLAB code?<br />
+<code>n = 100000;</code><br />
+<code>out = 0;</code><br />
+<code>for i = 1:n</code><br />
+<code>s = randn;</code><br />
+<code>out = out + abs(s)/n;</code><br />
+<code>end</code><br />
+<code>out</code></p>
+<ol>
+<li><p><span class="math inline">\sqrt\pi</span></p></li>
+<li><p><span class="math inline">\frac1\pi</span></p></li>
+<li><p><span class="math inline">\sqrt{\frac2\pi}</span></p></li>
+<li><p><span class="math inline">\frac12</span></p></li>
+</ol>
+<details class="solution"><summary>Show solution</summary><p><strong>Correct answer: (c).</strong></p>
+<p>The function <code>randn</code> returns a standard Gaussian random variable <span class="math inline">S</span>, with zero mean, unit variance and density <span class="math inline">f_S(s)=\frac{1}{\sqrt{2\pi}}e^{-s^2/2}</span>. The loop averages <span class="math inline">n</span> independent realizations of <span class="math inline">|S|</span>, so by the law of large numbers the output approaches <span class="math inline">\EE(|S|)</span>. Since the integrand <span class="math inline">|s|f_S(s)</span> is even, <span class="math display">\EE(|S|)=\int_{-\infty}^{\infty}|s|f_S(s)\drm s
+=\frac{2}{\sqrt{2\pi}}\int_0^{\infty}s\,e^{-s^2/2}\drm s,</span> and the substitution <span class="math inline">u=s^2/2</span>, with <span class="math inline">\drm u=s\drm s</span>, turns the last integral into <span class="math inline">\int_0^\infty e^{-u}\drm u=1</span>. Hence <span class="math inline">\EE(|S|)=\frac{2}{\sqrt{2\pi}}=\sqrt{\frac2\pi}\approx0.80</span>. Note that the mean of <span class="math inline">S</span> itself is <span class="math inline">0</span>. The absolute value makes the average positive.</p>
+</details></li>
+<li><p>What is the most likely output of the following MATLAB code?<br />
+<code>n = 100000;</code><br />
+<code>out = 0;</code><br />
+<code>for i = 1:n</code><br />
+<code>s = randn + 1j*randn;</code><br />
+<code>out = out + abs(s)^2/n;</code><br />
+<code>end</code><br />
+<code>out</code></p>
+<ol>
+<li><p><span class="math inline">1</span></p></li>
+<li><p><span class="math inline">2</span></p></li>
+<li><p><span class="math inline">\frac12</span></p></li>
+<li><p><span class="math inline">\frac\pi2</span></p></li>
+</ol>
+<details class="solution"><summary>Show solution</summary><p><strong>Correct answer: (b).</strong></p>
+<p>Each call to <code>randn</code> is an independent standard Gaussian variable, so <span class="math inline">S=S_{\mathrm r}+jS_{\mathrm i}</span> is a complex Gaussian random variable whose real and imaginary parts are independent, with zero mean and unit variance each. The loop averages <span class="math inline">n</span> independent realizations of <span class="math inline">|S|^2=S_{\mathrm r}^2+S_{\mathrm i}^2</span>, and by the law of large numbers the output approaches <span class="math display">\EE(|S|^2)=\EE(S_{\mathrm r}^2)+\EE(S_{\mathrm i}^2)=1+1=2,</span> where each term is the variance of a zero-mean unit-variance variable. In communications terms, <code>s</code> is a sample of complex Gaussian noise of total variance <span class="math inline">\sigma^2=2</span>, split equally between the two components. A noise sample of variance <span class="math inline">1</span> would require <code>(randn + 1j*randn)/sqrt(2)</code>.</p>
+</details></li>
+<li><p>What is the differential entropy, in bits, of an exponential random variable with mean <span class="math inline">2</span>?</p>
+<ol>
+<li><p><span class="math inline">\log_2e</span></p></li>
+<li><p><span class="math inline">1+\log_2e</span></p></li>
+<li><p><span class="math inline">\frac12\log_2e</span></p></li>
+<li><p><span class="math inline">1-\log_2e</span></p></li>
+</ol>
+<details class="solution"><summary>Show solution</summary><p><strong>Correct answer: (b).</strong></p>
+<p>The differential entropy of a random variable <span class="math inline">X</span> with density <span class="math inline">f(x)</span> is <span class="math inline">h(X)=-\int_{-\infty}^{\infty}f(x)\log_2f(x)\drm x</span>. An exponential variable with mean <span class="math inline">2</span> has density <span class="math inline">f(x)=\frac12e^{-x/2}</span> for <span class="math inline">x\geq0</span>, whose logarithm is <span class="math inline">\log_2f(x)=-1-\frac x2\log_2e</span>. Therefore <span class="math display">\begin{align*}
+h(X)&amp;=\int_0^{\infty}f(x)\Bigl(1+\frac x2\log_2e\Bigr)\drm x\\
+&amp;=1+\frac{\log_2e}{2}\,\EE(X)=1+\log_2e,
+\end{align*}</span> where the first term uses that the density integrates to <span class="math inline">1</span> and the second one that <span class="math inline">\EE(X)=2</span>. In general, an exponential variable with mean <span class="math inline">\mu</span> has <span class="math inline">h(X)=\log_2(e\mu)</span>, which grows with the spread of the distribution, as for the uniform and Gaussian cases.</p>
+</details></li>
+<li><p>What is the differential entropy, in bits, of a real-valued random variable with density <span class="math inline">f(x)=e^{-2|x|}</span>?</p>
+<ol>
+<li><p><span class="math inline">\log_2(2e)</span></p></li>
+<li><p><span class="math inline">2\log_2e</span></p></li>
+<li><p><span class="math inline">\log_2e</span></p></li>
+<li><p><span class="math inline">\log_2\frac e2</span></p></li>
+</ol>
+<details class="solution"><summary>Show solution</summary><p><strong>Correct answer: (c).</strong></p>
+<p>The density is a two-sided exponential, symmetric around <span class="math inline">0</span>, and it integrates to <span class="math inline">1</span> since <span class="math inline">2\int_0^\infty e^{-2x}\drm x=1</span>. Its logarithm is <span class="math inline">\log_2f(x)=-2|x|\log_2e</span>, so that <span class="math display">\begin{align*}
+h(X)&amp;=-\int_{-\infty}^{\infty}f(x)\log_2f(x)\drm x\\
+&amp;=2\log_2e\int_{-\infty}^{\infty}|x|e^{-2|x|}\drm x=2\log_2e\cdot\EE(|X|).
+\end{align*}</span> By symmetry, <span class="math inline">\EE(|X|)=2\int_0^\infty xe^{-2x}\drm x=2\cdot\frac14=\frac12</span>, the mean of an exponential variable with parameter <span class="math inline">2</span>. Hence <span class="math inline">h(X)=\log_2e</span>.</p>
+</details></li>
+<li><p>What is the differential entropy, in bits, of a complex random variable whose real and imaginary parts are independent zero-mean Gaussian random variables with variances <span class="math inline">1</span> and <span class="math inline">2</span>, respectively?</p>
+<ol>
+<li><p><span class="math inline">\log_2(\sqrt2\,\pi e)</span></p></li>
+<li><p><span class="math inline">\log_2(\sqrt8\,\pi e)</span></p></li>
+<li><p><span class="math inline">\log_2(\sqrt3\,\pi e)</span></p></li>
+<li><p><span class="math inline">\log_2\bigl(\frac32\pi e\bigr)</span></p></li>
+</ol>
+<details class="solution"><summary>Show solution</summary><p><strong>Correct answer: (b).</strong></p>
+<p>A complex random variable is a pair of real random variables, and when its real and imaginary parts are independent its differential entropy is the sum of their entropies, since the joint density factorizes and the logarithm of a product is the sum of the logarithms. A real Gaussian variable of variance <span class="math inline">\sigma^2</span> has differential entropy <span class="math inline">\frac12\log_2(2\pi e\sigma^2)</span>, so <span class="math display">\begin{align*}
+h(Z)&amp;=\frac12\log_2(2\pi e)+\frac12\log_2(4\pi e)\\
+&amp;=\frac12\log_2(8\pi^2e^2)=\log_2(\sqrt8\,\pi e).
+\end{align*}</span> For comparison, a circularly symmetric complex Gaussian variable of total variance <span class="math inline">3</span>, with variance <span class="math inline">\frac32</span> per component, would have <span class="math inline">h(Z)=\log_2(3\pi e)</span>, which is larger: for a given total variance the entropy is maximized when the two components share it equally.</p>
+</details></li>
+<li><p>What is the differential entropy, in bits, of a symbol generated in MATLAB as <code>x = 0.5*(randn + 1)</code>?</p>
+<ol>
+<li><p><span class="math inline">\frac{\log_2(\pi e)}{2}</span></p></li>
+<li><p><span class="math inline">\frac{\log_2(\pi e)+1}{2}</span></p></li>
+<li><p><span class="math inline">\frac{\log_2(\pi e)}{2}+1</span></p></li>
+<li><p><span class="math inline">\frac{\log_2(\pi e)-1}{2}</span></p></li>
+</ol>
+<details class="solution"><summary>Show solution</summary><p><strong>Correct answer: (d).</strong></p>
+<p>Since <code>randn</code> is a standard Gaussian variable <span class="math inline">S</span>, the symbol <span class="math inline">X=\frac12(S+1)</span> is Gaussian with mean <span class="math inline">\frac12</span> and variance <span class="math inline">\frac14</span>: adding a constant shifts the mean and scaling by <span class="math inline">\frac12</span> divides the variance by <span class="math inline">4</span>. The differential entropy of a Gaussian variable depends only on its variance, <span class="math display">\begin{align*}
+h(X)&amp;=\frac12\log_2(2\pi e\sigma^2)\\
+&amp;=\frac12\log_2\frac{\pi e}{2}=\frac{\log_2(\pi e)-1}{2}.
+\end{align*}</span> The mean plays no role: shifting a density does not change its differential entropy. Scaling by <span class="math inline">\frac12</span> reduces the entropy of <code>randn</code>, <span class="math inline">\frac{\log_2(\pi e)+1}{2}</span>, by <span class="math inline">\log_22=1</span> bit.</p>
+</details></li>
+<li><p>What is the entropy, in bits, of a symbol generated in MATLAB as <code>x = (rand &gt; 0.5) + (rand &gt; 0.5)</code>?</p>
+<ol>
+<li><p><span class="math inline">-1</span></p></li>
+<li><p><span class="math inline">0</span></p></li>
+<li><p><span class="math inline">1.5</span></p></li>
+<li><p><span class="math inline">2</span></p></li>
+</ol>
+<details class="solution"><summary>Show solution</summary><p><strong>Correct answer: (c).</strong></p>
+<p>Each comparison <code>(rand &gt; 0.5)</code> is an independent equiprobable bit, since a uniform number exceeds <span class="math inline">\frac12</span> with probability <span class="math inline">\frac12</span>, and the two calls to <code>rand</code> are independent. The symbol is the sum of two such bits, a discrete random variable with values <span class="math inline">0</span>, <span class="math inline">1</span> and <span class="math inline">2</span> and probabilities <span class="math inline">\Pr(X=0)=\frac14</span>, <span class="math inline">\Pr(X=1)=\frac12</span> and <span class="math inline">\Pr(X=2)=\frac14</span>, because <span class="math inline">1</span> is obtained from two of the four equiprobable bit pairs. Its entropy is <span class="math display">\begin{align*}
+H(X)&amp;=-\sum_{x\in\{0,1,2\}}\Pr(x)\log_2\Pr(x)\\
+&amp;=2\cdot\frac14\cdot2+\frac12\cdot1=1.5\ \text{bits},
+\end{align*}</span> less than the <span class="math inline">2</span> bits of the pair of bits, since the sum discards which of the two bits is <span class="math inline">1</span>. An entropy can never be negative, which discards option (a) without computation.</p>
+</details></li>
+<li><p>A binary symmetric channel (BSC) with crossover probability <span class="math inline">p</span> has input <span class="math inline">X\in\{0,1\}</span> and output <span class="math inline">Y\in\{0,1\}</span>. What is the mutual information <span class="math inline">I(X;Y)</span> when the input bits are equiprobable? Here <span class="math inline">h_2(p)</span> denotes the binary entropy function.</p>
+<ol>
+<li><p><span class="math inline">h_2(p)</span></p></li>
+<li><p><span class="math inline">1+h_2(p)</span></p></li>
+<li><p><span class="math inline">1-h_2(p)</span></p></li>
+<li><p><span class="math inline">h_2(p)-1</span></p></li>
+</ol>
+<details class="solution"><summary>Show solution</summary><p><strong>Correct answer: (c).</strong></p>
+<p>We use the decomposition <span class="math inline">I(X;Y)=H(Y)-H(Y|X)</span>. Given the input, the output equals the input with probability <span class="math inline">1-p</span> and is flipped with probability <span class="math inline">p</span>, so <span class="math inline">H(Y|X=x)=h_2(p)</span> for both inputs and <span class="math inline">H(Y|X)=h_2(p)</span>. With equiprobable inputs the output is also equiprobable, since <span class="math inline">\Pr(Y=1)=\frac12(1-p)+\frac12p=\frac12</span>, and <span class="math inline">H(Y)=1</span> bit. Hence <span class="math display">I(X;Y)=1-h_2(p),</span> which is the capacity of the BSC: it equals <span class="math inline">1</span> bit for a noiseless channel, <span class="math inline">p=0</span> or <span class="math inline">p=1</span>, and vanishes for <span class="math inline">p=\frac12</span>, where the output is independent of the input.</p>
+</details></li>
+<li><p>A channel with input <span class="math inline">X\in\{0,1\}</span> and output <span class="math inline">Y\in\{0,1\}</span> has transition probabilities <span class="math inline">W(1|0)=\frac12</span> and <span class="math inline">W(0|1)=0</span>. What is the mutual information <span class="math inline">I(X;Y)</span> when the input bits have probabilities <span class="math inline">\Pr(X=0)=1-q</span> and <span class="math inline">\Pr(X=1)=q</span>? Here <span class="math inline">h_2(p)</span> denotes the binary entropy function.</p>
+<ol>
+<li><p><span class="math inline">1-q+h_2\bigl(\frac{1-q}{2}\bigr)</span></p></li>
+<li><p><span class="math inline">q-1+h_2\bigl(\frac{1+q}{2}\bigr)</span></p></li>
+<li><p><span class="math inline">q+h_2\bigl(\frac{1-q}{2}\bigr)</span></p></li>
+<li><p><span class="math inline">-q+h_2\bigl(\frac{1+q}{2}\bigr)</span></p></li>
+</ol>
+<details class="solution"><summary>Show solution</summary><p><strong>Correct answer: (b).</strong></p>
+<p>Again <span class="math inline">I(X;Y)=H(Y)-H(Y|X)</span>. When <span class="math inline">X=0</span> the output is equiprobable, so <span class="math inline">H(Y|X=0)=1</span>. When <span class="math inline">X=1</span> the output is always <span class="math inline">1</span>, since <span class="math inline">W(0|1)=0</span>, so <span class="math inline">H(Y|X=1)=0</span>. Averaging over the input, <span class="math inline">H(Y|X)=(1-q)\cdot1+q\cdot0=1-q</span>. The output takes the value <span class="math inline">1</span> with probability <span class="math display">\begin{align*}
+\Pr(Y=1)&amp;=(1-q)W(1|0)+qW(1|1)\\
+&amp;=\frac{1-q}{2}+q=\frac{1+q}{2},
+\end{align*}</span> so <span class="math inline">H(Y)=h_2\bigl(\frac{1+q}{2}\bigr)</span> and <span class="math inline">I(X;Y)=h_2\bigl(\frac{1+q}{2}\bigr)-(1-q)</span>. As a check, for <span class="math inline">q=1</span> the input is deterministic and the mutual information is <span class="math inline">h_2(1)-0=0</span>. For <span class="math inline">q=0</span> it is <span class="math inline">h_2(\frac12)-1=0</span> as well, since a deterministic input carries no information.</p>
+</details></li>
+<li><p>A binary erasure channel (BEC) with erasure probability <span class="math inline">\frac12</span> has input <span class="math inline">X\in\{0,1\}</span> and output <span class="math inline">Y\in\{0,1,?\}</span>, where <span class="math inline">?</span> denotes an erasure. What is the mutual information <span class="math inline">I(X;Y)</span> when the input bits are equiprobable?</p>
+<ol>
+<li><p><span class="math inline">0</span></p></li>
+<li><p><span class="math inline">1</span></p></li>
+<li><p><span class="math inline">\frac12</span></p></li>
+<li><p><span class="math inline">\frac23</span></p></li>
+</ol>
+<details class="solution"><summary>Show solution</summary><p><strong>Correct answer: (c).</strong></p>
+<p>Given the input, the output is either the input itself or an erasure, each with probability <span class="math inline">\frac12</span>, so <span class="math inline">H(Y|X=x)=h_2(\frac12)=1</span> bit for both inputs and <span class="math inline">H(Y|X)=1</span>. The output distribution is <span class="math inline">\Pr(Y=0)=\Pr(Y=1)=\frac14</span> and <span class="math inline">\Pr(Y=\,?)=\frac12</span>, with entropy <span class="math display">H(Y)=2\cdot\frac14\log_24+\frac12\log_22=\frac32\ \text{bits}.</span> Hence <span class="math inline">I(X;Y)=H(Y)-H(Y|X)=\frac32-1=\frac12</span> bit. This is the general rule for the BEC with erasure probability <span class="math inline">\varepsilon</span> and equiprobable inputs: a fraction <span class="math inline">1-\varepsilon</span> of the input bits arrive intact and the rest carry nothing, so <span class="math inline">I(X;Y)=1-\varepsilon</span>.</p>
+</details></li>
+<li><p>A complex-valued channel has input <span class="math inline">X\in\{-1,+1\}</span>, equiprobable, and output <span class="math inline">Y=X+Z</span>, where <span class="math inline">Z</span> is circularly symmetric complex Gaussian noise with zero mean and variance <span class="math inline">\sigma^2</span>. What is the probability density function of the output <span class="math inline">Y</span>?</p>
+<ol>
+<li><p><span class="math inline">\frac{1}{\pi\sigma^2}e^{-|y|^2/\sigma^2}</span></p></li>
+<li><p><span class="math inline">\frac{1}{2\pi\sigma^2}\Bigl(e^{-|y-1|^2/\sigma^2}+e^{-|y+1|^2/\sigma^2}\Bigr)</span></p></li>
+<li><p><span class="math inline">\frac{1}{2\sigma^2}\Bigl(e^{-|y-1|^2/\sigma^2}+e^{-|y+1|^2/\sigma^2}\Bigr)</span></p></li>
+<li><p><span class="math inline">\frac12\Bigl(e^{-|y-1|^2/\sigma^2}+e^{-|y+1|^2/\sigma^2}\Bigr)</span></p></li>
+</ol>
+<details class="solution"><summary>Show solution</summary><p><strong>Correct answer: (b).</strong></p>
+<p>Given the input <span class="math inline">x</span>, the output <span class="math inline">Y=x+Z</span> is a complex Gaussian variable centered at <span class="math inline">x</span> with the same variance as the noise, so the channel law is the noise density shifted to <span class="math inline">x</span>, <span class="math display">W(y|x)=\frac{1}{\pi\sigma^2}e^{-|y-x|^2/\sigma^2},</span> where the factor <span class="math inline">\frac{1}{\pi\sigma^2}</span> normalizes a circularly symmetric complex Gaussian density of variance <span class="math inline">\sigma^2</span>. The output density follows from the law of total probability, averaging the channel law over the input distribution, <span class="math display">\begin{align*}
+f_Y(y)&amp;=\sum_{x\in\{-1,+1\}}\Pr(x)W(y|x)\\
+&amp;=\frac{1}{2\pi\sigma^2}\Bigl(e^{-|y-1|^2/\sigma^2}+e^{-|y+1|^2/\sigma^2}\Bigr),
+\end{align*}</span> a mixture of two Gaussian densities centered at <span class="math inline">\pm1</span>. Options (c) and (d) are not normalized, and option (a) is the density of the noise alone. This output density is the one needed to compute the mutual information of the channel, through <span class="math inline">h(Y)-h(Y|X)=h(Y)-\log_2(\pi e\sigma^2)</span>.</p>
+</details></li>
+<li><p>What is the limit of the capacity, in bits per second, of the complex AWGN channel with power <span class="math inline">P=1</span> and constant noise spectral density <span class="math inline">\No=1</span> when the bandwidth grows without bound, <span class="math inline">W\to\infty</span>?</p>
+<ol>
+<li><p><span class="math inline">0</span></p></li>
+<li><p><span class="math inline">\infty</span></p></li>
+<li><p><span class="math inline">1</span></p></li>
+<li><p><span class="math inline">\log_2e</span></p></li>
+</ol>
+<details class="solution"><summary>Show solution</summary><p><strong>Correct answer: (d).</strong></p>
+<p>The capacity of the complex AWGN channel in bits per second is <span class="math display">C=W\log_2\Bigl(1+\frac{P}{\No W}\Bigr),</span> the capacity per channel use, <span class="math inline">\log_2(1+\Es/\sigma^2)</span> with symbol energy <span class="math inline">\Es=P/W</span> and noise variance <span class="math inline">\sigma^2=\No</span>, multiplied by the <span class="math inline">W</span> channel uses per second. As <span class="math inline">W</span> grows the argument of the logarithm approaches <span class="math inline">1</span>, and the expansion <span class="math inline">\log_2(1+u)\approx u\log_2e</span> for small <span class="math inline">u</span> gives <span class="math display">C\approx W\cdot\frac{P}{\No W}\log_2e=\frac{P}{\No}\log_2e,</span> which for <span class="math inline">P=\No=1</span> equals <span class="math inline">\log_2e\approx1.44</span> bits per second, or exactly <span class="math inline">1</span> nat per second. The capacity does not grow without bound with the bandwidth: each additional hertz brings less capacity, because the signal power is spread over more dimensions while the noise power per dimension stays constant.</p>
+</details></li>
+<li><p>We want to transmit reliably over a complex AWGN channel with bandwidth <span class="math inline">W=2</span> and power <span class="math inline">P=3</span> at a rate of <span class="math inline">R=4</span> bits per second. This is possible if and only if the noise spectral density <span class="math inline">\No</span> satisfies</p>
+<ol>
+<li><p><span class="math inline">\No&gt;\frac{1}{10}</span></p></li>
+<li><p><span class="math inline">\No&lt;\frac{1}{10}</span></p></li>
+<li><p><span class="math inline">\No&gt;\frac12</span></p></li>
+<li><p><span class="math inline">\No&lt;\frac12</span></p></li>
+</ol>
+<details class="solution"><summary>Show solution</summary><p><strong>Correct answer: (d).</strong></p>
+<p>Reliable communication is possible if and only if the rate is below capacity, <span class="math inline">R&lt;C=W\log_2\bigl(1+\frac{P}{\No W}\bigr)</span>. With the given values the condition reads <span class="math display">4&lt;2\log_2\Bigl(1+\frac{3}{2\No}\Bigr),</span> that is, the logarithm must exceed <span class="math inline">2</span>. Since the logarithm is increasing, this holds when its argument exceeds <span class="math inline">2^2=4</span>, that is, when <span class="math inline">\frac{3}{2\No}&gt;3</span>, or <span class="math inline">\No&lt;\frac12</span>. The noise must be weak enough for the required rate, and the boundary value <span class="math inline">\No=\frac12</span> is the one at which the capacity equals exactly <span class="math inline">4</span> bits per second.</p>
+</details></li>
+<li><p>We want to transmit reliably over a complex AWGN channel with bandwidth <span class="math inline">W=2</span> and noise spectral density <span class="math inline">\No=\frac14</span> at a rate of <span class="math inline">R=4</span> bits per second. This is possible if and only if the power <span class="math inline">P</span> satisfies</p>
+<ol>
+<li><p><span class="math inline">P&lt;\frac32</span></p></li>
+<li><p><span class="math inline">P&gt;\frac32</span></p></li>
+<li><p><span class="math inline">P&gt;\frac12</span></p></li>
+<li><p><span class="math inline">P&lt;\frac12</span></p></li>
+</ol>
+<details class="solution"><summary>Show solution</summary><p><strong>Correct answer: (b).</strong></p>
+<p>The condition <span class="math inline">R&lt;C</span> becomes <span class="math inline">4&lt;2\log_2\bigl(1+\frac{P}{\No W}\bigr)=2\log_2(1+2P)</span>, since <span class="math inline">\No W=\frac12</span>. Dividing by <span class="math inline">2</span> and using that the logarithm is increasing, <span class="math inline">\log_2(1+2P)&gt;2</span> holds when <span class="math inline">1+2P&gt;4</span>, that is, <span class="math inline">P&gt;\frac32</span>. As in the previous problem, the boundary value gives exactly <span class="math inline">4</span> bits per second: <span class="math inline">2\log_2(1+3)=4</span>. Note the roles of the two parameters: the condition only involves the ratio <span class="math inline">P/\No</span>, here required to exceed <span class="math inline">6</span>.</p>
+</details></li>
+<li><p>We want to simulate the transmission over a continuous-time complex AWGN channel with noise spectral density <span class="math inline">\No=2</span>, duration <span class="math inline">T=2</span> and bandwidth <span class="math inline">W=2</span>. If <code>randn</code> returns a real Gaussian sample of zero mean and unit variance, which command generates one noise sample of the discrete-time model of this channel?</p>
+<ol>
+<li><p><code>(randn + 1j*randn)/sqrt(2)</code></p></li>
+<li><p><code>randn + 1j*randn</code></p></li>
+<li><p><code>sqrt(2)*(randn + 1j*randn)</code></p></li>
+<li><p><code>2*(randn + 1j*randn)</code></p></li>
+</ol>
+<details class="solution"><summary>Show solution</summary><p><strong>Correct answer: (b).</strong></p>
+<p>Projecting the received waveform onto the <span class="math inline">WT=4</span> orthonormal waveforms of the transmission gives the discrete-time model <span class="math inline">Y_i=X_i+Z_i</span>, <span class="math inline">i=1,\dots,4</span>, where the noise samples <span class="math inline">Z_i</span> are independent circularly symmetric complex Gaussian variables with variance <span class="math inline">\sigma^2=\No</span> each, that is, <span class="math inline">\No/2</span> per real component. The duration and the bandwidth fix the number of samples, but not their variance. With <span class="math inline">\No=2</span> each sample needs real and imaginary parts of variance <span class="math inline">1</span>, which is exactly what <code>randn + 1j*randn</code> produces, since <span class="math inline">\EE(|Z|^2)=\EE(Z_{\mathrm r}^2)+\EE(Z_{\mathrm i}^2)=1+1=2</span>. Option (a) generates variance <span class="math inline">1</span>, option (c) variance <span class="math inline">4</span> and option (d) variance <span class="math inline">8</span>. The sign of the imaginary part is irrelevant, since <code>randn</code> is symmetric.</p>
+</details></li>
+<li><p>The capacity of the discrete-time model of a complex passband AWGN channel with bandwidth <span class="math inline">2</span> Hz and transmission duration <span class="math inline">3</span> seconds is <span class="math inline">1</span> bit per channel use. What is the capacity of the channel in bits per second?</p>
+<ol>
+<li><p><span class="math inline">\frac16</span></p></li>
+<li><p><span class="math inline">\frac23</span></p></li>
+<li><p><span class="math inline">1</span></p></li>
+<li><p><span class="math inline">2</span></p></li>
+</ol>
+<details class="solution"><summary>Show solution</summary><p><strong>Correct answer: (d).</strong></p>
+<p>A complex passband transmission of bandwidth <span class="math inline">W</span> and duration <span class="math inline">T</span> provides <span class="math inline">WT</span> orthonormal waveforms, that is, <span class="math inline">WT</span> channel uses, so the channel is used <span class="math inline">W</span> times per second. Here the whole transmission has <span class="math inline">WT=6</span> channel uses carrying at most <span class="math inline">6</span> bits, and the rate in bits per second is <span class="math display">C=\frac{6\ \text{bits}}{3\ \text{s}}=2\ \text{bits per second},</span> which is the capacity per channel use, <span class="math inline">1</span> bit, multiplied by the <span class="math inline">W=2</span> channel uses per second. Dividing further by the bandwidth gives the spectral efficiency, <span class="math inline">1</span> bit per second and per hertz, which coincides with the capacity per channel use.</p>
+</details></li>
+<li><p>A coded-modulation system uses the MATLAB function <code>bit2symENC(b,k,n,E)</code> to encode <code>k</code> information bits <code>b</code> into <code>n</code> symbols of a complex constellation with average energy <code>E</code>, and <code>sym2bitDEC(y,n,k)</code> to decode <code>n</code> channel outputs into <code>k</code> bits. What is the maximum rate, in bits per channel use, at which the following system can transmit reliably?<br />
+<code>b = (rand(1,k) &lt; 0.5);</code><br />
+<code>x = bit2symENC(b,k,n,6);</code><br />
+<code>z = randn(1,n) + 1j*randn(1,n);</code><br />
+<code>y = x + z;</code><br />
+<code>best = sym2bitDEC(y,n,k);</code></p>
+<ol>
+<li><p><span class="math inline">\frac12</span></p></li>
+<li><p><span class="math inline">1</span></p></li>
+<li><p><span class="math inline">2</span></p></li>
+<li><p><span class="math inline">4</span></p></li>
+</ol>
+<details class="solution"><summary>Show solution</summary><p><strong>Correct answer: (c).</strong></p>
+<p>The first line generates <span class="math inline">k</span> independent equiprobable bits, which are encoded into <span class="math inline">n</span> symbols of average energy <span class="math inline">\Es=6</span>. The third line adds complex Gaussian noise whose real and imaginary parts have unit variance, so the noise variance per channel use is <span class="math inline">\sigma^2=2</span> and the signal-to-noise ratio is <span class="math inline">\Es/\sigma^2=3</span>. Whatever the constellation and the code, the rate <span class="math inline">k/n</span> of a reliable system cannot exceed the capacity of the complex AWGN channel per channel use, <span class="math display">C=\log_2\Bigl(1+\frac{\Es}{\sigma^2}\Bigr)=\log_2(1+3)=2</span> bits per channel use. Achieving it would require, in addition, a constellation of many more than <span class="math inline">4</span> points, with Gaussian-like statistics, and a long code.</p>
+</details></li>
+<li><p>Consider a complex AWGN channel with bandwidth <span class="math inline">W</span>, power <span class="math inline">P=1</span> and noise spectral density <span class="math inline">\No=1</span>. Which of the following statements is <strong>false</strong>?</p>
+<ol>
+<li><p>As <span class="math inline">W\to\infty</span>, reliable communication is not possible above <span class="math inline">1</span> nat per second.</p></li>
+<li><p>For <span class="math inline">W=\frac13</span>, reliable communication is possible at <span class="math inline">\frac34</span> bits per second.</p></li>
+<li><p>For <span class="math inline">W=\frac17</span>, reliable communication is possible at <span class="math inline">\frac14</span> bits per second.</p></li>
+<li><p>For <span class="math inline">W=1</span>, the capacity is <span class="math inline">1</span> bit per second.</p></li>
+</ol>
+<details class="solution"><summary>Show solution</summary><p><strong>Correct answer: (b).</strong></p>
+<p>With <span class="math inline">P=\No=1</span> the capacity is <span class="math inline">C=W\log_2\bigl(1+\frac1W\bigr)</span> bits per second, and reliable communication is possible at any rate below it. For (a), the limit as <span class="math inline">W\to\infty</span> is <span class="math inline">\frac{P}{\No}\log_2e=\log_2e</span> bits per second, that is, <span class="math inline">1</span> nat per second, so the statement is true. For (b), <span class="math inline">W=\frac13</span> gives <span class="math display">C=\frac13\log_2(1+3)=\frac23\ \text{bits per second},</span> which is below the claimed <span class="math inline">\frac34</span>: the statement is false. For (c), <span class="math inline">W=\frac17</span> gives <span class="math inline">C=\frac17\log_28=\frac37</span>, above <span class="math inline">\frac14</span>, so the statement is true. For (d), <span class="math inline">W=1</span> gives <span class="math inline">C=\log_22=1</span> bit per second, also true. Observe that reducing the bandwidth from <span class="math inline">1</span> to <span class="math inline">\frac13</span> reduces the capacity only from <span class="math inline">1</span> to <span class="math inline">\frac23</span>, since the signal-to-noise ratio per channel use, <span class="math inline">\frac{P}{\No W}</span>, grows as the bandwidth shrinks.</p>
+</details></li>
+<li><p>A bit <span class="math inline">B</span> with <span class="math inline">\Pr(B=0)=\frac13</span> is sent over the channel <span class="math inline">Y=3(-1)^B-Z</span>, where the noise <span class="math inline">Z</span> is uniform in <span class="math inline">(-3,4)</span> and independent of <span class="math inline">B</span>. What is the bit error probability of the optimal detector?</p>
+<ol>
+<li><p><span class="math inline">\frac{1}{21}</span></p></li>
+<li><p><span class="math inline">\frac13</span></p></li>
+<li><p><span class="math inline">\frac{1}{14}</span></p></li>
+<li><p><span class="math inline">\frac12</span></p></li>
+</ol>
+<details class="solution"><summary>Show solution</summary><p><strong>Correct answer: (a).</strong></p>
+<p>The optimal detector is the MAP rule, which chooses the bit with the largest <span class="math inline">\Pr(b)W(y|b)</span>. The noise density is <span class="math inline">\frac17</span> on <span class="math inline">(-3,4)</span>, so given <span class="math inline">B=0</span> the output <span class="math inline">Y=3-Z</span> is uniform on <span class="math inline">(-1,6)</span> and given <span class="math inline">B=1</span> the output <span class="math inline">Y=-3-Z</span> is uniform on <span class="math inline">(-7,0)</span>, both with density <span class="math inline">\frac17</span>. Outside the overlap only one hypothesis is possible: the detector decides <span class="math inline">\hat B=0</span> for <span class="math inline">y&gt;0</span> and <span class="math inline">\hat B=1</span> for <span class="math inline">y&lt;-1</span>, without error. On the overlap <span class="math inline">(-1,0)</span> the two likelihoods coincide and the prior decides: <span class="math inline">\Pr(0)W(y|0)=\frac13\cdot\frac17</span> is smaller than <span class="math inline">\Pr(1)W(y|1)=\frac23\cdot\frac17</span>, so the detector chooses <span class="math inline">\hat B=1</span>. The only error event is therefore <span class="math inline">B=0</span> together with <span class="math inline">Y\in(-1,0)</span>, with probability <span class="math display">\begin{align*}
+\Pr(B=0)\Pr(Y\in(-1,0)\mid B=0)&amp;=\frac13\int_{-1}^{0}\frac17\drm y\\
+&amp;=\frac{1}{21}.
+\end{align*}</span> An ML detector, which ignores the prior, would have to break the tie on the overlap arbitrarily. Choosing <span class="math inline">\hat B=0</span> there would give the larger error <span class="math inline">\frac23\cdot\frac17=\frac{2}{21}</span>.</p>
+</details></li>
+<li><p>Equiprobable symbols <span class="math inline">X\in\{1,2\}</span> are sent over the multiplicative channel <span class="math inline">Y=XZ</span>, where <span class="math inline">Z</span> is uniform in <span class="math inline">[0,1]</span> and independent of <span class="math inline">X</span>. What is the maximum likelihood detector?</p>
+<ol>
+<li><p><span class="math inline">\hat X=1</span> if <span class="math inline">Y&lt;1</span>, and <span class="math inline">\hat X=2</span> if <span class="math inline">Y&gt;1</span>.</p></li>
+<li><p><span class="math inline">\hat X=1</span> if <span class="math inline">Y&lt;\frac32</span>, and <span class="math inline">\hat X=2</span> if <span class="math inline">Y&gt;\frac32</span>.</p></li>
+<li><p><span class="math inline">\hat X=1</span> if <span class="math inline">Y&gt;1</span>, and <span class="math inline">\hat X=2</span> if <span class="math inline">Y&lt;1</span>.</p></li>
+<li><p><span class="math inline">\hat X=1</span> if <span class="math inline">Y&gt;\frac32</span>, and <span class="math inline">\hat X=2</span> if <span class="math inline">Y&lt;\frac32</span>.</p></li>
+</ol>
+<details class="solution"><summary>Show solution</summary><p><strong>Correct answer: (a).</strong></p>
+<p>The ML detector chooses the symbol under which the observation is most likely, so we need the channel law <span class="math inline">W(y|x)</span> for each symbol. Given <span class="math inline">X=1</span> the output is <span class="math inline">Y=Z</span>, uniform on <span class="math inline">[0,1]</span> with density <span class="math inline">W(y|1)=1</span> there. Given <span class="math inline">X=2</span> the output is <span class="math inline">Y=2Z</span>, which stretches the uniform density over <span class="math inline">[0,2]</span>: <span class="math inline">W(y|2)=\frac12</span> on <span class="math inline">[0,2]</span>, since the total probability must remain <span class="math inline">1</span>. Comparing the two, for <span class="math inline">0\leq y&lt;1</span> we have <span class="math inline">W(y|1)=1&gt;\frac12=W(y|2)</span> and the detector chooses <span class="math inline">\hat X=1</span>. For <span class="math inline">1&lt;y\leq2</span> only <span class="math inline">X=2</span> is possible, since <span class="math inline">W(y|1)=0</span>, and the detector chooses <span class="math inline">\hat X=2</span>. The threshold is at <span class="math inline">y=1</span>, the largest output that <span class="math inline">X=1</span> can produce, and not at the midpoint <span class="math inline">\frac32</span> of the two symbols: the midpoint rule is a property of additive Gaussian noise, not of this channel. The resulting error probability is <span class="math inline">\Pr(X=2)\Pr(Z&lt;\frac12)=\frac12\cdot\frac12=\frac14</span>.</p>
+</details></li>
+<li><p>Equiprobable symbols <span class="math inline">x\in\{-2,2\}</span> are sent over the complex AWGN channel with noise variance <span class="math inline">\sigma^2=1</span>. A detector decides <span class="math inline">\hat x=2</span> if <span class="math inline">\mathrm{Re}(y)&gt;0</span> and <span class="math inline">\hat x=-2</span> if <span class="math inline">\mathrm{Re}(y)&lt;0</span>. What is its error probability? Recall that <span class="math inline">\erfc(u)=\frac{2}{\sqrt\pi}\int_u^\infty e^{-t^2}\drm t</span> and that <span class="math inline">\operatorname{erf}(u)=1-\erfc(u)</span>.</p>
+<ol>
+<li><p><span class="math inline">\frac12\erfc(2)</span></p></li>
+<li><p><span class="math inline">\frac12\erfc(-2)</span></p></li>
+<li><p><span class="math inline">\frac12\operatorname{erf}(2)</span></p></li>
+<li><p><span class="math inline">\frac12\operatorname{erf}(-2)</span></p></li>
+</ol>
+<details class="solution"><summary>Show solution</summary><p><strong>Correct answer: (a).</strong></p>
+<p>This detector is the ML detector: the channel law <span class="math inline">W(y|x)=\frac1\pi e^{-|y-x|^2}</span> is largest for the symbol nearest to <span class="math inline">y</span>, and the two symbols are real, so only the real part of <span class="math inline">y</span> matters and the boundary is the midpoint <span class="math inline">\mathrm{Re}(y)=0</span>. Given <span class="math inline">x=2</span>, the real part <span class="math inline">\mathrm{Re}(Y)=2+\mathrm{Re}(Z)</span> is a real Gaussian variable with mean <span class="math inline">2</span> and variance <span class="math inline">\frac{\sigma^2}{2}=\frac12</span>, since the noise variance is shared equally by the two components. An error occurs when it is negative, with probability <span class="math display">\begin{align*}
+\Pr(\mathrm{Re}(Y)&lt;0\mid x=2)&amp;=\int_{-\infty}^{0}\frac{1}{\sqrt\pi}e^{-(u-2)^2}\drm u\\
+&amp;=\frac{1}{\sqrt\pi}\int_{2}^{\infty}e^{-t^2}\drm t\\
+&amp;=\frac12\erfc(2),
+\end{align*}</span> where the change of variable <span class="math inline">t=2-u</span> maps the interval <span class="math inline">(-\infty,0)</span> to <span class="math inline">(2,\infty)</span>. By symmetry, the error probability given <span class="math inline">x=-2</span> is the same, and the average over the two equiprobable symbols is <span class="math inline">\frac12\erfc(2)</span>, about <span class="math inline">2.3\cdot10^{-3}</span>. Option (b) is close to <span class="math inline">1</span>, option (c) is <span class="math inline">\frac12-\frac12\erfc(2)\approx0.498</span>, the error probability of a detector that nearly ignores the observation, and option (d) is negative.</p>
+</details></li>
+<li><p>A coded-modulation system sends one information bit <span class="math inline">D</span> as the pair of symbols <span class="math inline">\x(D)=(X_1,X_2)</span> with <span class="math inline">X_1=X_2=\sqrt{\Es}\,D</span>, over the complex AWGN channel with noise variance <span class="math inline">\sigma^2=1</span>. What is the set of all received pairs <span class="math inline">\y=(y_1,y_2)</span> for which the two likelihoods coincide, <span class="math inline">W^2(\y|\x(0))=W^2(\y|\x(1))</span>?</p>
+<ol>
+<li><p><span class="math inline">\mathrm{Re}(y_1)=\mathrm{Re}(y_2)=0</span></p></li>
+<li><p><span class="math inline">\mathrm{Re}(y_1)=\mathrm{Re}(y_2)=\frac{\sqrt{\Es}}{2}</span></p></li>
+<li><p><span class="math inline">\mathrm{Re}(y_1)+\mathrm{Re}(y_2)=0</span></p></li>
+<li><p><span class="math inline">\mathrm{Re}(y_1)+\mathrm{Re}(y_2)=\sqrt{\Es}</span></p></li>
+</ol>
+<details class="solution"><summary>Show solution</summary><p><strong>Correct answer: (d).</strong></p>
+<p>The channel is memoryless, so the likelihood of the pair is the product of the likelihoods of its two symbols, <span class="math display">\begin{align*}
+W^2(\y|\x(D))&amp;=W(y_1|X_1)W(y_2|X_2)\\
+&amp;=\frac{1}{\pi^2}e^{-|y_1-\sqrt{\Es}D|^2}e^{-|y_2-\sqrt{\Es}D|^2}.
+\end{align*}</span> The two likelihoods coincide when the exponents do, that is, when <span class="math display">|y_1-\sqrt{\Es}|^2+|y_2-\sqrt{\Es}|^2=|y_1|^2+|y_2|^2.</span> Expanding <span class="math inline">|y_i-\sqrt{\Es}|^2=|y_i|^2-2\sqrt{\Es}\,\mathrm{Re}(y_i)+\Es</span>, the terms <span class="math inline">|y_i|^2</span> cancel on both sides and the condition becomes <span class="math inline">-2\sqrt{\Es}\bigl(\mathrm{Re}(y_1)+\mathrm{Re}(y_2)\bigr)+2\Es=0</span>, that is, <span class="math inline">\mathrm{Re}(y_1)+\mathrm{Re}(y_2)=\sqrt{\Es}</span>. This is the boundary of the ML decoder: it decides <span class="math inline">\hat D=1</span> when the sum of the real parts exceeds <span class="math inline">\sqrt{\Es}</span> and <span class="math inline">\hat D=0</span> otherwise. Only the sum matters, since the two symbols carry the same bit, and the imaginary parts play no role because both codewords are real.</p>
+</details></li>
+<li><p>A bit is sent over a bit-flipping channel with flip probability <span class="math inline">p&lt;\frac12</span> using a repetition code of length <span class="math inline">n</span> and a majority-vote decoder, which breaks ties at random. The error probability is, for odd <span class="math inline">n</span>, <span class="math display">P_{\mathrm e}(n)=\sum_{k=(n+1)/2}^{n}\binom nk p^k(1-p)^{n-k},</span> and, for even <span class="math inline">n</span>, <span class="math display">\begin{align*}
+P_{\mathrm e}(n)&amp;=\frac12\binom{n}{n/2}p^{n/2}(1-p)^{n/2}\\
+&amp;\quad+\sum_{k=n/2+1}^{n}\binom nk p^k(1-p)^{n-k}.
+\end{align*}</span> For which of <span class="math inline">n=3</span> and <span class="math inline">n=4</span> is the error probability larger?</p>
+<ol>
+<li><p><span class="math inline">n=3</span></p></li>
+<li><p><span class="math inline">n=4</span></p></li>
+<li><p>It depends on the value of <span class="math inline">p</span></p></li>
+<li><p>Both give the same error probability</p></li>
+</ol>
+<details class="solution"><summary>Show solution</summary><p><strong>Correct answer: (d).</strong></p>
+<p>For <span class="math inline">n=3</span> an error occurs when two or three of the received bits are flipped, <span class="math display">\begin{align*}
+P_{\mathrm e}(3)&amp;=\binom32p^2(1-p)+\binom33p^3\\
+&amp;=3p^2(1-p)+p^3=3p^2-2p^3.
+\end{align*}</span> For <span class="math inline">n=4</span> an error occurs when three or four bits are flipped, and with probability <span class="math inline">\frac12</span> when exactly two are flipped, since the vote is then tied, <span class="math display">\begin{align*}
+P_{\mathrm e}(4)&amp;=\frac12\binom42p^2(1-p)^2+\binom43p^3(1-p)\\
+&amp;\quad+\binom44p^4\\
+&amp;=3p^2(1-2p+p^2)+4p^3(1-p)+p^4\\
+&amp;=3p^2-2p^3.
+\end{align*}</span> The two expressions coincide for every <span class="math inline">p</span>. Adding a fourth repetition does not help: the extra bit can only create ties, and a random tie-break is exactly as good as not having the bit. This is why repetition codes are used with odd lengths.</p>
+</details></li>
+<li><p>A data transmission system works as follows.<br />
+<code>b = (rand &gt; 0.25);</code><br />
+<code>x = 2*b;</code><br />
+<code>z = 4*rand - 2;</code><br />
+<code>y = x + z;</code><br />
+<code>best = 0.5 + 0.5*sign(y);</code><br />
+What is the error probability <span class="math inline">\Pr(\texttt{best}\neq\texttt{b})</span>?</p>
+<ol>
+<li><p><span class="math inline">0</span></p></li>
+<li><p><span class="math inline">\frac18</span></p></li>
+<li><p><span class="math inline">\frac14</span></p></li>
+<li><p><span class="math inline">\frac12</span></p></li>
+</ol>
+<details class="solution"><summary>Show solution</summary><p><strong>Correct answer: (b).</strong></p>
+<p>The first line generates a bit with <span class="math inline">\Pr(b=1)=\frac34</span> and <span class="math inline">\Pr(b=0)=\frac14</span>, mapped to the symbols <span class="math inline">x=2</span> and <span class="math inline">x=0</span>. The noise <span class="math inline">z=4\,\texttt{rand}-2</span> is uniform in <span class="math inline">(-2,2)</span>, and the detector decides <span class="math inline">\texttt{best}=1</span> when <span class="math inline">y&gt;0</span> and <span class="math inline">\texttt{best}=0</span> when <span class="math inline">y&lt;0</span>, a threshold at <span class="math inline">0</span>. When <span class="math inline">b=0</span> the output is <span class="math inline">y=z</span>, and the detector errs when <span class="math inline">z&gt;0</span>, with probability <span class="math inline">\frac12</span>. When <span class="math inline">b=1</span> the output is <span class="math inline">y=2+z\in(0,4)</span>, always positive, so the detector never errs. Averaging over the bit, <span class="math display">\begin{align*}
+\Pr(\texttt{best}\neq\texttt{b})&amp;=\Pr(b=0)\cdot\frac12+\Pr(b=1)\cdot0\\
+&amp;=\frac14\cdot\frac12=\frac18.
+\end{align*}</span> The threshold at <span class="math inline">0</span> is the MAP choice. On the overlap <span class="math inline">(0,2)</span> of the two output ranges both likelihoods equal <span class="math inline">\frac14</span> and the prior favors <span class="math inline">b=1</span>, so deciding <span class="math inline">1</span> there is optimal and <span class="math inline">\frac18</span> is the smallest possible error probability. A threshold <span class="math inline">t\in(0,2)</span> would give <span class="math inline">\frac{1+t}{8}</span>, which grows with <span class="math inline">t</span>.</p>
+</details></li>
+<li><p>A stream of bits is divided into consecutive groups of <span class="math inline">10</span> bits, and each group is mapped onto a sequence of <span class="math inline">n</span> symbols of a 3-PSK constellation. What is the smallest <span class="math inline">n</span> for which the mapping from bits to symbols is reversible?</p>
+<ol>
+<li><p><span class="math inline">5</span></p></li>
+<li><p><span class="math inline">6</span></p></li>
+<li><p><span class="math inline">7</span></p></li>
+<li><p><span class="math inline">8</span></p></li>
+</ol>
+<details class="solution"><summary>Show solution</summary><p><strong>Correct answer: (c).</strong></p>
+<p>A mapping is reversible when different groups of bits are always mapped onto different sequences of symbols, so that the bits can be recovered from the symbols. There are <span class="math inline">2^{10}=1024</span> different groups of <span class="math inline">10</span> bits and <span class="math inline">3^n</span> different sequences of <span class="math inline">n</span> ternary symbols, so reversibility requires <span class="math inline">3^n\geq2^{10}</span>, that is, <span class="math display">n\geq\frac{10}{\log_23}\approx6.31.</span> Since <span class="math inline">n</span> is an integer, the smallest admissible value is <span class="math inline">n=7</span>, which provides <span class="math inline">3^7=2187</span> sequences, whereas <span class="math inline">n=6</span> provides only <span class="math inline">3^6=729&lt;1024</span>. The resulting rate is <span class="math inline">\frac{10}{7}\approx1.43</span> bits per symbol, below the <span class="math inline">\log_23\approx1.58</span> bits that a 3-PSK symbol can carry, because <span class="math inline">2^{10}</span> is not a power of <span class="math inline">3</span>.</p>
+</details></li>
+<li><p>A stream of bits interleaves control and information data so that <span class="math inline">1</span> bit out of every <span class="math inline">12</span> carries control commands. The stream is encoded with a channel code of rate <span class="math inline">\frac67</span>, and then groups of <span class="math inline">7</span> coded bits are mapped onto sequences of <span class="math inline">n</span> symbols of a 5-PAM constellation, with <span class="math inline">n</span> the smallest length for which the mapping is reversible. What is the information rate of the system, in information bits (excluding control bits, before encoding) per modulation symbol?</p>
+<ol>
+<li><p><span class="math inline">\frac65</span></p></li>
+<li><p><span class="math inline">\frac32</span></p></li>
+<li><p><span class="math inline">\frac{11}{8}</span></p></li>
+<li><p><span class="math inline">2</span></p></li>
+</ol>
+<details class="solution"><summary>Show solution</summary><p><strong>Correct answer: (c).</strong></p>
+<p>We follow <span class="math inline">12</span> bits of the stream through the system. Of these, <span class="math inline">11</span> are information bits and <span class="math inline">1</span> is a control bit. The rate-<span class="math inline">\frac67</span> code produces <span class="math inline">7</span> coded bits for every <span class="math inline">6</span> input bits, so the <span class="math inline">12</span> bits become <span class="math inline">14</span> coded bits, that is, two groups of <span class="math inline">7</span>. Each group of <span class="math inline">7</span> bits has <span class="math inline">2^7=128</span> possible values, and <span class="math inline">n</span> symbols of a 5-PAM constellation have <span class="math inline">5^n</span> values. Since <span class="math inline">5^3=125&lt;128</span> and <span class="math inline">5^4=625\geq128</span>, the shortest reversible mapping uses <span class="math inline">n=4</span> symbols per group. The <span class="math inline">12</span> stream bits thus occupy <span class="math inline">2\cdot4=8</span> symbols, and the information rate is <span class="math display">R=\frac{11\ \text{information bits}}{8\ \text{symbols}}=\frac{11}{8}</span> bits per symbol. The three stages each cost rate: the control bit (<span class="math inline">\frac{11}{12}</span>), the code (<span class="math inline">\frac67</span>) and the mapping (<span class="math inline">\frac74</span> bits per symbol instead of <span class="math inline">\log_25\approx2.32</span>), and the product <span class="math inline">\frac{11}{12}\cdot\frac67\cdot\frac74</span> recovers <span class="math inline">\frac{11}{8}</span>.</p>
+</details></li>
+<li><p>We want a coded-modulation system that transmits <span class="math inline">2</span> information bits per symbol. The <span class="math inline">k</span> information bits are encoded by repeating each of them <span class="math inline">r</span> times, and the coded bits are mapped onto <span class="math inline">n</span> symbols of a constellation with <span class="math inline">64</span> points. What is the value of <span class="math inline">r</span>?</p>
+<ol>
+<li><p><span class="math inline">2</span></p></li>
+<li><p><span class="math inline">3</span></p></li>
+<li><p><span class="math inline">6</span></p></li>
+<li><p><span class="math inline">12</span></p></li>
+</ol>
+<details class="solution"><summary>Show solution</summary><p><strong>Correct answer: (b).</strong></p>
+<p>The repetition code turns <span class="math inline">k</span> information bits into <span class="math inline">rk</span> coded bits. A constellation of <span class="math inline">64=2^6</span> points carries <span class="math inline">6</span> coded bits per symbol, so the <span class="math inline">rk</span> coded bits occupy <span class="math inline">n=\frac{rk}{6}</span> symbols. The information rate is the number of information bits per symbol, <span class="math display">R=\frac kn=\frac{k}{rk/6}=\frac6r\ \text{bits per symbol},</span> and the requirement <span class="math inline">R=2</span> gives <span class="math inline">r=3</span>. In general, a repetition code of length <span class="math inline">r</span> followed by an <span class="math inline">M</span>-point constellation has rate <span class="math inline">\frac{\log_2M}{r}</span> bits per channel use: the constellation provides <span class="math inline">\log_2M</span> coded bits per symbol and the repetition divides them by <span class="math inline">r</span>.</p>
+</details></li>
+<li><p>A coded-modulation system sends the result of throwing a fair die, that is, the number of dots on the top face. Each result is repeated <span class="math inline">r=4</span> times, and each repeated value is mapped onto one symbol of a constellation with <span class="math inline">6</span> points. What is the rate of this system, in die throws per symbol?</p>
+<ol>
+<li><p><span class="math inline">\log_26</span></p></li>
+<li><p><span class="math inline">\frac{\log_26}{4}</span></p></li>
+<li><p><span class="math inline">\frac14</span></p></li>
+<li><p><span class="math inline">24</span></p></li>
+</ol>
+<details class="solution"><summary>Show solution</summary><p><strong>Correct answer: (c).</strong></p>
+<p>The rate of a coded-modulation system counts the amount of source information carried per transmitted symbol, here measured in die throws rather than in bits. One throw has <span class="math inline">6</span> equiprobable outcomes and the constellation has <span class="math inline">6</span> points, so without repetition each throw would occupy exactly one symbol and the rate would be <span class="math inline">1</span> throw per symbol. With the repetition code, each throw is sent as <span class="math inline">4</span> identical values, each mapped onto one symbol, so a throw occupies <span class="math inline">4</span> symbols and the rate is <span class="math display">R=\frac{1\ \text{throw}}{4\ \text{symbols}}=\frac14\ \text{throws per symbol}.</span> In bits, a throw carries <span class="math inline">\log_26\approx2.58</span> bits and the rate is <span class="math inline">\frac{\log_26}{4}\approx0.65</span> bits per symbol. Option (b) is therefore the same rate in different units, but not the one asked for.</p>
+</details></li>
+</ol>
+</main></div><footer class="footer">Universitat Pompeu Fabra · 23972 · Digital data transmission 2026</footer><script src="vendor/katex.min.js"></script><script src="vendor/auto-render.min.js"></script><script src="site.js"></script><script src="ui.js"></script></body></html>
