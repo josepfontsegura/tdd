@@ -317,7 +317,7 @@ P_{\rm e}=\tfrac34\erfc\Bigl(\sqrt{\snr/10}\Bigr).\tag{1.28}
 <details class="solution"><summary>Show solution</summary>
 <p>The four points are the corners of a square centered at the origin, so the perpendicular bisectors are the two axes and the regions are the four quadrants, as in Figure 1.2(b). Take <span class="math inline">x=a+ja</span>, whose region is the first quadrant. The observation <span class="math inline">Y=x+Z</span> stays in it when both <span class="math inline">\re Z&gt;-a</span> and <span class="math inline">\im Z&gt;-a</span>. The two error events, <span class="math inline">\re Z&lt;-a</span> and <span class="math inline">\im Z&lt;-a</span>, are not disjoint, since the noise can cross both boundaries at once, so we cannot simply add their probabilities as we did for the inner points of 4-PAM. Instead, we count the correct decisions, and here we use the product rule: the real and imaginary parts of the noise are independent Gaussians of variance <span class="math inline">\sigma^2/2</span>, so the probability that both conditions hold is the product of the two probabilities, and each of them is one minus the binary error probability <span class="math inline">p=\tfrac12\erfc(a/\sigma)</span> of Example 1.11, <span class="math display">\begin{equation*}
 \Pr(Y\in\mathcal D_x\,|\,X=x)=(1-p)^2.\tag{1.29}
-\end{equation*}</span> Therefore <span class="math inline">P_{\rm e}(x)=1-(1-p)^2=2p-p^2</span>, the same for the four symbols by symmetry, and this is also the average. With <span class="math inline">\Es=2a^2</span> we get <span class="math inline">p=\frac12\erfc\bigl(\sqrt{\snr/2}\bigr)</span>, the same <span class="math inline">p</span> as in (1.22). For small <span class="math inline">p</span> the term <span class="math inline">p^2</span> is negligible and <span class="math inline">P_{\rm e}\approx 2p</span>: QPSK makes about twice as many symbol errors as 2-PAM on the real channel at the same SNR, but it carries two bits per symbol instead of one. Per bit, QPSK is equivalent to binary transmission on the complex channel, as Exercise 1.5 will show.</p>
+\end{equation*}</span> Therefore <span class="math inline">P_{\rm e}(x)=1-(1-p)^2=2p-p^2</span>, the same for the four symbols by symmetry, and this is also the average. With <span class="math inline">\Es=2a^2</span> we get <span class="math inline">p=\frac12\erfc\bigl(\sqrt{\snr/2}\bigr)</span>, the same <span class="math inline">p</span> as in (1.22). For small <span class="math inline">p</span> the term <span class="math inline">p^2</span> is negligible and <span class="math inline">P_{\rm e}\approx 2p</span>: QPSK makes about twice as many symbol errors as 2-PAM on the real channel at the same SNR, but it carries two bits per symbol instead of one. Per bit, QPSK is equivalent to binary transmission on the complex channel, as <a href="exercises1.html#exercise-1-37">Exercise 1.37</a> will show.</p>
 </details>
 </section>
 <section class="env-block env-example"><p class="env-label">Example 1.14.</p>
@@ -331,15 +331,13 @@ P_{\rm e}(0)=\Pr(Z\geq 2A)=\int_{2A}^\infty \tfrac1\mu e^{-z/\mu}\drm z=e^{-2A/\
 </div>
 <div class="source-table">
 <div class="table-scroll"><table>
-<thead>
-<tr>
-<th style="text-align: left;"></th>
-<th colspan="4" style="text-align: center;">SNR</th>
-</tr>
-</thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><span>2-5</span> Modulation and channel</td>
+<td style="text-align: left;"></td>
+<td colspan="4" style="text-align: center;">SNR</td>
+</tr>
+<tr>
+<td style="text-align: left;">Modulation and channel</td>
 <td style="text-align: center;"><span class="math inline">0</span> dB</td>
 <td style="text-align: center;"><span class="math inline">5</span> dB</td>
 <td style="text-align: center;"><span class="math inline">10</span> dB</td>
@@ -378,10 +376,10 @@ P_{\rm e}(0)=\Pr(Z\geq 2A)=\int_{2A}^\infty \tfrac1\mu e^{-z/\mu}\drm z=e^{-2A/\
 <p><strong>Table 1.4.</strong> Error probabilities of Figure 1.4 at a few values of the SNR.</p>
 </div>
 <h2 id="bit-errors-and-sequences">1.6 Bit errors and sequences</h2>
-<p>Two remarks close the topic. The first is that symbol errors and bit errors are different things. When a symbol carries several bits, a symbol error need not flip all of them: if the detector confuses <span class="math inline">x</span> with a neighbor, only the bits in which the labels of <span class="math inline">x</span> and of its neighbor differ are wrong. The <strong>bit error probability</strong> <span class="math inline">P_{\rm b}</span> is the average fraction of wrong bits, and it is always between <span class="math inline">P_{\rm e}/\log_2 M</span> and <span class="math inline">P_{\rm e}</span>. If neighboring points differ in one bit only, a labeling called <strong>Gray</strong>, and almost all errors go to a neighbor, as they do at high SNR, then the bit error probability is close to the lower end, <span class="math inline">P_{\rm e}/\log_2 M</span>. For QPSK the Gray labeling makes the two bits independent decisions on the real and imaginary parts, and <span class="math inline">P_{\rm b}=p</span> exactly, as Exercise 1.5 shows. We will return to labelings in Topic 5.</p>
+<p>Two remarks close the topic. The first is that symbol errors and bit errors are different things. When a symbol carries several bits, a symbol error need not flip all of them: if the detector confuses <span class="math inline">x</span> with a neighbor, only the bits in which the labels of <span class="math inline">x</span> and of its neighbor differ are wrong. The <strong>bit error probability</strong> <span class="math inline">P_{\rm b}</span> is the average fraction of wrong bits, and it is always between <span class="math inline">P_{\rm e}/\log_2 M</span> and <span class="math inline">P_{\rm e}</span>. If neighboring points differ in one bit only, a labeling called <strong>Gray</strong>, and almost all errors go to a neighbor, as they do at high SNR, then the bit error probability is close to the lower end, <span class="math inline">P_{\rm e}/\log_2 M</span>. For QPSK the Gray labeling makes the two bits independent decisions on the real and imaginary parts, and <span class="math inline">P_{\rm b}=p</span> exactly, as <a href="exercises1.html#exercise-1-37">Exercise 1.37</a> shows. We will return to labelings in Topic 5.</p>
 <p>The second remark is that a message is a sequence of symbols, and that even small error probabilities accumulate along it. If each of <span class="math inline">n</span> independent symbols sent over a memoryless channel is detected on its own with error probability <span class="math inline">P_{\rm e}</span>, the product rule of Table 1.1 gives the probability that the whole message is detected correctly, <span class="math display">\begin{equation*}
 \Pr(\text{no error in } n \text{ symbols})=(1-P_{\rm e})^n\approx e^{-nP_{\rm e}},\tag{1.31}
-\end{equation*}</span> because the <span class="math inline">n</span> decisions are independent. A symbol error probability of one in a thousand, which looks small, leaves only a probability <span class="math inline">e^{-1}\approx 0.37</span> of receiving a message of a thousand symbols without any error. Detecting each symbol on its own is therefore not enough for reliable communication. The remedy, adding redundancy to the sequence and deciding on the whole message at once, is the subject of Topic 2. Exercise 1.6 works out the numbers.</p>
+\end{equation*}</span> because the <span class="math inline">n</span> decisions are independent. A symbol error probability of one in a thousand, which looks small, leaves only a probability <span class="math inline">e^{-1}\approx 0.37</span> of receiving a message of a thousand symbols without any error. Detecting each symbol on its own is therefore not enough for reliable communication. The remedy, adding redundancy to the sequence and deciding on the whole message at once, is the subject of Topic 2. <a href="exercises1.html#exercise-1-38">Exercise 1.38</a> works out the numbers.</p>
 <aside class="callout">
 <p>The three quantities are different. The conditional error probability <span class="math inline">P_{\rm e}(x)</span> is a property of the detector and the channel, <span class="math inline">P_{\rm e}</span> also depends on the input distribution, and <span class="math inline">P_{\rm b}</span> also depends on the labeling of the constellation. All three are computed with the rules of Table 1.1.</p>
 </aside>
