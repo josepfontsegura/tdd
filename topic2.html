@@ -1,0 +1,448 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Topic 2 - Decoding - TDD 2026</title><script>document.documentElement.dataset.theme=localStorage.getItem('tdd-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')</script><link rel="icon" href="img/favicon.ico" type="image/x-icon"><link rel="stylesheet" href="itc.css"><link rel="stylesheet" href="vendor/katex.min.css"><link rel="stylesheet" href="site.css"><script defer src="analytics.js"></script></head><body><a class="skip" href="#main">Skip to content</a><nav class="navbar">
+  <button class="menu-toggle" aria-label="Menu">&#9776;</button>
+  <a class="navbar-brand" href="index.html">
+    <img src="img/upf-logo.svg" alt="UPF" style="height:42px;margin-right:0.75rem"> <span class="navbar-brand-text">Digital data transmission 2026</span>
+  </a>
+  <div class="navbar-actions">
+    <button class="search-toggle" aria-label="Search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><span class="search-hint">⌘K</span></button>
+    <button class="theme-toggle" aria-label="Toggle dark mode"><svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button>
+  </div>
+  <div class="lang-switcher"><a href="topic2.html" class="active" aria-current="page">EN</a></div>
+</nav><div class="page"><aside class="sidebar"><details class="sidebar-section"><summary><h4>General</h4></summary><a href="index.html">Home</a><a href="https://gestioacademica.upf.edu/doa/consultaPublica/look%5Bconpub%5DMostrarPubGuiaDocAs?entradaPublica=true&amp;idiomaPais=en.GB&amp;_anoAcademico=2026&amp;_codAsignatura=23972">Teaching guide ↗</a><a href="https://aulaglobal.upf.edu/course/view.php?id=92919">Aula Global ↗</a></details><details class="sidebar-section"><summary><h4>Modality A</h4></summary><a href="modality-a-midterm.html">Midterm</a><a href="modality-a-final.html">Final</a></details><details class="sidebar-section" open><summary><h4>Lecture notes</h4></summary><a href="topic1.html">1. Detection</a><a href="topic2.html" class="active" aria-current="page">2. Decoding</a><span class="sidebar-disabled">3. Mutual information and capacity</span><span class="sidebar-disabled">4. Continuous time</span><span class="sidebar-disabled">5. Modulation and demodulation</span><span class="sidebar-disabled">6. Continuous-channel capacity</span></details><details class="sidebar-section"><summary><h4>Seminars</h4></summary><a href="seminar1.html">1. Detectors and their errors</a><a href="seminar2.html">2. Repetition codes and likelihood</a><span class="sidebar-disabled">3. Comparing receivers and codes</span><span class="sidebar-disabled">4. Information through discrete channels</span><span class="sidebar-disabled">5. Gaussian capacity and constellations</span><span class="sidebar-disabled">6. Waveforms and coordinates</span><span class="sidebar-disabled">7. From bits to symbols and back</span><span class="sidebar-disabled">8. Rate, bandwidth and error</span><span class="sidebar-disabled">9. Power, bandwidth and capacity</span><span class="sidebar-disabled">10. Spatial modes and the whole chain</span></details><details class="sidebar-section"><summary><h4>Tests</h4></summary><a href="test1.html">1. Detection</a><span class="sidebar-disabled">2. Decoding</span><span class="sidebar-disabled">3. Mutual information and capacity</span><span class="sidebar-disabled">4. Continuous time</span><span class="sidebar-disabled">5. Modulation and demodulation</span></details><details class="sidebar-section"><summary><h4>Exercises</h4></summary><a href="exercises1.html">1. Detection</a><span class="sidebar-disabled">2. Decoding</span><span class="sidebar-disabled">3. Mutual information and capacity</span><span class="sidebar-disabled">4. Continuous time</span><span class="sidebar-disabled">5. Modulation and demodulation</span><span class="sidebar-disabled">6. Continuous-channel capacity</span></details><details class="sidebar-section"><summary><h4>Exams</h4></summary><span class="sidebar-disabled">Midterm 2026 (Modality A)</span><span class="sidebar-disabled">Final 2026 (Modality A)</span><span class="sidebar-disabled">Final 2026 (Modality B)</span></details></aside><main class="content" id="main"><div class="lecture-header"><h1>Topic 2. Decoding</h1></div><div class="resource-row"><a class="resource-link" href="pdf/TDD-2026-Topic2.pdf">Download PDF</a></div><nav class="topic-toc" aria-label="In this topic"><strong>Contents</strong><ul><li><a href="#codes-and-rate">2.1 Codes and rate</a></li><li><a href="#optimal-decoding">2.2 Optimal decoding</a></li><li><a href="#hard-and-soft-decisions">2.3 Hard and soft decisions</a></li><li><a href="#rate-and-reliability">2.4 Rate and reliability</a></li></ul></nav><section class="callout"><h2>In this topic</h2>
+<p>Topic 1 detected one symbol at a time and showed how errors accumulate along a message. We now study how redundancy improves reliability. The transmitter sends a codeword of <span class="math inline">n</span> symbols for every <span class="math inline">k</span> information bits, and the receiver decides on the whole codeword. Sections 2.1 and 2.2 correspond to the first lecture and Sections 2.3 and 2.4 to the second.</p>
+<ul>
+<li><p>We review codes, information bits, coded bits and rate, using repetition on the bit-flipping channel.</p></li>
+<li><p>We extend MAP and ML detection to codewords. We obtain distance rules for Gaussian and bit-flipping channels, consistency for erasures, and a one-sided rule for exponential noise.</p></li>
+<li><p>We compare hard and soft decisions for the same code on the Gaussian channel, and identify the information lost by deciding symbolwise.</p></li>
+<li><p>We compare codes at fixed symbol energy and at fixed energy per information bit. Repetition improves reliability at vanishing rate, motivating the positive-rate question of Topic 3.</p></li>
+</ul>
+</section>
+<h2 id="codes-and-rate">2.1 Codes and rate</h2>
+<p>In Topic 1 the transmitter sent one symbol for every <span class="math inline">\log_2 M</span> bits, and the receiver decided symbolwise. Exercise 1.6 of Topic 1 showed the weakness of this scheme: the probability that a sequence of <span class="math inline">n</span> symbols is entirely correct is <span class="math inline">(1-P_{\rm e})^n</span>, which vanishes as <span class="math inline">n</span> grows however small <span class="math inline">P_{\rm e}&gt;0</span> is. To send long messages reliably, we need something better than sending every bit once. The remedy is <strong>redundancy</strong>, that is, to use more symbols than strictly necessary, so that the receiver can recover from some of the errors.</p>
+<section class="env-block env-definition"><p class="env-label">Definition 2.1.</p>
+<p>An <strong>encoder</strong> maps every sequence of <span class="math inline">k</span> information bits <span class="math inline">(D_1,\ldots,D_k)</span> to a <strong>codeword</strong> <span class="math inline">\x=(x_1,\ldots,x_n)</span> of <span class="math inline">n</span> symbols of the constellation <span class="math inline">\mathcal X</span>. Different information sequences have different codewords. The set <span class="math inline">\mathcal C</span> of the <span class="math inline">2^k</span> codewords is the <strong>code</strong>, and its <strong>rate</strong>, in bits per channel use, is <span class="math display">\begin{equation*}
+R=\frac{k}{n}.\tag{2.1}
+\end{equation*}</span></p>
+</section>
+<p>Figure 2.1 shows the position of the encoder and the decoder. The uncoded transmission of Topic 1 is the special case in which every symbol carries <span class="math inline">\log_2 M</span> bits, with <span class="math inline">M=|\mathcal X|</span> a power of two, that is, <span class="math inline">R=\log_2 M</span>. Coding means choosing <span class="math inline">R</span> smaller than that, and the whole question of this topic and the next is what we obtain in exchange.</p>
+<div class="source-figure">
+<div class="figure-grid"><img class="tex-figure" src="img/topic2-32129fe47ddc1218.svg" alt="Diagram reproduced from the course PDF; description follows in the text."></div>
+<p><strong>Figure 2.1.</strong> Coded transmission: <span class="math inline">k</span> information bits become a codeword <span class="math inline">\x=(x_1,\ldots,x_n)</span>, and the decoder sees <span class="math inline">\y=(y_1,\ldots,y_n)</span>.</p>
+</div>
+<p>The simplest code is the <strong>repetition code</strong>, which has <span class="math inline">k=1</span> and sends the single information bit <span class="math inline">D</span> a total of <span class="math inline">n</span> times. With <span class="math inline">s_0</span> and <span class="math inline">s_1</span> the two points of a binary constellation, the two codewords, indexed by <span class="math inline">D\in\{0,1\}</span>, are <span class="math display">\begin{equation*}
+\x(D)=(s_D,\ldots,s_D),\tag{2.2}
+\end{equation*}</span> and the rate is <span class="math inline">R=1/n</span>. For binary constellations, an encoder first produces <span class="math inline">n</span> <strong>coded bits</strong> <span class="math inline">c_1,\ldots,c_n</span> from the <span class="math inline">k</span> information bits, and then maps each coded bit to a symbol, <span class="math inline">x_i=s_{c_i}</span>. For the repetition code, <span class="math inline">c_1=\cdots=c_n=D</span>. On the bit-flipping and bit-erasing channels the constellation is <span class="math inline">\{0,1\}</span>. On the Gaussian channel we take <span class="math inline">s_0=-A</span> and <span class="math inline">s_1=A</span>, and on the exponential channel <span class="math inline">s_0=0</span> and <span class="math inline">s_1=2A</span>, with <span class="math inline">A&gt;0</span>. As in Topic 1, Gaussian inputs are amplitudes, whereas exponential-channel inputs are themselves energies.</p>
+<p>When the constellation has <span class="math inline">M&gt;2</span> points, the encoder produces <span class="math inline">n_{\rm c}</span> coded bits and maps <span class="math inline">\log_2 M</span> of them to each symbol. Its binary rate is <span class="math inline">r=k/n_{\rm c}</span>, and the rate in bits per channel use is <span class="math inline">R=r\log_2 M</span>. In this topic all the symbols are binary, so <span class="math inline">n_{\rm c}=n</span> and <span class="math inline">R=r</span>.</p>
+<p>Let us recall how the repetition code behaves on the bit-flipping channel with flip probability <span class="math inline">p&lt;\tfrac12</span>, which was studied in the information theory course. The natural decoder is <strong>majority voting</strong>: decide the bit that appears most often among the <span class="math inline">n</span> received bits, and toss a fair coin in case of a tie. For <span class="math inline">n=3</span>, Table 2.1 lists the eight possible outputs when <span class="math inline">D=0</span> is sent, together with their probabilities and the decision of the majority decoder.</p>
+<div class="source-table">
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th style="text-align: center;"><span class="math inline">(y_1,y_2,y_3)</span></th>
+<th style="text-align: center;"><span class="math inline">W(\y|000)=\smash{\prod_{i=1}^3} W(y_i|0)</span></th>
+<th style="text-align: center;">Decision <span class="math inline">\hat D</span></th>
+<th style="text-align: center;">Error</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span class="math inline">000</span></td>
+<td style="text-align: center;"><span class="math inline">(1-p)^3</span></td>
+<td style="text-align: center;"><span class="math inline">0</span></td>
+<td style="text-align: center;">no</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">001</span>, <span class="math inline">010</span>, <span class="math inline">100</span></td>
+<td style="text-align: center;"><span class="math inline">p(1-p)^2</span> each</td>
+<td style="text-align: center;"><span class="math inline">0</span></td>
+<td style="text-align: center;">no</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">011</span>, <span class="math inline">101</span>, <span class="math inline">110</span></td>
+<td style="text-align: center;"><span class="math inline">p^2(1-p)</span> each</td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;">yes</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">111</span></td>
+<td style="text-align: center;"><span class="math inline">p^3</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;">yes</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Table 2.1.</strong> The repetition code with <span class="math inline">n=3</span> on the bit-flipping channel, when <span class="math inline">D=0</span> is sent.</p>
+</div>
+<p>The table is once more an application of Table 1.1 of Topic 1. Every probability in the second column is a product, because the channel is memoryless, and the conditional error probability is the sum of the rows that lead to an error, <span class="math display">\begin{equation*}
+P_{\rm e}(0)=3p^2(1-p)+p^3=p^2(3-2p).\tag{2.3}
+\end{equation*}</span> By symmetry <span class="math inline">P_{\rm e}(1)</span> is the same, so <span class="math inline">P_{\rm e}=p^2(3-2p)</span> whatever the prior, and this is smaller than <span class="math inline">p</span> exactly when <span class="math inline">0&lt;p&lt;\tfrac12</span>, since <span class="math inline">p-p^2(3-2p)=p(1-p)(1-2p)</span>.</p>
+<p>In general, for odd <span class="math inline">n</span>, the majority decoder fails when at least <span class="math inline">(n+1)/2</span> of the <span class="math inline">n</span> bits are flipped, so <span class="math display">\begin{equation*}
+P_{\rm e}=\sum_{i=(n+1)/2}^{n}\binom{n}{i}\,p^i(1-p)^{n-i}.\tag{2.4}
+\end{equation*}</span> For <span class="math inline">n=3</span> the sum has the two terms of (2.3). The case of even <span class="math inline">n</span>, with its ties, is Exercise 2.2. For <span class="math inline">p&lt;\tfrac12</span> this probability goes to zero as <span class="math inline">n</span> grows, because the fraction of flipped bits concentrates around <span class="math inline">p</span>, which is below one half.</p>
+<p>Hence, the repetition code makes the error probability as small as we wish. The cost is the rate, since <span class="math inline">R=1/n</span> goes to zero at the same time. We will come back to this trade-off in Section 2.4.</p>
+<h2 id="optimal-decoding">2.2 Optimal decoding</h2>
+<p>We now place the decoder in the framework of Topic 1. The transmitter has a message to send, which we may think of as the <span class="math inline">k</span> bits or, more conveniently, as an index <span class="math inline">m</span> in a set <span class="math inline">\mathcal M</span> of <span class="math inline">2^k</span> values with prior probabilities <span class="math inline">\Pr(m)</span>. For the repetition code, <span class="math inline">m</span> is simply the bit <span class="math inline">D</span>. The message selects the codeword <span class="math inline">\x(m)</span>, the channel produces <span class="math inline">\y=(y_1,\ldots,y_n)</span>, a realization of the random sequence <span class="math inline">\Y</span>, and a <strong>decoder</strong> is any function <span class="math inline">g</span> from the sequences <span class="math inline">\y</span> to the messages, <span class="math inline">\hat m=g(\y)</span>. Its error probabilities are defined as in Topic 1. The conditional error probability when <span class="math inline">m</span> is sent is <span class="math display">\begin{equation*}
+P_{\rm e}(m)=\Pr(g(\Y)\neq m\,|\,m \text{ sent}),\tag{2.5}
+\end{equation*}</span> and the average error probability is <span class="math display">\begin{equation*}
+P_{\rm e}=\sum_{m\in\mathcal M} \Pr(m)\,P_{\rm e}(m).\tag{2.6}
+\end{equation*}</span></p>
+<section class="env-block env-theorem"><p class="env-label">Theorem 2.2.</p>
+<p>No decoder has a smaller average error probability than the MAP decoder, <span class="math display">\begin{equation*}
+g_{\rm MAP}(\y)=\argmax_{m\in\mathcal M} \Pr(m)\,W(\y|\x(m)).\tag{2.7}
+\end{equation*}</span> With equiprobable messages, the MAP decoder is the ML decoder, <span class="math display">\begin{equation*}
+g_{\rm ML}(\y)=\argmax_{m\in\mathcal M} W(\y|\x(m)).\tag{2.8}
+\end{equation*}</span></p>
+</section>
+<div class="proof"><strong>Proof.</strong>
+<p>Nothing in the proof of Theorem 1.4 of Topic 1 used that the observation was a single number. Replace the symbol <span class="math inline">x</span> by the message <span class="math inline">m</span>, the output <span class="math inline">y</span> by the sequence <span class="math inline">\y</span>, and the channel law <span class="math inline">W(y|x)</span> by <span class="math inline">W(\y|\x(m))</span>, and the proof remains valid without changes.</p>
+</div>
+<p>A tie between maximizers may be broken in any way, and we break it with a fair coin. Note that <span class="math inline">P_{\rm e}</span> is the probability of a wrong message, that is, of a wrong codeword. For the repetition code the message is a single bit, so it is also the bit error probability.</p>
+<p>The new element is the channel law of a sequence. As in Topic 1, <span class="math inline">W</span> denotes a probability for discrete outputs and a density for continuous outputs. All our channels are memoryless, so by the last line of Table 1.1 of Topic 1, <span class="math display">\begin{equation*}
+W(\y|\x)=\prod_{i=1}^n W(y_i|x_i),\tag{2.9}
+\end{equation*}</span> and the ML decoder maximizes a product of <span class="math inline">n</span> factors. Since the logarithm is increasing, with the convention <span class="math inline">\ln 0=-\infty</span>, we may equally maximize the sum of the logarithms, <span class="math display">\begin{equation*}
+g_{\rm ML}(\y)=\argmax_{m\in\mathcal M} \sum_{i=1}^n \ln W\bigl(y_i|x_i(m)\bigr).\tag{2.10}
+\end{equation*}</span> In words, every channel output <span class="math inline">y_i</span> gives a score to each candidate codeword, namely the logarithm of how likely <span class="math inline">y_i</span> is under that codeword, and the decoder adds the scores and picks the codeword with the highest total. This sum is called the <strong>log-likelihood</strong> of the codeword. Table 2.2 lists the scores on the channels of the course. The terms that do not depend on the codeword have been dropped, since they do not affect the comparison. For the repetition code, for instance, every <span class="math inline">x_i(m)</span> is the same symbol <span class="math inline">s_m</span>, so the decoder compares just two numbers, <span class="math inline">\smash{\sum_{i=1}^n}\ln W(y_i|s_0)</span> and <span class="math inline">\smash{\sum_{i=1}^n}\ln W(y_i|s_1)</span>. For MAP decoding, we add <span class="math inline">\ln\Pr(m)</span> to the log-likelihood of each codeword. Let us see what the sums of these scores become on the channels of the course.</p>
+<div class="source-table">
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th style="text-align: left;">Channel</th>
+<th style="text-align: left;">Score of <span class="math inline">y_i</span> for a codeword with <span class="math inline">x_i</span> in position <span class="math inline">i</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Real Gaussian</td>
+<td style="text-align: left;"><span class="math inline">-(y_i-x_i)^2/(2\sigma^2)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Complex Gaussian</td>
+<td style="text-align: left;"><span class="math inline">-|y_i-x_i|^2/\sigma^2</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Bit-flipping</td>
+<td style="text-align: left;"><span class="math inline">\ln(1-p)</span> if <span class="math inline">y_i=x_i</span>, <span class="math inline">\ln p</span> otherwise</td>
+</tr>
+<tr>
+<td style="text-align: left;">Bit-erasing</td>
+<td style="text-align: left;"><span class="math inline">\ln(1-p)</span> if <span class="math inline">y_i=x_i</span>, <span class="math inline">\ln p</span> if <span class="math inline">y_i=\,?</span>, <span class="math inline">-\infty</span> if <span class="math inline">y_i\in\{0,1\}</span> and <span class="math inline">y_i\neq x_i</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Exponential noise</td>
+<td style="text-align: left;"><span class="math inline">-(y_i-x_i)/\mu</span> if <span class="math inline">y_i\geq x_i</span>, <span class="math inline">-\infty</span> otherwise</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Table 2.2.</strong> The symbolwise scores <span class="math inline">\ln W(y_i|x_i)</span> of (2.10), up to terms that do not depend on the codeword.</p>
+</div>
+<section class="env-block env-theorem"><p class="env-label">Proposition 2.3.</p>
+<p>On the channels of Table 1.2 of Topic 1, the ML decoder takes the following forms.</p>
+<ol>
+<li><p>Real and complex Gaussian: the codeword nearest to <span class="math inline">\y</span> in Euclidean distance, <span class="math display">\begin{equation*}
+g_{\rm ML}(\y)=\argmin_{m\in\mathcal M}\|\y-\x(m)\|^2,\tag{2.11}
+\end{equation*}</span> where <span class="math inline">\|\y-\x\|^2=\smash{\sum_{i=1}^n}|y_i-x_i|^2</span>.</p></li>
+<li><p>Bit-flipping with <span class="math inline">p&lt;\tfrac12</span>: the codeword nearest to <span class="math inline">\y</span> in Hamming distance, <span class="math display">\begin{equation*}
+g_{\rm ML}(\y)=\argmin_{m\in\mathcal M}d_{\rm H}(\y,\x(m)),\tag{2.12}
+\end{equation*}</span> where <span class="math inline">d_{\rm H}</span> counts the positions in which two sequences differ.</p></li>
+<li><p>Bit-erasing: any codeword that agrees with <span class="math inline">\y</span> in all the positions that were not erased. If there are several, they are equally likely and any of them may be chosen. The MAP decoder breaks the tie with the priors.</p></li>
+<li><p>Exponential noise: among the codewords with <span class="math inline">x_i(m)\leq y_i</span> in every position, the one with the largest total energy <span class="math inline">\smash{\sum_{i=1}^n} x_i(m)</span>.</p></li>
+</ol>
+</section>
+<div class="proof"><strong>Proof.</strong>
+<p>In each case we write the product (2.9) and drop the factors that do not depend on <span class="math inline">m</span>. Recall that a product of exponentials is the exponential of the sum, which is the reason we took logarithms in (2.10). (a) On the complex channel, the product of the Gaussian densities is <span class="math inline">(\pi\sigma^2)^{-n}\exp(-\|\y-\x\|^2/\sigma^2)</span>, decreasing in the distance. On the real channel the exponent has <span class="math inline">2\sigma^2</span> and the factor in front is <span class="math inline">(2\pi\sigma^2)^{-n/2}</span>, and the conclusion is the same. (b) If <span class="math inline">\y</span> and <span class="math inline">\x</span> differ in <span class="math inline">d</span> positions, the product is <span class="math inline">p^d(1-p)^{n-d}=(1-p)^n\bigl(p/(1-p)\bigr)^d</span>, and <span class="math inline">p/(1-p)&lt;1</span>, so the product decreases with <span class="math inline">d</span>. (c) If <span class="math inline">\y</span> has <span class="math inline">e</span> erasures, the product is <span class="math inline">p^e(1-p)^{n-e}</span> for every codeword that agrees with the unerased positions, and <span class="math inline">0</span> for the others. (d) The product is <span class="math inline">\mu^{-n}\exp\bigl(-\smash{\sum_{i=1}^n} (y_i-x_i)/\mu\bigr)</span> if <span class="math inline">y_i\geq x_i</span> for all <span class="math inline">i</span>, and <span class="math inline">0</span> otherwise. For fixed <span class="math inline">\y</span>, it grows with <span class="math inline">\smash{\sum_{i=1}^n} x_i</span>.</p>
+</div>
+<section class="env-block env-example"><p class="env-label">Example 2.4.</p>
+<p>For the repetition code, the four rules take a simple form.</p>
+<ol>
+<li><p>Real Gaussian, <span class="math inline">\mathcal X=\{-A,+A\}</span>: expanding the squares, <span class="math inline">\|\y-(A,\ldots,A)\|^2&lt;\|\y+(A,\ldots,A)\|^2</span> is the same as <span class="math inline">\smash{\sum_{i=1}^n} y_i&gt;0</span>. The ML decoder adds the <span class="math inline">n</span> observations and looks at the sign of the sum. On the complex channel, it adds the real parts.</p></li>
+<li><p>Bit-flipping: the Hamming distance to <span class="math inline">(0,\ldots,0)</span> is the number of ones in <span class="math inline">\y</span>, and the distance to <span class="math inline">(1,\ldots,1)</span> the number of zeros. The ML decoder is the majority vote of Section 2.1, which is therefore optimal for equiprobable bits and <span class="math inline">p&lt;\tfrac12</span>.</p></li>
+<li><p>Bit-erasing: the two codewords are constant sequences, so a single unerased bit decides. If all <span class="math inline">n</span> bits are erased, the decoder tosses a coin.</p></li>
+<li><p>Exponential noise, <span class="math inline">\mathcal X=\{0,2A\}</span>: the codeword <span class="math inline">(2A,\ldots,2A)</span> is possible only if every <span class="math inline">y_i\geq 2A</span>, and then it has the larger energy. Hence, the decoder decides <span class="math inline">1</span> if all the observations are at least <span class="math inline">2A</span>, and <span class="math inline">0</span> otherwise.</p></li>
+</ol>
+</section>
+<section class="env-block env-problem"><p class="env-label">Problem 2.5.</p>
+<p>Compute the error probability of the repetition code with the ML decoder on the real Gaussian channel, as a function of <span class="math inline">n</span> and of the SNR <span class="math inline">A^2/\sigma^2</span> of one symbol.</p>
+<details class="solution"><summary>Show solution</summary>
+<p>Suppose <span class="math inline">D=0</span> is sent, that is, <span class="math inline">\x=(-A,\ldots,-A)</span>. Write <span class="math inline">Y_i=-A+Z_i</span>, where the <span class="math inline">Z_i</span> are independent zero-mean Gaussian noise samples of variance <span class="math inline">\sigma^2</span>. The sum of the observations is <span class="math display">\begin{equation*}
+\sum_{i=1}^n Y_i=-nA+\sum_{i=1}^n Z_i,\tag{2.13}
+\end{equation*}</span> and the decoder errs when this sum is positive, that is, when <span class="math inline">\smash{\sum_{i=1}^n} Z_i&gt;nA</span>. The sum of <span class="math inline">n</span> independent Gaussian variables of variance <span class="math inline">\sigma^2</span> is Gaussian with variance <span class="math inline">n\sigma^2</span>. The variances add because the variables are independent, and the sum of independent Gaussians is again Gaussian, as seen in the probability course. Hence, by equation (1.23) of Topic 1 with threshold <span class="math inline">nA</span> and variance <span class="math inline">n\sigma^2</span>, <span class="math display">\begin{equation*}
+P_{\rm e}(0)=\Pr\Bigl(\sum_{i=1}^n Z_i&gt;nA\Bigr)=\tfrac12\erfc\biggl(\frac{nA}{\sqrt{2n}\,\sigma}\biggr)=\tfrac12\erfc\Bigl(\sqrt{n\,\snr/2}\Bigr).\tag{2.14}
+\end{equation*}</span> By symmetry <span class="math inline">P_{\rm e}(1)</span> is the same, so for any prior <span class="math display">\begin{equation*}
+P_{\rm e}=\tfrac12\erfc\Bigl(\sqrt{n\,\snr/2}\Bigr).\tag{2.15}
+\end{equation*}</span> The function <span class="math inline">\erfc</span> decreases with its argument, so collecting more observations reduces the error probability. Compared with the uncoded 2-PAM of equation (1.22) of Topic 1, the SNR is multiplied by <span class="math inline">n</span>, because the decoder collects the energy of the <span class="math inline">n</span> copies. For <span class="math inline">n=2</span> this is the same as doubling the energy of a single symbol, a gain of <span class="math inline">3</span> dB.</p>
+</details>
+</section>
+<section class="env-block env-problem"><p class="env-label">Problem 2.6.</p>
+<p>Compute the error probability of the repetition code with equiprobable bits and the ML decoder on the bit-erasing and exponential noise channels.</p>
+<details class="solution"><summary>Show solution</summary>
+<p>On the bit-erasing channel, the decoder of Example 2.4(c) errs only if all <span class="math inline">n</span> bits are erased, which happens with probability <span class="math inline">p^n</span> by the product rule, and the fair coin then gives the wrong bit, with probability <span class="math inline">\tfrac12</span>. Hence, <span class="math inline">P_{\rm e}=\tfrac12 p^n</span>. Note the two different quantities: <span class="math inline">p^n</span> is the probability that everything is erased, and <span class="math inline">\tfrac12p^n</span> is the probability of an error. With unequal priors, the MAP decoder guesses the more probable bit at a total erasure and errs with probability <span class="math inline">p^n\min(\Pr(0),\Pr(1))</span>, as in Exercise 1.1 of Topic 1.</p>
+<p>On the exponential channel, when <span class="math inline">D=1</span> is sent every <span class="math inline">y_i</span> is at least <span class="math inline">2A</span> and the decision is always right, <span class="math inline">P_{\rm e}(1)=0</span>. When <span class="math inline">D=0</span> is sent, an error requires every noise sample to reach <span class="math inline">2A</span>. The samples are independent, so by the product rule and Example 1.14 of Topic 1, <span class="math display">\begin{equation*}
+P_{\rm e}(0)=\prod_{i=1}^n\Pr(Z_i\geq 2A)=e^{-2nA/\mu},\tag{2.16}
+\end{equation*}</span> and with equiprobable bits <span class="math inline">P_{\rm e}=\tfrac12 e^{-2nA/\mu}</span>. Since the bits are equiprobable, <span class="math inline">\Es=A</span>. In terms of the SNR <span class="math inline">\Es/\mu=A/\mu</span> of one symbol, <span class="math inline">P_{\rm e}=\tfrac12 e^{-2n\,\snr}</span>. Once more, <span class="math inline">n</span> repetitions are worth <span class="math inline">n</span> times the SNR.</p>
+</details>
+</section>
+<section class="env-block env-problem"><p class="env-label">Problem 2.7.</p>
+<p>The repetition code with <span class="math inline">n=3</span> is used on the bit-flipping channel with <span class="math inline">p=\tfrac1{10}</span>, and the bit to be sent is <span class="math inline">1</span> with probability <span class="math inline">\tfrac{19}{20}</span>. What does the MAP decoder decide for each received sequence, and what is its error probability?</p>
+<details class="solution"><summary>Show solution</summary>
+<p>Let <span class="math inline">d</span> be the number of ones in <span class="math inline">\y</span>. By (2.9), <span class="math inline">W(\y|000)=p^d(1-p)^{3-d}</span> and <span class="math inline">W(\y|111)=p^{3-d}(1-p)^d</span>, so the two joint probabilities that the MAP decoder compares depend on <span class="math inline">\y</span> only through <span class="math inline">d</span>. Table 2.3 lists them.</p>
+<div class="center">
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th style="text-align: center;"><span class="math inline">d</span></th>
+<th style="text-align: center;"><span class="math inline">20000\Pr(0)W(\y|000)</span></th>
+<th style="text-align: center;"><span class="math inline">20000\Pr(1)W(\y|111)</span></th>
+<th style="text-align: center;">Decision <span class="math inline">\hat D</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span class="math inline">0</span></td>
+<td style="text-align: center;"><span class="math inline">729</span></td>
+<td style="text-align: center;"><span class="math inline">19</span></td>
+<td style="text-align: center;"><span class="math inline">0</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">81</span></td>
+<td style="text-align: center;"><span class="math inline">171</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+<td style="text-align: center;"><span class="math inline">9</span></td>
+<td style="text-align: center;"><span class="math inline">1539</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">3</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">13851</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Table 2.3.</strong> The two joint probabilities compared by the MAP decoder of Problem 2.7, multiplied by the common denominator <span class="math inline">20000</span>, for a sequence with <span class="math inline">d</span> ones.</p>
+</div>
+<p>The decoder decides <span class="math inline">1</span> as soon as a single <span class="math inline">1</span> is received, against the majority. In general, the MAP decoder decides <span class="math inline">1</span> when <span class="math inline">19p^{3-d}(1-p)^d&gt;p^d(1-p)^{3-d}</span>. Collecting the powers of <span class="math inline">1-p</span> on the left and those of <span class="math inline">p</span> on the right, this is <span class="math inline">19\,(1-p)^{2d-3}&gt;p^{2d-3}</span>, that is, <span class="math display">\begin{equation*}
+19&gt;\Bigl(\frac{1-p}{p}\Bigr)^{3-2d}=9^{\,3-2d}.\tag{2.17}
+\end{equation*}</span> For <span class="math inline">d=0</span> the right-hand side is <span class="math inline">729</span> and the decoder decides <span class="math inline">0</span>. For <span class="math inline">d=1</span> it is <span class="math inline">9</span>, smaller than <span class="math inline">19</span>, and the decoder decides <span class="math inline">1</span>. For <span class="math inline">d=2</span> and <span class="math inline">d=3</span> it is smaller still, in agreement with the table. With such a prior, a single <span class="math inline">1</span> among three bits is more likely a correct bit from a transmitted <span class="math inline">1</span> than a flipped bit from a transmitted <span class="math inline">0</span>.</p>
+<p>The decoder errs when <span class="math inline">0</span> is sent and some bit is flipped, or when <span class="math inline">1</span> is sent and all three are, so <span class="math display">\begin{equation*}
+P_{\rm e}=\frac1{20}\biggl(1-\Bigl(\frac9{10}\Bigr)^3\biggr)+\frac{19}{20}\Bigl(\frac1{10}\Bigr)^3=\frac{29}{2000},\tag{2.18}
+\end{equation*}</span> against <span class="math inline">p^2(3-2p)=\tfrac7{250}=\tfrac{56}{2000}</span> for majority voting, whose error probability does not depend on the prior. As in Problems 1.7 and 1.9 of Topic 1, the prior can change the decision and reduce the average error probability.</p>
+</details>
+</section>
+<h2 id="hard-and-soft-decisions">2.3 Hard and soft decisions</h2>
+<p>We now compare two receivers for the same repetition code on the real Gaussian channel, with equiprobable bits and <span class="math inline">\snr=A^2/\sigma^2</span>. The ML decoder of Example 2.4(a) works with the observations <span class="math inline">y_i</span> themselves. A different receiver, natural after Topic 1, first detects every symbol with the symbolwise detector of Topic 1, obtaining a bit <span class="math inline">\hat c_i</span> per symbol, and then decodes from the <span class="math inline">n</span> detected bits. Figure 2.2 shows the two receivers. The upper one is said to take <strong>hard decisions</strong>, since every observation is reduced to a bit before decoding. The lower one takes <strong>soft decisions</strong>, because the decoder sees the observations in full.</p>
+<div class="source-figure">
+<div class="figure-grid"><img class="tex-figure" src="img/topic2-02120afcd8ffaccd.svg" alt="Diagram reproduced from the course PDF; description follows in the text."></div>
+<p><strong>Figure 2.2.</strong> Two receivers for the repetition code on the Gaussian channel.</p>
+</div>
+<p>The hard receiver is easy to analyze with the tools we have. Each detected bit <span class="math inline">\hat c_i</span> is wrong with the probability (1.22) of Topic 1, which we call <span class="math inline">p</span> here, <span class="math display">\begin{equation*}
+p=\tfrac12\erfc\Bigl(\sqrt{\snr/2}\Bigr),\tag{2.19}
+\end{equation*}</span> and the errors in different positions are independent, since the noise samples are. In other words, seen from the coded bits to the detected bits, the Gaussian channel followed by the detector is a bit-flipping channel with flip probability <span class="math inline">p</span>. On that channel, majority voting is the ML decoder, and for odd <span class="math inline">n</span> its error probability is (2.4) with the value (2.19) of <span class="math inline">p</span>. Even lengths include the tie term of Exercise 2.2. The soft receiver has the error probability (2.15).</p>
+<section class="env-block env-example"><p class="env-label">Example 2.8.</p>
+<p>Take <span class="math inline">n=2</span>. The hard receiver sees two detected bits. If they agree, it follows them, and if they disagree, it tosses a coin. An error occurs when both bits are wrong, with probability <span class="math inline">p^2</span>, or when they disagree and the coin is wrong, with probability <span class="math inline">2p(1-p)\cdot\tfrac12</span>. The total is <span class="math inline">p^2+p(1-p)=p</span>, so the hard receiver with <span class="math inline">n=2</span> is exactly as good as sending the bit once. The soft receiver, on the other hand, has <span class="math inline">P_{\rm e}=\tfrac12\erfc(\sqrt{\snr})</span>, the <span class="math inline">3</span> dB gain of Problem 2.5. The second copy of the bit is not wasted, but only if the receiver looks at the two observations together.</p>
+</section>
+<p>Table 2.4 gives the error probability of both receivers for <span class="math inline">n</span> up to <span class="math inline">5</span>, and Figure 2.3 plots it. The soft receiver is better at every SNR, and the difference grows with <span class="math inline">n</span>. For <span class="math inline">n=3</span>, for instance, the hard receiver takes the uncoded <span class="math inline">p</span> down to <span class="math inline">p^2(3-2p)</span>, whereas the soft receiver multiplies the argument of <span class="math inline">\erfc</span> by <span class="math inline">\sqrt3</span>. At high SNR the loss of the hard receiver tends to <span class="math inline">10\log_{10}\bigl(2n/(n+1)\bigr)</span>, from <span class="math inline">1.8</span> dB for <span class="math inline">n=3</span> to <span class="math inline">3</span> dB for large <span class="math inline">n</span>, as Exercise 2.8 shows. Note that the SNR in the table and the figure is that of one symbol. Section 2.4 shows what the comparison looks like at equal energy per bit.</p>
+<div class="source-table">
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th style="text-align: center;"><span class="math inline">n</span></th>
+<th style="text-align: center;">Hard decisions</th>
+<th style="text-align: center;">Soft decisions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">p</span></td>
+<td style="text-align: center;"><span class="math inline">\tfrac12\erfc(\sqrt{\snr/2})</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+<td style="text-align: center;"><span class="math inline">p</span></td>
+<td style="text-align: center;"><span class="math inline">\tfrac12\erfc(\sqrt{\snr})</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">3</span></td>
+<td style="text-align: center;"><span class="math inline">3p^2(1-p)+p^3</span></td>
+<td style="text-align: center;"><span class="math inline">\tfrac12\erfc(\sqrt{3\snr/2})</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">5</span></td>
+<td style="text-align: center;"><span class="math inline">10p^3(1-p)^2+5p^4(1-p)+p^5</span></td>
+<td style="text-align: center;"><span class="math inline">\tfrac12\erfc(\sqrt{5\snr/2})</span></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Table 2.4.</strong> Error probability of the repetition code on the real Gaussian channel with hard and soft decisions, where <span class="math inline">p=\tfrac12\erfc(\sqrt{\snr/2})</span> is the error probability of one detected bit. The SNR is that of one symbol.</p>
+</div>
+<div class="source-figure">
+<img class="tex-figure" src="img/topic2-d18201975b46a198.svg" alt="Diagram reproduced from the course PDF; description follows in the text.">
+<p><strong>Figure 2.3.</strong> The curves of Table 2.4. Dashed lines are hard decisions, solid lines soft decisions.</p>
+</div>
+<p>The loss has a simple origin. The symbolwise detector keeps only the sign of each <span class="math inline">y_i</span> and discards its magnitude. An observation close to the threshold is nearly useless, and one far from it is nearly certain, but after the detector both count as one vote. The soft decoder adds the observations, so a large <span class="math inline">y_i</span> can outweigh two small ones of the opposite sign. For instance, with <span class="math inline">\y=(2,\,-\tfrac12,\,-\tfrac12)A</span> the hard receiver sees <span class="math inline">(+,-,-)</span> and decides <span class="math inline">0</span>, while the soft receiver computes <span class="math inline">\smash{\sum_{i=1}^3} y_i=A&gt;0</span> and decides <span class="math inline">1</span>.</p>
+<p>This is the general lesson of the section. The part of the receiver that processes the channel output should not take decisions. It should pass the observations, or the scores of (2.10), to the decoder. Modern receivers do exactly this, and the scores are then called <strong>soft information</strong>.</p>
+<aside class="callout">
+<p>The loss of hard decisions depends on the channel. On the exponential channel, the detector of Topic 1 loses nothing at all, because the only information in <span class="math inline">y_i</span> that the decoder of Example 2.4(d) uses is whether <span class="math inline">y_i</span> reaches <span class="math inline">2A</span>, and this is exactly what the detector keeps, as Exercise 2.5 shows. In fact, on the exponential channel the ML and MAP decoders of any code depend on each <span class="math inline">y_i</span> only through the largest constellation point below it, because the rest of the dependence on <span class="math inline">\y</span> in Proposition 2.3(d) is common to all codewords.</p>
+</aside>
+<h2 id="rate-and-reliability">2.4 Rate and reliability</h2>
+<p>Repetition drives the error probability to zero as <span class="math inline">n</span> grows: on the bit-flipping channel with fixed <span class="math inline">p&lt;\tfrac12</span>, by (2.4), on the erasure channel with fixed <span class="math inline">p&lt;1</span> and on the Gaussian and exponential channels with fixed symbol energy and noise level, by Problem 2.6 and (2.15). The only exceptions are the useless channels, the BSC with <span class="math inline">p=\tfrac12</span> and the BEC with <span class="math inline">p=1</span>, where <span class="math inline">P_{\rm e}=\tfrac12</span> for every <span class="math inline">n</span>. The price is the rate, since <span class="math inline">R=1/n</span> vanishes too, and on the Gaussian and exponential channels each information bit costs the energy of <span class="math inline">n</span> symbols. Table 2.5 shows the price on the bit-flipping channel with <span class="math inline">p=\tfrac1{10}</span>. To send <span class="math inline">k</span> bits reliably we need <span class="math inline">nk</span> channel uses, and <span class="math inline">n</span> has to grow without bound. The table gives the error probability of each repeated bit, and the errors of the <span class="math inline">k</span> bits accumulate along the message as in Section 1.6 of Topic 1.</p>
+<div class="source-table">
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th style="text-align: center;"><span class="math inline">n</span></th>
+<th style="text-align: center;"><span class="math inline">R</span></th>
+<th style="text-align: center;"><span class="math inline">P_{\rm e}</span></th>
+<th style="text-align: center;">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">\tfrac1{10}</span></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">3</span></td>
+<td style="text-align: center;"><span class="math inline">\tfrac13</span></td>
+<td style="text-align: center;"><span class="math inline">\tfrac7{250}</span></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">5</span></td>
+<td style="text-align: center;"><span class="math inline">\tfrac15</span></td>
+<td style="text-align: center;"><span class="math inline">\tfrac{107}{12500}</span></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">11</span></td>
+<td style="text-align: center;"><span class="math inline">\tfrac1{11}</span></td>
+<td style="text-align: center;"><span class="math inline">\tfrac1{10^{11}}\sum_{i=6}^{11}\binom{11}{i}9^{11-i}</span></td>
+<td style="text-align: center;"><span class="math inline">3.0\cdot10^{-4}</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">21</span></td>
+<td style="text-align: center;"><span class="math inline">\tfrac1{21}</span></td>
+<td style="text-align: center;"><span class="math inline">\tfrac1{10^{21}}\sum_{i=11}^{21}\binom{21}{i}9^{21-i}</span></td>
+<td style="text-align: center;"><span class="math inline">1.4\cdot10^{-6}</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">23</span></td>
+<td style="text-align: center;"><span class="math inline">\tfrac1{23}</span></td>
+<td style="text-align: center;"><span class="math inline">\tfrac1{10^{23}}\sum_{i=12}^{23}\binom{23}{i}9^{23-i}</span></td>
+<td style="text-align: center;"><span class="math inline">4.7\cdot10^{-7}</span></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Table 2.5.</strong> Rate and error probability of the repetition code on the bit-flipping channel with <span class="math inline">p=\tfrac1{10}</span>. The last column gives the size of the long sums.</p>
+</div>
+<p>The capacity of this channel, from the information theory course, is <span class="math display">\begin{equation*}
+C=1-h_2\Bigl(\frac1{10}\Bigr)\approx0.53\quad\text{bits per channel use},\tag{2.20}
+\end{equation*}</span> where <span class="math inline">h_2</span> is the binary entropy function. Repetition needs <span class="math inline">n=23</span> to reach <span class="math inline">P_{\rm e}&lt;10^{-6}</span>, at rate <span class="math inline">R=\tfrac1{23}</span>, more than ten times smaller than the capacity. Topic 3 says what that number promises.</p>
+<p>On the Gaussian channel there is a second way of looking at the price, in terms of energy. With <span class="math inline">\Es</span> the mean energy per channel use, a code of rate <span class="math inline">R=k/n</span> spends on each information bit <span class="math display">\begin{equation*}
+\Eb=\frac{n\Es}{k}=\frac{\Es}{R}.\tag{2.21}
+\end{equation*}</span> For the repetition code with 2-PAM symbols, <span class="math inline">\Eb=nA^2</span>. Writing (2.15) in terms of <span class="math inline">\Eb</span>, <span class="math display">\begin{equation*}
+P_{\rm e}=\tfrac12\erfc\biggl(\sqrt{\frac{nA^2}{2\sigma^2}}\biggr)=\tfrac12\erfc\biggl(\sqrt{\frac{\Eb}{2\sigma^2}}\biggr),\tag{2.22}
+\end{equation*}</span> which is exactly the error probability of uncoded 2-PAM with the same energy per bit, given by equation (1.22) of Topic 1. In other words, at equal energy per bit, the repetition code with soft decisions gains nothing at all. It is equivalent to sending each bit once with <span class="math inline">n</span> times the energy, and the hard receiver is worse than that. The reduction in error probability is paid entirely with energy and rate.</p>
+<p>Not every code is so limited. The <strong>minimum distance</strong> of a code is the smallest Euclidean distance between two of its codewords, and the following problem shows the simplest code whose minimum distance, at equal energy per bit, is larger than that of repetition.</p>
+<section class="env-block env-problem"><p class="env-label">Problem 2.9.</p>
+<p>Two bits <span class="math inline">(D_1,D_2)</span> are encoded into three 2-PAM symbols. The encoder sends <span class="math inline">D_1</span>, <span class="math inline">D_2</span> and their sum modulo <span class="math inline">2</span>, with <span class="math inline">0\mapsto -A</span> and <span class="math inline">1\mapsto +A</span>. The four messages are equiprobable. Find the rate and the codewords, decode <span class="math inline">\y=(1,\,-\tfrac12,\,-1)A</span> with the ML decoder on the real Gaussian channel, and compare the minimum distance between codewords with that of uncoded 2-PAM and of the repetition code with <span class="math inline">n=3</span>, at the same energy per bit.</p>
+<details class="solution"><summary>Show solution</summary>
+<p>The rate is <span class="math inline">R=2/3</span>. The third bit is <span class="math inline">0</span> when <span class="math inline">D_1=D_2</span> and <span class="math inline">1</span> otherwise. Table 2.6 lists the four codewords, in units of <span class="math inline">A</span>, and any two of them differ in exactly two positions. By Proposition 2.3(a), we compute the squared distances from <span class="math inline">\y</span> to the four codewords, which are in the last column of the table. For the first codeword, for instance, the squared distance is <span class="math inline">(2^2+(\tfrac12)^2+0^2)A^2=\tfrac{17}{4}A^2</span>.</p>
+<div class="center">
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th style="text-align: center;"><span class="math inline">(D_1,D_2)</span></th>
+<th style="text-align: center;">Codeword</th>
+<th style="text-align: center;"><span class="math inline">\|\y-\x\|^2</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span class="math inline">(0,0)</span></td>
+<td style="text-align: center;"><span class="math inline">(-,-,-)</span></td>
+<td style="text-align: center;"><span class="math inline">\tfrac{17}{4}A^2</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">(0,1)</span></td>
+<td style="text-align: center;"><span class="math inline">(-,+,+)</span></td>
+<td style="text-align: center;"><span class="math inline">\tfrac{41}{4}A^2</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">(1,0)</span></td>
+<td style="text-align: center;"><span class="math inline">(+,-,+)</span></td>
+<td style="text-align: center;"><span class="math inline">\tfrac{17}{4}A^2</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">(1,1)</span></td>
+<td style="text-align: center;"><span class="math inline">(+,+,-)</span></td>
+<td style="text-align: center;"><span class="math inline">\tfrac94A^2</span></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Table 2.6.</strong> The four codewords of the parity code and their squared distances to <span class="math inline">\y=(1,-\tfrac12,-1)A</span>.</p>
+</div>
+<p>The decoder decides <span class="math inline">(+,+,-)</span>, that is, <span class="math inline">(D_1,D_2)=(1,1)</span>. Note that the symbolwise detector would have produced <span class="math inline">(+,-,-)</span>, which is not a codeword. The weak second observation is outvoted by the other two through the parity symbol.</p>
+<p>Two codewords that differ in two positions are at squared distance <span class="math inline">2\cdot(2A)^2=8A^2</span>, and this is the squared minimum distance of the code. Figure 2.4 shows the geometry. The energy per bit is <span class="math inline">\Eb=3A^2/2</span>, since three symbols carry two bits. To compare with the other schemes at equal energy per bit, note that scaling every symbol by a factor <span class="math inline">\alpha</span> multiplies <span class="math inline">\Eb</span> and every squared distance by <span class="math inline">\alpha^2</span>, so the ratio <span class="math inline">d_{\min}^2/\Eb</span> does not change and can be computed for each scheme as it stands. Table 2.7 does so.</p>
+<div class="center">
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th style="text-align: left;">Scheme</th>
+<th style="text-align: center;"><span class="math inline">R</span></th>
+<th style="text-align: center;"><span class="math inline">\Eb</span></th>
+<th style="text-align: center;"><span class="math inline">d_{\min}^2</span></th>
+<th style="text-align: center;"><span class="math inline">d_{\min}^2/\Eb</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Uncoded 2-PAM</td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">A^2</span></td>
+<td style="text-align: center;"><span class="math inline">4A^2</span></td>
+<td style="text-align: center;"><span class="math inline">4</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Repetition, <span class="math inline">n=3</span></td>
+<td style="text-align: center;"><span class="math inline">1/3</span></td>
+<td style="text-align: center;"><span class="math inline">3A^2</span></td>
+<td style="text-align: center;"><span class="math inline">12A^2</span></td>
+<td style="text-align: center;"><span class="math inline">4</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Parity code</td>
+<td style="text-align: center;"><span class="math inline">2/3</span></td>
+<td style="text-align: center;"><span class="math inline">3A^2/2</span></td>
+<td style="text-align: center;"><span class="math inline">8A^2</span></td>
+<td style="text-align: center;"><span class="math inline">16/3</span></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Table 2.7.</strong> Rate, energy per bit and squared minimum distance of three schemes with 2-PAM symbols of amplitude <span class="math inline">A</span>.</p>
+</div>
+<p>At equal energy per information bit, the parity code has <span class="math inline">d_{\min}^2=\tfrac{16}{3}\Eb</span>, compared with <span class="math inline">4\Eb</span> for the other two schemes. Its squared minimum distance is larger by a factor <span class="math inline">\tfrac43</span>, that is, an asymptotic gain of up to <span class="math inline">1.25</span> dB. At high SNR the error probability is governed by the closest pairs of codewords, as it was governed in Topic 1 by the neighboring points of 4-PAM at distance <span class="math inline">2a</span>. Two codewords at distance <span class="math inline">d</span> are confused with probability <span class="math inline">\tfrac12\erfc\bigl(d/(2\sqrt2\,\sigma)\bigr)</span>, as Exercise 2.7 shows, and Exercise 2.6 turns this into a bound for the parity code. Better codes make the gain larger, at the price of longer codewords and more work at the decoder.</p>
+</details>
+</section>
+<div class="source-figure">
+<img class="tex-figure" src="img/topic2-3343392553c972a3.svg" alt="Diagram reproduced from the course PDF; description follows in the text.">
+<p><strong>Figure 2.4.</strong> The eight sequences of three 2-PAM symbols are the vertices of a cube of side <span class="math inline">2A</span>. The four codewords of the parity code (filled) are pairwise at distance <span class="math inline">2\sqrt2\,A</span>, the diagonal of a face. The empty vertices are the sequences of odd parity.</p>
+</div>
+<p>This leads to the question that Topic 3 answers, namely whether there is a code whose rate stays above a fixed positive value while the error probability goes to zero, and which does better than repetition at equal energy per bit.</p>
+<p>Shannon’s answer is yes to both. Every channel has a <strong>capacity</strong> <span class="math inline">C</span>, and for every rate below <span class="math inline">C</span> there are codes whose error probability is as small as we wish. The capacity is strictly positive for every channel of Table 1.2 of Topic 1, except in useless cases such as the bit-flipping channel with <span class="math inline">p=\tfrac12</span> or the erasure channel with <span class="math inline">p=1</span>. Such codes are not repetition codes. Their codewords are spread out in a way that the decoder can exploit, as the parity code of Problem 2.9 begins to show.</p>
+<section class="callout"><h2>What to remember</h2>
+<ul>
+<li><p>A code sends <span class="math inline">n</span> symbols for every <span class="math inline">k</span> bits, and its rate is <span class="math inline">R=k/n</span>. The repetition code has <span class="math inline">k=1</span> and <span class="math inline">R=1/n</span>.</p></li>
+<li><p>The MAP decoder <span class="math inline">\argmax_{m\in\mathcal M} \Pr(m)\,W(\y|\x(m))</span> is optimal, by the proof of Topic 1, and with equiprobable messages it is the ML decoder. On a memoryless channel, the ML decoder maximizes the sum of the scores <span class="math inline">\ln W(y_i|x_i)</span>, and the MAP decoder adds <span class="math inline">\ln \Pr(m)</span> to that sum.</p></li>
+<li><p>ML uses Euclidean distance for Gaussian noise, Hamming distance for bit flips with <span class="math inline">p&lt;\tfrac12</span>, and consistency with unerased bits for erasures. For repetition, these rules become the sign of the sum on the real Gaussian channel, majority voting, and the first unerased bit. With exponential noise, ML selects the feasible codeword with the largest total input energy.</p></li>
+<li><p>With the ML decoder, the repetition code has <span class="math inline">P_{\rm e}=\tfrac12\erfc(\sqrt{n\,\snr/2})</span> on the real Gaussian channel, so <span class="math inline">n</span> repetitions are worth <span class="math inline">n</span> times the SNR.</p></li>
+<li><p>On the Gaussian channel, hard decisions discard the magnitudes of the observations and lose with respect to soft decisions, up to <span class="math inline">3</span> dB for long repetition codes. On the exponential channel they lose nothing.</p></li>
+<li><p>On every channel that carries information, repetition at fixed symbol energy drives <span class="math inline">P_{\rm e}</span> to zero, but its rate vanishes too. At equal energy per bit, Gaussian repetition with soft decoding gains nothing over uncoded transmission. Topic 3 shows that better codes exist.</p></li>
+</ul>
+</section></main></div><footer class="footer">Universitat Pompeu Fabra · 23972 · Digital data transmission 2026</footer><script src="vendor/katex.min.js"></script><script src="vendor/auto-render.min.js"></script><script src="site.js"></script><script src="ui.js"></script></body></html>
