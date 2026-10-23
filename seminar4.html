@@ -9,7 +9,7 @@
   </div>
   <div class="lang-switcher"><a href="seminar4.html" class="active" aria-current="page">EN</a></div>
 </nav><div class="page"><aside class="sidebar"><details class="sidebar-section"><summary><h4>General</h4></summary><a href="index.html">Home</a><a href="https://gestioacademica.upf.edu/doa/consultaPublica/look%5Bconpub%5DMostrarPubGuiaDocAs?entradaPublica=true&amp;idiomaPais=en.GB&amp;_anoAcademico=2026&amp;_codAsignatura=23972">Teaching guide ↗</a><a href="https://aulaglobal.upf.edu/course/view.php?id=92919">Aula Global ↗</a></details><details class="sidebar-section"><summary><h4>Modality A</h4></summary><a href="modality-a-midterm.html">Midterm</a><a href="modality-a-final.html">Final</a></details><details class="sidebar-section"><summary><h4>Lecture notes</h4></summary><a href="topic1.html">1. Detection</a><a href="topic2.html">2. Decoding</a><span class="sidebar-disabled">3. Mutual information and capacity</span><span class="sidebar-disabled">4. Continuous time</span><span class="sidebar-disabled">5. Modulation and demodulation</span><span class="sidebar-disabled">6. Continuous-channel capacity</span></details><details class="sidebar-section" open><summary><h4>Seminars</h4></summary><a href="seminar1.html">1. Detectors and their errors</a><a href="seminar2.html">2. Repetition codes and likelihood</a><a href="seminar3.html">3. Comparing receivers and codes</a><a href="seminar4.html" class="active" aria-current="page">4. Information through discrete channels</a><span class="sidebar-disabled">5. Gaussian capacity and constellations</span><span class="sidebar-disabled">6. Waveforms and coordinates</span><span class="sidebar-disabled">7. From bits to symbols and back</span><span class="sidebar-disabled">8. Rate, bandwidth and error</span><span class="sidebar-disabled">9. Power, bandwidth and capacity</span><span class="sidebar-disabled">10. Spatial modes and the whole chain</span></details><details class="sidebar-section"><summary><h4>Tests</h4></summary><a href="test1.html">1. Detection</a><a href="test2.html">2. Decoding</a><span class="sidebar-disabled">3. Mutual information and capacity</span><span class="sidebar-disabled">4. Continuous time</span><span class="sidebar-disabled">5. Modulation and demodulation</span></details><details class="sidebar-section"><summary><h4>Exercises</h4></summary><a href="exercises1.html">1. Detection</a><a href="exercises2.html">2. Decoding</a><span class="sidebar-disabled">3. Mutual information and capacity</span><span class="sidebar-disabled">4. Continuous time</span><span class="sidebar-disabled">5. Modulation and demodulation</span><span class="sidebar-disabled">6. Continuous-channel capacity</span></details><details class="sidebar-section"><summary><h4>Exams</h4></summary><span class="sidebar-disabled">Midterm 2026 (Modality A)</span><span class="sidebar-disabled">Final 2026 (Modality A)</span><span class="sidebar-disabled">Final 2026 (Modality B)</span></details></aside><main class="content" id="main"><div class="lecture-header"><h1>Seminar 4. Information through discrete channels</h1></div><div class="resource-row"><a class="resource-link" href="pdf/TDD-2026-Seminar4.pdf">Download PDF</a></div><p>The seven questions of the session, each with three options and one correct answer. Work out your answer before opening a solution.</p><button id="expand-solutions">Show all solutions</button><div class="env-block env-problem" id="question-1"><p><span class="env-label">Question 1.</span> A memoryless channel has input <span class="math inline">X\in\{0,1\}</span> and output <span class="math inline">Y\in\{0,1,\erasure\}</span>, where <span class="math inline">\erasure</span> denotes an erasure. The channel law is <span class="math display">\begin{equation*}
-\renewcommand{\arraystretch}{1.4}
+
 \begin{array}{c|ccc}
 W(y|x)&amp;y=0&amp;y=\erasure&amp;y=1\\\hline
 x=0&amp;\tfrac{1}{2}&amp;\tfrac{1}{4}&amp;\tfrac{1}{4}\\
@@ -23,7 +23,7 @@ x=1&amp;\tfrac{1}{4}&amp;\tfrac{1}{4}&amp;\tfrac{1}{2}
 \end{equation*}</span> The channel-table entry <span class="math inline">\tfrac{1}{4}</span> is conditional on <span class="math inline">X=1</span>. The answer is (b).</p>
 </details></div>
 <div class="env-block env-problem" id="question-2"><p><span class="env-label">Question 2.</span> A memoryless channel has input <span class="math inline">X\in\{0,1\}</span> and output <span class="math inline">Y\in\{0,1,\erasure\}</span>, where <span class="math inline">\erasure</span> denotes an erasure. The channel law is <span class="math display">\begin{equation*}
-\renewcommand{\arraystretch}{1.4}
+
 \begin{array}{c|ccc}
 W(y|x)&amp;y=0&amp;y=\erasure&amp;y=1\\\hline
 x=0&amp;\tfrac{1}{2}&amp;\tfrac{1}{4}&amp;\tfrac{1}{4}\\
@@ -37,7 +37,7 @@ x=1&amp;\tfrac{1}{4}&amp;\tfrac{1}{4}&amp;\tfrac{1}{2}
 \end{equation*}</span> Symmetry gives <span class="math inline">\Pr(Y=1)=\tfrac38</span>. Both inputs have erasure probability <span class="math inline">\tfrac14</span>, so <span class="math inline">\Pr(Y=\erasure)=\tfrac14</span>. The answer is (a).</p>
 </details></div>
 <div class="env-block env-problem" id="question-3"><p><span class="env-label">Question 3.</span> A memoryless channel has input <span class="math inline">X\in\{0,1\}</span> and output <span class="math inline">Y\in\{0,1,\erasure\}</span>, where <span class="math inline">\erasure</span> denotes an erasure. The channel law is <span class="math display">\begin{equation*}
-\renewcommand{\arraystretch}{1.4}
+
 \begin{array}{c|ccc}
 W(y|x)&amp;y=0&amp;y=\erasure&amp;y=1\\\hline
 x=0&amp;\tfrac{1}{2}&amp;\tfrac{1}{4}&amp;\tfrac{1}{4}\\
@@ -53,7 +53,7 @@ H(Y)&amp;=-2\cdot\tfrac38\log_2\tfrac38-\tfrac14\log_2\tfrac14\\
 \end{align*}</span> The three outputs are not equiprobable. The answer is (c).</p>
 </details></div>
 <div class="env-block env-problem" id="question-4"><p><span class="env-label">Question 4.</span> A memoryless channel has input <span class="math inline">X\in\{0,1\}</span> and output <span class="math inline">Y\in\{0,1,\erasure\}</span>, where <span class="math inline">\erasure</span> denotes an erasure. The channel law is <span class="math display">\begin{equation*}
-\renewcommand{\arraystretch}{1.4}
+
 \begin{array}{c|ccc}
 W(y|x)&amp;y=0&amp;y=\erasure&amp;y=1\\\hline
 x=0&amp;\tfrac{1}{2}&amp;\tfrac{1}{4}&amp;\tfrac{1}{4}\\
@@ -67,7 +67,7 @@ x=1&amp;\tfrac{1}{4}&amp;\tfrac{1}{4}&amp;\tfrac{1}{2}
 \end{equation*}</span> Since both row entropies equal <span class="math inline">\tfrac32</span>, their average is <span class="math inline">H(Y|X)=\tfrac32</span>, whatever the input distribution. The answer is (b).</p>
 </details></div>
 <div class="env-block env-problem" id="question-5"><p><span class="env-label">Question 5.</span> A memoryless channel has input <span class="math inline">X\in\{0,1\}</span> and output <span class="math inline">Y\in\{0,1,\erasure\}</span>, where <span class="math inline">\erasure</span> denotes an erasure. The channel law is <span class="math display">\begin{equation*}
-\renewcommand{\arraystretch}{1.4}
+
 \begin{array}{c|ccc}
 W(y|x)&amp;y=0&amp;y=\erasure&amp;y=1\\\hline
 x=0&amp;\tfrac{1}{2}&amp;\tfrac{1}{4}&amp;\tfrac{1}{4}\\
@@ -83,7 +83,7 @@ I(X;Y)&amp;=H(Y)-H(Y|X)\\
 \end{align*}</span> This is approximately <span class="math inline">0.061</span> bits per channel use. The output entropy includes uncertainty introduced by both errors and erasures. The answer is (a).</p>
 </details></div>
 <div class="env-block env-problem" id="question-6"><p><span class="env-label">Question 6.</span> A memoryless channel has input <span class="math inline">X\in\{0,1\}</span> and output <span class="math inline">Y\in\{0,1,\erasure\}</span>, where <span class="math inline">\erasure</span> denotes an erasure. The channel law is <span class="math display">\begin{equation*}
-\renewcommand{\arraystretch}{1.4}
+
 \begin{array}{c|ccc}
 W(y|x)&amp;y=0&amp;y=\erasure&amp;y=1\\\hline
 x=0&amp;\tfrac{1}{2}&amp;\tfrac{1}{4}&amp;\tfrac{1}{4}\\
@@ -101,7 +101,7 @@ I(X;Y)=h_2(\tfrac14)+\tfrac34 h_2\bigl(\tfrac{1+q}{3}\bigr)-\tfrac32.
 \end{equation*}</span> By Section 3.1, binary entropy is maximal when its argument is <span class="math inline">\tfrac12</span>. Solving <span class="math inline">\tfrac{1+q}{3}=\tfrac12</span> gives <span class="math inline">q=\tfrac12</span>, with the maximum found in question 5. The answer is (c).</p>
 </details></div>
 <div class="env-block env-problem" id="question-7"><p><span class="env-label">Question 7.</span> A memoryless channel has input <span class="math inline">X\in\{0,1\}</span> and output <span class="math inline">Y\in\{0,1,\erasure\}</span>, where <span class="math inline">\erasure</span> denotes an erasure. The channel law is <span class="math display">\begin{equation*}
-\renewcommand{\arraystretch}{1.4}
+
 \begin{array}{c|ccc}
 W(y|x)&amp;y=0&amp;y=\erasure&amp;y=1\\\hline
 x=0&amp;\tfrac{1}{2}&amp;\tfrac{1}{4}&amp;\tfrac{1}{4}\\
