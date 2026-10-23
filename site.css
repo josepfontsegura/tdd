@@ -3,6 +3,8 @@
 .resource-link{display:inline-flex;align-items:center;gap:.5rem;padding:.6rem 1.2rem;border:2px solid var(--upf-red);color:var(--upf-red);border-radius:6px;font-weight:500;text-decoration:none}
 .callout,.topic-toc{border-left:4px solid var(--upf-red);background:var(--upf-red-light);padding:.75em 1em;margin:1.25em 0;border-radius:4px}
 .proof{padding-left:1em;border-left:3px solid #bbb}
+/* Common text of a seminar sheet or of a group of questions, shown once before its first question (23 October). */
+.seminar-context{border-left:4px solid var(--upf-red);background:var(--upf-red-light);padding:.75em 1em;margin:1.25em 0;border-radius:4px}
 .tex-figure{max-width:100%;height:auto;background:white}
 .source-figure{text-align:center;margin:1.5em 0}.source-figure>img{display:inline-block;vertical-align:middle}.source-figure p{font-size:.85rem;color:var(--text-secondary);margin-top:.5rem}
 .table-scroll{overflow-x:auto}.math.display{display:block}main>ol>li{margin:1.25em 0}ol ol{list-style-type:lower-alpha}
