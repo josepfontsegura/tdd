@@ -1,0 +1,449 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Topic 3 - Mutual information and capacity - TDD 2026</title><script>document.documentElement.dataset.theme=localStorage.getItem('tdd-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')</script><link rel="icon" href="img/favicon.ico" type="image/x-icon"><link rel="stylesheet" href="itc.css"><link rel="stylesheet" href="vendor/katex.min.css"><link rel="stylesheet" href="site.css"><script defer src="analytics.js"></script></head><body><a class="skip" href="#main">Skip to content</a><nav class="navbar">
+  <button class="menu-toggle" aria-label="Menu">&#9776;</button>
+  <a class="navbar-brand" href="index.html">
+    <img src="img/upf-logo.svg" alt="UPF" style="height:42px;margin-right:0.75rem"> <span class="navbar-brand-text">Digital data transmission 2026</span>
+  </a>
+  <div class="navbar-actions">
+    <button class="search-toggle" aria-label="Search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><span class="search-hint">⌘K</span></button>
+    <button class="theme-toggle" aria-label="Toggle dark mode"><svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button>
+  </div>
+  <div class="lang-switcher"><a href="topic3.html" class="active" aria-current="page">EN</a></div>
+</nav><div class="page"><aside class="sidebar"><details class="sidebar-section"><summary><h4>General</h4></summary><a href="index.html">Home</a><a href="https://gestioacademica.upf.edu/doa/consultaPublica/look%5Bconpub%5DMostrarPubGuiaDocAs?entradaPublica=true&amp;idiomaPais=en.GB&amp;_anoAcademico=2026&amp;_codAsignatura=23972">Teaching guide ↗</a><a href="https://aulaglobal.upf.edu/course/view.php?id=92919">Aula Global ↗</a></details><details class="sidebar-section"><summary><h4>Modality A</h4></summary><a href="modality-a-midterm.html">Midterm</a><a href="modality-a-final.html">Final</a></details><details class="sidebar-section" open><summary><h4>Lecture notes</h4></summary><a href="topic1.html">1. Detection</a><a href="topic2.html">2. Decoding</a><a href="topic3.html" class="active" aria-current="page">3. Mutual information and capacity</a><a href="topic4.html">4. Continuous time</a><span class="sidebar-disabled">5. Modulation and demodulation</span><span class="sidebar-disabled">6. Continuous-channel capacity</span></details><details class="sidebar-section"><summary><h4>Seminars</h4></summary><a href="seminar1.html">1. Detectors and their errors</a><a href="seminar2.html">2. Repetition codes and likelihood</a><a href="seminar3.html">3. Comparing receivers and codes</a><a href="seminar4.html">4. Information through discrete channels</a><span class="sidebar-disabled">5. Gaussian capacity and constellations</span><span class="sidebar-disabled">6. Waveforms and coordinates</span><span class="sidebar-disabled">7. From bits to symbols and back</span><span class="sidebar-disabled">8. Rate, bandwidth and error</span><span class="sidebar-disabled">9. Power, bandwidth and capacity</span><span class="sidebar-disabled">10. Spatial modes and the whole chain</span></details><details class="sidebar-section"><summary><h4>Tests</h4></summary><a href="test1.html">1. Detection</a><a href="test2.html">2. Decoding</a><span class="sidebar-disabled">3. Mutual information and capacity</span><span class="sidebar-disabled">4. Continuous time</span><span class="sidebar-disabled">5. Modulation and demodulation</span></details><details class="sidebar-section"><summary><h4>Exercises</h4></summary><a href="exercises1.html">1. Detection</a><a href="exercises2.html">2. Decoding</a><span class="sidebar-disabled">3. Mutual information and capacity</span><span class="sidebar-disabled">4. Continuous time</span><span class="sidebar-disabled">5. Modulation and demodulation</span><span class="sidebar-disabled">6. Continuous-channel capacity</span></details><details class="sidebar-section"><summary><h4>Exams</h4></summary><span class="sidebar-disabled">Midterm 2026 (Modality A)</span><span class="sidebar-disabled">Final 2026 (Modality A)</span><span class="sidebar-disabled">Final 2026 (Modality B)</span></details></aside><main class="content" id="main"><div class="lecture-header"><h1>Topic 3. Mutual information and capacity</h1></div><div class="resource-row"><a class="resource-link" href="pdf/TDD-2026-Topic3.pdf">Download PDF</a></div><nav class="topic-toc" aria-label="In this topic"><strong>Contents</strong><ul><li><a href="#entropy-review">3.1 Entropy review</a></li><li><a href="#mutual-information">3.2 Mutual information</a></li><li><a href="#capacity-and-the-coding-theorem">3.3 Capacity and the coding theorem</a></li><li><a href="#differential-entropy">3.4 Differential entropy</a></li><li><a href="#gaussian-capacity">3.5 Gaussian capacity</a></li><li><a href="#finite-constellations">3.6 Finite constellations</a></li></ul></nav><section class="callout"><h2>In this topic</h2>
+<p>Topic 2 ended with a question. The repetition code makes the error probability as small as we wish, but its rate goes to zero, and we asked whether a code can keep a positive rate while the error probability vanishes. In this topic we measure how much information a channel lets through, and this measure gives the answer. Sections 3.1 to 3.3 correspond to the first lecture and Sections 3.4 to 3.6 to the second.</p>
+<ul>
+<li><p>We review the entropy, and we define the mutual information between the input and the output of a channel from their joint law.</p></li>
+<li><p>We compute the mutual information of the bit-flipping and bit-erasing channels, and we separate the uncertainty of the output from the information that it carries about the input.</p></li>
+<li><p>We define the capacity as the largest mutual information, and we state what the channel coding theorem promises for the rates below it.</p></li>
+<li><p>We extend the entropy to continuous observations, and we obtain the capacity of the real and complex Gaussian channels under a constraint on the symbol energy.</p></li>
+<li><p>We compare the information carried by 2-PAM, 4-PAM and QPSK with the Gaussian capacity, and we contrast the result with the exponential channel.</p></li>
+</ul>
+</section>
+<h2 id="entropy-review">3.1 Entropy review</h2>
+<p>We start with the measure of uncertainty studied in the information theory course.</p>
+<section class="env-block env-definition"><p class="env-label">Definition 3.1.</p>
+<p>The <strong>entropy</strong> of a discrete random variable <span class="math inline">X</span> with values in a finite set <span class="math inline">\mathcal X</span> and probabilities <span class="math inline">\Pr(x)</span> is <span class="math display">\begin{equation*}
+H(X)=-\sum_{x\in\mathcal X}\Pr(x)\log_2\Pr(x),\tag{3.1}
+\end{equation*}</span> measured in bits, where the terms with <span class="math inline">\Pr(x)=0</span> count as zero.</p>
+</section>
+<p>The entropy is nonnegative, and it is zero only when one value has probability one. It is at most <span class="math inline">\log_2|\mathcal X|</span>, the logarithm of the number of values, and it reaches this maximum when the values are equiprobable. A constellation of <span class="math inline">M</span> equiprobable points therefore has entropy <span class="math inline">\log_2M</span>, the number of bits that one symbol carries in the uncoded transmission of Topic 1.</p>
+<p>For a bit that is <span class="math inline">1</span> with probability <span class="math inline">p</span>, the entropy is the <strong>binary entropy function</strong>, <span class="math display">\begin{equation*}
+h_2(p)=-p\log_2p-(1-p)\log_2(1-p).\tag{3.2}
+\end{equation*}</span> It vanishes at <span class="math inline">p=0</span> and <span class="math inline">p=1</span>, it is symmetric around <span class="math inline">p=\tfrac12</span>, so that <span class="math inline">h_2(p)=h_2(1-p)</span>, and it reaches its maximum of <span class="math inline">1</span> bit at <span class="math inline">p=\tfrac12</span>. Table 3.1 gives the values that we need for hand calculations, together with some logarithms.</p>
+<div class="source-table">
+<div class="table-scroll"><table>
+<tbody>
+<tr>
+<td style="text-align: left;"><span class="math inline">p</span></td>
+<td style="text-align: center;"><span class="math inline">0.01</span></td>
+<td style="text-align: center;"><span class="math inline">0.05</span></td>
+<td style="text-align: center;"><span class="math inline">0.1</span></td>
+<td style="text-align: center;"><span class="math inline">0.11</span></td>
+<td style="text-align: center;"><span class="math inline">0.2</span></td>
+<td style="text-align: center;"><span class="math inline">0.25</span></td>
+<td style="text-align: center;"><span class="math inline">0.3</span></td>
+<td style="text-align: center;"><span class="math inline">0.4</span></td>
+<td style="text-align: center;"><span class="math inline">0.45</span></td>
+<td style="text-align: center;"><span class="math inline">0.5</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><span class="math inline">h_2(p)</span></td>
+<td style="text-align: center;"><span class="math inline">0.081</span></td>
+<td style="text-align: center;"><span class="math inline">0.286</span></td>
+<td style="text-align: center;"><span class="math inline">0.469</span></td>
+<td style="text-align: center;"><span class="math inline">0.500</span></td>
+<td style="text-align: center;"><span class="math inline">0.722</span></td>
+<td style="text-align: center;"><span class="math inline">0.811</span></td>
+<td style="text-align: center;"><span class="math inline">0.881</span></td>
+<td style="text-align: center;"><span class="math inline">0.971</span></td>
+<td style="text-align: center;"><span class="math inline">0.993</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><span class="math inline">u</span></td>
+<td style="text-align: center;"><span class="math inline">1.25</span></td>
+<td style="text-align: center;"><span class="math inline">1.5</span></td>
+<td style="text-align: center;"><span class="math inline">3</span></td>
+<td style="text-align: center;"><span class="math inline">5</span></td>
+<td style="text-align: center;"><span class="math inline">6</span></td>
+<td style="text-align: center;"><span class="math inline">7</span></td>
+<td style="text-align: center;"><span class="math inline">9</span></td>
+<td style="text-align: center;"><span class="math inline">10</span></td>
+<td style="text-align: center;"><span class="math inline">11</span></td>
+<td style="text-align: center;"><span class="math inline">e</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><span class="math inline">\log_2u</span></td>
+<td style="text-align: center;"><span class="math inline">0.322</span></td>
+<td style="text-align: center;"><span class="math inline">0.585</span></td>
+<td style="text-align: center;"><span class="math inline">1.585</span></td>
+<td style="text-align: center;"><span class="math inline">2.322</span></td>
+<td style="text-align: center;"><span class="math inline">2.585</span></td>
+<td style="text-align: center;"><span class="math inline">2.807</span></td>
+<td style="text-align: center;"><span class="math inline">3.170</span></td>
+<td style="text-align: center;"><span class="math inline">3.322</span></td>
+<td style="text-align: center;"><span class="math inline">3.459</span></td>
+<td style="text-align: center;"><span class="math inline">1.443</span></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Table 3.1.</strong> Values of the binary entropy function and of the logarithm in base <span class="math inline">2</span> for hand calculations.</p>
+</div>
+<section class="env-block env-example"><p class="env-label">Example 3.2.</p>
+<p>A constellation of four points is used with probabilities <span class="math inline">\tfrac12</span>, <span class="math inline">\tfrac14</span>, <span class="math inline">\tfrac18</span> and <span class="math inline">\tfrac18</span>. Since <span class="math inline">-\log_2\tfrac12=1</span>, <span class="math inline">-\log_2\tfrac14=2</span> and <span class="math inline">-\log_2\tfrac18=3</span>, its entropy is <span class="math display">\begin{equation*}
+H(X)=\tfrac12\cdot1+\tfrac14\cdot2+\tfrac18\cdot3+\tfrac18\cdot3=1.75 \text{ bits},\tag{3.3}
+\end{equation*}</span> below the <span class="math inline">2</span> bits of four equiprobable points.</p>
+</section>
+<p>When two random variables are involved we also need the entropy of one of them once the other is known. For a channel with input <span class="math inline">X</span> and output <span class="math inline">Y</span>, the output has the law <span class="math inline">W(y|x)</span> when the input is <span class="math inline">x</span>, and the entropy of that law is <span class="math display">\begin{equation*}
+H(Y|X=x)=-\sum_{y\in\mathcal Y}W(y|x)\log_2W(y|x).\tag{3.4}
+\end{equation*}</span> The <strong>conditional entropy</strong> of the output given the input is its average over the input, <span class="math display">\begin{equation*}
+H(Y|X)=\sum_{x\in\mathcal X}\Pr(x)\,H(Y|X=x).\tag{3.5}
+\end{equation*}</span> It measures the uncertainty that the channel adds. On the bit-flipping channel, for instance, the output given the input is a bit that differs from the input with probability <span class="math inline">p</span>, so <span class="math inline">H(Y|X=x)=h_2(p)</span> for both inputs and <span class="math inline">H(Y|X)=h_2(p)</span> whatever the input probabilities are.</p>
+<h2 id="mutual-information">3.2 Mutual information</h2>
+<p>The transmitter chooses the symbols with probabilities <span class="math inline">\Pr(x)</span> and the channel has law <span class="math inline">W(y|x)</span>. By the product and sum rules of Table 1.1 of Topic 1, the joint law of input and output is <span class="math inline">\Pr(x)W(y|x)</span>, and the output has the probabilities <span class="math display">\begin{equation*}
+\Pr(y)=\sum_{x\in\mathcal X}\Pr(x)\,W(y|x).\tag{3.6}
+\end{equation*}</span></p>
+<section class="env-block env-definition"><p class="env-label">Definition 3.3.</p>
+<p>The <strong>mutual information</strong> between the input <span class="math inline">X</span> and the output <span class="math inline">Y</span> of a channel is <span class="math display">\begin{equation*}
+I(X;Y)=\sum_{x\in\mathcal X}\sum_{y\in\mathcal Y}\Pr(x)\,W(y|x)\log_2\frac{W(y|x)}{\Pr(y)},\tag{3.7}
+\end{equation*}</span> measured in bits per channel use, where the terms with <span class="math inline">\Pr(x)W(y|x)=0</span> count as zero.</p>
+</section>
+<p>The definition compares, for every pair <span class="math inline">(x,y)</span>, the probability <span class="math inline">W(y|x)</span> of the output when <span class="math inline">x</span> is sent with its probability <span class="math inline">\Pr(y)</span> when we do not know what was sent. If the two coincide for all pairs, the output says nothing about the input, every logarithm is zero and so is the mutual information. The following result gives the form that we use in the calculations.</p>
+<section class="env-block env-theorem"><p class="env-label">Proposition 3.4.</p>
+<p>The mutual information is the entropy of the output minus the conditional entropy of the output given the input, <span class="math display">\begin{equation*}
+I(X;Y)=H(Y)-H(Y|X).\tag{3.8}
+\end{equation*}</span> It is nonnegative, it is zero when the output is independent of the input, and it is at most <span class="math inline">H(X)</span> and at most <span class="math inline">H(Y)</span>.</p>
+</section>
+<div class="proof"><strong>Proof.</strong>
+<p>We write the logarithm of the quotient in (3.7) as <span class="math inline">\log_2W(y|x)-\log_2\Pr(y)</span> and split the sum in two. In the first part, the sum over <span class="math inline">y</span> for a fixed <span class="math inline">x</span> is <span class="math inline">-H(Y|X=x)</span> by (3.4), and the average over <span class="math inline">x</span> gives <span class="math inline">-H(Y|X)</span> by (3.5). In the second part, the sum over <span class="math inline">x</span> of <span class="math inline">\Pr(x)W(y|x)</span> is <span class="math inline">\Pr(y)</span> by (3.6), and what remains is <span class="math inline">-\smash{\sum_{y\in\mathcal Y}}\Pr(y)\log_2\Pr(y)=H(Y)</span>. The remaining properties were proved in the information theory course.</p>
+</div>
+<p>In words, the uncertainty <span class="math inline">H(Y)</span> of the output has two origins, the choice of the symbol and the noise of the channel. The term <span class="math inline">H(Y|X)</span> is the part due to the noise, and the mutual information is what is left, the part of the output that comes from the input. Since the definition is symmetric in the two variables, we also have <span class="math inline">I(X;Y)=H(X)-H(X|Y)</span>, that is, the uncertainty about the input minus the uncertainty that remains after observing the output.</p>
+<section class="env-block env-example"><p class="env-label">Example 3.5.</p>
+<p>On the bit-flipping channel with flip probability <span class="math inline">p</span>, let the input be <span class="math inline">1</span> with probability <span class="math inline">q</span>. The output is <span class="math inline">1</span> when a <span class="math inline">1</span> is sent and not flipped, or when a <span class="math inline">0</span> is sent and flipped, so by (3.6) <span class="math display">\begin{equation*}
+\Pr(Y=1)=q(1-p)+(1-q)p,\tag{3.9}
+\end{equation*}</span> and <span class="math inline">H(Y)=h_2\bigl(q(1-p)+(1-q)p\bigr)</span>. We saw in Section 3.1 that <span class="math inline">H(Y|X)=h_2(p)</span>. Hence, by (3.8), <span class="math display">\begin{equation*}
+I(X;Y)=h_2\bigl(q(1-p)+(1-q)p\bigr)-h_2(p).\tag{3.10}
+\end{equation*}</span> With equiprobable inputs, <span class="math inline">q=\tfrac12</span>, the output is equiprobable too and <span class="math inline">I(X;Y)=1-h_2(p)</span>. For <span class="math inline">p=0.1</span> this is <span class="math inline">1-0.469=0.531</span> bits per channel use.</p>
+</section>
+<section class="env-block env-problem"><p class="env-label">Problem 3.6.</p>
+<p>Compute the mutual information of the bit-erasing channel with erasure probability <span class="math inline">p</span> when the input is <span class="math inline">1</span> with probability <span class="math inline">q</span>.</p>
+<details class="solution"><summary>Show solution</summary>
+<p>The output takes three values. By (3.6), it is an erasure with probability <span class="math inline">p</span> whatever the input, it is <span class="math inline">1</span> with probability <span class="math inline">q(1-p)</span> and it is <span class="math inline">0</span> with probability <span class="math inline">(1-q)(1-p)</span>. Its entropy is <span class="math display">\begin{equation*}
+H(Y)=-p\log_2p-q(1-p)\log_2\bigl(q(1-p)\bigr)-(1-q)(1-p)\log_2\bigl((1-q)(1-p)\bigr).\tag{3.11}
+\end{equation*}</span> We write each logarithm of a product as a sum of logarithms and collect the terms. Those with <span class="math inline">\log_2p</span> and <span class="math inline">\log_2(1-p)</span> add up to <span class="math inline">h_2(p)</span>, because <span class="math inline">q(1-p)+(1-q)(1-p)=1-p</span>, and those with <span class="math inline">\log_2q</span> and <span class="math inline">\log_2(1-q)</span> add up to <span class="math inline">(1-p)h_2(q)</span>. Hence, <span class="math inline">H(Y)=h_2(p)+(1-p)h_2(q)</span>. Given the input, the output is either the input or an erasure, with probabilities <span class="math inline">1-p</span> and <span class="math inline">p</span>, so <span class="math inline">H(Y|X)=h_2(p)</span>. By (3.8), <span class="math display">\begin{equation*}
+I(X;Y)=(1-p)\,h_2(q).\tag{3.12}
+\end{equation*}</span> The input carries <span class="math inline">h_2(q)</span> bits, and a fraction <span class="math inline">1-p</span> of the symbols arrives intact.</p>
+</details>
+</section>
+<aside class="callout">
+<p>The entropy of the output is not the information. On the bit-flipping channel with <span class="math inline">p=\tfrac12</span> and equiprobable inputs, the output is an equiprobable bit and <span class="math inline">H(Y)=1</span>, the largest possible value. But <span class="math inline">H(Y|X)=h_2(\tfrac12)=1</span> as well, so <span class="math inline">I(X;Y)=0</span>. All the uncertainty of the output comes from the noise, and none from the input.</p>
+</aside>
+<h2 id="capacity-and-the-coding-theorem">3.3 Capacity and the coding theorem</h2>
+<p>The mutual information depends on the channel and on the input probabilities. The channel is given, but the input probabilities are chosen by the designer of the system, and it is natural to choose the best ones.</p>
+<section class="env-block env-definition"><p class="env-label">Definition 3.7.</p>
+<p>The <strong>capacity</strong> of a channel is the largest mutual information over all the input distributions, <span class="math display">\begin{equation*}
+C=\max_{\Pr(x)}I(X;Y),\tag{3.13}
+\end{equation*}</span> measured in bits per channel use.</p>
+</section>
+<p>For the bit-flipping channel, the second term of (3.10) does not depend on <span class="math inline">q</span>, and the first is at most <span class="math inline">1</span>, with equality for <span class="math inline">q=\tfrac12</span>. For the bit-erasing channel, (3.12) is largest for <span class="math inline">q=\tfrac12</span> as well. Hence, <span class="math display">\begin{equation*}
+C_{\rm BSC}=1-h_2(p)\tag{3.14}
+\end{equation*}</span> and <span class="math display">\begin{equation*}
+C_{\rm BEC}=1-p,\tag{3.15}
+\end{equation*}</span> both achieved by equiprobable inputs. Figure 3.1 shows the two capacities. The erasure channel has the larger capacity for small <span class="math inline">p</span>, in agreement with Exercise 2.1 of Topic 2, because an erased bit is known to be missing, whereas a flipped bit looks like a correct one. The capacity of the bit-flipping channel is zero at <span class="math inline">p=\tfrac12</span> and returns to <span class="math inline">1</span> at <span class="math inline">p=1</span>, because a channel that flips every bit is as good as one that flips none, once the receiver knows it.</p>
+<div class="source-figure">
+<img class="tex-figure" src="img/topic3-29fbdffa61a53033.svg" alt="Diagram reproduced from the course PDF; description follows in the text.">
+<p><strong>Figure 3.1.</strong> Capacity of the bit-flipping and bit-erasing channels as a function of the parameter <span class="math inline">p</span>.</p>
+</div>
+<p>The equiprobable input is not always the best one, as the following example shows.</p>
+<section class="env-block env-example"><p class="env-label">Example 3.8.</p>
+<p>In Exercise 2.5 of Topic 2, the exponential channel followed by the detector of Topic 1 became a binary channel in which a <span class="math inline">1</span> is never flipped and a <span class="math inline">0</span> is flipped with probability <span class="math inline">\varepsilon</span>. Let <span class="math inline">\varepsilon=\tfrac12</span> and let the input be <span class="math inline">0</span> with probability <span class="math inline">q</span>. The output is <span class="math inline">1</span> when a <span class="math inline">1</span> is sent, or when a <span class="math inline">0</span> is sent and flipped, so <span class="math inline">\Pr(Y=1)=1-q+\tfrac q2=1-\tfrac q2</span>. Given <span class="math inline">X=1</span> the output is certain, and given <span class="math inline">X=0</span> it is an equiprobable bit, so <span class="math inline">H(Y|X)=q\,h_2(\tfrac12)=q</span>. By (3.8), <span class="math display">\begin{equation*}
+I(X;Y)=h_2\bigl(\tfrac q2\bigr)-q.\tag{3.16}
+\end{equation*}</span> Table 3.2 evaluates this expression. The largest value is obtained for <span class="math inline">q=0.4</span>, and Exercise 3.7 shows that it is the capacity, <span class="math inline">C=\log_2\tfrac54=0.322</span> bits per channel use. The input that suffers the noise is used less often than the other, but it is still used. The equiprobable input gives <span class="math inline">0.311</span>, only slightly less.</p>
+<div class="center">
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th style="text-align: left;"><span class="math inline">q=\Pr(X=0)</span></th>
+<th style="text-align: center;"><span class="math inline">0.2</span></th>
+<th style="text-align: center;"><span class="math inline">0.3</span></th>
+<th style="text-align: center;"><span class="math inline">0.4</span></th>
+<th style="text-align: center;"><span class="math inline">0.5</span></th>
+<th style="text-align: center;"><span class="math inline">0.6</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><span class="math inline">I(X;Y)</span></td>
+<td style="text-align: center;"><span class="math inline">0.269</span></td>
+<td style="text-align: center;"><span class="math inline">0.310</span></td>
+<td style="text-align: center;"><span class="math inline">0.322</span></td>
+<td style="text-align: center;"><span class="math inline">0.311</span></td>
+<td style="text-align: center;"><span class="math inline">0.281</span></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Table 3.2.</strong> Mutual information of the channel of Example 3.8 for several input distributions.</p>
+</div>
+</section>
+<p>The capacity is defined by a formula, and its importance comes from the following theorem, due to Shannon, which we state without proof.</p>
+<section class="env-block env-theorem"><p class="env-label">Theorem 3.9.</p>
+<p>[Channel coding theorem]</p>
+<p>Consider a memoryless channel with capacity <span class="math inline">C</span> and codes with equiprobable messages. For every rate <span class="math inline">R&lt;C</span> and every <span class="math inline">\epsilon&gt;0</span>, there is a code of rate at least <span class="math inline">R</span>, of sufficiently large length <span class="math inline">n</span>, whose error probability with the ML decoder is at most <span class="math inline">\epsilon</span>. Conversely, for every rate <span class="math inline">R&gt;C</span> the error probability of any code stays above a positive constant, however large <span class="math inline">n</span> is.</p>
+</section>
+<p>Three quantities in bits per channel use appear in this topic, and they play different roles.</p>
+<ul>
+<li><p>The <strong>rate</strong> <span class="math inline">R=k/n</span> belongs to the code. It is what the transmitter attempts to send.</p></li>
+<li><p>The <strong>mutual information</strong> <span class="math inline">I(X;Y)</span> belongs to the channel together with an input distribution. It is the threshold of the rates at which reliable transmission is possible with codewords whose symbols follow that distribution.</p></li>
+<li><p>The <strong>capacity</strong> <span class="math inline">C</span> belongs to the channel alone. It is the threshold of the rates at which reliable transmission is possible, whatever the input; Theorem 3.9 says nothing about the rate <span class="math inline">C</span> itself.</p></li>
+</ul>
+<p>The theorem answers the question of Topic 2. Reliable transmission does not require the rate to go to zero. It is enough that the rate stays below the capacity, and the price of a smaller error probability is a longer code, not a smaller rate. Table 3.3 places the repetition code against this limit on the bit-flipping channel with <span class="math inline">p=0.1</span>. To reach an error probability below <span class="math inline">10^{-6}</span>, the repetition code needs <span class="math inline">n=23</span> and a rate of <span class="math inline">0.04</span>, while the capacity is <span class="math inline">0.53</span>, more than ten times larger.</p>
+<div class="source-table">
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th style="text-align: left;">Scheme</th>
+<th style="text-align: center;">Rate (bits per channel use)</th>
+<th style="text-align: center;">Error probability</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Uncoded</td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">10^{-1}</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Repetition, <span class="math inline">n=3</span></td>
+<td style="text-align: center;"><span class="math inline">0.33</span></td>
+<td style="text-align: center;"><span class="math inline">2.8\cdot10^{-2}</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Repetition, <span class="math inline">n=11</span></td>
+<td style="text-align: center;"><span class="math inline">0.09</span></td>
+<td style="text-align: center;"><span class="math inline">3.0\cdot10^{-4}</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Repetition, <span class="math inline">n=23</span></td>
+<td style="text-align: center;"><span class="math inline">0.04</span></td>
+<td style="text-align: center;"><span class="math inline">4.7\cdot10^{-7}</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Best codes of length <span class="math inline">n</span></td>
+<td style="text-align: center;">any <span class="math inline">R&lt;0.53</span></td>
+<td style="text-align: center;">as small as desired for large <span class="math inline">n</span></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Table 3.3.</strong> The repetition code and the limit of the coding theorem on the bit-flipping channel with <span class="math inline">p=0.1</span>.</p>
+</div>
+<aside class="callout">
+<p>The theorem is a promise about the best codes, not a guarantee for a given one. A code of rate below the capacity may have a large error probability. The repetition code with <span class="math inline">n=3</span> has rate <span class="math inline">0.33&lt;0.53</span> and error probability <span class="math inline">2.8\cdot10^{-2}</span>. The theorem says that better codes of that rate exist, and that they are long. It does not say how to build them, nor how to decode them with reasonable effort, and these two questions occupied coding theory for fifty years.</p>
+</aside>
+<h2 id="differential-entropy">3.4 Differential entropy</h2>
+<p>On the Gaussian and exponential channels the output is a real or complex number, and its law is a density. As in Table 1.1 of Topic 1, the sums become integrals.</p>
+<section class="env-block env-definition"><p class="env-label">Definition 3.10.</p>
+<p>The <strong>differential entropy</strong> of a real random variable <span class="math inline">X</span> with density <span class="math inline">f(x)</span> is <span class="math display">\begin{equation*}
+h(X)=-\int_{-\infty}^{\infty}f(x)\log_2f(x)\drm x,\tag{3.17}
+\end{equation*}</span> measured in bits, where the points with <span class="math inline">f(x)=0</span> do not contribute.</p>
+</section>
+<p>The differential entropy shares the form of the entropy but not all its properties. It does not change when a constant is added to the variable, since the density is only displaced. It changes when the variable is scaled: if <span class="math inline">Y=aX</span> with <span class="math inline">a\neq0</span> then <span class="math inline">h(Y)=h(X)+\log_2|a|</span>, because the density is stretched by <span class="math inline">|a|</span> in width and divided by <span class="math inline">|a|</span> in height. As a consequence, it can be negative.</p>
+<section class="env-block env-example"><p class="env-label">Example 3.11.</p>
+<p>A uniform random variable on an interval of length <span class="math inline">a</span> has density <span class="math inline">\tfrac1a</span> on that interval, so <span class="math display">\begin{equation*}
+h(X)=-\int_{0}^{a}\frac1a\log_2\frac1a\drm x=\log_2a.\tag{3.18}
+\end{equation*}</span> For <span class="math inline">a=1</span> the differential entropy is zero, and for <span class="math inline">a=\tfrac12</span> it is <span class="math inline">-1</span> bit. Only differences of differential entropies have a meaning, and the mutual information is such a difference.</p>
+</section>
+<section class="env-block env-problem"><p class="env-label">Problem 3.12.</p>
+<p>Compute the differential entropy of a real Gaussian random variable of variance <span class="math inline">\sigma^2</span>, of a complex Gaussian random variable of total variance <span class="math inline">\sigma^2</span>, and of an exponential random variable of mean <span class="math inline">\mu</span>. For the complex Gaussian, assume independent real and imaginary parts, each of variance <span class="math inline">\sigma^2/2</span>.</p>
+<details class="solution"><summary>Show solution</summary>
+<p>For the real Gaussian with mean <span class="math inline">m</span>, the logarithm of the density is <span class="math display">\begin{equation*}
+\log_2f(x)=-\tfrac12\log_2(2\pi\sigma^2)-\frac{(x-m)^2}{2\sigma^2}\log_2e.\tag{3.19}
+\end{equation*}</span> The differential entropy is minus the expectation of this quantity. The first term is a constant, and the expectation of <span class="math inline">(X-m)^2</span> is the variance <span class="math inline">\sigma^2</span>, so <span class="math display">\begin{equation*}
+h(X)=\tfrac12\log_2(2\pi\sigma^2)+\tfrac12\log_2e=\tfrac12\log_2(2\pi e\sigma^2).\tag{3.20}
+\end{equation*}</span> The mean does not appear, as expected. By the stated assumption, the complex Gaussian has independent real and imaginary parts, each of variance <span class="math inline">\tfrac{\sigma^2}2</span>. The differential entropy of a complex variable is that of the pair of its real and imaginary parts, with a double integral in (3.17), and for independent parts it is the sum of their differential entropies, so <span class="math display">\begin{equation*}
+h(X)=2\cdot\tfrac12\log_2\Bigl(2\pi e\,\frac{\sigma^2}{2}\Bigr)=\log_2(\pi e\sigma^2).\tag{3.21}
+\end{equation*}</span> For the exponential, the logarithm of the density is <span class="math inline">-\log_2\mu-\tfrac x\mu\log_2e</span> for <span class="math inline">x\geq0</span>, and the expectation of <span class="math inline">X</span> is <span class="math inline">\mu</span>, so <span class="math display">\begin{equation*}
+h(X)=\log_2\mu+\log_2e=\log_2(e\mu).\tag{3.22}
+\end{equation*}</span></p>
+</details>
+</section>
+<p>Among the discrete random variables with a given number of values, the equiprobable one has the largest entropy. For continuous variables the corresponding statement needs a constraint, since otherwise the density can be made as wide as we wish.</p>
+<section class="env-block env-theorem"><p class="env-label">Theorem 3.13.</p>
+<p>Among the real random variables of variance <span class="math inline">\sigma^2</span>, the Gaussian has the largest differential entropy, given by (3.20). Among the complex random variables with <span class="math inline">\EE(|X|^2)\leq\sigma^2</span>, the largest is that of the zero-mean complex Gaussian, given by (3.21). Among the nonnegative random variables of mean <span class="math inline">\mu</span>, the largest is that of the exponential, given by (3.22).</p>
+</section>
+<p>The proof of the first statement is Exercise 3.8, and the other two are proved in the same way. The mutual information of a channel with continuous output is defined as in (3.7), with an integral over <span class="math inline">y</span> and the density of the output in the place of <span class="math inline">\Pr(y)</span>; when the input has a density the sum over <span class="math inline">x</span> becomes an integral too, and when it mixes point masses and a density, as in Section 3.6, the average over <span class="math inline">x</span> combines both. Proposition 3.4 becomes <span class="math display">\begin{equation*}
+I(X;Y)=h(Y)-h(Y|X).\tag{3.23}
+\end{equation*}</span> On the three continuous channels of Table 1.2 of Topic 1 the output is <span class="math inline">Y=X+Z</span>, with the noise <span class="math inline">Z</span> independent of the input. Given <span class="math inline">X=x</span>, the output is the noise displaced by <span class="math inline">x</span>, and a displacement does not change the differential entropy. Hence, <span class="math inline">h(Y|X)=h(Z)</span> and <span class="math display">\begin{equation*}
+I(X;Y)=h(Y)-h(Z).\tag{3.24}
+\end{equation*}</span> The second term is a property of the noise alone. To make the mutual information large, the transmitter has to make the differential entropy of the output large.</p>
+<h2 id="gaussian-capacity">3.5 Gaussian capacity</h2>
+<p>Without any restriction on the input, the capacity of the Gaussian channel is infinite. The transmitter can place as many points as it wishes, as far from each other as needed for the noise to be negligible. What limits the transmission is the energy. We therefore take the maximum in (3.13) over the input distributions that satisfy the <strong>energy constraint</strong> <span class="math display">\begin{equation*}
+\EE(|X|^2)\leq\Es,\tag{3.25}
+\end{equation*}</span> and the capacity becomes a function of the signal-to-noise ratio <span class="math inline">\snr=\Es/\sigma^2</span>.</p>
+<section class="env-block env-theorem"><p class="env-label">Theorem 3.14.</p>
+<p>The capacity of the real Gaussian channel with noise variance <span class="math inline">\sigma^2</span> and energy constraint (3.25) is <span class="math display">\begin{equation*}
+C=\tfrac12\log_2(1+\snr)\tag{3.26}
+\end{equation*}</span> bits per channel use, and that of the complex Gaussian channel is <span class="math display">\begin{equation*}
+C=\log_2(1+\snr)\tag{3.27}
+\end{equation*}</span> bits per channel use. Both are achieved by a zero-mean Gaussian input of variance <span class="math inline">\Es</span>.</p>
+</section>
+<div class="proof"><strong>Proof.</strong>
+<p>We prove the complex case. Since the input and the noise are independent and the noise has zero mean, <span class="math inline">\EE(|Y|^2)=\EE(|X|^2)+\sigma^2\leq\Es+\sigma^2</span>. By Theorem 3.13, <span class="math inline">h(Y)\leq\log_2\bigl(\pi e(\Es+\sigma^2)\bigr)</span>, and by (3.21) <span class="math inline">h(Z)=\log_2(\pi e\sigma^2)</span>. Hence, by (3.24), <span class="math display">\begin{equation*}
+I(X;Y)\leq\log_2\bigl(\pi e(\Es+\sigma^2)\bigr)-\log_2(\pi e\sigma^2)=\log_2\Bigl(1+\frac{\Es}{\sigma^2}\Bigr).\tag{3.28}
+\end{equation*}</span> If the input is a zero-mean complex Gaussian of variance <span class="math inline">\Es</span>, the output is the sum of two independent Gaussians, hence a zero-mean complex Gaussian of variance <span class="math inline">\Es+\sigma^2</span>, and the inequality is an equality. The real case is identical with (3.20) in the place of (3.21).</p>
+</div>
+<p>The two formulas are consistent with each other. A complex channel use consists of two real ones, the real and the imaginary parts. With a complex Gaussian input, each part has energy <span class="math inline">\tfrac{\Es}2</span> and noise variance <span class="math inline">\tfrac{\sigma^2}2</span>, so it has the same SNR as the whole, and the two parts together carry twice (3.26). Table 3.4 gives some values.</p>
+<div class="source-table">
+<div class="table-scroll"><table>
+<tbody>
+<tr>
+<td style="text-align: left;">SNR</td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">3</span></td>
+<td style="text-align: center;"><span class="math inline">7</span></td>
+<td style="text-align: center;"><span class="math inline">15</span></td>
+<td style="text-align: center;"><span class="math inline">31</span></td>
+<td style="text-align: center;"><span class="math inline">63</span></td>
+<td style="text-align: center;"><span class="math inline">127</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">SNR (dB)</td>
+<td style="text-align: center;"><span class="math inline">0</span></td>
+<td style="text-align: center;"><span class="math inline">4.8</span></td>
+<td style="text-align: center;"><span class="math inline">8.5</span></td>
+<td style="text-align: center;"><span class="math inline">11.8</span></td>
+<td style="text-align: center;"><span class="math inline">14.9</span></td>
+<td style="text-align: center;"><span class="math inline">18.0</span></td>
+<td style="text-align: center;"><span class="math inline">21.0</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Real channel, <span class="math inline">\tfrac12\log_2(1+\snr)</span></td>
+<td style="text-align: center;"><span class="math inline">0.5</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">1.5</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+<td style="text-align: center;"><span class="math inline">2.5</span></td>
+<td style="text-align: center;"><span class="math inline">3</span></td>
+<td style="text-align: center;"><span class="math inline">3.5</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Complex channel, <span class="math inline">\log_2(1+\snr)</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+<td style="text-align: center;"><span class="math inline">3</span></td>
+<td style="text-align: center;"><span class="math inline">4</span></td>
+<td style="text-align: center;"><span class="math inline">5</span></td>
+<td style="text-align: center;"><span class="math inline">6</span></td>
+<td style="text-align: center;"><span class="math inline">7</span></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Table 3.4.</strong> Capacity of the Gaussian channels, in bits per channel use, at the values of the SNR for which the logarithm is an integer.</p>
+</div>
+<p>The table shows the behavior at high SNR. Doubling the SNR, that is, adding <span class="math inline">3</span> dB, adds about one bit per channel use on the complex channel and half a bit on the real one, since <span class="math inline">\log_2(2\,\snr)=1+\log_2\snr</span>. At low SNR the growth is linear rather than logarithmic. Since <span class="math inline">\ln(1+u)\approx u</span> for small <span class="math inline">u</span>, the capacity of the complex channel is approximately <span class="math inline">\snr\log_2e=1.44\,\snr</span>, proportional to the energy.</p>
+<section class="env-block env-example"><p class="env-label">Example 3.15.</p>
+<p>A complex Gaussian channel has <span class="math inline">\Es=6</span> and <span class="math inline">\sigma^2=2</span>, so <span class="math inline">\snr=3</span> and <span class="math inline">C=\log_24=2</span> bits per channel use. A code of rate <span class="math inline">R=\tfrac32</span> can be made reliable on this channel, and a code of rate <span class="math inline">R=\tfrac52</span> cannot. With the same SNR, the real Gaussian channel has <span class="math inline">C=1</span> bit per channel use, and neither of the two rates is possible.</p>
+</section>
+<h2 id="finite-constellations">3.6 Finite constellations</h2>
+<p>The Gaussian input that achieves the capacity is not a constellation. It takes all the values of the real line or of the complex plane. A practical transmitter uses the <span class="math inline">M</span> points of a constellation <span class="math inline">\mathcal X</span>, with equal probabilities in all that follows, and the rates at which it can transmit reliably are bounded by the mutual information <span class="math inline">I(X;Y)</span> for that input, not by the capacity. By Proposition 3.4 this mutual information is at most <span class="math inline">H(X)=\log_2M</span>, however large the SNR is.</p>
+<p>For <span class="math inline">M</span> equiprobable points on the complex Gaussian channel, the definition (3.7) with the law of Table 1.2 of Topic 1 becomes <span class="math display">\begin{equation*}
+I(X;Y)=\log_2M-\frac1M\sum_{x\in\mathcal X}\EE\biggl(\log_2\sum_{x&#39;\in\mathcal X}e^{-(|x+Z-x&#39;|^2-|Z|^2)/\sigma^2}\biggr),\tag{3.29}
+\end{equation*}</span> where the expectation is over the noise <span class="math inline">Z</span>. On the real channel the exponent has <span class="math inline">2\sigma^2</span> in the denominator. The expectation has no closed form and is computed numerically. Figure 3.2 and Table 3.5 give the result for 2-PAM and 4-PAM on the real channel, and for QPSK on the complex channel, for which no new computation is needed. Its real and imaginary parts are two independent 2-PAM transmissions with the same SNR as the whole, as we saw for the capacity, so QPSK carries twice the information of 2-PAM at the same SNR.</p>
+<div class="source-figure">
+<img class="tex-figure" src="img/topic3-0ced88e59497d189.svg" alt="Diagram reproduced from the course PDF; description follows in the text.">
+<p><strong>Figure 3.2.</strong> Mutual information of equiprobable 2-PAM and 4-PAM on the real Gaussian channel, with the capacity of the channel (solid lines), and of equiprobable QPSK on the complex channel, with its capacity (dashed lines). At equal SNR, the complex capacity is twice the real capacity and the QPSK curve is twice the 2-PAM curve; the mutual information of 16-QAM, not shown, is twice the 4-PAM curve.</p>
+</div>
+<div class="source-table">
+<div class="table-scroll"><table>
+<tbody>
+<tr>
+<td style="text-align: left;"></td>
+<td colspan="3" style="text-align: center;">Real channel</td>
+<td colspan="2" style="text-align: center;">Complex channel</td>
+</tr>
+<tr>
+<td style="text-align: left;">SNR</td>
+<td style="text-align: center;">capacity</td>
+<td style="text-align: center;">2-PAM</td>
+<td style="text-align: center;">4-PAM</td>
+<td style="text-align: center;">capacity</td>
+<td style="text-align: center;">QPSK</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span class="math inline">0</span> dB</td>
+<td style="text-align: center;"><span class="math inline">0.50</span></td>
+<td style="text-align: center;"><span class="math inline">0.49</span></td>
+<td style="text-align: center;"><span class="math inline">0.49</span></td>
+<td style="text-align: center;"><span class="math inline">1.00</span></td>
+<td style="text-align: center;"><span class="math inline">0.97</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><span class="math inline">5</span> dB</td>
+<td style="text-align: center;"><span class="math inline">1.03</span></td>
+<td style="text-align: center;"><span class="math inline">0.86</span></td>
+<td style="text-align: center;"><span class="math inline">0.99</span></td>
+<td style="text-align: center;"><span class="math inline">2.06</span></td>
+<td style="text-align: center;"><span class="math inline">1.72</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><span class="math inline">10</span> dB</td>
+<td style="text-align: center;"><span class="math inline">1.73</span></td>
+<td style="text-align: center;"><span class="math inline">1.00</span></td>
+<td style="text-align: center;"><span class="math inline">1.58</span></td>
+<td style="text-align: center;"><span class="math inline">3.46</span></td>
+<td style="text-align: center;"><span class="math inline">1.99</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><span class="math inline">15</span> dB</td>
+<td style="text-align: center;"><span class="math inline">2.51</span></td>
+<td style="text-align: center;"><span class="math inline">1.00</span></td>
+<td style="text-align: center;"><span class="math inline">1.96</span></td>
+<td style="text-align: center;"><span class="math inline">5.03</span></td>
+<td style="text-align: center;"><span class="math inline">2.00</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><span class="math inline">20</span> dB</td>
+<td style="text-align: center;"><span class="math inline">3.33</span></td>
+<td style="text-align: center;"><span class="math inline">1.00</span></td>
+<td style="text-align: center;"><span class="math inline">2.00</span></td>
+<td style="text-align: center;"><span class="math inline">6.66</span></td>
+<td style="text-align: center;"><span class="math inline">2.00</span></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Table 3.5.</strong> Values of the curves of Figure 3.2, in bits per channel use, and the corresponding values for the complex channel.</p>
+</div>
+<p>The curves have three regions.</p>
+<ul>
+<li><p>For the constellations studied, the mutual information has the same first-order behavior as Gaussian capacity as the SNR tends to zero. The curves have the same derivative with respect to the linear SNR at <span class="math inline">\snr=0</span>, but their values differ at positive SNR.</p></li>
+<li><p>As the SNR grows without bound, the mutual information of each equiprobable constellation approaches <span class="math inline">\log_2M</span> bits per channel use from below. This limiting behavior is called <strong>saturation</strong>. At finite SNR, Gaussian noise still leaves uncertainty about the input, so the limit is not attained.</p></li>
+<li><p>In between, the curve of a constellation separates from the capacity as it approaches its saturation value.</p></li>
+</ul>
+<p>The practical consequence is a rule for the choice of the constellation. To transmit at a rate <span class="math inline">R</span>, we choose a constellation with <span class="math inline">\log_2M</span> somewhat larger than <span class="math inline">R</span>, whose mutual information at the operating SNR exceeds <span class="math inline">R</span>, and a code of rate <span class="math inline">R</span> on its symbols. For instance, at a rate of <span class="math inline">0.9</span> bits per channel use the capacity requires <span class="math inline">4</span> dB, 2-PAM requires <span class="math inline">5.8</span> dB because it is close to its saturation, and 4-PAM requires <span class="math inline">4.2</span> dB.</p>
+<p>For a binary encoder, let <span class="math inline">k</span> information bits produce <span class="math inline">n_{\rm c}</span> coded bits, and define the <strong>binary code rate</strong> <span class="math inline">r=k/n_{\rm c}</span>. Mapping <span class="math inline">m</span> coded bits to each symbol of an <span class="math inline">M=2^m</span> constellation gives <span class="math inline">n=n_{\rm c}/m</span> transmitted symbols. The overall rate in information bits per channel use is therefore <span class="math display">\begin{equation*}
+R=\frac{k}{n}=r\log_2M.\tag{3.30}
+\end{equation*}</span> Thus <span class="math inline">r</span> counts information bits per coded bit, while <span class="math inline">R</span> counts information bits per transmitted symbol.</p>
+<section class="env-block env-example"><p class="env-label">Example 3.16.</p>
+<p>A real Gaussian channel has an SNR of <span class="math inline">10</span> dB. By Table 3.5, its capacity is approximately <span class="math inline">1.73</span> bits per channel use. The mutual information is approximately <span class="math inline">1.00</span> for equiprobable 2-PAM and <span class="math inline">1.58</span> for equiprobable 4-PAM, in bits per channel use. These are rounded values. For 2-PAM the value is about <span class="math inline">0.996756</span>, strictly below <span class="math inline">1</span>, so a rate of exactly <span class="math inline">1</span> bit per channel use cannot be made reliable at this SNR. A binary code of rate <span class="math inline">r=\tfrac34</span> followed by 4-PAM sends <span class="math inline">R=r\log_24=\tfrac34\cdot2=1.5</span> information bits per channel use, below <span class="math inline">1.58</span>, so codes of this kind can be made reliable. Uncoded 4-PAM sends <span class="math inline">2</span> bits per channel use, above <span class="math inline">1.58</span>, and its error probability cannot be made small at this SNR.</p>
+</section>
+<p>We close with the exponential channel, which reminds us that the Gaussian results depend on the noise and on the constraint. Its inputs are energies, so the constraint is on their mean, <span class="math inline">\EE(X)\leq\Es</span>, and its SNR is <span class="math inline">\Es/\mu</span>.</p>
+<section class="env-block env-problem"><p class="env-label">Problem 3.17.</p>
+<p>Show that the capacity of the exponential channel with mean noise <span class="math inline">\mu</span> and constraint <span class="math inline">\EE(X)\leq\Es</span> is at most <span class="math inline">\log_2(1+\Es/\mu)</span> bits per channel use.</p>
+<details class="solution"><summary>Show solution</summary>
+<p>The output <span class="math inline">Y=X+Z</span> is nonnegative, and its mean is <span class="math inline">\EE(X)+\mu\leq\Es+\mu</span>. By Theorem 3.13, its differential entropy is at most that of an exponential of mean <span class="math inline">\Es+\mu</span>, that is, <span class="math inline">h(Y)\leq\log_2\bigl(e(\Es+\mu)\bigr)</span>. By (3.22), <span class="math inline">h(Z)=\log_2(e\mu)</span>. Hence, by (3.24), <span class="math display">\begin{equation*}
+I(X;Y)\leq\log_2\bigl(e(\Es+\mu)\bigr)-\log_2(e\mu)=\log_2\Bigl(1+\frac{\Es}{\mu}\Bigr)\tag{3.31}
+\end{equation*}</span> for every input that satisfies the constraint.</p>
+</details>
+</section>
+<aside class="callout">
+<p>The bound of Problem 3.17 is the capacity, since there is an input for which the output is exponential. This input is not exponential, and it is not Gaussian either. It is zero with probability <span class="math inline">\mu/(\Es+\mu)</span>, and otherwise exponential with mean <span class="math inline">\Es+\mu</span>. The capacity has the form of the complex Gaussian one, but the SNR is here a ratio of energies to the first power, and the best input is a different one. What is true for Gaussian noise need not be true in general.</p>
+</aside>
+<p>In this topic the rates are in bits per channel use, and the channel use is an abstract unit. Topics 4 and 5 show what a channel use is for a waveform, and Topic 6 translates the capacity into bits per second as a function of the power and the bandwidth.</p>
+<section class="callout"><h2>What to remember</h2>
+<ul>
+<li><p>The mutual information is <span class="math inline">I(X;Y)=H(Y)-H(Y|X)</span>, the uncertainty of the output minus the part of it that is due to the noise. It depends on the channel and on the input distribution.</p></li>
+<li><p>The capacity is the largest mutual information over the input distributions. It is <span class="math inline">1-h_2(p)</span> for the bit-flipping channel and <span class="math inline">1-p</span> for the bit-erasing channel, both with equiprobable inputs.</p></li>
+<li><p>The coding theorem promises codes with error probability as small as desired at every rate <span class="math inline">R&lt;C</span>, and none at rates <span class="math inline">R&gt;C</span>. It is a statement about the best long codes, not about a given code.</p></li>
+<li><p>For continuous outputs the entropy becomes the differential entropy. With additive noise, <span class="math inline">I(X;Y)=h(Y)-h(Z)</span>. For a given variance, the Gaussian has the largest differential entropy.</p></li>
+<li><p>Under the constraint <span class="math inline">\EE(|X|^2)\leq\Es</span>, the capacity is <span class="math inline">\tfrac12\log_2(1+\snr)</span> on the real Gaussian channel and <span class="math inline">\log_2(1+\snr)</span> on the complex one, achieved by a Gaussian input. At high SNR, <span class="math inline">3</span> dB more give one more bit on the complex channel.</p></li>
+<li><p>The constellations studied share the first-order behavior of Gaussian capacity as the SNR tends to zero. An equiprobable constellation of <span class="math inline">M</span> points approaches <span class="math inline">\log_2M</span> bits from below as the SNR grows without bound. To transmit at a rate <span class="math inline">R</span> we choose <span class="math inline">\log_2M</span> somewhat larger than <span class="math inline">R</span>, with a mutual information above <span class="math inline">R</span> at the operating SNR.</p></li>
+</ul>
+</section></main></div><footer class="footer">Universitat Pompeu Fabra · 23972 · Digital data transmission 2026</footer><script src="vendor/katex.min.js"></script><script src="vendor/auto-render.min.js"></script><script src="site.js"></script><script src="ui.js"></script></body></html>

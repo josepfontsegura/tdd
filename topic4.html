@@ -1,0 +1,280 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Topic 4 - Continuous time - TDD 2026</title><script>document.documentElement.dataset.theme=localStorage.getItem('tdd-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')</script><link rel="icon" href="img/favicon.ico" type="image/x-icon"><link rel="stylesheet" href="itc.css"><link rel="stylesheet" href="vendor/katex.min.css"><link rel="stylesheet" href="site.css"><script defer src="analytics.js"></script></head><body><a class="skip" href="#main">Skip to content</a><nav class="navbar">
+  <button class="menu-toggle" aria-label="Menu">&#9776;</button>
+  <a class="navbar-brand" href="index.html">
+    <img src="img/upf-logo.svg" alt="UPF" style="height:42px;margin-right:0.75rem"> <span class="navbar-brand-text">Digital data transmission 2026</span>
+  </a>
+  <div class="navbar-actions">
+    <button class="search-toggle" aria-label="Search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><span class="search-hint">⌘K</span></button>
+    <button class="theme-toggle" aria-label="Toggle dark mode"><svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button>
+  </div>
+  <div class="lang-switcher"><a href="topic4.html" class="active" aria-current="page">EN</a></div>
+</nav><div class="page"><aside class="sidebar"><details class="sidebar-section"><summary><h4>General</h4></summary><a href="index.html">Home</a><a href="https://gestioacademica.upf.edu/doa/consultaPublica/look%5Bconpub%5DMostrarPubGuiaDocAs?entradaPublica=true&amp;idiomaPais=en.GB&amp;_anoAcademico=2026&amp;_codAsignatura=23972">Teaching guide ↗</a><a href="https://aulaglobal.upf.edu/course/view.php?id=92919">Aula Global ↗</a></details><details class="sidebar-section"><summary><h4>Modality A</h4></summary><a href="modality-a-midterm.html">Midterm</a><a href="modality-a-final.html">Final</a></details><details class="sidebar-section" open><summary><h4>Lecture notes</h4></summary><a href="topic1.html">1. Detection</a><a href="topic2.html">2. Decoding</a><a href="topic3.html">3. Mutual information and capacity</a><a href="topic4.html" class="active" aria-current="page">4. Continuous time</a><span class="sidebar-disabled">5. Modulation and demodulation</span><span class="sidebar-disabled">6. Continuous-channel capacity</span></details><details class="sidebar-section"><summary><h4>Seminars</h4></summary><a href="seminar1.html">1. Detectors and their errors</a><a href="seminar2.html">2. Repetition codes and likelihood</a><a href="seminar3.html">3. Comparing receivers and codes</a><a href="seminar4.html">4. Information through discrete channels</a><span class="sidebar-disabled">5. Gaussian capacity and constellations</span><span class="sidebar-disabled">6. Waveforms and coordinates</span><span class="sidebar-disabled">7. From bits to symbols and back</span><span class="sidebar-disabled">8. Rate, bandwidth and error</span><span class="sidebar-disabled">9. Power, bandwidth and capacity</span><span class="sidebar-disabled">10. Spatial modes and the whole chain</span></details><details class="sidebar-section"><summary><h4>Tests</h4></summary><a href="test1.html">1. Detection</a><a href="test2.html">2. Decoding</a><span class="sidebar-disabled">3. Mutual information and capacity</span><span class="sidebar-disabled">4. Continuous time</span><span class="sidebar-disabled">5. Modulation and demodulation</span></details><details class="sidebar-section"><summary><h4>Exercises</h4></summary><a href="exercises1.html">1. Detection</a><a href="exercises2.html">2. Decoding</a><span class="sidebar-disabled">3. Mutual information and capacity</span><span class="sidebar-disabled">4. Continuous time</span><span class="sidebar-disabled">5. Modulation and demodulation</span><span class="sidebar-disabled">6. Continuous-channel capacity</span></details><details class="sidebar-section"><summary><h4>Exams</h4></summary><span class="sidebar-disabled">Midterm 2026 (Modality A)</span><span class="sidebar-disabled">Final 2026 (Modality A)</span><span class="sidebar-disabled">Final 2026 (Modality B)</span></details></aside><main class="content" id="main"><div class="lecture-header"><h1>Topic 4. Continuous time</h1></div><div class="resource-row"><a class="resource-link" href="pdf/TDD-2026-Topic4.pdf">Download PDF</a></div><nav class="topic-toc" aria-label="In this topic"><strong>Contents</strong><ul><li><a href="#signals-as-vectors">4.1 Signals as vectors</a></li><li><a href="#orthonormal-bases-and-coordinates">4.2 Orthonormal bases and coordinates</a></li><li><a href="#the-signal-space-of-a-transmitter">4.3 The signal space of a transmitter</a></li><li><a href="#white-gaussian-noise">4.4 White Gaussian noise</a></li><li><a href="#irrelevance-and-the-vector-channel">4.5 Irrelevance and the vector channel</a></li><li><a href="#detection-in-signal-space">4.6 Detection in signal space</a></li></ul></nav><section class="callout"><h2>In this topic</h2>
+<p>In Topics 1 to 3 a channel use took a number <span class="math inline">x</span> and returned a noisy number <span class="math inline">y</span>. A real transmitter sends a waveform, a function of time, and the receiver observes that waveform corrupted by noise. This topic shows that a waveform is a vector, that a finite set of waveforms lives in a space of small dimension, and that projecting the received waveform onto that space gives back the Gaussian channel of Table 1.2 of Topic 1, one use per dimension. The results of the first half of the course for that channel then apply to waveforms without change. Sections 4.1 to 4.3 correspond to the first lecture and Sections 4.4 to 4.6 to the second.</p>
+<ul>
+<li><p>We define the inner product, the energy and the distance of signals, and see that they obey the rules of vectors.</p></li>
+<li><p>We represent signals in an orthonormal basis by their coordinates, and see that energies, inner products and distances are preserved.</p></li>
+<li><p>We describe the signals of a transmitter as points of a signal space, and recover the constellations and codes of Topics 1 and 2 as sets of coordinate vectors.</p></li>
+<li><p>We define white Gaussian noise by its projections, with variance <span class="math inline">\No/2</span> in every direction, and see why its energy is infinite.</p></li>
+<li><p>We prove that the part of the noise outside the signal space is irrelevant, and obtain the discrete-time Gaussian channel with <span class="math inline">\sigma^2=\No/2</span>.</p></li>
+<li><p>We detect in signal space with the nearest-point rule, compute error probabilities from the distance between waveforms, and compare antipodal and orthogonal signaling.</p></li>
+</ul>
+</section>
+<h2 id="signals-as-vectors">4.1 Signals as vectors</h2>
+<p>A <strong>signal</strong> is a real function of time <span class="math inline">x(t)</span> with finite energy, and these are the only signals we consider. In Topic 2 the sequences <span class="math inline">\x=(x_1,\ldots,x_n)</span> were treated as vectors: we added them, we computed the squared norm <span class="math inline">\|\x\|^2=\smash{\sum_{i=1}^n}x_i^2</span> and the squared distance <span class="math inline">\|\y-\x\|^2</span>, and the ML decoder of Proposition 2.3 of Topic 2 chose the nearest codeword. Signals admit the same operations, with the sum over positions replaced by an integral over time, as sums became integrals in Table 1.1 of Topic 1.</p>
+<section class="env-block env-definition"><p class="env-label">Definition 4.1.</p>
+<p>The <strong>inner product</strong> of two signals <span class="math inline">x</span> and <span class="math inline">y</span> is <span class="math display">\begin{equation*}
+\langle x,y\rangle=\int_{-\infty}^{\infty}x(t)\,y(t)\drm t,\tag{4.1}
+\end{equation*}</span> the <strong>energy</strong> of <span class="math inline">x</span> is <span class="math inline">\|x\|^2=\langle x,x\rangle</span>, the <strong>norm</strong> <span class="math inline">\|x\|</span> is the square root of the energy, and the <strong>distance</strong> between <span class="math inline">x</span> and <span class="math inline">y</span> is <span class="math inline">\|x-y\|</span>.</p>
+</section>
+<p>The inner product is linear in each argument and symmetric, <span class="math inline">\langle x,y\rangle=\langle y,x\rangle</span>. The energy of <span class="math inline">ax</span> is <span class="math inline">a^2\|x\|^2</span>, and the energy of a sum is <span class="math display">\begin{equation*}
+\|x+y\|^2=\|x\|^2+2\langle x,y\rangle+\|y\|^2,\tag{4.2}
+\end{equation*}</span> which follows from expanding the square inside the integral. The squared distance is therefore <span class="math inline">\|x-y\|^2=\|x\|^2-2\langle x,y\rangle+\|y\|^2</span>. A time shift changes none of these quantities: <span class="math inline">x(t-\tau)</span> has the same energy as <span class="math inline">x(t)</span>, and <span class="math inline">\langle x(\cdot-\tau),y(\cdot-\tau)\rangle=\langle x,y\rangle</span>, because the shift is a change of variable in the integral. Exercise 4.1 shows that <span class="math inline">|\langle x,y\rangle|\leq\|x\|\,\|y\|</span>, so the inner product of two unit-energy signals lies between <span class="math inline">-1</span> and <span class="math inline">1</span>, like the cosine of an angle.</p>
+<section class="env-block env-definition"><p class="env-label">Definition 4.2.</p>
+<p>Two signals are <strong>orthogonal</strong> when <span class="math inline">\langle x,y\rangle=0</span>. A set of signals <span class="math inline">\{\phi_1,\ldots,\phi_n\}</span> is <strong>orthonormal</strong> when every signal has unit energy and any two distinct signals are orthogonal, that is, <span class="math inline">\langle\phi_i,\phi_k\rangle=1</span> if <span class="math inline">i=k</span> and <span class="math inline">0</span> otherwise.</p>
+</section>
+<section class="env-block env-example"><p class="env-label">Example 4.3.</p>
+<p>Fix a duration <span class="math inline">T&gt;0</span> and consider the two signals of Figure 4.1, <span class="math display">\begin{equation*}
+\phi_1(t)=\begin{cases}\tfrac{1}{\sqrt T}&amp;0\leq t&lt;T\\0&amp;\text{otherwise}\end{cases}
+\qquad\text{and}\qquad
+\phi_2(t)=\begin{cases}\tfrac{1}{\sqrt T}&amp;0\leq t&lt;\tfrac T2\\-\tfrac{1}{\sqrt T}&amp;\tfrac T2\leq t&lt;T\\0&amp;\text{otherwise.}\end{cases}\tag{4.3}
+\end{equation*}</span> Both have unit energy, since <span class="math inline">\phi_1^2</span> and <span class="math inline">\phi_2^2</span> equal <span class="math inline">\tfrac1T</span> on an interval of length <span class="math inline">T</span>. Their inner product is <span class="math display">\begin{equation*}
+\langle\phi_1,\phi_2\rangle=\int_0^{T/2}\frac1T\drm t-\int_{T/2}^{T}\frac1T\drm t=\frac12-\frac12=0,\tag{4.4}
+\end{equation*}</span> so <span class="math inline">\{\phi_1,\phi_2\}</span> is an orthonormal set. The two signals overlap on the whole interval <span class="math inline">[0,T)</span>, and yet they are orthogonal: the product <span class="math inline">\phi_1\phi_2</span> is positive on one half and negative on the other, and the two contributions cancel. By (4.2), the signal <span class="math inline">a\phi_1+b\phi_2</span> has energy <span class="math inline">a^2+b^2</span> for any real <span class="math inline">a</span> and <span class="math inline">b</span>. This pair of signals is the running example of the topic.</p>
+</section>
+<div class="source-figure">
+<img class="tex-figure" src="img/topic4-292da2e0ee0b1709.svg" alt="Diagram reproduced from the course PDF; description follows in the text.">
+<img class="tex-figure" src="img/topic4-62f3d4925ad55b57.svg" alt="Diagram reproduced from the course PDF; description follows in the text.">
+<p><strong>Figure 4.1.</strong> The orthonormal set of Example 4.3. The two signals occupy the same interval and are orthogonal.</p>
+</div>
+<aside class="callout">
+<p>Orthogonality is a statement about an integral, not about supports. Two signals with disjoint supports are orthogonal, because their product is zero everywhere, but Example 4.3 shows that orthogonal signals may overlap completely. This is what will allow Topic 5 to send many symbols at once in a limited bandwidth.</p>
+</aside>
+<h2 id="orthonormal-bases-and-coordinates">4.2 Orthonormal bases and coordinates</h2>
+<p>Given an orthonormal set <span class="math inline">\{\phi_1,\ldots,\phi_n\}</span>, the signals that can be written as <span class="math display">\begin{equation*}
+x(t)=\sum_{i=1}^n x_i\,\phi_i(t),\tag{4.5}
+\end{equation*}</span> with real <strong>coordinates</strong> <span class="math inline">x_1,\ldots,x_n</span>, form the <strong>signal space</strong> spanned by the set, and the set is an <strong>orthonormal basis</strong> of that space. Its <strong>dimension</strong> is <span class="math inline">n</span>. The next result says that such a signal is completely described by its <span class="math inline">n</span> coordinates, and that the vector operations of Topic 2 on the coordinates give the signal operations of Section 4.1.</p>
+<section class="env-block env-theorem"><p class="env-label">Proposition 4.4.</p>
+<p>Let <span class="math inline">x</span> and <span class="math inline">y</span> be two signals of the space spanned by the orthonormal basis <span class="math inline">\{\phi_1,\ldots,\phi_n\}</span>, with coordinates <span class="math inline">\x=(x_1,\ldots,x_n)</span> and <span class="math inline">\y=(y_1,\ldots,y_n)</span>. Then,</p>
+<ol>
+<li><p>the coordinates are recovered by inner products, <span class="math inline">x_i=\langle x,\phi_i\rangle</span>,</p></li>
+<li><p>the inner product of the signals is that of the coordinate vectors, <span class="math inline">\langle x,y\rangle=\smash{\sum_{i=1}^n}x_iy_i</span>,</p></li>
+<li><p>the energy of the signal is <span class="math inline">\|x\|^2=\smash{\sum_{i=1}^n}x_i^2=\|\x\|^2</span>, and</p></li>
+<li><p>the distance between the signals is that between the vectors, <span class="math inline">\|x-y\|^2=\smash{\sum_{i=1}^n}(x_i-y_i)^2=\|\x-\y\|^2</span>.</p></li>
+</ol>
+</section>
+<div class="proof"><strong>Proof.</strong>
+<p>By the linearity of the inner product and (4.5), <span class="math inline">\langle x,\phi_i\rangle=\smash{\sum_{k=1}^n}x_k\langle\phi_k,\phi_i\rangle</span>, and the only nonzero term of the sum is <span class="math inline">k=i</span>, which gives <span class="math inline">x_i</span>. For (b), we expand <span class="math inline">\langle x,y\rangle=\smash{\sum_{i=1}^n\sum_{k=1}^n}x_iy_k\langle\phi_i,\phi_k\rangle</span> and keep the terms with <span class="math inline">i=k</span>. Then (c) is (b) with <span class="math inline">y=x</span>, and (d) is (c) applied to the signal <span class="math inline">x-y</span>, whose coordinates are <span class="math inline">x_i-y_i</span>.</p>
+</div>
+<section class="env-block env-problem"><p class="env-label">Problem 4.5.</p>
+<p>The signal <span class="math inline">x(t)</span> equals <span class="math inline">3</span> for <span class="math inline">0\leq t&lt;\tfrac T2</span>, equals <span class="math inline">1</span> for <span class="math inline">\tfrac T2\leq t&lt;T</span> and is zero otherwise. Find its coordinates in the basis of Example 4.3 and check Proposition 4.4(c).</p>
+<details class="solution"><summary>Show solution</summary>
+<p>By Proposition 4.4(a), the coordinates are the two inner products <span class="math display">\begin{equation*}
+x_1=\langle x,\phi_1\rangle=\frac{1}{\sqrt T}\Bigl(3\cdot\frac T2+1\cdot\frac T2\Bigr)=2\sqrt T
+\quad\text{and}\quad
+x_2=\langle x,\phi_2\rangle=\frac{1}{\sqrt T}\Bigl(3\cdot\frac T2-1\cdot\frac T2\Bigr)=\sqrt T,\tag{4.6}
+\end{equation*}</span> and indeed <span class="math inline">2\sqrt T\phi_1(t)+\sqrt T\phi_2(t)</span> equals <span class="math inline">2+1=3</span> on the first half and <span class="math inline">2-1=1</span> on the second. The energy computed from the signal is <span class="math inline">\int_0^{T/2}9\drm t+\int_{T/2}^{T}1\drm t=5T</span>, and from the coordinates it is <span class="math inline">x_1^2+x_2^2=4T+T=5T</span>. The first coordinate is the average level of the signal, scaled by <span class="math inline">\sqrt T</span>, and the second is half the jump between the two halves, scaled the same way.</p>
+</details>
+</section>
+<p>A signal that is not in the space can still be compared with it. For any signal <span class="math inline">x</span>, the signal <span class="math display">\begin{equation*}
+\bar x(t)=\sum_{i=1}^n\langle x,\phi_i\rangle\,\phi_i(t)\tag{4.7}
+\end{equation*}</span> is its <strong>projection</strong> onto the space, and <span class="math inline">e=x-\bar x</span> is the <strong>error</strong> of the projection.</p>
+<section class="env-block env-theorem"><p class="env-label">Proposition 4.6.</p>
+<p>The error <span class="math inline">e</span> is orthogonal to every signal of the space, and <span class="math inline">\|x\|^2=\|\bar x\|^2+\|e\|^2</span>. The projection is the signal of the space nearest to <span class="math inline">x</span>: for every signal <span class="math inline">y</span> of the space, <span class="math inline">\|x-y\|^2=\|e\|^2+\|\bar x-y\|^2</span>.</p>
+</section>
+<div class="proof"><strong>Proof.</strong>
+<p>By construction <span class="math inline">\langle e,\phi_i\rangle=\langle x,\phi_i\rangle-\langle\bar x,\phi_i\rangle=0</span> for every <span class="math inline">i</span>, by Proposition 4.4(a) applied to <span class="math inline">\bar x</span>, so <span class="math inline">e</span> is orthogonal to every combination of the <span class="math inline">\phi_i</span>, in particular to <span class="math inline">\bar x</span> and to <span class="math inline">\bar x-y</span>. Then (4.2) with <span class="math inline">x=\bar x+e</span> gives the first identity, and with <span class="math inline">x-y=(\bar x-y)+e</span> the second.</p>
+</div>
+<p>Exercise 4.2 projects a ramp onto the basis of Example 4.3. In the other direction, any finite set of signals spans a space with an orthonormal basis, which Exercise 4.3 builds for two signals. The procedure, called Gram-Schmidt, starts with the first nonzero signal and normalizes it. For each remaining signal it subtracts the projection onto the span of the basis signals already obtained, discards the error if it is zero, and otherwise normalizes it to obtain the next basis signal. We use it only to know that the basis exists.</p>
+<h2 id="the-signal-space-of-a-transmitter">4.3 The signal space of a transmitter</h2>
+<p>A transmitter has <span class="math inline">M=2^k</span> messages <span class="math inline">m\in\mathcal M</span>, with prior probabilities <span class="math inline">\Pr(m)</span>, and sends the waveform <span class="math inline">s_m(t)</span> for message <span class="math inline">m</span>. The <span class="math inline">M</span> waveforms span a signal space of dimension <span class="math inline">n\leq M</span>, with an orthonormal basis <span class="math inline">\{\phi_1,\ldots,\phi_n\}</span>, so by Proposition 4.4 each of them is <span class="math display">\begin{equation*}
+s_m(t)=\sum_{i=1}^n x_i(m)\,\phi_i(t),
+\qquad
+x_i(m)=\langle s_m,\phi_i\rangle,\tag{4.8}
+\end{equation*}</span> and is described by its coordinate vector <span class="math inline">\x(m)=(x_1(m),\ldots,x_n(m))</span>. These vectors are precisely the codewords of Definition 2.1 of Topic 2, and when <span class="math inline">n=1</span> they are the symbols of a constellation of Topic 1. The <strong>energy</strong> of message <span class="math inline">m</span> is <span class="math inline">E_m=\|s_m\|^2=\|\x(m)\|^2</span>, by Proposition 4.4(c), the average energy is <span class="math inline">E=\smash{\sum_{m\in\mathcal M}}\Pr(m)E_m</span>, and the energy per information bit is <span class="math inline">\Eb=E/k</span>, as in Topic 2.</p>
+<p>The transmitter is thus a bank of <span class="math inline">n</span> multipliers and an adder, as the left part of Figure 4.4 shows: it scales each basis waveform by a coordinate and adds the results. The simplest basis is a unit-energy pulse <span class="math inline">\phi(t)</span> supported on <span class="math inline">[0,T)</span> and its shifts <span class="math inline">\phi_i(t)=\phi\bigl(t-(i-1)T\bigr)</span>, which are orthonormal because their supports are disjoint. Sending the symbols <span class="math inline">x_1,\ldots,x_n</span> of Topics 1 and 2 with this basis means sending <span class="math inline">x_i\phi(t-(i-1)T)</span> in the <span class="math inline">i</span>-th slot of <span class="math inline">T</span> seconds, one coordinate per slot. Topic 5 builds bases of shifted pulses whose supports overlap, as <span class="math inline">\phi_1</span> and <span class="math inline">\phi_2</span> do, and asks how little bandwidth they need.</p>
+<section class="env-block env-example"><p class="env-label">Example 4.7.</p>
+<p>Two messages, <span class="math inline">M=2</span>, are sent with waveforms of the same energy <span class="math inline">E</span> built on the basis of Example 4.3. In <strong>antipodal signaling</strong>, <span class="math inline">s_1=\sqrt E\,\phi_1</span> and <span class="math inline">s_2=-\sqrt E\,\phi_1</span>: the dimension is <span class="math inline">n=1</span>, the coordinates are <span class="math inline">x(1)=\sqrt E</span> and <span class="math inline">x(2)=-\sqrt E</span>, and the distance between the two waveforms is <span class="math inline">2\sqrt E</span>. This is the 2-PAM of Example 1.6 of Topic 1 with <span class="math inline">A=\sqrt E</span>, now as two rectangular pulses of opposite sign. In <strong>orthogonal signaling</strong>, <span class="math inline">s_1=\sqrt E\,\phi_1</span> and <span class="math inline">s_2=\sqrt E\,\phi_2</span>: the dimension is <span class="math inline">n=2</span>, the coordinates are <span class="math inline">\x(1)=(\sqrt E,0)</span> and <span class="math inline">\x(2)=(0,\sqrt E)</span>, and the squared distance is <span class="math inline">\|\x(1)-\x(2)\|^2=E+E=2E</span>. Figure 4.2 shows the two configurations. At equal energy, the antipodal pair is farther apart, by a factor <span class="math inline">\sqrt2</span> in distance. Section 4.6 turns this factor into <span class="math inline">3</span> dB.</p>
+</section>
+<div class="source-figure">
+<img class="tex-figure" src="img/topic4-dc015ea2d97e220b.svg" alt="Diagram reproduced from the course PDF; description follows in the text.">
+<img class="tex-figure" src="img/topic4-4a0aca2a172c5120.svg" alt="Diagram reproduced from the course PDF; description follows in the text.">
+<p><strong>Figure 4.2.</strong> The two binary signal sets of Example 4.7, with the decision regions of the nearest-point detector of Section 4.6. The dotted segment has length <span class="math inline">\sqrt{2E}</span>, against <span class="math inline">2\sqrt E</span> in (a).</p>
+</div>
+<section class="env-block env-problem"><p class="env-label">Problem 4.8.</p>
+<p>Four equiprobable messages are sent with the waveforms <span class="math inline">s_1=a\phi_1+a\phi_2</span>, <span class="math inline">s_2=-a\phi_1+a\phi_2</span>, <span class="math inline">s_3=-a\phi_1-a\phi_2</span> and <span class="math inline">s_4=a\phi_1-a\phi_2</span>, with <span class="math inline">a&gt;0</span> and the basis of Example 4.3. Draw the four waveforms, and find the energy of each message, the energy per bit and the smallest distance between two waveforms.</p>
+<details class="solution"><summary>Show solution</summary>
+<p>On the first half of the interval <span class="math inline">\phi_1</span> and <span class="math inline">\phi_2</span> both equal <span class="math inline">\tfrac{1}{\sqrt T}</span>, and on the second half they have opposite signs. Hence, <span class="math inline">s_1</span> equals <span class="math inline">\tfrac{2a}{\sqrt T}</span> on <span class="math inline">[0,\tfrac T2)</span> and <span class="math inline">0</span> on <span class="math inline">[\tfrac T2,T)</span>, <span class="math inline">s_2</span> equals <span class="math inline">0</span> and then <span class="math inline">-\tfrac{2a}{\sqrt T}</span>, <span class="math inline">s_3</span> equals <span class="math inline">-\tfrac{2a}{\sqrt T}</span> and then <span class="math inline">0</span>, and <span class="math inline">s_4</span> equals <span class="math inline">0</span> and then <span class="math inline">\tfrac{2a}{\sqrt T}</span>, as in Figure 4.3. Each message is a pulse of amplitude <span class="math inline">\pm\tfrac{2a}{\sqrt T}</span> placed in the first or in the second half: the message is carried by the position and by the sign of the pulse. By Proposition 4.4(c), every message has energy <span class="math inline">a^2+a^2=2a^2</span>, which is also <span class="math inline">\tfrac{4a^2}{T}\cdot\tfrac T2</span> computed from the waveform, so <span class="math inline">E=2a^2</span> and, with <span class="math inline">k=2</span> bits, <span class="math inline">\Eb=a^2</span>. The coordinate vectors are the four corners <span class="math inline">(\pm a,\pm a)</span> of a square, the real version of the QPSK constellation of Problem 1.13 of Topic 1. Two neighboring corners differ in one coordinate by <span class="math inline">2a</span>, so the smallest squared distance is <span class="math inline">4a^2</span>, and the diagonal pairs are at squared distance <span class="math inline">8a^2</span>. In terms of the energy per bit, the minimum squared distance is <span class="math inline">4\Eb</span>, the same as for antipodal signaling, where <span class="math inline">d^2=4E=4\Eb</span>. The four signals carry two bits in two dimensions at no cost in distance per bit.</p>
+</details>
+</section>
+<div class="source-figure">
+<img class="tex-figure" src="img/topic4-c6e5f1dd05c5300a.svg" alt="Diagram reproduced from the course PDF; description follows in the text.">
+<p><strong>Figure 4.3.</strong> The four waveforms of Problem 4.8: a pulse in the first or the second half of the interval, with either sign. Their coordinate vectors are the corners <span class="math inline">(\pm a,\pm a)</span>.</p>
+</div>
+<p>The codes of Topic 2 fit in the same picture. The parity code of Problem 2.9 of Topic 2 sends three 2-PAM symbols, so with three slots it has <span class="math inline">n=3</span> and its four codewords are the vertices of the cube of Figure 2.4 of that topic. The geometry that governed the comparison of codes, minimum distance at equal energy per bit, is the geometry of the signal space, and it does not depend on which orthonormal waveforms carry the coordinates.</p>
+<h2 id="white-gaussian-noise">4.4 White Gaussian noise</h2>
+<p>The channel adds to the transmitted waveform a noise waveform <span class="math inline">Z(t)</span>, which does not depend on the message, and the receiver observes <span class="math inline">Y(t)=s_m(t)+Z(t)</span>. Everything the receiver can compute from <span class="math inline">Z(t)</span> alone is independent of <span class="math inline">m</span>. The noise of the first half of the course was a sequence of independent Gaussian samples. Its continuous-time counterpart is defined not by its values at each instant, which we will never use, but by what the receiver can compute from it, namely inner products with signals.</p>
+<section class="env-block env-definition"><p class="env-label">Definition 4.9.</p>
+<p>The noise <span class="math inline">Z</span> is <strong>white Gaussian noise</strong> with <strong>power spectral density</strong> <span class="math inline">\No/2</span> when, for every finite collection of signals <span class="math inline">u_1,\ldots,u_J</span>, the random variables <span class="math inline">\langle Z,u_1\rangle,\ldots,\langle Z,u_J\rangle</span> are jointly Gaussian with zero mean, and for every pair of signals <span class="math inline">u</span> and <span class="math inline">v</span>, <span class="math display">\begin{equation*}
+\EE\bigl(\langle Z,u\rangle\,\langle Z,v\rangle\bigr)=\frac{\No}{2}\,\langle u,v\rangle.\tag{4.9}
+\end{equation*}</span></p>
+</section>
+<p>The expressions <span class="math inline">Z(t)</span> and <span class="math inline">\langle Z,u\rangle</span> are formal notation for this family of Gaussian projections, not for pointwise values of an ordinary random function. The definition is the mathematical form of two physical ideas. The first is that the noise observed in one interval of time says nothing about the noise in another: two signals with disjoint supports have <span class="math inline">\langle u,v\rangle=0</span>, so by (4.9) their projections are uncorrelated and, being jointly Gaussian, independent. The second is about intensity. Taking <span class="math inline">v=u</span> in (4.9), the variance of <span class="math inline">\langle Z,u\rangle</span> is <span class="math inline">\tfrac{\No}2\|u\|^2</span>. It depends on the energy of <span class="math inline">u</span> and on nothing else, not on its duration, its position in time or its shape, and this is what the word white means: the noise is seen with the same intensity through every unit-energy signal, as white light contains every color equally. The constant <span class="math inline">\No/2</span> is measured in watts per hertz, which is the same as joules, and Topic 6 relates it to the bandwidth of the receiver. With the convention of the factor <span class="math inline">\tfrac12</span>, the noise power in a band of <span class="math inline">W</span> hertz is <span class="math inline">\No W</span>.</p>
+<section class="env-block env-theorem"><p class="env-label">Proposition 4.10.</p>
+<p>Let <span class="math inline">\{\phi_1,\ldots,\phi_n\}</span> be an orthonormal set. The projections <span class="math inline">Z_i=\langle Z,\phi_i\rangle</span> of white Gaussian noise are independent Gaussian random variables with zero mean and variance <span class="math inline">\sigma^2=\No/2</span>.</p>
+</section>
+<div class="proof"><strong>Proof.</strong>
+<p>By (4.9), <span class="math inline">\EE(Z_i^2)=\tfrac{\No}2\|\phi_i\|^2=\tfrac{\No}2</span> and <span class="math inline">\EE(Z_iZ_k)=\tfrac{\No}2\langle\phi_i,\phi_k\rangle=0</span> for <span class="math inline">i\neq k</span>. The projections are jointly Gaussian and uncorrelated, and uncorrelated jointly Gaussian variables are independent, as seen in the probability course.</p>
+</div>
+<section class="env-block env-example"><p class="env-label">Example 4.11.</p>
+<p>With <span class="math inline">\phi_1</span> of Example 4.3, the projection <span class="math inline">Z_1=\tfrac{1}{\sqrt T}\int_0^T Z(t)\drm t</span> is the integral of the noise over the interval divided by <span class="math inline">\sqrt T</span>, and it is Gaussian with variance <span class="math inline">\No/2</span> whatever the value of <span class="math inline">T</span>. A rectangular pulse of amplitude <span class="math inline">A</span> on the same interval has coordinate <span class="math inline">\langle A\sqrt T\phi_1,\phi_1\rangle=A\sqrt T</span> along <span class="math inline">\phi_1</span>. Integrating over a longer interval and dividing by <span class="math inline">\sqrt T</span> gives the same noise variance but a coordinate that grows like <span class="math inline">\sqrt T</span>, so the ratio of the squared coordinate to the noise variance, <span class="math inline">2A^2T/\No</span>, grows linearly with the duration of the pulse. Energy, not amplitude, is what buys reliability.</p>
+</section>
+<aside class="callout">
+<p>White noise is not a signal. If it were, by Proposition 4.6 its energy would be at least the sum <span class="math inline">Z_1^2+\cdots+Z_K^2</span> of its squared projections onto any <span class="math inline">K</span> orthonormal signals, for every <span class="math inline">K</span>. Along an infinite orthonormal sequence, Proposition 4.10 gives independent, identically distributed Gaussian projections. By the strong law of large numbers, the average <span class="math inline">(Z_1^2+\cdots+Z_K^2)/K</span> converges almost surely to <span class="math inline">\No/2&gt;0</span>, so the sum diverges almost surely. No finite signal energy can bound these sums. The model is an idealization of a noise whose bandwidth is much larger than that of the signals, and it is harmless because, as the next section shows, only <span class="math inline">n</span> projections of the noise ever reach the receiver’s decision.</p>
+</aside>
+<h2 id="irrelevance-and-the-vector-channel">4.5 Irrelevance and the vector channel</h2>
+<p>The receiver observes <span class="math inline">Y(t)=s_m(t)+Z(t)</span> and may compute any finite number of inner products of <span class="math inline">Y</span> with signals of its choice. The natural choice is the basis of the transmitter. By (4.8) and the linearity of the inner product, the projection of the received waveform onto <span class="math inline">\phi_i</span> is <span class="math display">\begin{equation*}
+Y_i=\langle Y,\phi_i\rangle=\langle s_m,\phi_i\rangle+\langle Z,\phi_i\rangle=x_i(m)+Z_i,
+\qquad i=1,\ldots,n,\tag{4.10}
+\end{equation*}</span> the coordinate of the transmitted waveform plus the projection of the noise. The right part of Figure 4.4 shows the <span class="math inline">n</span> <strong>correlators</strong> that compute them. The question is whether anything is lost by keeping only these <span class="math inline">n</span> numbers out of a whole waveform. The following theorem says that nothing is.</p>
+<div class="source-figure">
+<div class="figure-grid"><img class="tex-figure" src="img/topic4-8a4a8870096a8335.svg" alt="Diagram reproduced from the course PDF; description follows in the text."></div>
+<p><strong>Figure 4.4.</strong> Transmission of waveforms in signal space. The transmitter combines the basis waveforms with the coordinates of the message, and the receiver recovers the noisy coordinates with a bank of correlators and decides as in Topics 1 and 2.</p>
+</div>
+<section class="env-block env-theorem"><p class="env-label">Theorem 4.12.</p>
+<p>[Irrelevance]</p>
+<p>Let <span class="math inline">\psi_1,\ldots,\psi_J</span> be orthonormal signals, each orthogonal to <span class="math inline">\phi_1,\ldots,\phi_n</span>, and let <span class="math inline">V_j=\langle Y,\psi_j\rangle</span>. The random variables <span class="math inline">V_1,\ldots,V_J</span> do not depend on the message and are independent of <span class="math inline">Z_1,\ldots,Z_n</span>. Consequently, the MAP decision based on <span class="math inline">(Y_1,\ldots,Y_n,V_1,\ldots,V_J)</span> is the MAP decision based on <span class="math inline">(Y_1,\ldots,Y_n)</span> alone.</p>
+</section>
+<div class="proof"><strong>Proof.</strong>
+<p>By (4.8), <span class="math inline">\langle s_m,\psi_j\rangle=\smash{\sum_{i=1}^n}x_i(m)\langle\phi_i,\psi_j\rangle=0</span>, so <span class="math inline">V_j=\langle Z,\psi_j\rangle</span> is a projection of the noise alone and does not depend on <span class="math inline">m</span>. By (4.9), <span class="math inline">\EE(V_jZ_i)=\tfrac{\No}2\langle\psi_j,\phi_i\rangle=0</span>, and jointly Gaussian uncorrelated variables are independent, so the vector <span class="math inline">\boldsymbol V=(V_1,\ldots,V_J)</span> is independent of <span class="math inline">(Z_1,\ldots,Z_n)</span>, and therefore of <span class="math inline">\Y=(Y_1,\ldots,Y_n)</span> given <span class="math inline">m</span>. By Proposition 4.10 applied to the orthonormal set <span class="math inline">\{\psi_j\}</span>, the <span class="math inline">V_j</span> are independent Gaussians of variance <span class="math inline">\No/2</span>, so <span class="math inline">\boldsymbol V</span> has a density <span class="math inline">f</span>. The joint density of the observation given <span class="math inline">m</span> is then a product <span class="math inline">W(\y|\x(m))\,f(\boldsymbol v)</span>, where <span class="math inline">f</span> does not depend on <span class="math inline">m</span>. The MAP decoder of Theorem 2.2 of Topic 2 maximizes <span class="math inline">\Pr(m)\,W(\y|\x(m))\,f(\boldsymbol v)</span> over <span class="math inline">m</span>, and the factor <span class="math inline">f(\boldsymbol v)</span> is common to all messages and does not affect the maximization.</p>
+</div>
+<p>Any signal <span class="math inline">\psi</span> is the sum of its projection onto the signal space and an error orthogonal to it, by Proposition 4.6. If the error is nonzero, <span class="math inline">\langle Y,\psi\rangle</span> is a combination of <span class="math inline">Y_1,\ldots,Y_n</span> and of the projection onto the normalized error, a variable <span class="math inline">V</span> covered by the theorem. If the error is zero, the observation is already a combination of <span class="math inline">Y_1,\ldots,Y_n</span>. The <span class="math inline">n</span> correlator outputs are therefore all that the optimal receiver needs. Together with Proposition 4.10, equation (4.10) says that <span class="math display">\begin{equation*}
+\Y=\x(m)+\boldsymbol Z,
+\qquad Z_1,\ldots,Z_n\ \text{independent, Gaussian, of variance }\sigma^2=\frac{\No}{2}.\tag{4.11}
+\end{equation*}</span> This is the real Gaussian channel of Table 1.2 of Topic 1, used <span class="math inline">n</span> times, once per dimension of the signal space, and memoryless because the noise projections are independent. A <strong>channel use</strong>, the abstract unit of the first three topics, is one orthonormal direction of the signal space. Table 4.1 collects the correspondence. In particular, for a transmitter with equal-energy waveforms, the energy per channel use is <span class="math inline">\Es=E/n</span> and the signal-to-noise ratio of Topic 1 reads <span class="math display">\begin{equation*}
+\snr=\frac{\Es}{\sigma^2}=\frac{2\Es}{\No}.\tag{4.12}
+\end{equation*}</span></p>
+<div class="source-table">
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th style="text-align: left;">Topics 1 to 3</th>
+<th style="text-align: left;">This topic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Channel use</td>
+<td style="text-align: left;">One orthonormal waveform <span class="math inline">\phi_i</span>, one dimension of the signal space</td>
+</tr>
+<tr>
+<td style="text-align: left;">Symbol <span class="math inline">x_i</span>, codeword <span class="math inline">\x(m)</span></td>
+<td style="text-align: left;">Coordinate <span class="math inline">x_i(m)=\langle s_m,\phi_i\rangle</span>, waveform <span class="math inline">s_m(t)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Received symbol <span class="math inline">y_i</span></td>
+<td style="text-align: left;">Correlator output <span class="math inline">Y_i=\langle Y,\phi_i\rangle</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Noise sample of variance <span class="math inline">\sigma^2</span></td>
+<td style="text-align: left;">Noise projection <span class="math inline">\langle Z,\phi_i\rangle</span> of variance <span class="math inline">\No/2</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Squared distance <span class="math inline">\|\x(m)-\x(m&#39;)\|^2</span></td>
+<td style="text-align: left;">Squared distance between waveforms, <span class="math inline">\|s_m-s_{m&#39;}\|^2=\|\x(m)-\x(m&#39;)\|^2</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Energy <span class="math inline">\Es</span> per channel use, <span class="math inline">\snr=\Es/\sigma^2</span></td>
+<td style="text-align: left;">Energy <span class="math inline">E/n</span> per dimension, <span class="math inline">\snr=2\Es/\No</span></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Table 4.1.</strong> The dictionary between the discrete-time channel of Topics 1 to 3 and the waveform channel.</p>
+</div>
+<aside class="callout">
+<p>Topic 1 took the noise variance <span class="math inline">\sigma^2</span> as given, and the complex Gaussian channel of Table 1.2 had total variance <span class="math inline">\sigma^2</span> with <span class="math inline">\sigma^2/2</span> per real part. Both conventions come from here. A real coordinate carries noise of variance <span class="math inline">\No/2</span>, and Topic 5 pairs two real coordinates, carried by a cosine and a sine, into one complex channel use whose noise has total variance <span class="math inline">\sigma^2=\No</span>, that is, <span class="math inline">\No/2</span> per real component.</p>
+</aside>
+<h2 id="detection-in-signal-space">4.6 Detection in signal space</h2>
+<p>With (4.11), the results of Topics 1 and 2 apply to waveforms at once. The MAP decoder is optimal by Theorem 2.2 of Topic 2 and, for equiprobable messages, it is the ML decoder, which by Proposition 2.3(a) of that topic chooses the coordinate vector nearest to <span class="math inline">\Y</span>. By Proposition 4.4(d), this is the waveform <span class="math inline">s_m</span> nearest to the projection <span class="math inline">\sum_{i=1}^nY_i\phi_i(t)</span> of the received waveform onto the signal space. The decision regions are the Voronoi regions of the points <span class="math inline">\x(m)</span>, as in Section 1.5 of Topic 1 and in Figure 4.2. The rule can also be written without the basis.</p>
+<section class="env-block env-theorem"><p class="env-label">Proposition 4.13.</p>
+<p>The ML decoder is <span class="math display">\begin{equation*}
+\hat m=\argmin_{m\in\mathcal M}\|\Y-\x(m)\|^2=\argmax_{m\in\mathcal M}\Bigl(\langle Y,s_m\rangle-\frac{E_m}{2}\Bigr),\tag{4.13}
+\end{equation*}</span> and when all the waveforms have the same energy it chooses the waveform most correlated with the received one. For equiprobable messages, this is also the MAP decoder.</p>
+</section>
+<div class="proof"><strong>Proof.</strong>
+<p>Expanding the square, <span class="math inline">\|\Y-\x(m)\|^2=\|\Y\|^2-2\smash{\sum_{i=1}^n}Y_ix_i(m)+\|\x(m)\|^2</span>. The first term does not depend on <span class="math inline">m</span>, the last one is <span class="math inline">E_m</span>, and by (4.8) and linearity <span class="math inline">\smash{\sum_{i=1}^n}x_i(m)\langle Y,\phi_i\rangle=\langle Y,s_m\rangle</span>. Minimizing the distance is thus maximizing <span class="math inline">\langle Y,s_m\rangle-E_m/2</span>, and the energy term drops out when it is the same for all messages.</p>
+</div>
+<p>The receiver may thus correlate the received waveform with the <span class="math inline">M</span> candidate waveforms instead of the <span class="math inline">n</span> basis waveforms. The two implementations give the same decision. Topic 5 shows that a correlation can be computed by filtering and sampling, which is how receivers are built.</p>
+<p>For error probabilities we need no new computation either. For two messages at distance <span class="math inline">d=\|\x(1)-\x(2)\|=\|s_1-s_2\|</span>, the ML decoder finds the second more likely than the first with probability <span class="math inline">\tfrac12\erfc\bigl(d/(2\sqrt2\,\sigma)\bigr)</span>, by Exercise 2.7 of Topic 2, and for <span class="math inline">M=2</span> this is exactly the error probability. With <span class="math inline">\sigma^2=\No/2</span>, we have <span class="math inline">2\sqrt2\,\sigma=2\sqrt{\No}</span> and <span class="math display">\begin{equation*}
+P_{\rm e}=\tfrac12\erfc\biggl(\frac{d}{2\sqrt{\No}}\biggr).\tag{4.14}
+\end{equation*}</span> The error probability of binary signaling in white noise depends on the two waveforms only through their distance.</p>
+<section class="env-block env-example"><p class="env-label">Example 4.14.</p>
+<p>For the two signal sets of Example 4.7, equation (4.14) gives, with <span class="math inline">d=2\sqrt E</span> and <span class="math inline">d=\sqrt{2E}</span>, <span class="math display">\begin{equation*}
+P_{\rm e}^{\rm antipodal}=\tfrac12\erfc\biggl(\sqrt{\frac{E}{\No}}\biggr)
+\qquad\text{and}\qquad
+P_{\rm e}^{\rm orthogonal}=\tfrac12\erfc\biggl(\sqrt{\frac{E}{2\No}}\biggr).\tag{4.15}
+\end{equation*}</span> Orthogonal signaling needs twice the energy of antipodal signaling, that is, <span class="math inline">3</span> dB more, for the same error probability. This is the factor <span class="math inline">\sqrt2</span> in distance of Example 4.7, squared. Since each message carries one bit, <span class="math inline">E=\Eb</span> in both cases. As a check, antipodal signaling is 2-PAM with <span class="math inline">A=\sqrt E</span> on a channel of variance <span class="math inline">\No/2</span>, so <span class="math inline">\snr=2E/\No</span> by (4.12), and equation (1.22) of Topic 1 gives <span class="math inline">\tfrac12\erfc(\sqrt{\snr/2})=\tfrac12\erfc(\sqrt{E/\No})</span>, the same value. Table 4.2 summarizes the comparison.</p>
+</section>
+<section class="env-block env-problem"><p class="env-label">Problem 4.15.</p>
+<p>Find the decision regions and the error probability of the ML decoder for the four waveforms of Problem 4.8, and compare with antipodal signaling at the same energy per bit.</p>
+<details class="solution"><summary>Show solution</summary>
+<p>The coordinate vectors are the corners <span class="math inline">(\pm a,\pm a)</span> and the nearest-point regions are the four quadrants of the plane <span class="math inline">(Y_1,Y_2)</span>, as for the QPSK of Problem 1.13 of Topic 1. When <span class="math inline">s_1</span> is sent, <span class="math inline">\Y=(a+Z_1,a+Z_2)</span> stays in the first quadrant when <span class="math inline">Z_1&gt;-a</span> and <span class="math inline">Z_2&gt;-a</span>. The two conditions concern independent Gaussians of variance <span class="math inline">\No/2</span>, so by the product rule and equation (1.23) of Topic 1 with <span class="math inline">\sigma^2=\No/2</span>, <span class="math display">\begin{equation*}
+\Pr(\text{correct}\,|\,m=1)=(1-p)^2,
+\qquad
+p=\Pr(Z_1&lt;-a)=\tfrac12\erfc\biggl(\frac{a}{\sqrt{\No}}\biggr),\tag{4.16}
+\end{equation*}</span> and <span class="math inline">P_{\rm e}(1)=1-(1-p)^2=2p-p^2</span>. By symmetry this is the error probability of every message, and hence the average. Since <span class="math inline">\Eb=a^2</span> by Problem 4.8, <span class="math inline">p=\tfrac12\erfc\bigl(\sqrt{\Eb/\No}\bigr)</span>. If the two bits of each message are assigned to the signs of the two coordinates, each bit is decided from its own coordinate and is wrong with probability <span class="math inline">p</span> exactly, as in Exercise 1.5 of Topic 1, so the bit error probability is <span class="math inline">P_{\rm b}=p=\tfrac12\erfc\bigl(\sqrt{\Eb/\No}\bigr)</span>, the same as for antipodal signaling in (4.15). The four waveforms are two independent antipodal transmissions, one per dimension, and cost the same energy per bit as one. The comparison with 4-PAM in one dimension, Problem 1.12 of Topic 1, is instructive: 4-PAM needs five times the symbol energy of 2-PAM for about the same error probability, which is <span class="math inline">7</span> dB per symbol and, since each of its symbols carries two bits, about <span class="math inline">4</span> dB per bit, whereas a second dimension carries the second bit at no cost per bit. Dimensions are a resource, and Topic 6 says what they cost in bandwidth.</p>
+</details>
+</section>
+<div class="source-table">
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th style="text-align: left;">Signal set</th>
+<th style="text-align: center;"><span class="math inline">n</span></th>
+<th style="text-align: center;">bits</th>
+<th style="text-align: center;"><span class="math inline">E</span></th>
+<th style="text-align: center;"><span class="math inline">d_{\min}^2/\Eb</span></th>
+<th style="text-align: center;"><span class="math inline">P_{\rm e}</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Antipodal, <span class="math inline">\pm\sqrt E\,\phi_1</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">\Eb</span></td>
+<td style="text-align: center;"><span class="math inline">4</span></td>
+<td style="text-align: center;"><span class="math inline">\tfrac12\erfc\bigl(\sqrt{\Eb/\No}\bigr)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Orthogonal, <span class="math inline">\sqrt E\,\phi_1</span> and <span class="math inline">\sqrt E\,\phi_2</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">\Eb</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+<td style="text-align: center;"><span class="math inline">\tfrac12\erfc\bigl(\sqrt{\Eb/(2\No)}\bigr)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Four corners <span class="math inline">(\pm a,\pm a)</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+<td style="text-align: center;"><span class="math inline">2\Eb</span></td>
+<td style="text-align: center;"><span class="math inline">4</span></td>
+<td style="text-align: center;"><span class="math inline">2p-p^2</span>, <span class="math inline">p=\tfrac12\erfc\bigl(\sqrt{\Eb/\No}\bigr)</span></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Table 4.2.</strong> The three signal sets of this section on the basis of Example 4.3, at the same energy per bit.</p>
+</div>
+<aside class="callout">
+<p>Nothing in this section used the shape of <span class="math inline">\phi_1</span> and <span class="math inline">\phi_2</span>. Any orthonormal pair, rectangular pulses, sinusoids or the pulses of Topic 5, gives the same coordinates, the same distances and the same error probabilities. The shape of the waveforms decides how much time and bandwidth they occupy, which is the subject of the next two topics, not how reliable they are.</p>
+</aside>
+<section class="callout"><h2>What to remember</h2>
+<ul>
+<li><p>Signals are vectors: <span class="math inline">\langle x,y\rangle=\int x(t)y(t)\drm t</span> is their inner product, <span class="math inline">\|x\|^2=\langle x,x\rangle</span> their energy and <span class="math inline">\|x-y\|</span> their distance. Orthogonal signals have zero inner product and need not have disjoint supports.</p></li>
+<li><p>In an orthonormal basis, a signal of the spanned space is its coordinates <span class="math inline">x_i=\langle x,\phi_i\rangle</span>, and inner products, energies and distances of signals are those of the coordinate vectors. The projection <span class="math inline">\bar x=\sum_i\langle x,\phi_i\rangle\phi_i</span> is the nearest signal of the space, with an orthogonal error.</p></li>
+<li><p>The <span class="math inline">M</span> waveforms of a transmitter span a space of dimension <span class="math inline">n\leq M</span>. Their coordinate vectors <span class="math inline">\x(m)</span> are the codewords of Topic 2, and a channel use is one dimension.</p></li>
+<li><p>White Gaussian noise of spectral density <span class="math inline">\No/2</span> has, in every orthonormal direction, an independent Gaussian projection of variance <span class="math inline">\No/2</span>, and infinite energy. The projections outside the signal space are irrelevant to the optimal decision.</p></li>
+<li><p>Correlating the received waveform with the basis gives <span class="math inline">\Y=\x(m)+\boldsymbol Z</span>, the real Gaussian channel of Topic 1 with <span class="math inline">\sigma^2=\No/2</span>, used <span class="math inline">n</span> times. The results of Topics 1 to 3 for that channel apply, with <span class="math inline">\snr=2\Es/\No</span>.</p></li>
+<li><p>In binary signaling under ML detection, two waveforms at distance <span class="math inline">d</span> are confused with probability <span class="math inline">\tfrac12\erfc\bigl(d/(2\sqrt{\No})\bigr)</span>. Antipodal signaling gives <span class="math inline">\tfrac12\erfc(\sqrt{\Eb/\No})</span> and orthogonal signaling needs <span class="math inline">3</span> dB more. A second dimension carries a second bit at the same energy per bit.</p></li>
+</ul>
+</section></main></div><footer class="footer">Universitat Pompeu Fabra · 23972 · Digital data transmission 2026</footer><script src="vendor/katex.min.js"></script><script src="vendor/auto-render.min.js"></script><script src="site.js"></script><script src="ui.js"></script></body></html>
