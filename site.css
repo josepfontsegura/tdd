@@ -6,6 +6,8 @@
 /* Common text of a seminar sheet or of a group of questions, shown once before its first question (23 October). */
 .seminar-context{border-left:4px solid var(--upf-red);background:var(--upf-red-light);padding:.75em 1em;margin:1.25em 0;border-radius:4px}
 .tex-figure{max-width:100%;height:auto;background:white}
+/* Seminar 5 solution plots inherit the surrounding problem background. */
+.solution .tex-figure[src^="img/seminar5-"]{background:transparent}
 .source-figure{text-align:center;margin:1.5em 0}.source-figure>img{display:inline-block;vertical-align:middle}.source-figure p{font-size:.85rem;color:var(--text-secondary);margin-top:.5rem}
 .table-scroll{overflow-x:auto}.math.display{display:block}main>ol>li{margin:1.25em 0}ol ol{list-style-type:lower-alpha}
 #expand-solutions{display:block;margin:0 auto 1.5rem;font-size:.85rem;padding:.5rem 1.2rem;border:2px solid var(--upf-red);color:var(--upf-red);border-radius:6px;font-weight:500;background:var(--bg);cursor:pointer}
