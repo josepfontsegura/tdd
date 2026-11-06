@@ -1,0 +1,363 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Topic 5 - Modulation and demodulation - TDD 2026</title><script>document.documentElement.dataset.theme=localStorage.getItem('tdd-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')</script><link rel="icon" href="img/favicon.ico" type="image/x-icon"><link rel="stylesheet" href="itc.css"><link rel="stylesheet" href="vendor/katex.min.css"><link rel="stylesheet" href="site.css"><script defer src="analytics.js"></script></head><body><a class="skip" href="#main">Skip to content</a><nav class="navbar">
+  <button class="menu-toggle" aria-label="Menu">&#9776;</button>
+  <a class="navbar-brand" href="index.html">
+    <img src="img/upf-logo.svg" alt="UPF" style="height:42px;margin-right:0.75rem"> <span class="navbar-brand-text">Digital data transmission 2026</span>
+  </a>
+  <div class="navbar-actions">
+    <button class="search-toggle" aria-label="Search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><span class="search-hint">⌘K</span></button>
+    <button class="theme-toggle" aria-label="Toggle dark mode"><svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button>
+  </div>
+  <div class="lang-switcher"><a href="topic5.html" class="active" aria-current="page">EN</a></div>
+</nav><div class="page"><aside class="sidebar"><details class="sidebar-section"><summary><h4>General</h4></summary><a href="index.html">Home</a><a href="https://gestioacademica.upf.edu/doa/consultaPublica/look%5Bconpub%5DMostrarPubGuiaDocAs?entradaPublica=true&amp;idiomaPais=en.GB&amp;_anoAcademico=2026&amp;_codAsignatura=23972">Teaching guide ↗</a><a href="https://aulaglobal.upf.edu/course/view.php?id=92919">Aula Global ↗</a></details><details class="sidebar-section"><summary><h4>Modality A</h4></summary><a href="modality-a-midterm.html">Midterm</a><a href="modality-a-final.html">Final</a></details><details class="sidebar-section" open><summary><h4>Lecture notes</h4></summary><a href="topic1.html">1. Detection</a><a href="topic2.html">2. Decoding</a><a href="topic3.html">3. Mutual information and capacity</a><a href="topic4.html">4. Continuous time</a><a href="topic5.html" class="active" aria-current="page">5. Modulation and demodulation</a><span class="sidebar-disabled">6. Continuous-channel capacity</span></details><details class="sidebar-section"><summary><h4>Seminars</h4></summary><a href="seminar1.html">1. Detectors and their errors</a><a href="seminar2.html">2. Repetition codes and likelihood</a><a href="seminar3.html">3. Comparing receivers and codes</a><a href="seminar4.html">4. Information through discrete channels</a><a href="seminar5.html">5. Mutual information with continuous noise</a><a href="seminar6.html">6. Waveforms and coordinates</a><span class="sidebar-disabled">7. From bits to symbols and back</span><span class="sidebar-disabled">8. Rate, bandwidth and error</span><span class="sidebar-disabled">9. Power, bandwidth and capacity</span><span class="sidebar-disabled">10. Spatial modes and the whole chain</span></details><details class="sidebar-section"><summary><h4>Tests</h4></summary><a href="test1.html">1. Detection</a><a href="test2.html">2. Decoding</a><a href="test3.html">3. Mutual information and capacity</a><span class="sidebar-disabled">4. Continuous time</span><span class="sidebar-disabled">5. Modulation and demodulation</span></details><details class="sidebar-section"><summary><h4>Exercises</h4></summary><a href="exercises1.html">1. Detection</a><a href="exercises2.html">2. Decoding</a><a href="exercises3.html">3. Mutual information and capacity</a><a href="exercises4.html">4. Continuous time</a><span class="sidebar-disabled">5. Modulation and demodulation</span><span class="sidebar-disabled">6. Continuous-channel capacity</span></details><details class="sidebar-section"><summary><h4>Exams</h4></summary><a href="exam-midterm-a.html">Midterm 2026 (Modality A)</a><span class="sidebar-disabled">Final 2026 (Modality A)</span><span class="sidebar-disabled">Final 2026 (Modality B)</span></details></aside><main class="content" id="main"><div class="lecture-header"><h1>Topic 5. Modulation and demodulation</h1></div><div class="resource-row"><a class="resource-link" href="pdf/TDD-2026-Topic5.pdf">Download PDF</a></div><nav class="topic-toc" aria-label="In this topic"><strong>Contents</strong><ul><li><a href="#symbols-rates-and-energies">5.1 Symbols, rates and energies</a></li><li><a href="#pulse-amplitude-modulation">5.2 Pulse amplitude modulation</a></li><li><a href="#matched-filter-and-sampling">5.3 Matched filter and sampling</a></li><li><a href="#passband-transmission-psk-and-qam">5.4 Passband transmission: PSK and QAM</a></li><li><a href="#bandwidth-and-the-nyquist-criterion">5.5 Bandwidth and the Nyquist criterion</a></li><li><a href="#spectral-efficiency-and-the-three-resources">5.6 Spectral efficiency and the three resources</a></li></ul></nav><section class="callout"><h2>In this topic</h2>
+<p>Topic 4 showed that a transmitter is a set of coordinates on an orthonormal basis of waveforms, and that the receiver recovers the noisy coordinates by correlation. It did not say which waveforms to use, nor how fast the coordinates can follow one another. This topic builds the waveforms of real systems. A pulse and its shifts carry a stream of symbols, a cosine and a sine carry two coordinates on a carrier, and a filter followed by a sampler replaces the bank of correlators. The price of each choice is paid in time and in frequency, and the Fourier transform measures it. Sections 5.1 to 5.4 correspond to the first lecture and Sections 5.5 and 5.6 to the second.</p>
+<ul>
+<li><p>We map bits to the symbols of a constellation, and we relate the symbol rate to the bit rate, the energy per symbol to the energy per bit, and both to the transmitted power.</p></li>
+<li><p>We build pulse amplitude modulation from a pulse whose shifts are orthonormal, and we recover the real Gaussian channel of Topic 4, one use per symbol.</p></li>
+<li><p>We compute every correlation with one matched filter and a sampler, and we see what intersymbol interference is when the sampling instants are wrong.</p></li>
+<li><p>We place two coordinates on a cosine and a sine at a carrier frequency, obtain PSK and QAM, and recover the complex Gaussian channel of Topic 1 with noise variance <span class="math inline">\No</span>.</p></li>
+<li><p>We define the bandwidth of a signal with the Fourier transform, and we state the Nyquist criterion: a pulse of period <span class="math inline">T</span> needs a baseband bandwidth of at least <span class="math inline">1/(2T)</span>.</p></li>
+<li><p>We measure the use of the spectrum by the spectral efficiency, and we place energy, bandwidth and error probability in one trade-off.</p></li>
+</ul>
+</section>
+<h2 id="symbols-rates-and-energies">5.1 Symbols, rates and energies</h2>
+<p>A transmitter receives bits at a <strong>bit rate</strong> <span class="math inline">R_{\rm b}</span>, in bits per second, and sends symbols at a <strong>symbol rate</strong> <span class="math inline">R_{\rm s}=1/T</span>, in symbols per second, where <span class="math inline">T</span> is the <strong>symbol period</strong>. The <strong>mapper</strong> takes the bits in groups of <span class="math inline">\log_2M</span> and assigns to each group a point of a constellation <span class="math inline">\mathcal X</span> of <span class="math inline">M</span> points, with a fixed <strong>labeling</strong>. Without coding, every symbol carries <span class="math inline">\log_2M</span> bits and <span class="math display">\begin{equation*}
+R_{\rm b}=R_{\rm s}\log_2M.\tag{5.1}
+\end{equation*}</span> With a binary code of rate <span class="math inline">r</span> before the mapper, the coded bits arrive <span class="math inline">\log_2M</span> per symbol but the information bits do not. By equation (3.30) of Topic 3, each symbol carries <span class="math inline">R=r\log_2M</span> information bits, so <span class="math inline">R_{\rm b}=R\,R_{\rm s}</span>. The labeling matters for bit errors, as Section 1.6 of Topic 1 showed: with a Gray labeling, in which neighboring points differ in one bit, the bit error probability is approximately <span class="math inline">P_{\rm e}/\log_2M</span>. The approximation counts only the errors to a neighboring point, which dominate at the SNRs of interest.</p>
+<p>The <strong>energy per symbol</strong> is <span class="math inline">\Es=\EE(|X|^2)</span>, as in Topic 1, and the <strong>energy per information bit</strong> is <span class="math inline">\Eb=\Es/R</span>, which is <span class="math inline">\Es/\log_2M</span> without coding. A symbol of energy <span class="math inline">\Es</span> every <span class="math inline">T</span> seconds gives the <strong>average power</strong> <span class="math display">\begin{equation*}
+P=\frac{\Es}{T}=\Es R_{\rm s}=\Eb R_{\rm b},\tag{5.2}
+\end{equation*}</span> where the last form, energy per bit times bits per second, does not depend on the constellation or the code. The constellations of this topic are in Figure 5.1 and Table 5.1. The <span class="math inline">M</span>-PAM constellations are real, with points <span class="math inline">\pm a,\pm3a,\ldots,\pm(M-1)a</span> and energy <span class="math inline">\Es=(M^2-1)a^2/3</span> by Exercise 1.2 of Topic 1. The <strong><span class="math inline">M</span>-PSK</strong> constellations are complex, with <span class="math inline">M</span> points on a circle of radius <span class="math inline">\sqrt{\Es}</span>, at angles <span class="math inline">2\pi k/M</span>. The square <strong><span class="math inline">M</span>-QAM</strong> constellations, with <span class="math inline">M=4^q</span>, take the real and imaginary parts from the same <span class="math inline">\sqrt M</span>-PAM, so their energy is twice that of the <span class="math inline">\sqrt M</span>-PAM: <span class="math inline">2a^2</span> for QPSK, which is <span class="math inline">4</span>-QAM, and <span class="math inline">10a^2</span> for 16-QAM. The table also gives the squared minimum distance per unit of <span class="math inline">\Eb</span> for uncoded transmission, the quantity that governed the comparisons of Topics 2 and 4. Each additional bit per dimension divides it by a factor of <span class="math inline">2.5</span> to <span class="math inline">2.8</span>, about <span class="math inline">4</span> dB. Section 5.6 says what is gained in exchange.</p>
+<div class="source-figure">
+<img class="tex-figure" src="img/topic5-10f700b2e4e2e462.svg" alt="Diagram reproduced from the course PDF; description follows in the text.">
+<img class="tex-figure" src="img/topic5-50673804093eb842.svg" alt="Diagram reproduced from the course PDF; description follows in the text.">
+<img class="tex-figure" src="img/topic5-366eb5c30cd00c98.svg" alt="Diagram reproduced from the course PDF; description follows in the text.">
+<img class="tex-figure" src="img/topic5-e86b47085e7cb028.svg" alt="Diagram reproduced from the course PDF; description follows in the text.">
+<p><strong>Figure 5.1.</strong> The constellations of Table 5.1. The spacing between neighbors is <span class="math inline">2a</span> in (a), (b) and (d).</p>
+</div>
+<div class="source-table">
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th style="text-align: left;">Constellation</th>
+<th style="text-align: center;"><span class="math inline">M</span></th>
+<th style="text-align: center;"><span class="math inline">\log_2M</span></th>
+<th style="text-align: center;">Dimensions</th>
+<th style="text-align: center;"><span class="math inline">\Es</span></th>
+<th style="text-align: center;"><span class="math inline">d_{\min}</span></th>
+<th style="text-align: center;"><span class="math inline">d_{\min}^2/\Eb</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">2-PAM</td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">a^2</span></td>
+<td style="text-align: center;"><span class="math inline">2a</span></td>
+<td style="text-align: center;"><span class="math inline">4</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">4-PAM</td>
+<td style="text-align: center;"><span class="math inline">4</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">5a^2</span></td>
+<td style="text-align: center;"><span class="math inline">2a</span></td>
+<td style="text-align: center;"><span class="math inline">1.6</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">8-PAM</td>
+<td style="text-align: center;"><span class="math inline">8</span></td>
+<td style="text-align: center;"><span class="math inline">3</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">21a^2</span></td>
+<td style="text-align: center;"><span class="math inline">2a</span></td>
+<td style="text-align: center;"><span class="math inline">0.57</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">QPSK</td>
+<td style="text-align: center;"><span class="math inline">4</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+<td style="text-align: center;"><span class="math inline">2a^2</span></td>
+<td style="text-align: center;"><span class="math inline">2a</span></td>
+<td style="text-align: center;"><span class="math inline">4</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">8-PSK</td>
+<td style="text-align: center;"><span class="math inline">8</span></td>
+<td style="text-align: center;"><span class="math inline">3</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+<td style="text-align: center;"><span class="math inline">\Es</span></td>
+<td style="text-align: center;"><span class="math inline">2\sqrt{\Es}\sin(\pi/8)</span></td>
+<td style="text-align: center;"><span class="math inline">1.76</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">16-QAM</td>
+<td style="text-align: center;"><span class="math inline">16</span></td>
+<td style="text-align: center;"><span class="math inline">4</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+<td style="text-align: center;"><span class="math inline">10a^2</span></td>
+<td style="text-align: center;"><span class="math inline">2a</span></td>
+<td style="text-align: center;"><span class="math inline">1.6</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">64-QAM</td>
+<td style="text-align: center;"><span class="math inline">64</span></td>
+<td style="text-align: center;"><span class="math inline">6</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+<td style="text-align: center;"><span class="math inline">42a^2</span></td>
+<td style="text-align: center;"><span class="math inline">2a</span></td>
+<td style="text-align: center;"><span class="math inline">0.57</span></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Table 5.1.</strong> Energy and minimum distance of the usual constellations with equiprobable points, and squared minimum distance per unit of energy per bit for uncoded transmission.</p>
+</div>
+<section class="env-block env-example"><p class="env-label">Example 5.1.</p>
+<p>A link carries <span class="math inline">R_{\rm b}=12</span> Mbit/s with 16-QAM. Without coding, by (5.1) the symbol rate is <span class="math inline">R_{\rm s}=12/4=3</span> Msymbols per second and <span class="math inline">T=\tfrac13\,\mu</span>s. With a code of rate <span class="math inline">r=\tfrac34</span>, each symbol carries <span class="math inline">R=\tfrac34\cdot4=3</span> information bits, so <span class="math inline">R_{\rm s}=4</span> Msymbols per second and <span class="math inline">T=0.25\,\mu</span>s. The code costs one third more symbols per second, which Section 5.6 converts into bandwidth. Coordinates have the units of the square root of an energy, since the basis waveforms have unit energy, so if <span class="math inline">a^2=1</span> nJ, Table 5.1 gives <span class="math inline">\Es=10</span> nJ in both cases, the energy per information bit is <span class="math inline">\Eb=2.5</span> nJ without coding and <span class="math inline">\tfrac{10}3</span> nJ with it, and by (5.2) the power is <span class="math inline">P=30</span> mW without coding and <span class="math inline">40</span> mW with it.</p>
+</section>
+<h2 id="pulse-amplitude-modulation">5.2 Pulse amplitude modulation</h2>
+<p>The simplest basis of Topic 4 was a pulse and its shifts. We now take this basis seriously, with pulses that may overlap. Since this topic is full of shifts and reversals of the pulse, we make the time variable explicit in the inner products of Topic 4 and write <span class="math inline">\langle\phi(t),\phi(t-\tau)\rangle</span> instead of <span class="math inline">\langle\phi,\phi(\cdot-\tau)\rangle</span>: the variable inside the brackets is the one integrated out, and when <span class="math inline">t</span> is needed for another instant the integration variable is called <span class="math inline">u</span>.</p>
+<section class="env-block env-definition"><p class="env-label">Definition 5.2.</p>
+<p>A real signal <span class="math inline">\phi</span> of unit energy is a <strong>Nyquist pulse</strong> for the symbol period <span class="math inline">T</span> when its shifts by multiples of <span class="math inline">T</span> are orthonormal, that is, when <span class="math display">\begin{equation*}
+g(\tau)=\langle\phi(t),\phi(t-\tau)\rangle=\int_{-\infty}^{\infty}\phi(t)\,\phi(t-\tau)\drm t\tag{5.3}
+\end{equation*}</span> satisfies <span class="math inline">g(0)=1</span> and <span class="math inline">g(kT)=0</span> for every integer <span class="math inline">k\neq0</span>.</p>
+</section>
+<p>The function <span class="math inline">g</span> compares the pulse with itself displaced by <span class="math inline">\tau</span>, and the inner product of two shifts, <span class="math inline">\langle\phi(t-iT),\phi(t-kT)\rangle</span>, equals <span class="math inline">g((k-i)T)</span> because a common shift does not change an inner product, as seen in Section 4.1 of Topic 4. The condition therefore says exactly that <span class="math inline">\{\phi(t-iT)\}</span> is an orthonormal set. <strong>Pulse amplitude modulation</strong> (PAM) sends the symbols <span class="math inline">x_1,\ldots,x_n</span> of a real constellation as <span class="math display">\begin{equation*}
+x(t)=\sum_{i=1}^n x_i\,\phi(t-iT),\tag{5.4}
+\end{equation*}</span> one coordinate in each shift of the pulse, at the rate of one symbol every <span class="math inline">T</span> seconds. Figure 5.2 shows a PAM signal. Everything that Topic 4 proved for an orthonormal basis applies at once. By Proposition 4.4 of Topic 4 the energy of the signal is <span class="math inline">\smash{\sum_{i=1}^n}x_i^2</span>, with average <span class="math inline">n\Es</span>, and the coordinate <span class="math inline">x_i</span> is the correlation <span class="math inline">\langle x(t),\phi(t-iT)\rangle</span>. In white Gaussian noise of spectral density <span class="math inline">\No/2</span>, the correlator outputs are <span class="math display">\begin{equation*}
+Y_i=\langle Y(t),\phi(t-iT)\rangle=x_i+Z_i,
+\qquad i=1,\ldots,n,\tag{5.5}
+\end{equation*}</span> with independent Gaussian noise of variance <span class="math inline">\No/2</span> by Proposition 4.10, and nothing is lost by Theorem 4.12. This is the real Gaussian channel of Table 1.2 of Topic 1, with <span class="math inline">\sigma^2=\No/2</span> and <span class="math inline">\snr=2\Es/\No</span> by equation (4.12) of Topic 4, used <span class="math inline">R_{\rm s}=1/T</span> times per second. The detectors, decoders, error probabilities and mutual informations of Topics 1 to 3 apply without change, and the symbol rate converts their results from channel uses to seconds.</p>
+<section class="env-block env-example"><p class="env-label">Example 5.3.</p>
+<p>The rectangular pulse <span class="math inline">\phi(t)=\tfrac{1}{\sqrt T}</span> for <span class="math inline">0\leq t&lt;T</span>, and <span class="math inline">0</span> otherwise, is a Nyquist pulse for the period <span class="math inline">T</span>, since its shifts have disjoint supports. Its function <span class="math inline">g</span> is the triangle of Figure 5.2, <span class="math display">\begin{equation*}
+g(\tau)=\begin{cases}1-\dfrac{|\tau|}{T}&amp;|\tau|\leq T\\[1ex]0&amp;\text{otherwise},\end{cases}\tag{5.6}
+\end{equation*}</span> because for <span class="math inline">0\leq\tau\leq T</span> the pulse and its shift overlap on an interval of length <span class="math inline">T-\tau</span>, where their product is <span class="math inline">\tfrac1T</span>. The triangle vanishes at every nonzero multiple of <span class="math inline">T</span>, as required, and it also shows what happens between them: the pulse and its shift by half a period have inner product <span class="math inline">\tfrac12</span>.</p>
+</section>
+<div class="source-figure">
+<img class="tex-figure" src="img/topic5-d6c41fe9c45ea19a.svg" alt="Diagram reproduced from the course PDF; description follows in the text.">
+<img class="tex-figure" src="img/topic5-831c362000f9fdf1.svg" alt="Diagram reproduced from the course PDF; description follows in the text.">
+<p><strong>Figure 5.2.</strong> The 4-PAM signal (5.4) with the rectangular pulse of Example 5.3: the symbol <span class="math inline">x_i</span> occupies <span class="math inline">[iT,(i+1)T)</span>. On the right, the function <span class="math inline">g</span> of that pulse.</p>
+</div>
+<section class="env-block env-example"><p class="env-label">Example 5.4.</p>
+<p>The pulse <span class="math display">\begin{equation*}
+\phi(t)=\frac{1}{\sqrt T}\,\sinc\Bigl(\frac tT\Bigr),
+\qquad\sinc(u)=\frac{\sin(\pi u)}{\pi u},\tag{5.7}
+\end{equation*}</span> with <span class="math inline">\sinc(0)=1</span>, is also a Nyquist pulse for the period <span class="math inline">T</span>. Its shifts overlap over the whole real line, as Figure 5.3 shows, and yet they are orthonormal, like <span class="math inline">\phi_1</span> and <span class="math inline">\phi_2</span> of Example 4.3 of Topic 4. Section 5.5 proves it and shows that <span class="math inline">g(\tau)=\sinc(\tau/T)</span>, which vanishes at every nonzero multiple of <span class="math inline">T</span>. The pulse is not zero outside any finite interval, and the figure shows the reason for using it: the PAM signal passes through the value <span class="math inline">x_i/\sqrt T</span> at <span class="math inline">t=iT</span>, because all the other pulses vanish there, and it occupies a narrow band of frequencies. As the remark that closed Topic 4 says, the two pulses give the same coordinates, noise and error probabilities, and differ only in the resources they use: the first is confined in time and spread in frequency, the second the opposite.</p>
+</section>
+<div class="source-figure">
+<img class="tex-figure" src="img/topic5-1f514337bd376264.svg" alt="Diagram reproduced from the course PDF; description follows in the text.">
+<p><strong>Figure 5.3.</strong> The 4-PAM signal of Figure 5.2, now with the sinc pulse of Example 5.4, in units of <span class="math inline">a</span>. The four scaled pulses (thin) overlap everywhere, and their sum (thick) equals each symbol at its own instant <span class="math inline">iT</span>.</p>
+</div>
+<h2 id="matched-filter-and-sampling">5.3 Matched filter and sampling</h2>
+<p>The receiver of Figure 4.4 of Topic 4 has one correlator per basis waveform, that is, one per symbol. For a PAM signal the basis waveforms are shifts of one pulse, and one filter computes all the correlations. The <strong>convolution</strong> of two signals is <span class="math display">\begin{equation*}
+(y*h)(t)=\int_{-\infty}^{\infty}y(u)\,h(t-u)\drm u,\tag{5.8}
+\end{equation*}</span> and a linear time-invariant filter with impulse response <span class="math inline">h</span> produces <span class="math inline">y*h</span> from its input <span class="math inline">y</span>, as seen in the signals and systems course.</p>
+<section class="env-block env-theorem"><p class="env-label">Proposition 5.5.</p>
+<p>Let <span class="math inline">h(t)=\phi(-t)</span> be the pulse reversed in time. For every signal <span class="math inline">y</span> and every instant <span class="math inline">t</span>, <span class="math display">\begin{equation*}
+(y*h)(t)=\langle y(u),\phi(u-t)\rangle,\tag{5.9}
+\end{equation*}</span> so the output of the filter <span class="math inline">h</span> at the instant <span class="math inline">iT</span> is the correlation <span class="math inline">\langle y(t),\phi(t-iT)\rangle</span> with the <span class="math inline">i</span>-th basis waveform.</p>
+</section>
+<div class="proof"><strong>Proof.</strong>
+<p>In (5.8), <span class="math inline">h(t-u)=\phi(u-t)</span>, so <span class="math inline">(y*h)(t)=\int_{-\infty}^{\infty}y(u)\phi(u-t)\drm u</span>, which is the inner product of <span class="math inline">y</span> with the pulse shifted by <span class="math inline">t</span>.</p>
+</div>
+<p>The filter <span class="math inline">h</span> is the <strong>matched filter</strong> of the pulse, and Figure 5.4 shows the receiver: the received waveform enters the matched filter, a sampler reads the output at <span class="math inline">t=T,2T,\ldots,nT</span>, and the samples <span class="math inline">Y_1,\ldots,Y_n</span> of (5.5) go to the detector or decoder of Topics 1 and 2. The name is justified by the fact that, among all filters followed by a sampler, the matched filter gives the largest ratio of signal to noise in the sample.</p>
+<div class="source-figure">
+<div class="figure-grid"><img class="tex-figure" src="img/topic5-a6f0eb8691ca837f.svg" alt="Diagram reproduced from the course PDF; description follows in the text."></div>
+<p><strong>Figure 5.4.</strong> The PAM receiver. The matched filter and the sampler compute the <span class="math inline">n</span> correlations of Figure 4.4 of Topic 4.</p>
+</div>
+<p>The output of the filter between the sampling instants tells what the Nyquist condition protects us from. Without noise, the input is the PAM signal (5.4), and by (5.9), linearity and the definition (5.3), <span class="math display">\begin{equation*}
+q(t)=\sum_{k=1}^n x_k\,\langle\phi(u-kT),\phi(u-t)\rangle=\sum_{k=1}^n x_k\,g(t-kT).\tag{5.10}
+\end{equation*}</span> The filter output is a PAM signal with the pulse <span class="math inline">g</span> in the place of <span class="math inline">\phi</span>. At <span class="math inline">t=iT</span> every term with <span class="math inline">k\neq i</span> vanishes and <span class="math inline">q(iT)=x_i</span>, which is (5.5) without noise. At an instant <span class="math inline">iT+\tau</span> with <span class="math inline">0&lt;\tau&lt;T</span>, the sample is <span class="math display">\begin{equation*}
+q(iT+\tau)=x_i\,g(\tau)+\sum_{k\neq i}x_k\,g\bigl((i-k)T+\tau\bigr),\tag{5.11}
+\end{equation*}</span> a reduced copy of <span class="math inline">x_i</span> plus a combination of the other symbols, called <strong>intersymbol interference</strong>. It is not noise: it is present without noise, it depends on the data, and it would vanish if the receiver sampled at the right instants. The pulse shape decides how much of it a timing error collects. The sinc pulse has <span class="math inline">g(\tau)=\sinc(\tau/T)</span>, whose values at <span class="math inline">\pm T+\tau,\pm2T+\tau,\ldots</span> decrease like <span class="math inline">1/k</span>, and Section 5.5 introduces pulses whose <span class="math inline">g</span> decays faster, at the price of some bandwidth.</p>
+<section class="env-block env-problem"><p class="env-label">Problem 5.6.</p>
+<p>The 4-PAM sequence <span class="math inline">(x_1,x_2,x_3,x_4)=(3a,-a,a,-3a)</span> of Figure 5.2 is sent with the rectangular pulse, and the receiver samples the matched filter at <span class="math inline">t=iT+\tfrac T3</span> instead of <span class="math inline">t=iT</span>. Find the four samples and the decisions of the nearest-point detector, without noise.</p>
+<details class="solution"><summary>Show solution</summary>
+<p>By (5.6), <span class="math inline">g(\tfrac T3)=\tfrac23</span> and <span class="math inline">g(-T+\tfrac T3)=g(-\tfrac{2T}3)=\tfrac13</span>, while <span class="math inline">g</span> vanishes at <span class="math inline">T+\tfrac T3</span> and beyond. In (5.11) only the symbol <span class="math inline">x_i</span> and the next one, <span class="math inline">x_{i+1}</span>, survive, so <span class="math inline">q(iT+\tfrac T3)=\tfrac23x_i+\tfrac13x_{i+1}</span>, with <span class="math inline">x_5=0</span> after the last symbol. The four samples are <span class="math inline">\tfrac23\cdot3a-\tfrac13a=\tfrac53a</span>, <span class="math inline">-\tfrac23a+\tfrac13a=-\tfrac13a</span>, <span class="math inline">\tfrac23a-a=-\tfrac13a</span> and <span class="math inline">-2a</span>. The thresholds of 4-PAM are at <span class="math inline">0</span> and <span class="math inline">\pm2a</span>, by Problem 1.12 of Topic 1, so the decisions are <span class="math inline">a</span>, <span class="math inline">-a</span> and <span class="math inline">-a</span> for the first three symbols, and the last sample lies exactly on the threshold between <span class="math inline">-a</span> and <span class="math inline">-3a</span>. A detector must fix a rule for ties, for instance the point of smaller energy, here <span class="math inline">-a</span>, and we adopt it. The first, the third and the fourth symbols are then wrong before any noise is added. The noise in a sample taken at <span class="math inline">iT+\tau</span> has the same variance <span class="math inline">\No/2</span> as at <span class="math inline">iT</span>, since <span class="math inline">\phi(t-iT-\tau)</span> has unit energy, so the timing error costs signal and gains nothing.</p>
+</details>
+</section>
+<h2 id="passband-transmission-psk-and-qam">5.4 Passband transmission: PSK and QAM</h2>
+<p>A PAM signal built on a slowly varying pulse has its frequency content around <span class="math inline">f=0</span>, and we call it a <strong>baseband</strong> signal. Radio channels, antennas and the regulations that share the spectrum require the signal to occupy a band around a <strong>carrier frequency</strong> <span class="math inline">f_{\rm c}</span>, typically far above <span class="math inline">1/T</span>. Such a signal is a <strong>passband</strong> signal, and the way to build it is to multiply a baseband pulse by a cosine. A sine at the same frequency gives a second pulse, orthogonal to the first, and the two together carry two coordinates per symbol period. Let <span class="math inline">\psi</span> be a real Nyquist pulse for the period <span class="math inline">T</span>. The <strong>in-phase</strong> and <strong>quadrature</strong> waveforms of the <span class="math inline">i</span>-th symbol period are <span class="math display">\begin{equation*}
+\phi_{{\rm I},i}(t)=\sqrt2\,\psi(t-iT)\cos(2\pi f_{\rm c}t)
+\qquad\text{and}\qquad
+\phi_{{\rm Q},i}(t)=-\sqrt2\,\psi(t-iT)\sin(2\pi f_{\rm c}t).\tag{5.12}
+\end{equation*}</span> The pulse moves from period to period and the carrier does not: its phase is counted from the common origin <span class="math inline">t=0</span> in every period, so the whole signal rides on one cosine and one sine, and the receiver will multiply by that same cosine and sine.</p>
+<p>Let <span class="math inline">\psi</span> be the rectangular pulse of Example 5.3 and let <span class="math inline">f_{\rm c}T</span> be a positive integer. Then the waveforms <span class="math inline">\phi_{{\rm I},i}</span> and <span class="math inline">\phi_{{\rm Q},k}</span> form an orthonormal set for all integers <span class="math inline">i</span> and <span class="math inline">k</span>; the proof, a direct computation with the double-angle formulas, is left to the reader. The same orthonormality holds for any real Nyquist pulse <span class="math inline">\psi(t)</span> whose baseband bandwidth <span class="math inline">W</span> satisfies <span class="math inline">W&lt;f_{\rm c}</span>. In this case, the condition that <span class="math inline">f_{\rm c}T</span> be an integer is not needed.</p>
+<p><strong>Quadrature amplitude modulation</strong> (QAM) sends the complex symbols <span class="math inline">x_i=a_i+jb_i</span> of a constellation <span class="math inline">\mathcal X\subset\CC</span> by placing their real parts on the in-phase waveforms and their imaginary parts on the quadrature waveforms, <span class="math display">\begin{equation*}
+x(t)=\sum_{i=1}^n\bigl(a_i\,\phi_{{\rm I},i}(t)+b_i\,\phi_{{\rm Q},i}(t)\bigr).\tag{5.13}
+\end{equation*}</span> This is a transmitter of Section 4.3 of Topic 4 with a basis of <span class="math inline">2n</span> real waveforms, and the coordinate vector <span class="math inline">(a_1,b_1,\ldots,a_n,b_n)</span>. The complex number <span class="math inline">x_i</span> is a convenient name for the pair <span class="math inline">(a_i,b_i)</span>, and no complex waveform is transmitted. Its modulus and argument have a direct meaning. Writing <span class="math inline">x_i=|x_i|e^{j\theta_i}</span> and using (5.12) with <span class="math inline">\cos(u+\theta)=\cos u\cos\theta-\sin u\sin\theta</span>, the <span class="math inline">i</span>-th term of (5.13) is <span class="math display">\begin{equation*}
+a_i\,\phi_{{\rm I},i}(t)+b_i\,\phi_{{\rm Q},i}(t)=\sqrt2\,|x_i|\,\psi(t-iT)\cos\bigl(2\pi f_{\rm c}t+\theta_i\bigr),\tag{5.14}
+\end{equation*}</span> a piece of carrier whose amplitude is set by <span class="math inline">|x_i|</span> and whose phase is set by <span class="math inline">\theta_i</span>. The symbol modulates the amplitude and the phase of the carrier at once, which gives the method its name. <strong>Phase shift keying</strong> (PSK) is the special case of a constellation on a circle: the amplitude is constant and only the phase carries information. With the rectangular pulse, a QPSK signal is a carrier of constant amplitude <span class="math inline">\sqrt{2\Es/T}</span> whose phase jumps among <span class="math inline">\pm\tfrac\pi4</span> and <span class="math inline">\pm\tfrac{3\pi}4</span> at the multiples of <span class="math inline">T</span>. By Proposition 4.4 of Topic 4, the energy of the signal is <span class="math inline">\smash{\sum_{i=1}^n}(a_i^2+b_i^2)=\smash{\sum_{i=1}^n}|x_i|^2</span>, so <span class="math inline">|x_i|^2</span> is the energy of the symbol, in agreement with the definition <span class="math inline">\Es=\EE(|X|^2)</span> of Topic 1 for complex constellations.</p>
+<p>Since the waveforms are orthonormal, everything of Topic 4 applies again. The receiver correlates <span class="math inline">Y(t)</span> with <span class="math inline">\phi_{{\rm I},i}(t)</span> and <span class="math inline">\phi_{{\rm Q},i}(t)</span>, which Exercise 5.6 shows is done by multiplying by the carrier, filtering with <span class="math inline">\psi(-t)</span> and sampling at <span class="math inline">t=iT</span>, and obtains <span class="math display">\begin{equation*}
+Y_i=x_i+Z_i,
+\qquad i=1,\ldots,n,\tag{5.15}
+\end{equation*}</span> as in (5.5), but now with complex numbers: the real and imaginary parts of <span class="math inline">Z_i</span> are independent Gaussian noises of variance <span class="math inline">\No/2</span> each, so the complex noise <span class="math inline">Z_i</span> has variance <span class="math inline">\No</span>. This is the complex Gaussian channel of Table 1.2 of Topic 1 with <span class="math inline">\sigma^2=\No</span> and <span class="math inline">\snr=\Es/\No</span>, used once per symbol period.</p>
+<section class="env-block env-example"><p class="env-label">Example 5.7.</p>
+<p>With QPSK, <span class="math inline">\Es=2a^2</span> and the nearest-point detector of Proposition 1.5 of Topic 1 decides each coordinate from its sign. Each coordinate is 2-PAM with amplitude <span class="math inline">a</span> in noise of variance <span class="math inline">\No/2</span>, so by equation (1.23) of Topic 1 it is wrong with probability <span class="math inline">p=\tfrac12\erfc\bigl(a/\sqrt{\No}\bigr)</span>, and by Problem 1.13 and Exercise 1.5 of Topic 1 the symbol error probability is <span class="math inline">2p-p^2</span> and the bit error probability with Gray labels is exactly <span class="math inline">p</span>. Since each symbol carries two bits, <span class="math inline">\Eb=a^2</span> and <span class="math display">\begin{equation*}
+P_{\rm b}=\tfrac12\erfc\biggl(\sqrt{\frac{\Eb}{\No}}\biggr),\tag{5.16}
+\end{equation*}</span> the same as antipodal signaling in Example 4.14 of Topic 4. The quadrature pulse carries a second bit at no cost in energy per bit, as the four corners of Problem 4.15 of Topic 4 did.</p>
+</section>
+<aside class="callout">
+<p>The passband channel is the complex Gaussian channel, so Theorem 3.14 of Topic 3 applies with <span class="math inline">\snr=\Es/\No</span>: at most <span class="math inline">\log_2(1+\Es/\No)</span> bits per symbol, that is, <span class="math inline">R_{\rm s}\log_2(1+\Es/\No)</span> bits per second, can be sent reliably. Topic 6 replaces <span class="math inline">R_{\rm s}</span> by the bandwidth.</p>
+</aside>
+<h2 id="bandwidth-and-the-nyquist-criterion">5.5 Bandwidth and the Nyquist criterion</h2>
+<p>Everything so far was measured in time. The second resource of a waveform is the band of frequencies it occupies, and the tool to measure it is the Fourier transform of the signals and systems course.</p>
+<section class="env-block env-definition"><p class="env-label">Definition 5.8.</p>
+<p>The <strong>Fourier transform</strong> of a signal <span class="math inline">x</span> is <span class="math display">\begin{equation*}
+\hat x(f)=\int_{-\infty}^{\infty}x(t)\,e^{-j2\pi ft}\drm t,\tag{5.17}
+\end{equation*}</span> a complex function of the frequency <span class="math inline">f</span>, in hertz, and <span class="math inline">x(t)=\int_{-\infty}^{\infty}\hat x(f)e^{j2\pi ft}\drm f</span> recovers the signal.</p>
+</section>
+<p>Table 5.2 lists the properties we use: shifting, filtering and multiplying by a carrier act simply on <span class="math inline">\hat x</span>, and Parseval’s identity computes inner products and energies in either domain, so <span class="math inline">|\hat x(f)|^2</span> is the density of the energy of <span class="math inline">x</span> in frequency. The first pair at the end is computed in Example 5.9; the second is its dual, with time and frequency exchanged.</p>
+<div class="source-table">
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th style="text-align: left;">Property</th>
+<th style="text-align: left;">Signal</th>
+<th style="text-align: left;">Transform</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Shift</td>
+<td style="text-align: left;"><span class="math inline">x(t-\tau)</span></td>
+<td style="text-align: left;"><span class="math inline">e^{-j2\pi f\tau}\,\hat x(f)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Convolution</td>
+<td style="text-align: left;"><span class="math inline">(x*h)(t)</span></td>
+<td style="text-align: left;"><span class="math inline">\hat x(f)\,\hat h(f)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Modulation</td>
+<td style="text-align: left;"><span class="math inline">x(t)\cos(2\pi f_{\rm c}t)</span></td>
+<td style="text-align: left;"><span class="math inline">\tfrac12\hat x(f-f_{\rm c})+\tfrac12\hat x(f+f_{\rm c})</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Parseval</td>
+<td style="text-align: left;"><span class="math inline">\langle x(t),y(t)\rangle</span></td>
+<td style="text-align: left;"><span class="math inline">\int_{-\infty}^{\infty}\hat x(f)\,\hat y(f)^*\drm f</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Real signal</td>
+<td style="text-align: left;"><span class="math inline">x(t)</span> real</td>
+<td style="text-align: left;"><span class="math inline">\hat x(-f)=\hat x(f)^*</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Reversal</td>
+<td style="text-align: left;"><span class="math inline">x(-t)</span>, <span class="math inline">x</span> real</td>
+<td style="text-align: left;"><span class="math inline">\hat x(f)^*</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Rectangular pulse</td>
+<td style="text-align: left;"><span class="math inline">\tfrac{1}{\sqrt T}</span> on <span class="math inline">[-\tfrac T2,\tfrac T2)</span></td>
+<td style="text-align: left;"><span class="math inline">\sqrt T\,\sinc(fT)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Sinc pulse</td>
+<td style="text-align: left;"><span class="math inline">\tfrac{1}{\sqrt T}\sinc(t/T)</span></td>
+<td style="text-align: left;"><span class="math inline">\sqrt T</span> on <span class="math inline">[-\tfrac{1}{2T},\tfrac{1}{2T})</span></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Table 5.2.</strong> Properties of the Fourier transform and the two transform pairs of this topic. The asterisk denotes the complex conjugate.</p>
+</div>
+<section class="env-block env-example"><p class="env-label">Example 5.9.</p>
+<p>For the rectangular pulse of unit energy centered at the origin, <span class="math inline">x(t)=\tfrac{1}{\sqrt T}</span> for <span class="math inline">-\tfrac T2\leq t&lt;\tfrac T2</span>, the integral (5.17) is, for <span class="math inline">f\neq0</span>, <span class="math display">\begin{equation*}
+\hat x(f)=\frac{1}{\sqrt T}\int_{-T/2}^{T/2}e^{-j2\pi ft}\drm t=\frac{1}{\sqrt T}\,\frac{e^{-j\pi fT}-e^{j\pi fT}}{-j2\pi f}=\frac{1}{\sqrt T}\,\frac{\sin(\pi fT)}{\pi f}=\sqrt T\,\sinc(fT),\tag{5.18}
+\end{equation*}</span> and <span class="math inline">\hat x(0)=\sqrt T</span> is the integral of the pulse, which agrees with <span class="math inline">\sinc(0)=1</span>. The energy density <span class="math inline">|\hat x(f)|^2=T\sinc^2(fT)</span> decays like <span class="math inline">1/f^2</span>. The spectrum extends to arbitrarily high frequencies, despite its zeros at nonzero integer multiples of <span class="math inline">1/T</span>, with about <span class="math inline">90\%</span> of the energy in <span class="math inline">|f|&lt;1/T</span> and <span class="math inline">95\%</span> in <span class="math inline">|f|&lt;2/T</span>. The pulse of Example 5.3 is this one shifted by <span class="math inline">\tfrac T2</span>. A time shift multiplies the Fourier transform by a phase factor, leaving its magnitude and energy density unchanged.</p>
+</section>
+<section class="env-block env-definition"><p class="env-label">Definition 5.10.</p>
+<p>A baseband signal <span class="math inline">x</span> has <strong>bandwidth</strong> <span class="math inline">W</span> when <span class="math inline">\hat x(f)=0</span> for <span class="math inline">|f|&gt;W</span> and <span class="math inline">W</span> is the smallest such number. A passband signal whose transform vanishes outside <span class="math inline">f_{\rm c}-W\leq|f|\leq f_{\rm c}+W</span> has <strong>passband bandwidth</strong> <span class="math inline">2W</span>.</p>
+</section>
+<p>For a real signal the negative frequencies repeat the positive ones, by the fifth line of Table 5.2, so the bandwidth is the extent of the positive frequencies. By the modulation property, the passband pulses (5.12) built on a pulse <span class="math inline">\psi</span> of bandwidth <span class="math inline">W</span> occupy <span class="math inline">f_{\rm c}-W\leq|f|\leq f_{\rm c}+W</span>, a passband bandwidth of <span class="math inline">2W</span>, and by linearity and the shift property every PAM or QAM signal has the bandwidth of its pulse. The sinc pulse has bandwidth <span class="math inline">1/(2T)</span> and the rectangular pulse has no finite bandwidth; the theorem below says how small the bandwidth of a Nyquist pulse can be. It rests on one identity: by Parseval’s identity and the shift property, the function (5.3) is <span class="math display">\begin{equation*}
+g(\tau)=\int_{-\infty}^{\infty}\hat\phi(f)\,\bigl(e^{-j2\pi f\tau}\hat\phi(f)\bigr)^*\drm f=\int_{-\infty}^{\infty}|\hat\phi(f)|^2\,e^{j2\pi f\tau}\drm f,\tag{5.19}
+\end{equation*}</span> the inverse Fourier transform of the energy density of the pulse.</p>
+<section class="env-block env-theorem"><p class="env-label">Theorem 5.11.</p>
+<p>[Nyquist criterion]</p>
+<p>A real pulse <span class="math inline">\phi</span> of unit energy is a Nyquist pulse for the period <span class="math inline">T</span> if and only if <span class="math display">\begin{equation*}
+\sum_{k=-\infty}^{\infty}\Bigl|\hat\phi\Bigl(f-\frac kT\Bigr)\Bigr|^2=T
+\qquad\text{for almost every }f.\tag{5.20}
+\end{equation*}</span> Consequently, a Nyquist pulse for the period <span class="math inline">T</span> has bandwidth at least <span class="math inline">1/(2T)</span>, and a Nyquist pulse with bandwidth exactly <span class="math inline">1/(2T)</span> has the energy density of the sinc pulse (5.7), <span class="math inline">|\hat\phi(f)|^2=T</span> for almost every <span class="math inline">f</span> with <span class="math inline">|f|&lt;1/(2T)</span>.</p>
+</section>
+<p>Values at isolated spectral endpoints do not affect the pulse energy or the orthogonality of its shifts. The theorem follows from (5.19): the samples <span class="math inline">g(kT)</span> are the Fourier series coefficients of the periodic function in (5.20), and all but <span class="math inline">g(0)</span> vanish exactly when it is constant. For the sinc pulse, <span class="math inline">|\hat\phi(f)|^2</span> is the rectangle of height <span class="math inline">T</span> on <span class="math inline">|f|&lt;1/(2T)</span>, whose shifted copies tile the frequency axis, and <span class="math inline">g</span>, its inverse transform by (5.19), is <span class="math inline">\sinc(\tau/T)</span>, as Example 5.4 claimed. Conversely, the rectangular pulse is a Nyquist pulse by Example 5.3, so the shifted copies of <span class="math inline">\sinc^2(fT)</span> add up to <span class="math inline">1</span> at every frequency, which is not obvious from the formula.</p>
+<p>The theorem is a statement about resources. A baseband waveform of bandwidth <span class="math inline">W</span> can carry a Nyquist pulse of period <span class="math inline">T</span> only if <span class="math inline">W\geq1/(2T)</span>, that is, <span class="math display">\begin{equation*}
+R_{\rm s}=\frac1T\leq2W\tag{5.21}
+\end{equation*}</span> symbols per second, with equality for the sinc pulse. In passband, where the bandwidth is <span class="math inline">2W</span> by Definition 5.10, the same pulse carries <span class="math inline">R_{\rm s}\leq2W</span> complex symbols per second, with two real coordinates each. In both cases a hertz of bandwidth buys two real dimensions per second, the count that Topic 6 uses. The sinc pulse attains the limit, but its slow decay makes it fragile to timing errors, and practical systems spend some <strong>excess bandwidth</strong> on pulses that decay faster.</p>
+<section class="env-block env-example"><p class="env-label">Example 5.12.</p>
+<p>The <strong>raised-cosine</strong> family with <strong>roll-off</strong> <span class="math inline">\beta\in[0,1]</span> is defined by the energy density <span class="math display">\begin{equation*}
+|\hat\phi(f)|^2=\begin{cases}
+T &amp; |f|\leq\dfrac{1-\beta}{2T}\\[1.2ex]
+\dfrac T2\Bigl(1+\cos\Bigl(\dfrac{\pi T}{\beta}\Bigl(|f|-\dfrac{1-\beta}{2T}\Bigr)\Bigr)\Bigr) &amp; \dfrac{1-\beta}{2T}&lt;|f|&lt;\dfrac{1+\beta}{2T}\\[1.2ex]
+0 &amp; \text{otherwise},
+\end{cases}\tag{5.22}
+\end{equation*}</span> shown in Figure 5.5. The bandwidth is <span class="math inline">W=(1+\beta)/(2T)</span>, so the excess over the minimum <span class="math inline">1/(2T)</span> is the fraction <span class="math inline">\beta</span>. For <span class="math inline">\beta=0</span> this is the sinc pulse, and for <span class="math inline">\beta=1</span> the bandwidth is doubled. The pulse satisfies (5.20) because the copies <span class="math inline">k=0</span> and <span class="math inline">k=1</span> overlap on the transition band around <span class="math inline">f=1/(2T)</span> with opposite cosines, as Exercise 5.5 checks for <span class="math inline">\beta=1</span>. The function <span class="math inline">g</span> is the inverse transform of (5.22), <span class="math display">\begin{equation*}
+g(\tau)=\sinc\Bigl(\frac\tau T\Bigr)\,\frac{\cos(\pi\beta\tau/T)}{1-(2\beta\tau/T)^2},\tag{5.23}
+\end{equation*}</span> which decays like <span class="math inline">1/\tau^3</span> for <span class="math inline">\beta&gt;0</span>, and the pulse <span class="math inline">\phi</span> itself, whose transform is the square root of (5.22), is called the root raised-cosine pulse. With <span class="math inline">\beta=1</span> and the timing error of Problem 5.6, the interference coefficients <span class="math inline">g(-\tfrac{2T}3)=0.27</span> and <span class="math inline">g(\tfrac{4T}3)=-0.02</span> replace the <span class="math inline">0.41</span> and <span class="math inline">-0.21</span> of the sinc pulse.</p>
+</section>
+<div class="source-figure">
+<img class="tex-figure" src="img/topic5-c7928312a076934a.svg" alt="Diagram reproduced from the course PDF; description follows in the text.">
+<img class="tex-figure" src="img/topic5-092c0993d3009df8.svg" alt="Diagram reproduced from the course PDF; description follows in the text.">
+<p><strong>Figure 5.5.</strong> The raised-cosine family of Example 5.12 for <span class="math inline">\beta=0</span>, <span class="math inline">0.5</span> and <span class="math inline">1</span>: energy density in frequency (left) and the function <span class="math inline">g</span> (right). All three vanish at the nonzero multiples of <span class="math inline">T</span>, and the larger <span class="math inline">\beta</span>, the faster <span class="math inline">g</span> decays and the wider the band.</p>
+</div>
+<h2 id="spectral-efficiency-and-the-three-resources">5.6 Spectral efficiency and the three resources</h2>
+<p>We can now count what a transmission costs in bandwidth. The <strong>spectral efficiency</strong> of a system is <span class="math display">\begin{equation*}
+\eta=\frac{R_{\rm b}}{W_{\rm total}}\tag{5.24}
+\end{equation*}</span> bits per second per hertz, where <span class="math inline">W_{\rm total}</span> is the bandwidth it occupies, baseband or passband. With a raised-cosine pulse of roll-off <span class="math inline">\beta</span> and <span class="math inline">R</span> information bits per symbol, baseband PAM has <span class="math inline">W_{\rm total}=(1+\beta)R_{\rm s}/2</span> and passband QAM has <span class="math inline">W_{\rm total}=(1+\beta)R_{\rm s}</span>, so <span class="math display">\begin{equation*}
+\eta_{\rm PAM}=\frac{2R}{1+\beta}
+\qquad\text{and}\qquad
+\eta_{\rm QAM}=\frac{R}{1+\beta},\tag{5.25}
+\end{equation*}</span> with <span class="math inline">R=\log_2M</span> without coding. The factor <span class="math inline">2</span> is not an advantage of baseband: both systems use the same <span class="math inline">2W_{\rm total}/(1+\beta)</span> real dimensions per second, out of the limit <span class="math inline">2W_{\rm total}</span> of (5.21), and 16-QAM against 4-PAM, at equal bandwidth, have the same <span class="math inline">\eta</span> and the same <span class="math inline">d_{\min}^2/\Eb</span> in Table 5.1.</p>
+<p>The trade-off concerns energy per bit <span class="math inline">\Eb</span> (power <span class="math inline">P=\Eb R_{\rm b}</span>), bandwidth (through <span class="math inline">\eta</span>), and reliability (<span class="math inline">P_{\rm b}</span>). Table 5.3 places the constellations of this topic in this trade-off for uncoded transmission with Gray labels, with <span class="math inline">P_{\rm b}</span> from Problem 1.12 and Exercise 1.2 of Topic 1 applied to each real coordinate, as in Example 5.7. Each step from <span class="math inline">M</span> to <span class="math inline">4M</span> points in QAM, one more bit per real dimension, adds <span class="math inline">2/(1+\beta)</span> bits per second per hertz, <span class="math inline">2</span> for the sinc pulse of the table, and costs about <span class="math inline">4</span> dB of energy per bit at the same bit error probability: energy and bandwidth are traded against each other, and the bit error probability sets the exchange rate. Coding enters the same trade-off: <span class="math inline">R=r\log_2M</span> reduces <span class="math inline">\eta</span> by the factor <span class="math inline">r</span>, and a good code reduces the <span class="math inline">\Eb/\No</span> required for the same <span class="math inline">P_{\rm b}</span>, by at most what Theorem 3.14 of Topic 3 allows, which Topic 6 writes in these units. Exercise 5.7 works one case.</p>
+<div class="source-table">
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th style="text-align: left;">Constellation</th>
+<th style="text-align: center;"><span class="math inline">\eta</span> with <span class="math inline">\beta=0</span></th>
+<th style="text-align: center;"><span class="math inline">P_{\rm b}</span> with Gray labels</th>
+<th style="text-align: center;"><span class="math inline">\Eb/\No</span> for <span class="math inline">P_{\rm b}=10^{-3}</span></th>
+<th style="text-align: center;"><span class="math inline">\Eb/\No</span> for <span class="math inline">P_{\rm b}=10^{-5}</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">QPSK</td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+<td style="text-align: center;"><span class="math inline">\tfrac12\erfc\bigl(\sqrt{\Eb/\No}\bigr)</span></td>
+<td style="text-align: center;"><span class="math inline">6.8</span> dB</td>
+<td style="text-align: center;"><span class="math inline">9.6</span> dB</td>
+</tr>
+<tr>
+<td style="text-align: left;">16-QAM</td>
+<td style="text-align: center;"><span class="math inline">4</span></td>
+<td style="text-align: center;"><span class="math inline">\tfrac38\erfc\bigl(\sqrt{2\Eb/(5\No)}\bigr)</span></td>
+<td style="text-align: center;"><span class="math inline">10.5</span> dB</td>
+<td style="text-align: center;"><span class="math inline">13.4</span> dB</td>
+</tr>
+<tr>
+<td style="text-align: left;">64-QAM</td>
+<td style="text-align: center;"><span class="math inline">6</span></td>
+<td style="text-align: center;"><span class="math inline">\tfrac7{24}\erfc\bigl(\sqrt{\Eb/(7\No)}\bigr)</span></td>
+<td style="text-align: center;"><span class="math inline">14.8</span> dB</td>
+<td style="text-align: center;"><span class="math inline">17.8</span> dB</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Table 5.3.</strong> Spectral efficiency of uncoded passband QAM with the sinc pulse, bit error probability with Gray labels and nearest-point detection, where only errors to a neighboring point are counted for 16-QAM and 64-QAM, and the energy per bit needed for two targets. Baseband 2-PAM, 4-PAM and 8-PAM have the same three last columns.</p>
+</div>
+<p>Wireless local area networks and digital television adapt the constellation to the link SNR (Table 5.3). They also transmit QAM symbols on parallel, orthogonal <strong>subcarriers</strong> spaced <span class="math inline">1/T</span> apart and lasting <span class="math inline">T</span> seconds, despite overlapping spectra. This is <strong>orthogonal frequency division multiplexing</strong> (OFDM), Topic 4 applied in frequency.</p>
+<aside class="callout">
+<p>The pulse and the carrier decide where in time and frequency the coordinates travel. The constellation and the code decide how many bits each coordinate carries, and how reliably. Topic 4 proved that the second question is independent of the first. This topic has priced the first, two real dimensions per hertz per second, and Topic 6 asks how many bits those dimensions can carry.</p>
+</aside>
+<section class="callout"><h2>What to remember</h2>
+<ul>
+<li><p>A symbol every <span class="math inline">T</span> seconds carries <span class="math inline">R=r\log_2M</span> information bits, so <span class="math inline">R_{\rm b}=R\,R_{\rm s}</span>, <span class="math inline">\Eb=\Es/R</span> and <span class="math inline">P=\Es R_{\rm s}=\Eb R_{\rm b}</span>.</p></li>
+<li><p>PAM sends <span class="math inline">x(t)=\sum_ix_i\phi(t-iT)</span> with a Nyquist pulse, one whose shifts by <span class="math inline">T</span> are orthonormal, that is, <span class="math inline">g(0)=1</span> and <span class="math inline">g(kT)=0</span> for <span class="math inline">k\neq0</span>. The receiver is the matched filter <span class="math inline">\phi(-t)</span> sampled at <span class="math inline">iT</span>, and it sees the real Gaussian channel with <span class="math inline">\sigma^2=\No/2</span>, <span class="math inline">R_{\rm s}</span> times per second. Sampling at the wrong instants adds intersymbol interference, <span class="math inline">\sum_{k\neq i}x_kg((i-k)T+\tau)</span>.</p></li>
+<li><p>QAM places <span class="math inline">\re x_i</span> on <span class="math inline">\sqrt2\psi(t-iT)\cos(2\pi f_{\rm c}t)</span> and <span class="math inline">\im x_i</span> on <span class="math inline">-\sqrt2\psi(t-iT)\sin(2\pi f_{\rm c}t)</span>. The symbol sets the amplitude and the phase of the carrier, PSK uses the phase alone, and the receiver sees the complex Gaussian channel with <span class="math inline">\sigma^2=\No</span> and <span class="math inline">\snr=\Es/\No</span>.</p></li>
+<li><p>The bandwidth of a baseband signal is the extent of its positive frequencies, and a passband signal built on a pulse of bandwidth <span class="math inline">W</span> occupies <span class="math inline">2W</span> around <span class="math inline">f_{\rm c}</span>. The Nyquist criterion, <span class="math inline">\sum_k|\hat\phi(f-k/T)|^2=T</span>, forces <span class="math inline">W\geq1/(2T)</span>, so <span class="math inline">R_{\rm s}\leq2W</span> symbols per second: a hertz buys two real dimensions per second. The sinc pulse attains the limit and the raised-cosine family trades excess bandwidth <span class="math inline">\beta</span> for a faster decay in time.</p></li>
+<li><p>With <span class="math inline">\eta=R_{\rm b}/W_{\rm total}</span>, baseband PAM gives <span class="math inline">\eta=2R/(1+\beta)</span> and passband QAM gives <span class="math inline">\eta=R/(1+\beta)</span>. Changing QAM from <span class="math inline">M</span> to <span class="math inline">4M</span> adds <span class="math inline">2/(1+\beta)</span> bits/s/Hz, costing about <span class="math inline">4</span> dB of <span class="math inline">\Eb/\No</span> at fixed <span class="math inline">P_{\rm b}</span>.</p></li>
+</ul>
+</section></main></div><footer class="footer">Universitat Pompeu Fabra · 23972 · Digital data transmission 2026</footer><script src="vendor/katex.min.js"></script><script src="vendor/auto-render.min.js"></script><script src="site.js"></script><script src="ui.js"></script></body></html>
