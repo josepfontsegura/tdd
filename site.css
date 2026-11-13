@@ -6,6 +6,7 @@
 /* Common text of a seminar sheet or of a group of questions, shown once before its first question (23 October). */
 .seminar-context{border-left:4px solid var(--upf-red);background:var(--upf-red-light);padding:.75em 1em;margin:1.25em 0;border-radius:4px}
 .tex-figure{max-width:100%;height:auto;background:white}
+.seminar-context .tex-figure{display:block;margin:1em auto;background:transparent}
 /* Solution figures inherit the problem background, are centred and never render smaller than 16rem (Seminar 6, 2026-11-06). */
 .solution .tex-figure{background:transparent}
 .solution .figure-grid{text-align:center;margin:1em 0}
