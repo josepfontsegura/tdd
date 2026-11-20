@@ -1,0 +1,294 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Topic 6 - Continuous-channel capacity - TDD 2026</title><script>document.documentElement.dataset.theme=localStorage.getItem('tdd-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')</script><link rel="icon" href="img/favicon.ico" type="image/x-icon"><link rel="stylesheet" href="itc.css"><link rel="stylesheet" href="vendor/katex.min.css"><link rel="stylesheet" href="site.css"><script defer src="analytics.js"></script></head><body><a class="skip" href="#main">Skip to content</a><nav class="navbar">
+  <button class="menu-toggle" aria-label="Menu">&#9776;</button>
+  <a class="navbar-brand" href="index.html">
+    <img src="img/upf-logo.svg" alt="UPF" style="height:42px;margin-right:0.75rem"> <span class="navbar-brand-text">Digital data transmission 2026</span>
+  </a>
+  <div class="navbar-actions">
+    <button class="search-toggle" aria-label="Search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><span class="search-hint">⌘K</span></button>
+    <button class="theme-toggle" aria-label="Toggle dark mode"><svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button>
+  </div>
+  <div class="lang-switcher"><a href="topic6.html" class="active" aria-current="page">EN</a></div>
+</nav><div class="page"><aside class="sidebar"><details class="sidebar-section"><summary><h4>General</h4></summary><a href="index.html">Home</a><a href="https://gestioacademica.upf.edu/doa/consultaPublica/look%5Bconpub%5DMostrarPubGuiaDocAs?entradaPublica=true&amp;idiomaPais=en.GB&amp;_anoAcademico=2026&amp;_codAsignatura=23972">Teaching guide ↗</a><a href="https://aulaglobal.upf.edu/course/view.php?id=92919">Aula Global ↗</a></details><details class="sidebar-section"><summary><h4>Modality A</h4></summary><a href="modality-a-midterm.html">Midterm</a><a href="modality-a-final.html">Final</a></details><details class="sidebar-section" open><summary><h4>Lecture notes</h4></summary><a href="topic1.html">1. Detection</a><a href="topic2.html">2. Decoding</a><a href="topic3.html">3. Mutual information and capacity</a><a href="topic4.html">4. Continuous time</a><a href="topic5.html">5. Modulation and demodulation</a><a href="topic6.html" class="active" aria-current="page">6. Continuous-channel capacity</a></details><details class="sidebar-section"><summary><h4>Seminars</h4></summary><a href="seminar1.html">1. Detectors and their errors</a><a href="seminar2.html">2. Repetition codes and likelihood</a><a href="seminar3.html">3. Comparing receivers and codes</a><a href="seminar4.html">4. Information through discrete channels</a><a href="seminar5.html">5. Mutual information with continuous noise</a><a href="seminar6.html">6. Waveforms and coordinates</a><a href="seminar7.html">7. Intersymbol interference in PAM</a><a href="seminar8.html">8. OFDM</a><span class="sidebar-disabled">9. Power, bandwidth and capacity</span><span class="sidebar-disabled">10. MIMO</span></details><details class="sidebar-section"><summary><h4>Tests</h4></summary><a href="test1.html">1. Detection</a><a href="test2.html">2. Decoding</a><a href="test3.html">3. Mutual information and capacity</a><a href="test4.html">4. Continuous time</a><span class="sidebar-disabled">5. Modulation and demodulation</span></details><details class="sidebar-section"><summary><h4>Exercises</h4></summary><a href="exercises1.html">1. Detection</a><a href="exercises2.html">2. Decoding</a><a href="exercises3.html">3. Mutual information and capacity</a><a href="exercises4.html">4. Continuous time</a><a href="exercises5.html">5. Modulation and demodulation</a><span class="sidebar-disabled">6. Continuous-channel capacity</span></details><details class="sidebar-section"><summary><h4>Exams</h4></summary><a href="exam-midterm-a.html">Midterm 2026 (Modality A)</a><span class="sidebar-disabled">Final 2026 (Modality A)</span><span class="sidebar-disabled">Final 2026 (Modality B)</span></details></aside><main class="content" id="main"><div class="lecture-header"><h1>Topic 6. Continuous-channel capacity</h1></div><div class="resource-row"><a class="resource-link" href="pdf/TDD-2026-Topic6.pdf">Download PDF</a></div><nav class="topic-toc" aria-label="In this topic"><strong>Contents</strong><ul><li><a href="#capacity-in-bits-per-second">6.1 Capacity in bits per second</a></li><li><a href="#power-and-bandwidth">6.2 Power and bandwidth</a></li><li><a href="#shannon-limit">6.3 Shannon limit</a></li><li><a href="#parallel-channels">6.4 Parallel channels</a></li><li><a href="#multiple-antennas">6.5 Multiple antennas</a></li><li><a href="#one-transmission-chain">6.6 One transmission chain</a></li></ul></nav><section class="callout"><h2>In this topic</h2>
+<p>Topic 3 measured what a channel lets through in bits per channel use, and Topics 4 and 5 showed what a channel use is for a waveform and what it costs: a hertz of bandwidth buys two real dimensions per second. This last topic puts the two together. It gives the capacity of a waveform channel in bits per second, as a function of the power and the bandwidth, and it asks where else dimensions can be found. Sections 6.1 to 6.3 correspond to the first lecture and Sections 6.4 to 6.6 to the second.</p>
+<ul>
+<li><p>We count the dimensions that a bandwidth offers per second and obtain the capacity of the band-limited Gaussian channel in bits per second.</p></li>
+<li><p>We separate the regime in which bandwidth limits the transmission from the one in which power does, and find the capacity with unlimited bandwidth.</p></li>
+<li><p>We write the limit in terms of spectral efficiency and energy per bit, the Shannon limit, and place the systems of the course against it.</p></li>
+<li><p>We add the information of several channels used in parallel and see how the energy should be shared among them.</p></li>
+<li><p>We describe a link with several antennas as a set of parallel spatial modes, and distinguish the number of antennas from the number of modes.</p></li>
+<li><p>We follow one transmission through the whole chain of the course, from the bits to the decisions.</p></li>
+</ul>
+</section>
+<h2 id="capacity-in-bits-per-second">6.1 Capacity in bits per second</h2>
+<p>A transmitter sends a waveform that occupies a <strong>bandwidth</strong> <span class="math inline">W</span>, in hertz, and reaches the receiver with average <strong>power</strong> <span class="math inline">P</span>, in watts. The channel adds white Gaussian noise of spectral density <span class="math inline">\No/2</span>, as in Definition 4.9 of Topic 4. Throughout this topic <span class="math inline">W</span> is the bandwidth that the signal occupies, baseband or passband, the quantity called <span class="math inline">W_{\rm total}</span> in Section 5.6 of Topic 5. These three numbers, <span class="math inline">P</span>, <span class="math inline">W</span> and <span class="math inline">\No</span>, are all that the answer depends on.</p>
+<p>Consider first a passband signal. By equation (5.21) of Topic 5, a passband bandwidth <span class="math inline">W</span> carries at most <span class="math inline">R_{\rm s}=W</span> complex symbols per second, with equality for the sinc pulse. By equation (5.15) of that topic, each symbol sees the complex Gaussian channel with noise variance <span class="math inline">\No</span>, and by equation (5.2) the energy per symbol is <span class="math inline">\Es=P/R_{\rm s}=P/W</span>. The signal-to-noise ratio of each channel use is therefore <span class="math display">\begin{equation*}
+\snr=\frac{\Es}{\No}=\frac{P}{\No W},\tag{6.1}
+\end{equation*}</span> the power of the signal divided by the power <span class="math inline">\No W</span> of the noise in the band, as Section 4.4 of Topic 4 anticipated. By Theorem 3.14 of Topic 3, each channel use carries at most <span class="math inline">\log_2(1+\snr)</span> bits, and there are <span class="math inline">W</span> of them per second.</p>
+<section class="env-block env-theorem"><p class="env-label">Theorem 6.1.</p>
+<p>The capacity of the Gaussian waveform channel with power <span class="math inline">P</span>, bandwidth <span class="math inline">W</span> and noise spectral density <span class="math inline">\No/2</span> is <span class="math display">\begin{equation*}
+C=W\log_2\Bigl(1+\frac{P}{\No W}\Bigr)\tag{6.2}
+\end{equation*}</span> bits per second.</p>
+</section>
+<p>A baseband bandwidth <span class="math inline">W</span> carries at most <span class="math inline">2W</span> real symbols per second, each with energy <span class="math inline">\Es=P/(2W)</span> on the real Gaussian channel of noise variance <span class="math inline">\No/2</span>. By equation (4.12) of Topic 4, the signal-to-noise ratio is <span class="math inline">2\Es/\No=P/(\No W)</span> again, and by equation (3.26) of Topic 3 the <span class="math inline">2W</span> channel uses carry <span class="math inline">2W\cdot\tfrac12\log_2(1+\snr)</span> bits per second, which is (6.2). In both cases the band offers <span class="math inline">2W</span> real dimensions per second, the transmitter spreads its power evenly among them, and each dimension carries <span class="math inline">\tfrac12\log_2(1+\snr)</span> bits.</p>
+<p>The channel coding theorem, Theorem 3.9 of Topic 3, now reads in seconds. For every bit rate <span class="math inline">R_{\rm b}&lt;C</span> there are codes and waveforms with error probability as small as we wish, and for <span class="math inline">R_{\rm b}&gt;C</span> there are none. Using fewer than <span class="math inline">2W</span> dimensions per second does not help, since Section 6.2 shows that (6.2) grows with <span class="math inline">W</span>.</p>
+<aside class="callout">
+<p>The argument used the symbol rates of PAM and QAM, which Topic 5 obtained from the Nyquist criterion for the shifts of one pulse. The theorem also needs that no other set of orthonormal waveforms does better: signals of bandwidth <span class="math inline">W</span> and duration <span class="math inline">T</span> span about <span class="math inline">2WT</span> real dimensions, whatever their shape. We use this fact without proof.</p>
+</aside>
+<section class="env-block env-example"><p class="env-label">Example 6.2.</p>
+<p>A passband channel has <span class="math inline">W=20</span> MHz and <span class="math inline">\No=4\cdot10^{-21}</span> J, so the noise power in the band is <span class="math inline">\No W=8\cdot10^{-14}</span> W. A received power <span class="math inline">P=1.2\cdot10^{-12}</span> W gives <span class="math inline">\snr=15</span>, that is, <span class="math inline">11.8</span> dB, and <span class="math display">\begin{equation*}
+C=20\cdot10^6\cdot\log_216=80\text{ Mbit/s}.\tag{6.3}
+\end{equation*}</span> A wireless local area network that sends <span class="math inline">54</span> Mbit/s in this band uses <span class="math inline">2.7</span> bits per second per hertz. It needs <span class="math inline">\log_2(1+\snr)&gt;2.7</span>, that is, <span class="math inline">\snr&gt;2^{2.7}-1=5.5</span>, or <span class="math inline">7.4</span> dB, whatever its modulation and its code.</p>
+</section>
+<h2 id="power-and-bandwidth">6.2 Power and bandwidth</h2>
+<p>Equation (6.2) depends on the bandwidth twice, and the two effects pull in opposite directions. More bandwidth gives more dimensions per second, the factor <span class="math inline">W</span> in front. With a fixed power, it also lets in more noise, so the SNR (6.1) of each dimension falls. It matters, therefore, what is held fixed when the bandwidth changes. At a fixed SNR the capacity is proportional to <span class="math inline">W</span>, and the ratio <span class="math inline">C/W=\log_2(1+\snr)</span> is read in Table 3.4 of Topic 3. At a fixed power the capacity still grows with <span class="math inline">W</span>, but more and more slowly, as Figure 6.1 shows. Two regimes summarize its behavior.</p>
+<p>When <span class="math inline">\snr\gg1</span> we have <span class="math inline">\log_2(1+\snr)\approx\log_2\snr</span> and <span class="math display">\begin{equation*}
+C\approx W\log_2\frac{P}{\No W}.\tag{6.4}
+\end{equation*}</span> Doubling the power adds only one bit per second per hertz, that is, <span class="math inline">W</span> bits per second, whereas doubling the bandwidth nearly doubles the capacity. This is the <strong>bandwidth-limited regime</strong>: power is abundant and the dimensions are scarce, so each of them must carry several bits, with the large constellations of Topic 5. When <span class="math inline">\snr\ll1</span>, the approximation <span class="math inline">\ln(1+u)\approx u</span> gives <span class="math display">\begin{equation*}
+C\approx W\,\frac{P}{\No W}\log_2e=\frac{P}{\No}\log_2e,\tag{6.5}
+\end{equation*}</span> which does not depend on the bandwidth at all. This is the <strong>power-limited regime</strong>: dimensions are abundant, each carries a small fraction of a bit, and the capacity is proportional to the power. The right-hand side of (6.5) is also the limit of (6.2) as <span class="math inline">W</span> grows without bound, <span class="math display">\begin{equation*}
+C_\infty=\frac{P}{\No}\log_2e=1.44\,\frac{P}{\No},\tag{6.6}
+\end{equation*}</span> so even an unlimited bandwidth gives a finite capacity.</p>
+<div class="source-figure">
+<img class="tex-figure" src="img/topic6-6a2fc946bf9b0cfd.svg" alt="Diagram reproduced from the course PDF; description follows in the text.">
+<p><strong>Figure 6.1.</strong> Capacity (6.2) as a function of the bandwidth at a fixed power, both in units of <span class="math inline">P/\No</span>. At the dot the SNR is <span class="math inline">1</span>. To its left the SNR is larger and the capacity grows almost in proportion to the bandwidth. To its right the SNR is smaller and the capacity approaches <span class="math inline">C_\infty</span>.</p>
+</div>
+<section class="env-block env-problem"><p class="env-label">Problem 6.3.</p>
+<p>A channel has <span class="math inline">W=1</span> MHz and <span class="math inline">P/\No=3\cdot10^6</span> s<span class="math inline">^{-1}</span>. Find its capacity, and the capacity when the power is doubled, when the bandwidth is doubled, and when the bandwidth is unlimited.</p>
+<details class="solution"><summary>Show solution</summary>
+<p>By (6.1), <span class="math inline">\snr=3</span> and <span class="math inline">C=10^6\log_24=2</span> Mbit/s. With twice the power, <span class="math inline">\snr=6</span> and, by Table 3.1 of Topic 3, <span class="math display">\begin{equation*}
+C=10^6\log_27=2.81\text{ Mbit/s}.\tag{6.7}
+\end{equation*}</span> With twice the bandwidth and the original power, the noise power doubles, so <span class="math inline">\snr=1.5</span> and <span class="math display">\begin{equation*}
+C=2\cdot10^6\log_22.5=2\cdot10^6\,(\log_25-1)=2.64\text{ Mbit/s}.\tag{6.8}
+\end{equation*}</span> With unlimited bandwidth, (6.6) gives <span class="math inline">C_\infty=1.44\cdot3\cdot10^6=4.33</span> Mbit/s. At this moderate SNR, twice the power is worth slightly more than twice the bandwidth, and even an unlimited bandwidth only slightly more than doubles the capacity. At <span class="math inline">\snr=15</span> the order is reversed: twice the power gives <span class="math inline">\log_231=4.95</span> bits per second per hertz instead of <span class="math inline">4</span>, and twice the bandwidth gives <span class="math inline">2\log_28.5=6.17</span> in units of the original bandwidth.</p>
+</details>
+</section>
+<h2 id="shannon-limit">6.3 Shannon limit</h2>
+<p>Section 5.6 of Topic 5 compared systems by their spectral efficiency <span class="math inline">\eta=R_{\rm b}/W</span> and by the energy per bit that they need. The capacity (6.2) draws the boundary of that comparison. By equation (5.2) of Topic 5 the power is <span class="math inline">P=\Eb R_{\rm b}</span>, so the SNR (6.1) of a system that sends <span class="math inline">R_{\rm b}</span> bits per second is <span class="math display">\begin{equation*}
+\snr=\frac{\Eb R_{\rm b}}{\No W}=\eta\,\frac{\Eb}{\No}.\tag{6.9}
+\end{equation*}</span></p>
+<section class="env-block env-theorem"><p class="env-label">Proposition 6.4.</p>
+<p>A system of spectral efficiency <span class="math inline">\eta</span> can have an error probability as small as desired only if <span class="math display">\begin{equation*}
+\frac{\Eb}{\No}&gt;\frac{2^\eta-1}{\eta}.\tag{6.10}
+\end{equation*}</span> The right-hand side increases with <span class="math inline">\eta</span>, and as <span class="math inline">\eta</span> tends to zero it tends to <span class="math inline">\ln2=0.693</span>, that is, <span class="math inline">-1.59</span> dB.</p>
+</section>
+<div class="proof"><strong>Proof.</strong>
+<p>By Theorem 6.1, reliable transmission requires <span class="math inline">R_{\rm b}&lt;C</span>. Dividing by <span class="math inline">W</span> and using (6.9), this is <span class="math inline">\eta&lt;\log_2(1+\eta\Eb/\No)</span>, that is, <span class="math inline">2^\eta&lt;1+\eta\Eb/\No</span>, which is (6.10). For small <span class="math inline">\eta</span>, <span class="math inline">2^\eta=e^{\eta\ln2}\approx1+\eta\ln2</span>, so the bound tends to <span class="math inline">\ln2</span>. It increases with <span class="math inline">\eta</span> because <span class="math inline">2^\eta</span> is convex: the slope of the chord from <span class="math inline">0</span> to <span class="math inline">\eta</span> grows with <span class="math inline">\eta</span>.</p>
+</div>
+<p>The value <span class="math inline">\Eb/\No=\ln2</span> is the <strong>Shannon limit</strong>. No system, however much bandwidth it uses and however long its code, can communicate reliably with less energy per information bit than <span class="math inline">\No\ln2</span>. It is the power-limited regime (6.6) read per bit, since <span class="math inline">P=\Eb R_{\rm b}</span> and <span class="math inline">R_{\rm b}&lt;C_\infty</span> give the same inequality. Table 6.1 gives the bound for the efficiencies of this course, and Figure 6.2 draws it. Every system is a point of this plane, and the points to the left of the curve do not exist.</p>
+<div class="source-table">
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th style="text-align: left;"><span class="math inline">\eta</span> (bits per second per hertz)</th>
+<th style="text-align: center;"><span class="math inline">\to0</span></th>
+<th style="text-align: center;"><span class="math inline">\tfrac12</span></th>
+<th style="text-align: center;"><span class="math inline">1</span></th>
+<th style="text-align: center;"><span class="math inline">2</span></th>
+<th style="text-align: center;"><span class="math inline">3</span></th>
+<th style="text-align: center;"><span class="math inline">4</span></th>
+<th style="text-align: center;"><span class="math inline">6</span></th>
+<th style="text-align: center;"><span class="math inline">8</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><span class="math inline">(2^\eta-1)/\eta</span></td>
+<td style="text-align: center;"><span class="math inline">0.69</span></td>
+<td style="text-align: center;"><span class="math inline">0.83</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">1.5</span></td>
+<td style="text-align: center;"><span class="math inline">2.33</span></td>
+<td style="text-align: center;"><span class="math inline">3.75</span></td>
+<td style="text-align: center;"><span class="math inline">10.5</span></td>
+<td style="text-align: center;"><span class="math inline">31.9</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">In decibels</td>
+<td style="text-align: center;"><span class="math inline">-1.6</span></td>
+<td style="text-align: center;"><span class="math inline">-0.8</span></td>
+<td style="text-align: center;"><span class="math inline">0</span></td>
+<td style="text-align: center;"><span class="math inline">1.8</span></td>
+<td style="text-align: center;"><span class="math inline">3.7</span></td>
+<td style="text-align: center;"><span class="math inline">5.7</span></td>
+<td style="text-align: center;"><span class="math inline">10.2</span></td>
+<td style="text-align: center;"><span class="math inline">15.0</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">A ratio of</td>
+<td style="text-align: center;"><span class="math inline">1.25</span></td>
+<td style="text-align: center;"><span class="math inline">1.6</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+<td style="text-align: center;"><span class="math inline">2.5</span></td>
+<td style="text-align: center;"><span class="math inline">3.2</span></td>
+<td style="text-align: center;"><span class="math inline">4</span></td>
+<td style="text-align: center;"><span class="math inline">5</span></td>
+<td style="text-align: center;"><span class="math inline">8</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">In decibels</td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+<td style="text-align: center;"><span class="math inline">3</span></td>
+<td style="text-align: center;"><span class="math inline">4</span></td>
+<td style="text-align: center;"><span class="math inline">5</span></td>
+<td style="text-align: center;"><span class="math inline">6</span></td>
+<td style="text-align: center;"><span class="math inline">7</span></td>
+<td style="text-align: center;"><span class="math inline">9</span></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Table 6.1.</strong> Smallest <span class="math inline">\Eb/\No</span> at which reliable transmission is possible at spectral efficiency <span class="math inline">\eta</span>, by (6.10), and some ratios in decibels for hand calculations.</p>
+</div>
+<div class="source-figure">
+<img class="tex-figure" src="img/topic6-0d2dafbd78cd0aab.svg" alt="Diagram reproduced from the course PDF; description follows in the text.">
+<p><strong>Figure 6.2.</strong> The plane of spectral efficiency and energy per bit. The curve is the bound (6.10), which reaches the Shannon limit of <span class="math inline">-1.6</span> dB at zero efficiency. The filled dots are uncoded QAM with the sinc pulse at <span class="math inline">P_{\rm b}=10^{-5}</span>, from Table 5.3 of Topic 5. The open dots are QPSK with the repetition code and with the parity code of Problem 2.9 of Topic 2, the latter at its largest gain.</p>
+</div>
+<section class="env-block env-example"><p class="env-label">Example 6.5.</p>
+<p>By Table 5.3 of Topic 5, uncoded QPSK with the sinc pulse has <span class="math inline">\eta=2</span> and needs <span class="math inline">\Eb/\No=9.6</span> dB for <span class="math inline">P_{\rm b}=10^{-5}</span>. By Table 6.1, the bound at <span class="math inline">\eta=2</span> is <span class="math inline">1.8</span> dB, so QPSK is <span class="math inline">7.8</span> dB from it. The distance is <span class="math inline">13.4-5.7=7.7</span> dB for 16-QAM and <span class="math inline">17.8-10.2=7.6</span> dB for 64-QAM. Uncoded modulation wastes almost <span class="math inline">8</span> dB, a factor of six in power, at every efficiency. The repetition code of Topic 2 does not reduce this distance. By equation (2.22) of that topic it needs the same <span class="math inline">\Eb/\No</span> as uncoded transmission, and it divides <span class="math inline">\eta</span> by <span class="math inline">n</span>, so its point in Figure 6.2 is straight below that of QPSK, where the curve is even farther. The parity code of Problem 2.9 moves to <span class="math inline">\eta=\tfrac43</span> and gains at most <span class="math inline">1.25</span> dB, the other open dot of the figure. A good code moves the point to the left by several decibels and down only by the factor <span class="math inline">r</span>.</p>
+</section>
+<aside class="callout">
+<p>Codes that come within about one decibel of the curve, such as the low-density parity-check and polar codes of wireless networks and mobile telephony, were developed over the decades that followed the theorem.</p>
+</aside>
+<h2 id="parallel-channels">6.4 Parallel channels</h2>
+<p>Many systems have several channels available at once. Consider <span class="math inline">K</span> complex Gaussian channels used together, <span class="math display">\begin{equation*}
+Y_k=h_k\,X_k+Z_k,\qquad k=1,\ldots,K,\tag{6.11}
+\end{equation*}</span> where the <strong>gains</strong> <span class="math inline">h_k</span> are known complex numbers and the noises <span class="math inline">Z_k</span> are independent complex Gaussians of variance <span class="math inline">\sigma^2</span>. For the passband channel of Section 6.1, <span class="math inline">\sigma^2=\No</span>. The transmitter has a total energy <span class="math inline">\Es</span> per use of the <span class="math inline">K</span> channels, which now plays the role that the energy per symbol had for one channel, and gives <span class="math inline">E_k=\EE(|X_k|^2)</span> to the <span class="math inline">k</span>-th, with <span class="math inline">E_1+\cdots+E_K\leq\Es</span>. Dividing <span class="math inline">Y_k</span> by <span class="math inline">h_k</span> shows that each channel is a complex Gaussian channel with signal-to-noise ratio <span class="math inline">|h_k|^2E_k/\sigma^2</span>.</p>
+<section class="env-block env-theorem"><p class="env-label">Proposition 6.6.</p>
+<p>With independent inputs, the mutual information of the <span class="math inline">K</span> channels (6.11) is the sum of their mutual informations. With independent Gaussian inputs of energies <span class="math inline">E_1,\ldots,E_K</span> it is <span class="math display">\begin{equation*}
+\sum_{k=1}^K\log_2\Bigl(1+\frac{|h_k|^2E_k}{\sigma^2}\Bigr)\tag{6.12}
+\end{equation*}</span> bits per use of the <span class="math inline">K</span> channels.</p>
+</section>
+<div class="proof"><strong>Proof.</strong>
+<p>The noises are independent, so the channel law of the <span class="math inline">K</span> outputs given the <span class="math inline">K</span> inputs is the product of the <span class="math inline">K</span> channel laws, as in the last line of Table 1.1 of Topic 1. With independent inputs the joint law of the outputs is a product too. The logarithm in Definition 3.3 of Topic 3 is then a sum of <span class="math inline">K</span> terms, and the expectation of each is the mutual information of one channel. The second statement is Theorem 3.14 of Topic 3 applied to each channel.</p>
+</div>
+<p>The capacity of the set is the largest value of (6.12) over the ways of sharing the energy, since independent Gaussian inputs are the best ones, a fact that we use without proof. We have already met three sets of parallel channels. The <span class="math inline">n</span> uses of a memoryless channel in time are <span class="math inline">n</span> parallel channels with the same gain, which is why the rates of Topic 3 are counted per channel use. The real and the imaginary parts of a complex channel use are two parallel real channels. The subcarriers of Section 5.6 of Topic 5 are parallel channels in frequency, and a channel with echoes gives each of them a different gain.</p>
+<p>When the gains are equal the energy is shared equally. For two channels, the sum (6.12) is the logarithm of the product <span class="math inline">(1+aE_1)(1+aE_2)</span>, with <span class="math inline">a=|h|^2/\sigma^2</span>, and for a fixed sum <span class="math inline">E_1+E_2</span> this product is largest when <span class="math inline">E_1=E_2</span>. This is what Theorem 6.1 did when it spread the power evenly over the <span class="math inline">2W</span> dimensions. When the gains differ, the better channels deserve more energy, as the following problem shows.</p>
+<section class="env-block env-problem"><p class="env-label">Problem 6.7.</p>
+<p>Two parallel channels have <span class="math inline">|h_1|^2=1</span> and <span class="math inline">|h_2|^2=\tfrac14</span>, with <span class="math inline">\sigma^2=1</span> and total energy <span class="math inline">\Es=4</span>. Compare the equal split, the use of the first channel alone, and the best split.</p>
+<details class="solution"><summary>Show solution</summary>
+<p>By (6.12) and Table 3.1 of Topic 3, the equal split <span class="math inline">E_1=E_2=2</span> gives <span class="math display">\begin{equation*}
+\log_2(1+2)+\log_2\bigl(1+\tfrac24\bigr)=1.585+0.585=2.17\text{ bits},\tag{6.13}
+\end{equation*}</span> and the first channel alone, <span class="math inline">E_1=4</span>, gives <span class="math inline">\log_25=2.32</span> bits, which is more. For a general split, with <span class="math inline">E_2=4-E_1</span>, the sum is the logarithm of the product <span class="math display">\begin{equation*}
+(1+E_1)\bigl(1+\tfrac14(4-E_1)\bigr)=\tfrac14(1+E_1)(8-E_1),\tag{6.14}
+\end{equation*}</span> a parabola in <span class="math inline">E_1</span> that vanishes at <span class="math inline">E_1=-1</span> and <span class="math inline">E_1=8</span> and is largest halfway, at <span class="math inline">E_1=3.5</span>. The best split is <span class="math inline">E_1=3.5</span> and <span class="math inline">E_2=0.5</span>, and it gives <span class="math display">\begin{equation*}
+\log_2\tfrac92+\log_2\tfrac98=2\log_29-4=2.34\text{ bits}.\tag{6.15}
+\end{equation*}</span> The weak channel receives little energy, but not none. With a total energy of <span class="math inline">3</span> or less, the corresponding parabola has its maximum at or beyond <span class="math inline">E_1=\Es</span>, and the best choice is to leave the weak channel unused.</p>
+</details>
+</section>
+<aside class="callout">
+<p>In Problem 6.7 the best split gives the first channel <span class="math inline">3</span> units of energy more than the second whenever both channels are used, and <span class="math inline">3</span> is the difference <span class="math inline">\sigma^2/|h_2|^2-\sigma^2/|h_1|^2</span> between their noise levels seen from the input. The general rule for <span class="math inline">K</span> channels has this form and is called water-filling: the energy is poured over the noise levels up to a common height. At low energy only the best channel is used, and at high energy the split is almost equal.</p>
+</aside>
+<h2 id="multiple-antennas">6.5 Multiple antennas</h2>
+<p>Space is one more source of parallel channels. A transmitter with <span class="math inline">n_{\rm t}</span> antennas and a receiver with <span class="math inline">n_{\rm r}</span> antennas share the same band at the same time. In one channel use the transmitter sends a complex symbol <span class="math inline">X_j</span> from its <span class="math inline">j</span>-th antenna, and the <span class="math inline">i</span>-th receive antenna observes <span class="math display">\begin{equation*}
+Y_i=\sum_{j=1}^{n_{\rm t}}h_{ij}\,X_j+Z_i,\qquad i=1,\ldots,n_{\rm r},\tag{6.16}
+\end{equation*}</span> where <span class="math inline">h_{ij}</span> is the gain from transmit antenna <span class="math inline">j</span> to receive antenna <span class="math inline">i</span> and the noises <span class="math inline">Z_i</span> are independent complex Gaussians of variance <span class="math inline">\sigma^2</span>. In vector form, <span class="math inline">\Y=H\x+\boldsymbol Z</span>, where <span class="math inline">H</span> is the matrix of the gains. The total energy is constrained, <span class="math inline">\EE(\|\x\|^2)\leq\Es</span>, and we write <span class="math inline">\snr=\Es/\sigma^2</span>, the total transmitted energy over the noise of one receive antenna. We assume that both ends know <span class="math inline">H</span>. This is a <strong>multiple-input multiple-output</strong> (MIMO) channel.</p>
+<p>Every receive antenna hears all the transmit antennas, so the channels (6.16) are not parallel as they stand. They become parallel with the idea of Topic 4. The transmitter does not send its symbols on the antennas one by one, but along orthonormal directions <span class="math inline">\boldsymbol v_1,\ldots,\boldsymbol v_K</span> of the space of transmitted vectors, <span class="math inline">\x=\smash{\sum_{k=1}^K}\tilde X_k\boldsymbol v_k</span>, and the receiver projects what it receives onto orthonormal directions <span class="math inline">\boldsymbol u_1,\ldots,\boldsymbol u_K</span>, as a correlator does with a waveform. As in Proposition 4.10 of Topic 4, the projections of the noise onto orthonormal directions are independent and have the same variance <span class="math inline">\sigma^2</span>.</p>
+<section class="env-block env-theorem"><p class="env-label">Proposition 6.8.</p>
+<p>For every matrix <span class="math inline">H</span> there are orthonormal directions <span class="math inline">\boldsymbol v_k</span> and <span class="math inline">\boldsymbol u_k</span> and numbers <span class="math inline">\lambda_k&gt;0</span> such that <span class="math inline">H\boldsymbol v_k=\sqrt{\lambda_k}\,\boldsymbol u_k</span> for <span class="math inline">k=1,\ldots,K</span>, where <span class="math inline">K</span> is the rank of <span class="math inline">H</span>. With them the MIMO channel becomes the <span class="math inline">K</span> parallel channels <span class="math display">\begin{equation*}
+\tilde Y_k=\sqrt{\lambda_k}\,\tilde X_k+\tilde Z_k,\qquad k=1,\ldots,K,\tag{6.17}
+\end{equation*}</span> and its capacity is that of these parallel channels, with gains <span class="math inline">|h_k|^2=\lambda_k</span> in (6.12).</p>
+</section>
+<p>The channels (6.17) are the <strong>spatial modes</strong> of the link, and Figure 6.3 shows them. The proposition is a result of linear algebra, the singular value decomposition, and we use it without proof. The number of modes is the rank of <span class="math inline">H</span>, which is at most the smaller of <span class="math inline">n_{\rm t}</span> and <span class="math inline">n_{\rm r}</span>, and the gains add up to the total gain of the matrix, <span class="math inline">\lambda_1+\cdots+\lambda_K=\smash{\sum_{i,j}}|h_{ij}|^2</span>.</p>
+<div class="source-figure">
+<img class="tex-figure" src="img/topic6-d2634a6e9ccd8d04.svg" alt="Diagram reproduced from the course PDF; description follows in the text.">
+<p><strong>Figure 6.3.</strong> A MIMO channel seen as <span class="math inline">K</span> parallel spatial modes. The transmitter places its symbols on orthonormal directions, and the receiver projects onto the directions in which they arrive.</p>
+</div>
+<section class="env-block env-example"><p class="env-label">Example 6.9.</p>
+<p>One transmit antenna and two receive antennas give <span class="math inline">Y_1=h_1X+Z_1</span> and <span class="math inline">Y_2=h_2X+Z_2</span>, a matrix with one column and one mode, of gain <span class="math inline">\lambda=|h_1|^2+|h_2|^2</span>. The receiver projects onto the direction of the column, that is, it weights each antenna by the conjugate of its gain and adds. With <span class="math inline">h_1=h_2=1</span> it computes <span class="math inline">(Y_1+Y_2)/\sqrt2=\sqrt2\,X+\tilde Z</span>, and the capacity is <span class="math inline">\log_2(1+2\,\snr)</span>. The second antenna doubles the SNR, a gain of <span class="math inline">3</span> dB. This is the repetition code of Problem 2.5 of Topic 2 with soft decisions, repeated in space instead of time, with the same sum of observations. There is one difference. In time the transmitter pays for the second copy, so at equal energy per bit the repetition code gains nothing, as Example 6.5 recalled. In space the second copy is collected by the receiver and costs the transmitter no energy, so the <span class="math inline">3</span> dB are a true gain.</p>
+</section>
+<section class="env-block env-problem"><p class="env-label">Problem 6.10.</p>
+<p>Two links with two antennas at each end have the gain matrices <span class="math display">\begin{equation*}
+H_{\rm a}=\begin{pmatrix}1&amp;1\\1&amp;-1\end{pmatrix}
+\qquad\text{and}\qquad
+H_{\rm b}=\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix}.\tag{6.18}
+\end{equation*}</span> Find their modes and their capacities at <span class="math inline">\snr=1.5</span> and at <span class="math inline">\snr=15</span>, and compare them with a link with one antenna at each end and gain <span class="math inline">1</span>.</p>
+<details class="solution"><summary>Show solution</summary>
+<p>The columns of <span class="math inline">H_{\rm a}</span> are orthogonal and have squared norm <span class="math inline">2</span>. Sending along the directions <span class="math inline">\boldsymbol v_1=(1,0)</span> and <span class="math inline">\boldsymbol v_2=(0,1)</span>, one symbol per antenna, the receiver sees them along the orthonormal directions <span class="math inline">\boldsymbol u_1=(1,1)/\sqrt2</span> and <span class="math inline">\boldsymbol u_2=(1,-1)/\sqrt2</span>, each with gain <span class="math inline">\sqrt2</span>. There are two modes with <span class="math inline">\lambda_1=\lambda_2=2</span>, and the energy is shared equally, <span class="math inline">\Es/2</span> each, so by (6.12) <span class="math display">\begin{equation*}
+C_{\rm a}=2\log_2\Bigl(1+\frac{2\,\Es/2}{\sigma^2}\Bigr)=2\log_2(1+\snr).\tag{6.19}
+\end{equation*}</span> The two rows of <span class="math inline">H_{\rm b}</span> are equal, so its rank is <span class="math inline">1</span>. The direction <span class="math inline">\boldsymbol v=(1,1)/\sqrt2</span> gives <span class="math inline">H_{\rm b}\boldsymbol v=2\,(1,1)/\sqrt2</span>, a single mode with <span class="math inline">\lambda=4</span>, and the direction <span class="math inline">(1,-1)/\sqrt2</span> gives the zero vector, so nothing sent along it arrives. Hence, <span class="math display">\begin{equation*}
+C_{\rm b}=\log_2(1+4\,\snr).\tag{6.20}
+\end{equation*}</span> The link with one antenna has <span class="math inline">C=\log_2(1+\snr)</span>. At <span class="math inline">\snr=1.5</span> the three capacities are <span class="math inline">2\log_22.5=2.64</span>, <span class="math inline">\log_27=2.81</span> and <span class="math inline">1.32</span> bits per channel use, and at <span class="math inline">\snr=15</span> they are <span class="math inline">8</span>, <span class="math inline">\log_261=5.93</span> and <span class="math inline">4</span>. Both matrices have the same total gain, <span class="math inline">4</span>. The first spreads it over two modes and the second concentrates it in one. At low SNR the concentrated gain is worth more, and at high SNR the second mode is.</p>
+</details>
+</section>
+<aside class="callout">
+<p>The number of antennas is not the number of modes. In <span class="math inline">H_{\rm b}</span> both receive antennas hear the same combination of the transmitted symbols, as happens when the antennas are close together and the path is direct, and the extra antennas only add power. At high SNR each mode behaves as in (6.4): every <span class="math inline">3</span> dB adds one bit per mode, so <span class="math inline">K</span> modes multiply by <span class="math inline">K</span> the slope of the capacity. Modes multiply the dimensions as bandwidth does, without occupying more spectrum.</p>
+</aside>
+<h2 id="one-transmission-chain">6.6 One transmission chain</h2>
+<p>We end the course by summarizing a full digital data transmission system. Figure 6.4 puts in one line the blocks of the six topics, and Table 6.2 says what each block decides and where the limits are.</p>
+<div class="source-figure">
+<img class="tex-figure" src="img/topic6-fc5dbb59dec40048.svg" alt="Diagram reproduced from the course PDF; description follows in the text.">
+<p><strong>Figure 6.4.</strong> The transmission chain of the course.</p>
+</div>
+<div class="source-table">
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th style="text-align: left;">Block</th>
+<th style="text-align: left;">What it decides</th>
+<th style="text-align: left;">Relation</th>
+<th style="text-align: left;">Topic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Encoder</td>
+<td style="text-align: left;">information bits per coded bit</td>
+<td style="text-align: left;"><span class="math inline">r=k/n_{\rm c}</span></td>
+<td style="text-align: left;">2, 3</td>
+</tr>
+<tr>
+<td style="text-align: left;">Mapper</td>
+<td style="text-align: left;">bits per symbol, energy of the points</td>
+<td style="text-align: left;"><span class="math inline">R=r\log_2M</span>, <span class="math inline">\Eb=\Es/R</span></td>
+<td style="text-align: left;">1, 5</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pulse and carrier</td>
+<td style="text-align: left;">symbols per second, bandwidth</td>
+<td style="text-align: left;"><span class="math inline">R_{\rm b}=R\,R_{\rm s}</span>, <span class="math inline">\eta=R_{\rm b}/W</span></td>
+<td style="text-align: left;">4, 5</td>
+</tr>
+<tr>
+<td style="text-align: left;">Channel</td>
+<td style="text-align: left;">power and noise</td>
+<td style="text-align: left;"><span class="math inline">\snr=\Es/\No=P/(\No R_{\rm s})</span></td>
+<td style="text-align: left;">4</td>
+</tr>
+<tr>
+<td style="text-align: left;">Matched filter and sampler</td>
+<td style="text-align: left;">nothing, with a Nyquist pulse</td>
+<td style="text-align: left;"><span class="math inline">Y_i=x_i+Z_i</span></td>
+<td style="text-align: left;">4, 5</td>
+</tr>
+<tr>
+<td style="text-align: left;">Detector or decoder</td>
+<td style="text-align: left;">the error probability</td>
+<td style="text-align: left;">nearest point, MAP</td>
+<td style="text-align: left;">1, 2</td>
+</tr>
+<tr>
+<td style="text-align: left;">Limits</td>
+<td style="text-align: left;">what no design exceeds</td>
+<td style="text-align: left;"><span class="math inline">R&lt;\log_2(1+\snr)</span>, <span class="math inline">R_{\rm b}&lt;C</span></td>
+<td style="text-align: left;">3, 6</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Table 6.2.</strong> The blocks of Figure 6.4 for a passband transmission, with the topic that studies each.</p>
+</div>
+<section class="env-block env-example"><p class="env-label">Example 6.11.</p>
+<p>Exercise 5.7 of Topic 5 asked for <span class="math inline">30</span> Mbit/s in a passband channel of <span class="math inline">10</span> MHz with pulses of roll-off <span class="math inline">\beta=0.25</span>, and left open how little energy per bit a coded system needs. We can now give the whole answer. The efficiency is <span class="math inline">\eta=3</span>, and by Table 6.1 no system can work below <span class="math inline">\Eb/\No=3.7</span> dB. The pulses of the exercise carry only <span class="math inline">R_{\rm s}=8</span> Msymbols per second, so each symbol must carry <span class="math inline">R=3.75</span> information bits, and by Theorem 3.14 of Topic 3 this requires <span class="math display">\begin{equation*}
+\frac{\Es}{\No}&gt;2^{3.75}-1=12.5,\tag{6.21}
+\end{equation*}</span> that is, <span class="math inline">\Eb/\No=\Es/(R\No)&gt;3.3</span>, or <span class="math inline">5.2</span> dB. The excess bandwidth costs <span class="math inline">1.5</span> dB. With the points of 64-QAM instead of a Gaussian input, and a code of rate <span class="math inline">r=\tfrac58</span>, the threshold found in that exercise was about <span class="math inline">6</span> dB. Uncoded 16-QAM needed <span class="math inline">13.4</span> dB. Of the almost <span class="math inline">10</span> dB between the uncoded system and the limit, the pulse accounts for <span class="math inline">1.5</span> and the constellation for less than <span class="math inline">1</span>. The remaining <span class="math inline">7</span> dB are what a good code can recover.</p>
+</section>
+<p>We assumed throughout that the receiver knows the channel, the carrier phase and the sampling instants, and that the channel stays the same. Real channels change with time and with frequency, and the receiver must estimate them. Good codes must be built and decoded with a reasonable effort. These are the subjects of later courses, and all of them start from the six ideas of this one: decide by the likelihood, add redundancy and decide on the whole, measure information, treat waveforms as vectors, build them from pulses and carriers, and count the dimensions.</p>
+<section class="callout"><h2>What to remember</h2>
+<ul>
+<li><p>A bandwidth <span class="math inline">W</span>, baseband or passband, offers <span class="math inline">2W</span> real dimensions per second. With power <span class="math inline">P</span> and noise density <span class="math inline">\No/2</span>, each has <span class="math inline">\snr=P/(\No W)</span> and the capacity is <span class="math inline">C=W\log_2(1+\snr)</span> bits per second.</p></li>
+<li><p>At high SNR the bandwidth limits the transmission: twice the power adds one bit per second per hertz. At low SNR the power does: <span class="math inline">C\approx1.44\,P/\No</span>, also the capacity of an unlimited bandwidth.</p></li>
+<li><p>A system of spectral efficiency <span class="math inline">\eta</span> needs <span class="math inline">\Eb/\No&gt;(2^\eta-1)/\eta</span>. The bound is <span class="math inline">-1.59</span> dB as <span class="math inline">\eta\to0</span>, the Shannon limit, and <span class="math inline">1.8</span>, <span class="math inline">5.7</span> and <span class="math inline">10.2</span> dB at <span class="math inline">\eta=2</span>, <span class="math inline">4</span> and <span class="math inline">6</span>. Uncoded QAM is almost <span class="math inline">8</span> dB from it.</p></li>
+<li><p>Parallel Gaussian channels with independent inputs add their rates, <span class="math inline">\smash{\sum_k}\log_2(1+|h_k|^2E_k/\sigma^2)</span>. Equal gains share the energy equally, and better channels deserve more energy.</p></li>
+<li><p>A link with several antennas is a set of parallel spatial modes, as many as the rank of its gain matrix and at most the smaller number of antennas. At high SNR the capacity grows with the number of modes, and at low SNR with the gain of the strongest mode.</p></li>
+<li><p>Every block of the chain fixes one quantity, and <span class="math inline">R&lt;\log_2(1+\snr)</span> and <span class="math inline">R_{\rm b}&lt;C</span> limit every design.</p></li>
+</ul>
+</section></main></div><footer class="footer">Universitat Pompeu Fabra · 23972 · Digital data transmission 2026</footer><script src="vendor/katex.min.js"></script><script src="vendor/auto-render.min.js"></script><script src="site.js"></script><script src="ui.js"></script></body></html>
